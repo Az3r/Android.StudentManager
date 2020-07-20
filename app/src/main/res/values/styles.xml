@@ -22,10 +22,6 @@
     </style>
 
     <style name="StudentPropertyPadding">
-        <item name="android:padding">4dp</item>
-    </style>
-
-    <style name="LinearLayoutItemPadding">
-        <item name="android:padding">4dp</item>
+        <item name="android:padding">8dp</item>
     </style>
 </resources>
