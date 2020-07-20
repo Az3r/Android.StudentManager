@@ -1,9 +1,15 @@
 <resources>
 
-    <style name="TextTitle" parent="TextAppearance.MaterialComponents.Headline4">
+    <style name="TextAllCap" parent="Widget.MaterialComponents.TextView">
         <item name="textAllCaps">true</item>
+    </style>
+
+    <style name="TextTitle" parent="TextAllCap">
+        <item name="android:letterSpacing">0.1</item>
+        <item name="android:textSize">34sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textAlignment">center</item>
         <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:textAlignment">center</item>
     </style>
 </resources>
