@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Student</string>
+    <string name="desc_app_icon">Application\'s icon</string>
 </resources>
