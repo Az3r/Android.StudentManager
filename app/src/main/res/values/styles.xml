@@ -1,15 +1,31 @@
 <resources>
 
-    <style name="TextAllCap" parent="Widget.MaterialComponents.TextView">
+    <style name="TextTitle">
         <item name="textAllCaps">true</item>
-    </style>
-
-    <style name="TextTitle" parent="TextAllCap">
         <item name="android:letterSpacing">0.1</item>
         <item name="android:textSize">34sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">?attr/colorOnSurface</item>
-        <item name="textAllCaps">true</item>
         <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="TextLabel">
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextContent">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="StudentPropertyPadding">
+        <item name="android:padding">4dp</item>
+    </style>
+
+    <style name="LinearLayoutItemPadding">
+        <item name="android:padding">4dp</item>
     </style>
 </resources>
