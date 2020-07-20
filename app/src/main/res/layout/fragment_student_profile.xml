@@ -6,4 +6,8 @@
     tools:context="ui.student.StudentProfileFragment"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Student's profile Fragment"/>
 </LinearLayout>
