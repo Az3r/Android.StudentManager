@@ -1,8 +1,12 @@
 <resources>
-    <string name="app_name">Student</string>
+    <string name="app_name">Student Manager</string>
     <string name="desc_app_icon">Application\'s icon</string>
     <string name="text_id">Id</string>
     <string name="text_password">Password</string>
     <string name="text_login">login</string>
     <string name="text_login_as_teacher">Login as teacher</string>
+    <string name="text_profile">profile</string>
+    <string name="text_notification">notification</string>
+    <string name="text_schedule">schedule</string>
+    <string name="text_score">score</string>
 </resources>
