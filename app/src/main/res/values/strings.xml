@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Student</string>
     <string name="desc_app_icon">Application\'s icon</string>
+    <string name="text_id">Id</string>
 </resources>
