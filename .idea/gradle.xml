@@ -10,8 +10,8 @@
         <option name="gradleJvm" value="1.8" />
         <option name="modules">
           <set>
-            <option value="/mnt/201a5b55-f8bd-4c39-8289-73c09862e4de/work/android/Student" />
-            <option value="/mnt/201a5b55-f8bd-4c39-8289-73c09862e4de/work/android/Student/app" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -39,166 +39,186 @@
                 android:textColor="?attr/colorOnPrimary" />
         </LinearLayout>
 
-
     </FrameLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:theme="@style/StudentPropertyPadding">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/text_student_id"
-                android:theme="@style/TextLabel" />
-
-            <TextView
-                android:id="@+id/student_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_account"
-                android:text="1712875"
-                android:theme="@style/TextContent" />
-        </LinearLayout>
-
-        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:theme="@style/StudentPropertyPadding">
+            android:layout_height="wrap_content">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/text_full_name"
-                android:theme="@style/TextLabel" />
+                android:orientation="vertical"
+                android:padding="20dp">
 
-            <TextView
-                android:id="@+id/student_name"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:theme="@style/StudentPropertyPadding">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_student_id"
+                        android:theme="@style/TextLabel" />
+
+                    <TextView
+                        android:id="@+id/student_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_account"
+                        android:text="1712875"
+                        android:theme="@style/TextContent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:theme="@style/StudentPropertyPadding">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_full_name"
+                        android:theme="@style/TextLabel" />
+
+                    <TextView
+                        android:id="@+id/student_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_social"
+                        android:text="Nguyen Manh Tuan"
+                        android:theme="@style/TextContent" />
+                </LinearLayout>
+
+                <include layout="@layout/seperator" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:theme="@style/StudentPropertyPadding">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_gender"
+                        android:theme="@style/TextLabel" />
+
+                    <TextView
+                        android:id="@+id/student_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_gender"
+                        android:text="Male"
+                        android:theme="@style/TextContent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:theme="@style/StudentPropertyPadding">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_birthday"
+                        android:theme="@style/TextLabel" />
+
+                    <TextView
+                        android:id="@+id/student_birthday"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_birthday"
+                        android:text="21/08/1999"
+                        android:theme="@style/TextContent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:theme="@style/StudentPropertyPadding">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_address"
+                        android:theme="@style/TextLabel" />
+
+                    <TextView
+                        android:id="@+id/student_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_address"
+                        android:text="101/19 phuong 4 quan 5 thanh pho ho chinh minh"
+                        android:theme="@style/TextContent" />
+                </LinearLayout>
+
+                <include layout="@layout/seperator" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:theme="@style/StudentPropertyPadding">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_phone_number"
+                        android:theme="@style/TextLabel" />
+
+                    <TextView
+                        android:id="@+id/student_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_phone"
+                        android:text="1234567890"
+                        android:theme="@style/TextContent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:theme="@style/StudentPropertyPadding">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_email"
+                        android:theme="@style/TextLabel" />
+
+                    <TextView
+                        android:id="@+id/student_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_email"
+                        android:text="example@gmail.com"
+                        android:theme="@style/TextContent" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_social"
-                android:text="Nguyen Manh Tuan"
-                android:theme="@style/TextContent" />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_rate" />
+            </LinearLayout>
         </LinearLayout>
-
-        <include layout="@layout/seperator" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:theme="@style/StudentPropertyPadding">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/text_gender"
-                android:theme="@style/TextLabel" />
-
-            <TextView
-                android:id="@+id/student_gender"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_gender"
-                android:text="Male"
-                android:theme="@style/TextContent" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:theme="@style/StudentPropertyPadding">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/text_birthday"
-                android:theme="@style/TextLabel" />
-
-            <TextView
-                android:id="@+id/student_birthday"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_birthday"
-                android:text="21/08/1999"
-                android:theme="@style/TextContent" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:theme="@style/StudentPropertyPadding">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/text_address"
-                android:theme="@style/TextLabel" />
-
-            <TextView
-                android:id="@+id/student_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_address"
-                android:text="101/19 phuong 4 quan 5 thanh pho ho chinh minh"
-                android:theme="@style/TextContent" />
-        </LinearLayout>
-
-        <include layout="@layout/seperator" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:theme="@style/StudentPropertyPadding">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/text_phone_number"
-                android:theme="@style/TextLabel" />
-
-            <TextView
-                android:id="@+id/student_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_phone"
-                android:text="1234567890"
-                android:theme="@style/TextContent" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:theme="@style/StudentPropertyPadding">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/text_email"
-                android:theme="@style/TextLabel" />
-
-            <TextView
-                android:id="@+id/student_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_email"
-                android:text="example@gmail.com"
-                android:theme="@style/TextContent" />
-        </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>
