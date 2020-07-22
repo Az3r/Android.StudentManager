@@ -1,6 +1,7 @@
 package tkpm.doan.student.ui.student;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -9,14 +10,18 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.Hashtable;
+
 import tkpm.doan.student.R;
 
 public class StudentFragment extends Fragment {
+    private static final String TAG = "StudentFragment";
+    private Hashtable<Integer, Fragment> fragments = new Hashtable<>();
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -34,11 +39,29 @@ public class StudentFragment extends Fragment {
     }
 
     private boolean onMenuItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.menu_student_profile) {
-            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment_container, new StudentProfileFragment());
-            transaction.commit();
+        Fragment replacedFragment = fragments.get(item.getItemId());
+        if (replacedFragment == null) {
+            switch (item.getItemId()) {
+                case R.id.menu_student_profile:
+                    replacedFragment = ProfileFragment.newInstance(null);
+                    break;
+                case R.id.menu_student_schedule:
+                    replacedFragment = ScheduleFragment.newInstance(null);
+                    break;
+                case R.id.menu_student_notification:
+                case R.id.menu_student_score:
+                    break;
+                default:
+                    Log.e(TAG, "Unable to create Fragment for selected bottom navigation item");
+                    throw new IllegalArgumentException();
+            }
+            fragments.put(R.id.menu_student_profile, replacedFragment);
+
         }
+
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, replacedFragment);
+        transaction.commit();
 
         return true;
     }
