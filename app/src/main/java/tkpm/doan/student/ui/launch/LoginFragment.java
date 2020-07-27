@@ -67,9 +67,13 @@ public class LoginFragment extends Fragment {
         boolean isTeacher = teacherCheckBox.isChecked();
 
         new Handler().postDelayed(() -> {
-            Toast.makeText(getContext(), R.string.info_login_success, Toast.LENGTH_LONG).show();
-            NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host);
-            navController.navigate(R.id.action_loginFragment_to_studentFragment);
+            Toast.makeText(getContext(), R.string.info_login_success, Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(() -> {
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host);
+                navController.navigate(R.id.action_loginFragment_to_studentFragment);
+            }, 500);
+
         }, 1000);
 
 
