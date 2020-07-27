@@ -3,7 +3,9 @@ package tkpm.doan.student.components.retrofit;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import tkpm.doan.student.data.models.Student;
 
+/** manage all operations to RESTful server */
 public class RetrofitService {
     private RestAPI api;
 
@@ -18,9 +20,18 @@ public class RetrofitService {
         api = retrofit.create(RestAPI.class);
     }
 
+    public void getCurrentScheduleOf(Student student, OnResult callback) {
+
+    }
+
     private static void throwIfNull(Object object, String message) {
         if (object == null) {
             throw new NullPointerException(message);
+        }
+    }
+    private static void throwIfNull(Object object) {
+        if (object == null) {
+            throw new NullPointerException();
         }
     }
 }

@@ -18,9 +18,11 @@ import java.util.Collections;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.components.Constants.BundleKeys;
+import tkpm.doan.student.data.models.Student;
 
 public class ScheduleFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
+    private Student student = new Student();
     private BaseAdapter adapter;
 
     @Nullable
