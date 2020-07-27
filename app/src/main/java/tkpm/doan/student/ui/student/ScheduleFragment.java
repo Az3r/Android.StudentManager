@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListView;
+import android.widget.GridView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,7 +22,7 @@ public class ScheduleFragment extends Fragment implements AdapterView.OnItemSele
 
     private static final String TAG = "ScheduleFragment";
 
-    private ListView listView;
+    private GridView scheduleContainer;
 
     @Inject
     public ScheduleAdapter adapter;
@@ -38,10 +38,10 @@ public class ScheduleFragment extends Fragment implements AdapterView.OnItemSele
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        listView = view.findViewById(R.id.gridview);
-        listView.setOnItemSelectedListener(this);
+        scheduleContainer = view.findViewById(R.id.gridview);
+        scheduleContainer.setOnItemSelectedListener(this);
 
-        listView.setAdapter(adapter);
+        scheduleContainer.setAdapter(adapter);
     }
 
     public static ScheduleFragment newInstance(String studentId) {
