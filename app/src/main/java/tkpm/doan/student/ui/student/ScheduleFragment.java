@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ListAdapter;
 
@@ -13,12 +14,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.Collections;
+
 import tkpm.doan.student.R;
 import tkpm.doan.student.components.Constants.BundleKeys;
 
 public class ScheduleFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
-    private ListAdapter adapter;
+    private BaseAdapter adapter;
 
     @Nullable
     @Override
@@ -32,7 +35,7 @@ public class ScheduleFragment extends Fragment implements AdapterView.OnItemSele
 
         GridView gridView = view.findViewById(R.id.gridview);
         gridView.setOnItemSelectedListener(this);
-        adapter = new ArrayAdapter<String>(getContext(), R.layout.item_schedule_date, R.id.textview, new String[]{"2", "3"});
+        adapter = new ScheduleAdapter(getContext(), Collections.emptyList());
         gridView.setAdapter(adapter);
     }
 
