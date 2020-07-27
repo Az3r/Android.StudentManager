@@ -5,25 +5,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.components.Constants.BundleKeys;
+import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.data.models.Student;
 
 public class ScheduleFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
+    private static final String TAG = "ScheduleFragment";
     private Student student = new Student();
-    private BaseAdapter adapter;
+
+    private ListView listView;
+    private ScheduleAdapter adapter;
+
 
     @Nullable
     @Override
@@ -35,10 +38,11 @@ public class ScheduleFragment extends Fragment implements AdapterView.OnItemSele
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        GridView gridView = view.findViewById(R.id.gridview);
-        gridView.setOnItemSelectedListener(this);
-        adapter = new ScheduleAdapter(getContext(), Collections.emptyList());
-        gridView.setAdapter(adapter);
+        listView = view.findViewById(R.id.gridview);
+        listView.setOnItemSelectedListener(this);
+
+        adapter = new ScheduleAdapter(getContext(), Arrays.asList(new Schedule(1, Collections.emptyList())));
+        listView.setAdapter(adapter);
     }
 
     public static ScheduleFragment newInstance(String studentId) {

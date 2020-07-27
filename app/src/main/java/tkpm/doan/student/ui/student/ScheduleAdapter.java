@@ -45,8 +45,8 @@ public final class ScheduleAdapter extends BaseAdapter {
             view = LayoutInflater.from(context).inflate(R.layout.item_schedule_master, viewGroup, false);
         }
 
-        Schedule item = (Schedule) getItem(i);
-        bind(view, item);
+//        Schedule item = (Schedule) getItem(i);
+//        bind(view, item);
 
         return view;
     }
