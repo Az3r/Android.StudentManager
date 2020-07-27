@@ -1,4 +1,4 @@
-package tkpm.doan.student;
+package tkpm.doan.student.ui;
 
 import android.os.Bundle;
 
@@ -7,7 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import dagger.hilt.android.AndroidEntryPoint;
+import tkpm.doan.student.R;
 
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -10,33 +10,41 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
+
+import javax.inject.Inject;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.data.models.Subject;
 
 public final class ScheduleAdapter extends BaseAdapter {
-    private final ArrayList<Schedule> scheduleList = new ArrayList<>();
+    private final ArrayList<Schedule> schedules = new ArrayList<>();
     private final Context context;
 
-    public ScheduleAdapter(Context context, Collection<Schedule> collection) {
+    public ScheduleAdapter(Context context) {
         this.context = context;
-        scheduleList.addAll(collection);
+    }
+
+    @Inject
+    public ScheduleAdapter(Context context, Collection<Schedule> schedules) {
+        this.context = context;
+        this.schedules.addAll(schedules);
     }
 
     @Override
     public int getCount() {
-        return scheduleList.size();
+        return schedules.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return scheduleList.get(i);
+        return schedules.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return scheduleList.get(i).hashCode();
+        return schedules.get(i).hashCode();
     }
 
     @Override

@@ -11,21 +11,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import java.util.Arrays;
-import java.util.Collections;
+import javax.inject.Inject;
 
+import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.R;
 import tkpm.doan.student.components.Constants.BundleKeys;
-import tkpm.doan.student.data.models.Schedule;
-import tkpm.doan.student.data.models.Student;
 
+@AndroidEntryPoint
 public class ScheduleFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private static final String TAG = "ScheduleFragment";
-    private Student student = new Student();
 
     private ListView listView;
-    private ScheduleAdapter adapter;
+
+    @Inject
+    public ScheduleAdapter adapter;
 
 
     @Nullable
@@ -41,7 +41,6 @@ public class ScheduleFragment extends Fragment implements AdapterView.OnItemSele
         listView = view.findViewById(R.id.gridview);
         listView.setOnItemSelectedListener(this);
 
-        adapter = new ScheduleAdapter(getContext(), Arrays.asList(new Schedule(1, Collections.emptyList())));
         listView.setAdapter(adapter);
     }
 

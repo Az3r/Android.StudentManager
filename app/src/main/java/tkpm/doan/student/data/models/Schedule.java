@@ -2,22 +2,28 @@ package tkpm.doan.student.data.models;
 
 import androidx.annotation.NonNull;
 
+import java.lang.reflect.Array;
+import java.time.DayOfWeek;
+import java.time.format.TextStyle;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 
 import javax.inject.Inject;
 
 public class Schedule {
 
-    private final int dateOfWeek;
-    private final List<Subject> subjects;
+    private final DayOfWeek dateOfWeek;
+    private final ArrayList<Subject> subjects = new ArrayList<>();
 
     @Inject
-    public Schedule(int dateOfWeek, @NonNull List<Subject> subjects) {
+    public Schedule(DayOfWeek dateOfWeek, @NonNull Collection<Subject> subjects) {
         this.dateOfWeek = dateOfWeek;
-        this.subjects = subjects;
+        this.subjects.addAll(subjects);
     }
 
-    public int getDateOfWeek() {
+    public DayOfWeek getDateOfWeek() {
         return dateOfWeek;
     }
 
