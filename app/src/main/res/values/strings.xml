@@ -20,4 +20,6 @@
     <string name="text_rate">Rate</string>
     <string name="text_year">Year</string>
     <string name="semester">Semester</string>
+    <string name="error_empty_field">Field must not be empty</string>
+    <string name="info_login_success">Login successfully</string>
 </resources>
