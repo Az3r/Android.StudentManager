@@ -59,7 +59,7 @@ public final class ScheduleAdapter extends BaseAdapter {
         TextView subjectText = view.findViewById(R.id.schedule_subject_list);
         dateText.setText(item.dateToString());
 
-        List<Subject> subjects = item.getSubjectList();
+        List<Subject> subjects = item.getSubjects();
         StringBuilder builder = new StringBuilder();
         for (int j = 0; j < subjects.size() - 1; j++) {
             Subject subject = subjects.get(j);
