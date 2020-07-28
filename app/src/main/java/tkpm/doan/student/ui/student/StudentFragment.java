@@ -18,9 +18,9 @@ import java.util.List;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Student;
-import tkpm.doan.student.ui.components.FragmentPage;
-import tkpm.doan.student.ui.components.PageAdapter;
-import tkpm.doan.student.ui.components.PageTransformer;
+import tkpm.doan.student.ui.components.viewpager.FragmentPage;
+import tkpm.doan.student.ui.components.viewpager.PageAdapter;
+import tkpm.doan.student.ui.components.viewpager.PageTransformer;
 
 public class StudentFragment extends Fragment {
 

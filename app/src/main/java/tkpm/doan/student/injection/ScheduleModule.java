@@ -9,7 +9,7 @@ import dagger.Module;
 import dagger.Provides;
 import dagger.hilt.InstallIn;
 import dagger.hilt.android.components.ApplicationComponent;
-import tkpm.doan.student.data.models.Subject;
+import tkpm.doan.student.data.models.Lesson;
 
 @Module @InstallIn(ApplicationComponent.class)
 public class ScheduleModule {
@@ -22,7 +22,7 @@ public class ScheduleModule {
     }
 
     @Provides
-    static Collection<Subject> provideSubjects() {
+    static Collection<Lesson> provideLessons() {
         return Collections.emptyList();
     }
 

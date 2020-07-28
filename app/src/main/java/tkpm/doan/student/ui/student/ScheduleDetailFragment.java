@@ -24,6 +24,9 @@ public class ScheduleDetailFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // TODO get schedule from bundle
+
+
+
     }
 
     public static ScheduleDetailFragment newInstance(Schedule scheule) {

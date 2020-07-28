@@ -2,33 +2,35 @@ package tkpm.doan.student.data.models;
 
 import androidx.annotation.NonNull;
 
-import java.lang.reflect.Array;
 import java.time.DayOfWeek;
-import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Locale;
 
 import javax.inject.Inject;
 
+/**
+ * Represent a timetable of a specific day
+ */
 public class Schedule {
 
     private final DayOfWeek dateOfWeek;
-    private final ArrayList<Subject> subjects = new ArrayList<>();
+
+    private final ArrayList<Lesson> lessons = new ArrayList<>();
 
     @Inject
-    public Schedule(DayOfWeek dateOfWeek, @NonNull Collection<Subject> subjects) {
+    public Schedule(DayOfWeek dateOfWeek, @NonNull Collection<Lesson> lessons) {
         this.dateOfWeek = dateOfWeek;
-        this.subjects.addAll(subjects);
+        this.lessons.addAll(lessons);
     }
 
     public DayOfWeek getDateOfWeek() {
         return dateOfWeek;
     }
 
-    public List<Subject> getSubjects() {
-        return subjects;
+    @NonNull
+    public List<Lesson> getLessons() {
+        return lessons;
     }
 
     @Override
@@ -36,7 +38,7 @@ public class Schedule {
     public String toString() {
         return "Schedule{" +
                 "dateOfWeek=" + dateOfWeek +
-                ", number of subjects=" + subjects.size() +
+                ", number of subjects=" + lessons.size() +
                 '}';
     }
 

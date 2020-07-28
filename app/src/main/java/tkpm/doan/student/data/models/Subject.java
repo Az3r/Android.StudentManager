@@ -22,4 +22,13 @@ public class Subject {
     public String getName() {
         return name;
     }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Subject{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

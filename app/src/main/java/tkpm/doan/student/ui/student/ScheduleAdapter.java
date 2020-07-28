@@ -18,6 +18,7 @@ import java.util.Set;
 import javax.inject.Inject;
 
 import tkpm.doan.student.R;
+import tkpm.doan.student.data.models.Lesson;
 import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.data.models.Subject;
 import tkpm.doan.student.ui.MainActivity;
@@ -76,14 +77,14 @@ public final class ScheduleAdapter extends BaseAdapter {
         TextView subjectText = view.findViewById(R.id.schedule_subject_list);
         dateText.setText(item.dateToString());
 
-        List<Subject> subjects = item.getSubjects();
+        List<Lesson> lessons = item.getLessons();
         StringBuilder builder = new StringBuilder();
-        for (int j = 0; j < subjects.size() - 1; j++) {
-            Subject subject = subjects.get(j);
+        for (int j = 0; j < lessons.size() - 1; j++) {
+            Subject subject = lessons.get(j).getSubject();
             builder.append(subject.getName())
                     .append(", ");
         }
-        Subject lastItem = subjects.get(subjects.size() - 1);
+        Subject lastItem = lessons.get(lessons.size() - 1).getSubject();
         builder.append(lastItem.getName());
         subjectText.setText(builder.toString());
     }

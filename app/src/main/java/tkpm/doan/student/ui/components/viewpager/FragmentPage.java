@@ -1,4 +1,4 @@
-package tkpm.doan.student.ui.components;
+package tkpm.doan.student.ui.components.viewpager;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
