@@ -2,13 +2,10 @@ package tkpm.doan.student.ui.student;
 
 import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 
 import java.util.List;
-
-import javax.inject.Inject;
 
 import tkpm.doan.student.data.models.Lesson;
 import tkpm.doan.student.ui.components.ImmutableAdapter;
