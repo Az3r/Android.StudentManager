@@ -1,4 +1,4 @@
-package tkpm.doan.student.components.workers;
+package tkpm.doan.student.data.components.workers;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;

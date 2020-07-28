@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import tkpm.doan.student.R;
-import tkpm.doan.student.components.Constants.BundleKeys;
+import tkpm.doan.student.data.models.Student;
 
 public class ProfileFragment extends Fragment {
     @Nullable
@@ -22,11 +22,13 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // TODO retrieve student from bundle
     }
 
-    public static ProfileFragment newInstance(String studentId) {
+    public static ProfileFragment newInstance(Student student) {
+        // TODO: put student into bundle
         Bundle args = new Bundle();
-        args.putString(BundleKeys.STUDENT_ID, studentId);
         ProfileFragment fragment = new ProfileFragment();
         fragment.setArguments(args);
         return fragment;

@@ -1,8 +1,7 @@
-package tkpm.doan.student.components.retrofit;
+package tkpm.doan.student.data.components.retrofit;
 
 import retrofit2.Converter;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 import tkpm.doan.student.data.models.Student;
 
 /** manage all operations to RESTful server */

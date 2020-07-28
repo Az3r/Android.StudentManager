@@ -15,7 +15,7 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.R;
-import tkpm.doan.student.components.Constants.BundleKeys;
+import tkpm.doan.student.data.models.Student;
 
 @AndroidEntryPoint
 public class ScheduleFragment extends Fragment implements AdapterView.OnItemSelectedListener {
@@ -38,16 +38,18 @@ public class ScheduleFragment extends Fragment implements AdapterView.OnItemSele
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // TODO get student from bundle
+
         scheduleContainer = view.findViewById(R.id.gridview);
         scheduleContainer.setOnItemSelectedListener(this);
 
         scheduleContainer.setAdapter(adapter);
     }
 
-    public static ScheduleFragment newInstance(String studentId) {
+    public static ScheduleFragment newInstance(Student student) {
 
+        // TODO put student into bunlde
         Bundle args = new Bundle();
-        args.putString(BundleKeys.STUDENT_ID, studentId);
         ScheduleFragment fragment = new ScheduleFragment();
         fragment.setArguments(args);
         return fragment;
