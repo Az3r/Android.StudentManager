@@ -4,5 +4,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/layout_listview"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSurface"
+        android:elevation="8dp"
+        android:padding="12dp"
+        android:text="Monday"
+        android:textAlignment="center"
+        android:textSize="30sp" />
+
+    <include layout="@layout/layout_listview" />
 </LinearLayout>

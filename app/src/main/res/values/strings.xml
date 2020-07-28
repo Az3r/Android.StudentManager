@@ -22,4 +22,7 @@
     <string name="semester">Semester</string>
     <string name="error_empty_field">Field must not be empty</string>
     <string name="info_login_success">Login successfully</string>
+    <string name="text_15_minutes">15 minutes</string>
+    <string name="text_45_minutes">45 minutes</string>
+    <string name="text_average">Average</string>
 </resources>

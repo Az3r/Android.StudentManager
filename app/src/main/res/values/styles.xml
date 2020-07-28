@@ -9,16 +9,39 @@
         <item name="android:textAlignment">center</item>
     </style>
 
-    <style name="TextLabel">
+    <style name="StudentProfileLabel">
         <item name="android:textColor">?attr/colorPrimary</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">12sp</item>
     </style>
 
-    <style name="TextContent">
+    <style name="StudentProfileContent">
         <item name="android:textColor">?attr/colorOnSurface</item>
         <item name="android:drawablePadding">10dp</item>
         <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="ScoreLabel">
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="ScoreContent">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="ScoreSubject">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="ScoreLabel.Average">
+        <item name="android:textStyle">bold|italic</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="ScoreContent.Average">
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textStyle">bold|italic</item>
     </style>
 
     <style name="StudentPropertyPadding">
