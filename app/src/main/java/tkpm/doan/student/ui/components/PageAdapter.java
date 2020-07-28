@@ -1,26 +1,17 @@
-package tkpm.doan.student.ui.student;
-
-import android.util.Log;
+package tkpm.doan.student.ui.components;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import tkpm.doan.student.data.models.Student;
-import tkpm.doan.student.ui.components.FragmentPage;
-
-public class StudentPageAdapter extends FragmentStateAdapter {
-
-    private static final String TAG = "StudentPageAdapter";
+public class PageAdapter extends FragmentStateAdapter {
 
     @NonNull
     private List<FragmentPage> pages;
 
-    public StudentPageAdapter(@NonNull Fragment fragment, @NonNull List<FragmentPage> pages) {
+    public PageAdapter(@NonNull Fragment fragment, @NonNull List<FragmentPage> pages) {
         super(fragment);
         this.pages = pages;
     }

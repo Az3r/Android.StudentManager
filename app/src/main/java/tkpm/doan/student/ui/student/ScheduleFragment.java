@@ -1,6 +1,7 @@
 package tkpm.doan.student.ui.student;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +11,21 @@ import android.widget.GridView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.navigation.NavController;
+import androidx.navigation.NavHostController;
+import androidx.navigation.Navigation;
 
 import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.R;
+import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.data.models.Student;
+import tkpm.doan.student.injection.ScheduleAdapterModule_ProvideSchedulesFactory;
 
 @AndroidEntryPoint
-public class ScheduleFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class ScheduleFragment extends Fragment {
 
     private static final String TAG = "ScheduleFragment";
 
@@ -41,8 +48,6 @@ public class ScheduleFragment extends Fragment implements AdapterView.OnItemSele
         // TODO get student from bundle
 
         scheduleContainer = view.findViewById(R.id.gridview);
-        scheduleContainer.setOnItemSelectedListener(this);
-
         scheduleContainer.setAdapter(adapter);
     }
 
@@ -53,16 +58,5 @@ public class ScheduleFragment extends Fragment implements AdapterView.OnItemSele
         ScheduleFragment fragment = new ScheduleFragment();
         fragment.setArguments(args);
         return fragment;
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        String date = (String) adapter.getItem(i);
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 }

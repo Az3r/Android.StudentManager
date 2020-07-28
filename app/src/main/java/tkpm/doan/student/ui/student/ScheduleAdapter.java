@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -17,6 +20,7 @@ import javax.inject.Inject;
 import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.data.models.Subject;
+import tkpm.doan.student.ui.MainActivity;
 
 public final class ScheduleAdapter extends BaseAdapter {
     private final ArrayList<Schedule> schedules = new ArrayList<>();
@@ -53,7 +57,12 @@ public final class ScheduleAdapter extends BaseAdapter {
             view = LayoutInflater.from(context).inflate(R.layout.item_schedule_master, viewGroup, false);
         }
 
-//        Schedule item = (Schedule) getItem(i);
+        Schedule item = (Schedule) getItem(i);
+
+        view.setOnClickListener(view1 -> {
+            NavController navController = Navigation.findNavController((MainActivity) context, R.id.nav_host);
+            navController.navigate(R.id.action_studentFragment_to_scheduleDetailFragment);
+        });
 //        bind(view, item);
 
         return view;

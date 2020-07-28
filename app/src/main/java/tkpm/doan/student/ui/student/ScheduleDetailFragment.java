@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import tkpm.doan.student.R;
+import tkpm.doan.student.data.models.Schedule;
 
 public class ScheduleDetailFragment extends Fragment {
     @Nullable
@@ -21,5 +22,16 @@ public class ScheduleDetailFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // TODO get schedule from bundle
+    }
+
+    public static ScheduleDetailFragment newInstance(Schedule scheule) {
+        // TODO put schedule into bundle
+        Bundle args = new Bundle();
+
+        ScheduleDetailFragment fragment = new ScheduleDetailFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
 }
