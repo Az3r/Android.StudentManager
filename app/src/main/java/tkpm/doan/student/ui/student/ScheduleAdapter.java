@@ -9,8 +9,6 @@ import androidx.navigation.Navigation;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.ui.MainActivity;

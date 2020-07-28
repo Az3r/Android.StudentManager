@@ -44,6 +44,7 @@ public class StudentFragment extends Fragment {
         ViewPager2 viewpager = view.findViewById(R.id.viewpager);
         TabLayout tabLayout = view.findViewById(R.id.tablayout);
 
+        viewpager.setOffscreenPageLimit(pages.size());
         viewpager.setPageTransformer(new PageTransformer());
         viewpager.setAdapter(new PageAdapter(this, pages));
         new TabLayoutMediator(tabLayout, viewpager, (tab, position) -> {

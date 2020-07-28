@@ -28,7 +28,7 @@ public class ScheduleDetailFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_schedule_detail, container,false);
+        return inflater.inflate(R.layout.fragment_schedule_detail, container, false);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class ScheduleDetailFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // TODO get schedule from bundle
-        LessonAdapter adapter =new LessonAdapter(getContext(), R.layout.item_schedule_detail, lessons);
+        LessonAdapter adapter = new LessonAdapter(getContext(), R.layout.item_schedule_detail, lessons);
 
         ListView listView = view.findViewById(R.id.listview);
         listView.setAdapter(adapter);
