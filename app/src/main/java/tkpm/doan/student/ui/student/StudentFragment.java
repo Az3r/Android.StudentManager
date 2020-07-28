@@ -55,7 +55,7 @@ public class StudentFragment extends Fragment {
                     Log.e(TAG, "Unable to create Fragment for selected bottom navigation item");
                     throw new IllegalArgumentException();
             }
-            fragments.put(R.id.menu_student_profile, replacedFragment);
+            fragments.put(item.getItemId(), replacedFragment);
 
         }
 
