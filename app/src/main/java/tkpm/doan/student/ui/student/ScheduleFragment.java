@@ -1,20 +1,16 @@
 package tkpm.doan.student.ui.student;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.GridView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.navigation.NavController;
-import androidx.navigation.NavHostController;
-import androidx.navigation.Navigation;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -22,17 +18,14 @@ import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.data.models.Student;
-import tkpm.doan.student.injection.ScheduleAdapterModule_ProvideSchedulesFactory;
 
 @AndroidEntryPoint
 public class ScheduleFragment extends Fragment {
 
     private static final String TAG = "ScheduleFragment";
 
-    private GridView scheduleContainer;
-
     @Inject
-    public ScheduleAdapter adapter;
+    List<Schedule> schedules;
 
 
     @Nullable
@@ -47,8 +40,9 @@ public class ScheduleFragment extends Fragment {
 
         // TODO get student from bundle
 
-        scheduleContainer = view.findViewById(R.id.gridview);
-        scheduleContainer.setAdapter(adapter);
+        ScheduleAdapter adapter = new ScheduleAdapter(getActivity(), R.layout.item_schedule_master, schedules);
+        GridView gridview = view.findViewById(R.id.gridview);
+        gridview.setAdapter(adapter);
     }
 
     public static ScheduleFragment newInstance(Student student) {

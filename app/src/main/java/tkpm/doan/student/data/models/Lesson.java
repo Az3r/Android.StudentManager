@@ -3,16 +3,17 @@ package tkpm.doan.student.data.models;
 import androidx.annotation.NonNull;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 public class Lesson {
-    private int index;
+    private int position;
     private int startTime;
     private int endTime;
     private Subject subject;
 
     @Inject
-    public Lesson(int index, int startTime, int endTime, Subject subject) {
-        this.index = index;
+    public Lesson(int position, int startTime, int endTime, Subject subject) {
+        this.position = position;
         this.startTime = startTime;
         this.endTime = endTime;
         this.subject = subject;
@@ -22,13 +23,13 @@ public class Lesson {
     @Override
     public String toString() {
         return "Period{" +
-                "index=" + index +
+                "index=" + position +
                 ", subject=" + subject +
                 '}';
     }
 
-    public int getIndex() {
-        return index;
+    public int getPosition() {
+        return position;
     }
 
     public int getStartTime() {

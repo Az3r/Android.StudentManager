@@ -16,12 +16,13 @@ public class Schedule {
 
     private final DayOfWeek dateOfWeek;
 
-    private final ArrayList<Lesson> lessons = new ArrayList<>();
+    @NonNull
+    private final List<Lesson> lessons;
 
     @Inject
-    public Schedule(DayOfWeek dateOfWeek, @NonNull Collection<Lesson> lessons) {
+    public Schedule(DayOfWeek dateOfWeek, @NonNull List<Lesson> lessons) {
         this.dateOfWeek = dateOfWeek;
-        this.lessons.addAll(lessons);
+        this.lessons = lessons;
     }
 
     public DayOfWeek getDateOfWeek() {

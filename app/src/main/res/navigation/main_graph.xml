@@ -35,8 +35,10 @@
         <action
             android:id="@+id/action_studentFragment_to_scheduleDetailFragment"
             app:destination="@id/scheduleDetailFragment"
-            app:enterAnim="@anim/scale_enter"
-            app:popEnterAnim="@anim/scale_enter" />
+            app:enterAnim="@anim/expand_enter"
+            app:exitAnim="@anim/expand_exit"
+            app:popEnterAnim="@anim/shrink_enter"
+            app:popExitAnim="@anim/shrink_exit" />
     </fragment>
     <fragment
         android:id="@+id/scheduleDetailFragment"
