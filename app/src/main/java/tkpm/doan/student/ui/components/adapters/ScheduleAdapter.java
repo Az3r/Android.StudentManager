@@ -1,4 +1,4 @@
-package tkpm.doan.student.ui.student;
+package tkpm.doan.student.ui.components.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,8 +17,6 @@ import tkpm.doan.student.data.models.Lesson;
 import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.data.models.Subject;
 import tkpm.doan.student.ui.MainActivity;
-import tkpm.doan.student.ui.components.AbstractViewHolder;
-import tkpm.doan.student.ui.components.ImmutableAdapter;
 
 public final class ScheduleAdapter extends ImmutableAdapter<Schedule> {
 

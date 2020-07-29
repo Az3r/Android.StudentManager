@@ -1,4 +1,4 @@
-package tkpm.doan.student.ui.components;
+package tkpm.doan.student.ui.components.adapters;
 
 import android.content.Context;
 import android.view.ViewGroup;

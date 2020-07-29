@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import tkpm.doan.student.R;
-import tkpm.doan.student.data.models.Student;
+import tkpm.doan.student.databinding.FragmentStudentBinding;
 import tkpm.doan.student.ui.components.viewpager.FragmentPage;
 import tkpm.doan.student.ui.components.viewpager.PageAdapter;
 import tkpm.doan.student.ui.components.viewpager.PageTransformer;
@@ -26,24 +26,30 @@ public class StudentFragment extends Fragment {
 
     private static final String TAG = "StudentFragment";
     private List<FragmentPage> pages;
+    private FragmentStudentBinding binding;
+    private boolean isInitialized = false;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_student, container, false);
+        binding = FragmentStudentBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // TODO get student from bundle
-        Student student = null;
-        pages = createPages(student);
+        ViewPager2 viewpager = binding.includeLayout.viewpager;
+        TabLayout tabLayout = binding.includeLayout.tablayout;
 
-        ViewPager2 viewpager = view.findViewById(R.id.viewpager);
-        TabLayout tabLayout = view.findViewById(R.id.tablayout);
-
+        pages = createPages();
         viewpager.setOffscreenPageLimit(pages.size());
         viewpager.setPageTransformer(new PageTransformer());
         viewpager.setAdapter(new PageAdapter(this, pages));
@@ -53,10 +59,10 @@ public class StudentFragment extends Fragment {
         }).attach();
     }
 
-    private static List<FragmentPage> createPages(@NonNull Student student) {
+    private List<FragmentPage> createPages() {
         return Arrays.asList(
-                new FragmentPage(ProfileFragment.newInstance(student), R.drawable.ic_account),
-                new FragmentPage(ScheduleFragment.newInstance(student), R.drawable.ic_schedule)
+            new FragmentPage(new ProfileFragment(), getString(R.string.text_profile), R.drawable.ic_account),
+            new FragmentPage(new ScheduleFragment(), getString(R.string.text_schedule), R.drawable.ic_schedule)
         );
     }
 }

@@ -18,7 +18,7 @@ import javax.inject.Inject;
 import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Schedule;
-import tkpm.doan.student.data.models.Student;
+import tkpm.doan.student.ui.components.adapters.ScheduleAdapter;
 
 @AndroidEntryPoint
 public class ScheduleFragment extends Fragment {
@@ -41,18 +41,9 @@ public class ScheduleFragment extends Fragment {
 
         // TODO get student from bundle
 
-        ScheduleAdapter adapter = new ScheduleAdapter(getActivity(), schedules);
+        ScheduleAdapter adapter = new ScheduleAdapter(requireActivity(), schedules);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
         recyclerView.setAdapter(adapter);
-    }
-
-    public static ScheduleFragment newInstance(Student student) {
-
-        // TODO put student into bunlde
-        Bundle args = new Bundle();
-        ScheduleFragment fragment = new ScheduleFragment();
-        fragment.setArguments(args);
-        return fragment;
     }
 }

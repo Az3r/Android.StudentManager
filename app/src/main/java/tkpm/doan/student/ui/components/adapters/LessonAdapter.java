@@ -1,4 +1,4 @@
-package tkpm.doan.student.ui.student;
+package tkpm.doan.student.ui.components.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,8 +11,6 @@ import java.util.List;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Lesson;
-import tkpm.doan.student.ui.components.AbstractViewHolder;
-import tkpm.doan.student.ui.components.ImmutableAdapter;
 
 public class LessonAdapter extends ImmutableAdapter<Lesson> {
 

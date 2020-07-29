@@ -27,6 +27,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures {
+        viewBinding true
+    }
+
 }
 
 dependencies {
@@ -70,11 +75,13 @@ dependencies {
 
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
     testImplementation "androidx.arch.core:core-testing:$arch_version"
 
     // dependency injection
     implementation "com.google.dagger:hilt-android:$hilt_version"
+    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02'
     annotationProcessor  "com.google.dagger:hilt-android-compiler:$hilt_version"
 }

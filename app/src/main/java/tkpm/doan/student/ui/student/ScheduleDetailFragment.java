@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Lesson;
 import tkpm.doan.student.data.models.Schedule;
+import tkpm.doan.student.ui.components.adapters.LessonAdapter;
 
 @AndroidEntryPoint
 public class ScheduleDetailFragment extends Fragment {
@@ -40,7 +42,10 @@ public class ScheduleDetailFragment extends Fragment {
         LessonAdapter adapter = new LessonAdapter(getContext(), lessons);
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        DividerItemDecoration decoration = new DividerItemDecoration(recyclerView.getContext(), layoutManager.getOrientation());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.addItemDecoration(decoration);
         recyclerView.setAdapter(adapter);
 
     }
