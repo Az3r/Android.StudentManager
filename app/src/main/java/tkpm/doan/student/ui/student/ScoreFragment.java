@@ -9,9 +9,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import tkpm.doan.student.R;
+import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
+import tkpm.doan.student.R;
+import tkpm.doan.student.data.models.Score;
+
+@AndroidEntryPoint
 public class ScoreFragment extends Fragment {
+
+    @Inject
+    public List<Score> scores;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -21,5 +32,6 @@ public class ScoreFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android"
-    android:duration="@integer/slide_exit_duration">
+    android:duration="@integer/short_exit">
     <translate
         android:fromXDelta="0%"
         android:toXDelta="-100%" />
