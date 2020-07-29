@@ -38,7 +38,9 @@ public abstract class ImmutableAdapter<T> extends RecyclerView.Adapter<AbstractV
     public abstract AbstractViewHolder<T> onCreateViewHolder(@NonNull ViewGroup parent, int viewType);
 
     @Override
-    public abstract void onBindViewHolder(@NonNull AbstractViewHolder<T> holder, int position);
+    public void onBindViewHolder(@NonNull AbstractViewHolder<T> holder, int position) {
+        holder.bind(getItem(position));
+    }
 
     @Override
     public long getItemId(int i) {

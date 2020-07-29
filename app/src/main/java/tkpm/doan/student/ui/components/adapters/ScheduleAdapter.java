@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import java.util.List;
@@ -18,21 +19,25 @@ import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.data.models.Subject;
 import tkpm.doan.student.databinding.ItemScheduleMasterBinding;
 import tkpm.doan.student.ui.MainActivity;
+import tkpm.doan.student.ui.student.StudentFragmentDirections;
 
 public final class ScheduleAdapter extends ImmutableAdapter<Schedule> {
 
-    public static class ViewHolder extends AbstractViewHolder<Schedule> {
+    public class ViewHolder extends AbstractViewHolder<Schedule> {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
         }
 
         @Override
         public void bind(Schedule item) {
+
+
             ItemScheduleMasterBinding binding = ItemScheduleMasterBinding.bind(itemView);
             TextView dateText = binding.scheduleDate;
             TextView subjectText = binding.scheduleSubjectList;
-            dateText.setText(item.dateToString());
 
+            // bind data to view
+            dateText.setText(item.dateToString());
             List<Lesson> lessons = item.getLessons();
             StringBuilder builder = new StringBuilder();
             for (int j = 0; j < lessons.size() - 1; j++) {
@@ -43,6 +48,14 @@ public final class ScheduleAdapter extends ImmutableAdapter<Schedule> {
             Subject lastItem = lessons.get(lessons.size() - 1).getSubject();
             builder.append(lastItem.getName());
             subjectText.setText(builder.toString());
+
+
+            // navigate to schedule detail
+            itemView.setOnClickListener(v -> {
+                NavController controller = Navigation.findNavController((MainActivity) getContext(), R.id.nav_host);
+                NavDirections directions = StudentFragmentDirections.actionStudentFragmentToScheduleDetailFragment();
+                controller.navigate(directions);
+            });
         }
     }
 
@@ -57,15 +70,4 @@ public final class ScheduleAdapter extends ImmutableAdapter<Schedule> {
         return new ViewHolder(itemView);
     }
 
-
-    @Override
-    public void onBindViewHolder(@NonNull AbstractViewHolder<Schedule> holder, int position) {
-
-        holder.itemView.setOnClickListener(v -> {
-            NavController navController = Navigation.findNavController((MainActivity) getContext(), R.id.nav_host);
-            navController.navigate(R.id.action_studentFragment_to_scheduleDetailFragment);
-        });
-
-        holder.bind(getItem(position));
-    }
 }

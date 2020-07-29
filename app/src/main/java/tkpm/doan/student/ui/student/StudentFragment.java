@@ -30,6 +30,7 @@ public class StudentFragment extends Fragment {
     private List<FragmentPage> pages;
     private FragmentStudentBinding binding;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

@@ -36,10 +36,4 @@ public class LessonAdapter extends ImmutableAdapter<Lesson> {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_schedule_detail, parent, false);
         return new ViewHolder(itemView);
     }
-
-    @Override
-    public void onBindViewHolder(@NonNull AbstractViewHolder<Lesson> holder, int position) {
-
-        holder.bind(getItem(position));
-    }
 }

@@ -31,7 +31,7 @@
     <fragment
         android:id="@+id/studentFragment"
         android:name="tkpm.doan.student.ui.student.StudentFragment"
-        android:label="StudentFragment" >
+        android:label="StudentFragment">
         <action
             android:id="@+id/action_studentFragment_to_scheduleDetailFragment"
             app:destination="@id/scheduleDetailFragment"
@@ -39,6 +39,10 @@
             app:exitAnim="@anim/expand_exit"
             app:popEnterAnim="@anim/shrink_enter"
             app:popExitAnim="@anim/shrink_exit" />
+        <argument
+            android:name="student"
+            app:argType="string"
+            app:nullable="false" />
     </fragment>
     <fragment
         android:id="@+id/scheduleDetailFragment"

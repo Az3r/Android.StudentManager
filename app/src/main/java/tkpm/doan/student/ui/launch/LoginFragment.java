@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -70,8 +71,9 @@ public class LoginFragment extends Fragment {
             Toast.makeText(getContext(), R.string.info_login_success, Toast.LENGTH_SHORT).show();
 
             new Handler().postDelayed(() -> {
-                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host);
-                navController.navigate(R.id.action_loginFragment_to_studentFragment);
+                NavDirections directions = LoginFragmentDirections.actionLoginFragmentToStudentFragment("random string");
+                NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host);
+                navController.navigate(directions);
             }, 500);
 
         }, 1000);

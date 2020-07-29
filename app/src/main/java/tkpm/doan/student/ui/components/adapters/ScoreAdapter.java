@@ -20,9 +20,4 @@ public class ScoreAdapter extends ImmutableAdapter<Score> {
     public AbstractViewHolder<Score> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return null;
     }
-
-    @Override
-    public void onBindViewHolder(@NonNull AbstractViewHolder<Score> holder, int position) {
-
-    }
 }
