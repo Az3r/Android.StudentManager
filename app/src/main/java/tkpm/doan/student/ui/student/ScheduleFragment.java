@@ -4,11 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -40,9 +40,9 @@ public class ScheduleFragment extends Fragment {
 
         // TODO get student from bundle
 
-        ScheduleAdapter adapter = new ScheduleAdapter(getActivity(), R.layout.item_schedule_master, schedules);
-        GridView gridview = view.findViewById(R.id.gridview);
-        gridview.setAdapter(adapter);
+        ScheduleAdapter adapter = new ScheduleAdapter(getActivity(), schedules);
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView.setAdapter(adapter);
     }
 
     public static ScheduleFragment newInstance(Student student) {

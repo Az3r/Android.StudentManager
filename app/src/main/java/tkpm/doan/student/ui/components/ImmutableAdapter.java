@@ -1,53 +1,44 @@
 package tkpm.doan.student.ui.components;
 
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-
-import javax.inject.Inject;
-
-import tkpm.doan.student.R;
-import tkpm.doan.student.data.models.Schedule;
-import tkpm.doan.student.ui.MainActivity;
 
 /**
  * Abstract adapter whose collection is immutable
  */
-public abstract class ImmutableAdapter<T> extends BaseAdapter {
+public abstract class ImmutableAdapter<T> extends RecyclerView.Adapter<AbstractViewHolder<T>> {
 
     @NonNull
-    protected final List<T> list;
-
-    protected int layoutResource;
+    private final List<T> list;
 
     @NonNull
-    protected final Context context;
+    private final Context context;
 
-    public ImmutableAdapter(@NonNull Context context, int layoutResource, @NonNull List<T> list) {
+    public ImmutableAdapter(@NonNull Context context, @NonNull List<T> list) {
         this.context = context;
         this.list = list;
-        this.layoutResource = layoutResource;
     }
 
-    @Override
-    public int getCount() {
-        return list.size();
-    }
-
-    @Override
     public T getItem(int i) {
         return list.get(i);
     }
+
+    @NonNull
+    public Context getContext() {
+        return context;
+    }
+
+    @NonNull
+    @Override
+    public abstract AbstractViewHolder<T> onCreateViewHolder(@NonNull ViewGroup parent, int viewType);
+
+    @Override
+    public abstract void onBindViewHolder(@NonNull AbstractViewHolder<T> holder, int position);
 
     @Override
     public long getItemId(int i) {
@@ -55,14 +46,7 @@ public abstract class ImmutableAdapter<T> extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        if (view == null)
-            view = LayoutInflater.from(context).inflate(layoutResource, viewGroup, false);
-
-        bind(view, getItem(i));
-
-        return view;
+    public int getItemCount() {
+        return list.size();
     }
-
-    protected abstract void bind(@NonNull View view,@NonNull T item);
 }
