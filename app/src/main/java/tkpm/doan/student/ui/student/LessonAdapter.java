@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 
 import java.util.List;
 
+import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Lesson;
 import tkpm.doan.student.ui.components.AbstractViewHolder;
 import tkpm.doan.student.ui.components.ImmutableAdapter;
@@ -34,7 +35,7 @@ public class LessonAdapter extends ImmutableAdapter<Lesson> {
     @NonNull
     @Override
     public AbstractViewHolder<Lesson> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_schedule_detail, parent, false);
         return new ViewHolder(itemView);
     }
 

@@ -53,7 +53,7 @@ public final class ScheduleAdapter extends ImmutableAdapter<Schedule> {
     @NonNull
     @Override
     public AbstractViewHolder<Schedule> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_schedule_master, parent, false);
         return new ViewHolder(itemView);
     }
 

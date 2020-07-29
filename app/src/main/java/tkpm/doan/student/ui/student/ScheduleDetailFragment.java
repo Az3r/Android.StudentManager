@@ -4,11 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -36,10 +37,11 @@ public class ScheduleDetailFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // TODO get schedule from bundle
-        LessonAdapter adapter = new LessonAdapter(getContext(), R.layout.item_schedule_detail, lessons);
+        LessonAdapter adapter = new LessonAdapter(getContext(), lessons);
 
-        ListView listView = view.findViewById(R.id.listview);
-        listView.setAdapter(adapter);
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(adapter);
 
     }
 
