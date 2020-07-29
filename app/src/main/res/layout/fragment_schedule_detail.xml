@@ -15,5 +15,5 @@
         android:textAlignment="center"
         android:textSize="30sp" />
 
-    <include layout="@layout/layout_recycler_view" />
+    <include android:id="@+id/include_layout" layout="@layout/layout_recycler_view" />
 </LinearLayout>

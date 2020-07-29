@@ -9,13 +9,23 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import tkpm.doan.student.R;
+import tkpm.doan.student.databinding.FragmentStudentProfileBinding;
 
 public class ProfileFragment extends Fragment {
+
+    private FragmentStudentProfileBinding binding;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_student_profile, container, false);
+        binding = FragmentStudentProfileBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
     @Override

@@ -14,8 +14,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
-import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Score;
+import tkpm.doan.student.databinding.FragmentStudentScoreBinding;
 
 @AndroidEntryPoint
 public class ScoreFragment extends Fragment {
@@ -23,15 +23,23 @@ public class ScoreFragment extends Fragment {
     @Inject
     public List<Score> scores;
 
+    private FragmentStudentScoreBinding binding;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_student_score, container, false);
+        binding = FragmentStudentScoreBinding.inflate(inflater,container,false);
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
     }
 }

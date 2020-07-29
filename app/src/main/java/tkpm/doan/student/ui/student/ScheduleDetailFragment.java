@@ -17,9 +17,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
-import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Lesson;
-import tkpm.doan.student.data.models.Schedule;
+import tkpm.doan.student.databinding.FragmentScheduleDetailBinding;
 import tkpm.doan.student.ui.components.adapters.LessonAdapter;
 
 @AndroidEntryPoint
@@ -27,35 +26,33 @@ public class ScheduleDetailFragment extends Fragment {
 
     @Inject
     public List<Lesson> lessons;
+    private FragmentScheduleDetailBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_schedule_detail, container, false);
+        binding = FragmentScheduleDetailBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        setupRecyclerView(binding.includeLayout.recyclerView);
+    }
 
-        // TODO get schedule from bundle
-        LessonAdapter adapter = new LessonAdapter(getContext(), lessons);
-
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+    private void setupRecyclerView(RecyclerView recyclerView) {
+        LessonAdapter adapter = new LessonAdapter(requireContext(), lessons);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         DividerItemDecoration decoration = new DividerItemDecoration(recyclerView.getContext(), layoutManager.getOrientation());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(decoration);
         recyclerView.setAdapter(adapter);
-
-    }
-
-    public static ScheduleDetailFragment newInstance(Schedule scheule) {
-        // TODO put schedule into bundle
-        Bundle args = new Bundle();
-
-        ScheduleDetailFragment fragment = new ScheduleDetailFragment();
-        fragment.setArguments(args);
-        return fragment;
     }
 }

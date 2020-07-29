@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.viewbinding.ViewBinding;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
@@ -24,10 +25,10 @@ import tkpm.doan.student.ui.components.viewpager.PageTransformer;
 
 public class StudentFragment extends Fragment {
 
+
     private static final String TAG = "StudentFragment";
     private List<FragmentPage> pages;
     private FragmentStudentBinding binding;
-    private boolean isInitialized = false;
 
     @Nullable
     @Override
@@ -46,23 +47,29 @@ public class StudentFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ViewPager2 viewpager = binding.includeLayout.viewpager;
+        ViewPager2 viewPager = binding.includeLayout.viewpager;
         TabLayout tabLayout = binding.includeLayout.tablayout;
+        setupTabLayout(tabLayout, viewPager);
+    }
 
+    private List<FragmentPage> createPages() {
+        return Arrays.asList(
+                new FragmentPage(new ProfileFragment(), getString(R.string.text_profile), R.drawable.ic_account),
+                new FragmentPage(new ScheduleFragment(), getString(R.string.text_schedule), R.drawable.ic_schedule),
+                new FragmentPage(new ScoreFragment(), getString(R.string.text_score), R.drawable.ic_score)
+        );
+    }
+
+    private void setupTabLayout(TabLayout tabLayout, ViewPager2 viewPager) {
         pages = createPages();
-        viewpager.setOffscreenPageLimit(pages.size());
-        viewpager.setPageTransformer(new PageTransformer());
-        viewpager.setAdapter(new PageAdapter(this, pages));
-        new TabLayoutMediator(tabLayout, viewpager, (tab, position) -> {
+        viewPager.setOffscreenPageLimit(pages.size());
+        viewPager.setPageTransformer(new PageTransformer());
+        ViewBinding a;
+        viewPager.setAdapter(new PageAdapter(this, pages));
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             FragmentPage item = pages.get(position);
             tab.setIcon(item.getIcon());
         }).attach();
     }
 
-    private List<FragmentPage> createPages() {
-        return Arrays.asList(
-            new FragmentPage(new ProfileFragment(), getString(R.string.text_profile), R.drawable.ic_account),
-            new FragmentPage(new ScheduleFragment(), getString(R.string.text_schedule), R.drawable.ic_schedule)
-        );
-    }
 }

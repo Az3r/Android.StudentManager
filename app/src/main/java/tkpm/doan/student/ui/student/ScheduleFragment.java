@@ -16,14 +16,16 @@ import java.util.List;
 import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
-import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Schedule;
+import tkpm.doan.student.databinding.FragmentStudentScheduleBinding;
 import tkpm.doan.student.ui.components.adapters.ScheduleAdapter;
 
 @AndroidEntryPoint
 public class ScheduleFragment extends Fragment {
 
     private static final String TAG = "ScheduleFragment";
+
+    private FragmentStudentScheduleBinding binding;
 
     @Inject
     List<Schedule> schedules;
@@ -32,17 +34,25 @@ public class ScheduleFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_student_schedule, container, false);
+        binding = FragmentStudentScheduleBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        setupRecyclerView(binding.includeLayout.recyclerView);
+    }
 
-        // TODO get student from bundle
-
+    private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         ScheduleAdapter adapter = new ScheduleAdapter(requireActivity(), schedules);
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+        GridLayoutManager gridLayoutManager;
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
         recyclerView.setAdapter(adapter);
     }
