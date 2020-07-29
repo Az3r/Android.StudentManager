@@ -52,7 +52,6 @@ public class ScheduleFragment extends Fragment {
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         ScheduleAdapter adapter = new ScheduleAdapter(requireActivity(), schedules);
-        GridLayoutManager gridLayoutManager;
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
         recyclerView.setAdapter(adapter);
     }

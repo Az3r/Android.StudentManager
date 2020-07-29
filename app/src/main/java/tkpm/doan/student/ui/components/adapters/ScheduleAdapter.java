@@ -16,6 +16,7 @@ import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Lesson;
 import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.data.models.Subject;
+import tkpm.doan.student.databinding.ItemScheduleMasterBinding;
 import tkpm.doan.student.ui.MainActivity;
 
 public final class ScheduleAdapter extends ImmutableAdapter<Schedule> {
@@ -27,8 +28,9 @@ public final class ScheduleAdapter extends ImmutableAdapter<Schedule> {
 
         @Override
         public void bind(Schedule item) {
-            TextView dateText = itemView.findViewById(R.id.schedule_date);
-            TextView subjectText = itemView.findViewById(R.id.schedule_subject_list);
+            ItemScheduleMasterBinding binding = ItemScheduleMasterBinding.bind(itemView);
+            TextView dateText = binding.scheduleDate;
+            TextView subjectText = binding.scheduleSubjectList;
             dateText.setText(item.dateToString());
 
             List<Lesson> lessons = item.getLessons();

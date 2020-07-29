@@ -9,8 +9,6 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
         app:cardCornerRadius="12dp"
         app:cardElevation="8dp"
         app:cardUseCompatPadding="true">
