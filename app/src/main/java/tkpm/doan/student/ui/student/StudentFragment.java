@@ -8,23 +8,28 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentContainerView;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
+import androidx.viewbinding.ViewBinding;
+import androidx.viewpager2.widget.ViewPager2;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
-import java.util.Hashtable;
+import java.util.Arrays;
+import java.util.List;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.databinding.FragmentStudentBinding;
+import tkpm.doan.student.ui.components.viewpager.FragmentPage;
+import tkpm.doan.student.ui.components.viewpager.PageAdapter;
+import tkpm.doan.student.ui.components.viewpager.PageTransformer;
 
 public class StudentFragment extends Fragment {
 
 
     private static final String TAG = "StudentFragment";
-    private Hashtable<Integer, Fragment> destinations = new Hashtable<>();
+    private List<FragmentPage> pages;
     private FragmentStudentBinding binding;
+
 
     @Nullable
     @Override
@@ -43,62 +48,29 @@ public class StudentFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        setupBottomNav(binding.bottomNav, getLocalNavController(binding.studentNavHost));
+        ViewPager2 viewPager = binding.includeLayout.viewpager;
+        TabLayout tabLayout = binding.includeLayout.tablayout;
+        setupTabLayout(tabLayout, viewPager);
     }
 
-    private NavController getLocalNavController(FragmentContainerView studentNavHost) {
-        NavHostFragment localNavHost = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.student_nav_host);
-
-        assert localNavHost != null;
-        return localNavHost.getNavController();
+    private List<FragmentPage> createPages() {
+        return Arrays.asList(
+                new FragmentPage(new ProfileFragment(), getString(R.string.text_profile), R.drawable.ic_account),
+                new FragmentPage(new ScheduleFragment(), getString(R.string.text_schedule), R.drawable.ic_schedule),
+                new FragmentPage(new ScoreFragment(), getString(R.string.text_score), R.drawable.ic_score)
+        );
     }
 
-    private void setupBottomNav(BottomNavigationView bottomNav, NavController navController) {
-        bottomNav.setOnNavigationItemSelectedListener(item -> {
-            Fragment fragment = destinations.get(item.getItemId());
-            if (fragment == null) {
-                switch (item.getItemId()) {
-                    case R.id.menu_student_profile:
-                        fragment = new ProfileFragment();
-                        break;
-                    case R.id.menu_student_notification:
-                        fragment = new NotificationFragment();
-                        break;
-                    case R.id.menu_student_schedule:
-                        fragment = new ScheduleFragment();
-                        break;
-                    case R.id.menu_student_score:
-                        fragment = new ScoreFragment();
-                        break;
-                    default:
-                        throw new UnsupportedOperationException("Cannot find fragment for item");
-                }
-                destinations.put(item.getItemId(), fragment);
-            }
-
-            navigate(item.getItemId(), navController);
-            return true;
-        });
+    private void setupTabLayout(TabLayout tabLayout, ViewPager2 viewPager) {
+        pages = createPages();
+        viewPager.setOffscreenPageLimit(pages.size());
+        viewPager.setPageTransformer(new PageTransformer());
+        ViewBinding a;
+        viewPager.setAdapter(new PageAdapter(this, pages));
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
+            FragmentPage item = pages.get(position);
+            tab.setIcon(item.getIcon());
+        }).attach();
     }
 
-    private void navigate(int menuItemId, NavController navController) {
-        int destination;
-        switch (menuItemId) {
-            case R.id.menu_student_notification:
-                destination = R.id.notificationFragment;
-                break;
-            case R.id.menu_student_profile:
-                destination = R.id.profileFragment;
-                break;
-            case R.id.menu_student_schedule:
-                destination = R.id.scheduleFragment;
-                break;
-            case R.id.menu_student_score:
-                destination = R.id.scoreFragment;
-                break;
-            default:
-                throw new IllegalArgumentException("No destination fragment found");
-        }
-        navController.navigate(destination);
-    }
 }

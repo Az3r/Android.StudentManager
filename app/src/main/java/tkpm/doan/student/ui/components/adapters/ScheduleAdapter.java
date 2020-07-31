@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import java.util.List;
 
@@ -15,6 +18,8 @@ import tkpm.doan.student.data.models.Lesson;
 import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.data.models.Subject;
 import tkpm.doan.student.databinding.ItemScheduleMasterBinding;
+import tkpm.doan.student.ui.MainActivity;
+import tkpm.doan.student.ui.student.StudentFragmentDirections;
 
 public final class ScheduleAdapter extends ImmutableAdapter<Schedule> {
 
@@ -45,7 +50,12 @@ public final class ScheduleAdapter extends ImmutableAdapter<Schedule> {
             subjectText.setText(builder.toString());
 
 
-
+            // navigate to schedule detail
+            itemView.setOnClickListener(v -> {
+                NavController controller = Navigation.findNavController((MainActivity) getContext(), R.id.nav_host);
+                NavDirections directions = StudentFragmentDirections.actionStudentFragmentToScheduleDetailFragment();
+                controller.navigate(directions);
+            });
         }
     }
 
