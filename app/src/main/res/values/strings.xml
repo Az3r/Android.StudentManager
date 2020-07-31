@@ -25,4 +25,5 @@
     <string name="text_45_minutes">45 minutes</string>
     <string name="text_average">Average</string>
     <string name="text_score">score</string>
+    <string name="desc_important_notification">mark notification as important</string>
 </resources>

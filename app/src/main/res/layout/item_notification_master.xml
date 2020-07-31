@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp">
+
+    <ImageView
+        android:id="@+id/notify_important"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:contentDescription="@string/desc_important_notification"
+        android:src="@drawable/ic_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/notify_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:ellipsize="end"
+        android:textSize="20sp"
+        android:maxLines="1"
+        android:text="Thong bao ve ki thi trung hoc pho thong cap 3"
+        app:layout_constraintStart_toStartOf="@id/notify_date"
+        app:layout_constraintTop_toBottomOf="@id/notify_date" />
+
+    <TextView
+        android:id="@+id/notify_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="6/12/2020"
+        android:theme="@style/ScoreLabel.Average"
+        app:layout_constraintStart_toEndOf="@id/notify_important"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

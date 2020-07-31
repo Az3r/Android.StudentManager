@@ -5,5 +5,5 @@
 
     <include
         android:id="@+id/include_layout"
-        layout="@layout/layout_content" />
+        layout="@layout/layout_recycler_view" />
 </LinearLayout>
