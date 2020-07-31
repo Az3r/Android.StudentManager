@@ -27,4 +27,5 @@
     <string name="text_score">score</string>
     <string name="desc_important_notification">mark notification as important</string>
     <string name="notification_important">Important notification</string>
+    <string name="desc_teacher_image">profile picture of teacher</string>
 </resources>
