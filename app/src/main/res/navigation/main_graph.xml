@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph.xml"
     app:startDestination="@id/splashFragment">
 
     <fragment
+        tools:layout="@layout/fragment_splash"
         android:id="@+id/splashFragment"
         android:name="tkpm.doan.student.ui.launch.SplashFragment"
         android:label="SplashFragment">
@@ -17,6 +19,7 @@
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
+        tools:layout="@layout/fragment_login"
         android:id="@+id/loginFragment"
         android:name="tkpm.doan.student.ui.launch.LoginFragment"
         android:label="LoginFragment">
@@ -29,6 +32,7 @@
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
+        tools:layout="@layout/fragment_student"
         android:id="@+id/studentFragment"
         android:name="tkpm.doan.student.ui.student.StudentFragment"
         android:label="StudentFragment">
@@ -48,10 +52,12 @@
             app:destination="@id/notificationDetailFragment" />
     </fragment>
     <fragment
+        tools:layout="@layout/fragment_schedule_detail"
         android:id="@+id/scheduleDetailFragment"
         android:name="tkpm.doan.student.ui.student.ScheduleDetailFragment"
         android:label="ScheduleDetailFragment" />
     <fragment
+        tools:layout="@layout/fragment_notification_detail"
         android:id="@+id/notificationDetailFragment"
         android:name="tkpm.doan.student.ui.student.NotificationDetailFragment"
         android:label="NotificationDetailFragment" />
