@@ -25,7 +25,6 @@ import tkpm.doan.student.ui.components.viewpager.PageTransformer;
 
 public class StudentFragment extends Fragment {
 
-
     private static final String TAG = "StudentFragment";
     private List<FragmentPage> pages;
     private FragmentStudentBinding binding;
@@ -57,7 +56,8 @@ public class StudentFragment extends Fragment {
         return Arrays.asList(
                 new FragmentPage(new ProfileFragment(), getString(R.string.text_profile), R.drawable.ic_account),
                 new FragmentPage(new ScheduleFragment(), getString(R.string.text_schedule), R.drawable.ic_schedule),
-                new FragmentPage(new ScoreFragment(), getString(R.string.text_score), R.drawable.ic_score)
+                new FragmentPage(new ScoreFragment(), getString(R.string.text_score), R.drawable.ic_score),
+                new FragmentPage(new NotificationFragment(), getString(R.string.text_notification), R.drawable.ic_notification)
         );
     }
 

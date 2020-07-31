@@ -45,6 +45,7 @@ public final class ScheduleAdapter extends ImmutableAdapter<Schedule> {
                 builder.append(subject.getName())
                         .append(", ");
             }
+
             Subject lastItem = lessons.get(lessons.size() - 1).getSubject();
             builder.append(lastItem.getName());
             subjectText.setText(builder.toString());

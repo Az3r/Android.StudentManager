@@ -43,9 +43,16 @@
             android:name="student"
             app:argType="string"
             app:nullable="false" />
+        <action
+            android:id="@+id/action_studentFragment_to_notificationDetailFragment"
+            app:destination="@id/notificationDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/scheduleDetailFragment"
         android:name="tkpm.doan.student.ui.student.ScheduleDetailFragment"
         android:label="ScheduleDetailFragment" />
+    <fragment
+        android:id="@+id/notificationDetailFragment"
+        android:name="tkpm.doan.student.ui.student.NotificationDetailFragment"
+        android:label="NotificationDetailFragment" />
 </navigation>

@@ -29,13 +29,25 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="notificationDetailFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1045" />
+                            <option name="y" value="302" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="scheduleDetailFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="1047" />
-                            <option name="y" value="129" />
+                            <option name="x" value="1036" />
+                            <option name="y" value="-22" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -70,6 +82,15 @@
                             <option name="x" value="754" />
                             <option name="y" value="180" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_studentFragment_to_scheduleDetailFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
