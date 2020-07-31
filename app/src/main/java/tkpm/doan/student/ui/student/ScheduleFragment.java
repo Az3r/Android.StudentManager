@@ -17,7 +17,7 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.data.models.Schedule;
-import tkpm.doan.student.databinding.FragmentStudentScheduleBinding;
+import tkpm.doan.student.databinding.FragmentScheduleListBinding;
 import tkpm.doan.student.ui.components.adapters.ScheduleAdapter;
 
 @AndroidEntryPoint
@@ -25,7 +25,7 @@ public class ScheduleFragment extends Fragment {
 
     private static final String TAG = "ScheduleFragment";
 
-    private FragmentStudentScheduleBinding binding;
+    private FragmentScheduleListBinding binding;
 
     @Inject
     List<Schedule> schedules;
@@ -34,7 +34,7 @@ public class ScheduleFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentStudentScheduleBinding.inflate(inflater, container, false);
+        binding = FragmentScheduleListBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 

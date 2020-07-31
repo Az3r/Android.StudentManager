@@ -18,7 +18,7 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.data.models.Score;
-import tkpm.doan.student.databinding.FragmentStudentScoreBinding;
+import tkpm.doan.student.databinding.FragmentScoreListBinding;
 import tkpm.doan.student.ui.components.adapters.ScoreAdapter;
 
 @AndroidEntryPoint
@@ -27,12 +27,12 @@ public class ScoreFragment extends Fragment {
     @Inject
     public List<Score> scores;
 
-    private FragmentStudentScoreBinding binding;
+    private FragmentScoreListBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentStudentScoreBinding.inflate(inflater,container,false);
+        binding = FragmentScoreListBinding.inflate(inflater,container,false);
         return binding.getRoot();
     }
 

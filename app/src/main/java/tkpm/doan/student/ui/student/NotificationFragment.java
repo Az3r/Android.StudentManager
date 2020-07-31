@@ -18,7 +18,7 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.data.models.Notification;
-import tkpm.doan.student.databinding.FragmentNotificationBinding;
+import tkpm.doan.student.databinding.FragmentNotificationListBinding;
 import tkpm.doan.student.ui.components.adapters.NotificationAdapter;
 
 @AndroidEntryPoint
@@ -27,11 +27,11 @@ public class NotificationFragment extends Fragment {
     @Inject
     public List<Notification> notifications;
 
-    private FragmentNotificationBinding binding;
+    private FragmentNotificationListBinding binding;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding =  FragmentNotificationBinding.inflate(inflater,container,false);
+        binding =  FragmentNotificationListBinding.inflate(inflater,container,false);
         return binding.getRoot();
     }
 
