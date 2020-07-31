@@ -7,19 +7,20 @@ import dagger.Module;
 import dagger.Provides;
 import dagger.hilt.InstallIn;
 import dagger.hilt.android.components.ApplicationComponent;
-import tkpm.doan.student.data.models.Lesson;
+import tkpm.doan.student.data.models.Notification;
 
 @Module
 @InstallIn(ApplicationComponent.class)
-public class LessonModule {
-
+public class NotificationModule {
     @Provides
-    static int provideInteger() {
-        return 1;
+    List<Notification> provideNotifications(Notification notification) {
+        return Arrays.asList(notification, notification, notification);
     }
 
     @Provides
-    static List<Lesson> provideLessons(Lesson lesson) {
-        return Arrays.asList(lesson, lesson, lesson, lesson, lesson);
+    boolean provideBooleans() {
+        return false;
     }
+
+
 }

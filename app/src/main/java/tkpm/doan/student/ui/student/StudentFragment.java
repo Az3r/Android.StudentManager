@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.viewbinding.ViewBinding;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
@@ -63,9 +62,7 @@ public class StudentFragment extends Fragment {
 
     private void setupTabLayout(TabLayout tabLayout, ViewPager2 viewPager) {
         pages = createPages();
-        viewPager.setOffscreenPageLimit(pages.size());
         viewPager.setPageTransformer(new PageTransformer());
-        ViewBinding a;
         viewPager.setAdapter(new PageAdapter(this, pages));
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             FragmentPage item = pages.get(position);

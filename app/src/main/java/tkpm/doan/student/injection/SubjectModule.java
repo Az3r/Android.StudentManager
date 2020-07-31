@@ -3,9 +3,9 @@ package tkpm.doan.student.injection;
 import dagger.Module;
 import dagger.Provides;
 import dagger.hilt.InstallIn;
-import dagger.hilt.android.components.ActivityComponent;
+import dagger.hilt.android.components.ApplicationComponent;
 
-@InstallIn(ActivityComponent.class)
+@InstallIn(ApplicationComponent.class)
 @Module
 public class SubjectModule {
     @Provides

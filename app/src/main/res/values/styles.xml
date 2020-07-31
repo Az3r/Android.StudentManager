@@ -22,7 +22,6 @@
     </style>
 
     <style name="ScoreLabel">
-        <item name="android:textStyle">italic</item>
     </style>
 
     <style name="ScoreContent">

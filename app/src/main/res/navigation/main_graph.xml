@@ -49,7 +49,11 @@
             app:nullable="false" />
         <action
             android:id="@+id/action_studentFragment_to_notificationDetailFragment"
-            app:destination="@id/notificationDetailFragment" />
+            app:destination="@id/notificationDetailFragment"
+            app:enterAnim="@anim/expand_enter"
+            app:exitAnim="@anim/expand_exit"
+            app:popEnterAnim="@anim/shrink_enter"
+            app:popExitAnim="@anim/expand_exit" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_schedule_detail"
