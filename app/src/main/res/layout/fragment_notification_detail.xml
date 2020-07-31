@@ -17,6 +17,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
+        android:id="@+id/notify_title"
         style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,10 +26,11 @@
         android:textAlignment="center" />
 
     <TextView
+        android:id="@+id/notify_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="12dp"
         android:paddingVertical="24dp"
         android:text="this is a really long text,this is a really long text,this is a really long text,this is a really long text"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
 </LinearLayout>
