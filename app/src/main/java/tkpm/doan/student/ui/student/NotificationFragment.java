@@ -45,7 +45,6 @@ public class NotificationFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setupRecyclerView(binding.includeLayout.recyclerView);
-
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {

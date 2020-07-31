@@ -8,15 +8,22 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
+import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Lesson;
 import tkpm.doan.student.databinding.FragmentScheduleDetailBinding;
 import tkpm.doan.student.ui.components.adapters.LessonAdapter;
@@ -45,6 +52,14 @@ public class ScheduleDetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setupRecyclerView(binding.includeLayout.recyclerView);
+        setupToolbar(binding.toolbar);
+    }
+
+    private void setupToolbar(MaterialToolbar toolbar) {
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host);
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+        NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration);
+        toolbar.setTitle("Monday");
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
