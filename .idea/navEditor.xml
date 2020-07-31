@@ -47,7 +47,7 @@
                         <option name="myPosition">
                           <Point>
                             <option name="x" value="1036" />
-                            <option name="y" value="-22" />
+                            <option name="y" value="-24" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -85,6 +85,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_studentFragment_to_notificationDetailFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_studentFragment_to_scheduleDetailFragment">
                               <value>
                                 <LayoutPositions />

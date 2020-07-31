@@ -59,10 +59,10 @@
         tools:layout="@layout/fragment_schedule_detail"
         android:id="@+id/scheduleDetailFragment"
         android:name="tkpm.doan.student.ui.student.ScheduleDetailFragment"
-        android:label="ScheduleDetailFragment" />
+        android:label="@string/text_schedule" />
     <fragment
         tools:layout="@layout/fragment_notification_detail"
         android:id="@+id/notificationDetailFragment"
         android:name="tkpm.doan.student.ui.student.NotificationDetailFragment"
-        android:label="NotificationDetailFragment" />
+        android:label="@string/text_notification" />
 </navigation>

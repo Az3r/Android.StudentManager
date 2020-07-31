@@ -11,10 +11,11 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="@string/text_notification"
-            app:titleTextColor="@color/colorOnPrimary" />
+            app:menu="@menu/menu_notification"
+            app:title="@string/text_notification" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
