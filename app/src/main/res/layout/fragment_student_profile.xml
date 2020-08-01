@@ -93,6 +93,28 @@
                     android:theme="@style/StudentProfileContent" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:theme="@style/StudentPropertyPadding">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_full_name"
+                    android:theme="@style/StudentProfileLabel" />
+
+                <TextView
+                    android:id="@+id/student_class"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_class"
+                    android:textAllCaps="true"
+                    android:text="12a1"
+                    android:theme="@style/StudentProfileContent" />
+            </LinearLayout>
+
             <include layout="@layout/seperator" />
 
             <LinearLayout
