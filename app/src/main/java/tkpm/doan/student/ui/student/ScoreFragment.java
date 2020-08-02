@@ -8,10 +8,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -24,15 +26,12 @@ import tkpm.doan.student.ui.components.adapters.ScoreAdapter;
 @AndroidEntryPoint
 public class ScoreFragment extends Fragment {
 
-    @Inject
-    public List<Score> scores;
-
     private FragmentScoreListBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentScoreListBinding.inflate(inflater,container,false);
+        binding = FragmentScoreListBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -49,12 +48,15 @@ public class ScoreFragment extends Fragment {
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
-        ScoreAdapter adapter = new ScoreAdapter(requireActivity(), scores);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         DividerItemDecoration decoration = new DividerItemDecoration(recyclerView.getContext(), layoutManager.getOrientation());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(decoration);
-        recyclerView.setAdapter(adapter);
-        recyclerView.startLayoutAnimation();
+
+        StudentViewModel viewModel = new ViewModelProvider(requireActivity()).get(StudentViewModel.class);
+        viewModel.getScoreLiveData().observe(getViewLifecycleOwner(), scores -> {
+            ScoreAdapter adapter = new ScoreAdapter(requireActivity(), scores);
+            recyclerView.setAdapter(adapter);
+        });
     }
 }

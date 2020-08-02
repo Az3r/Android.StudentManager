@@ -39,7 +39,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_account"
-                    android:text="1712875"
                     android:theme="@style/StudentProfileContent" />
             </LinearLayout>
 
@@ -60,7 +59,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_social"
-                    android:text="Nguyen Manh Tuan"
                     android:theme="@style/StudentProfileContent" />
             </LinearLayout>
 

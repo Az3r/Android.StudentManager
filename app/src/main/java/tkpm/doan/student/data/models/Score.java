@@ -1,65 +1,51 @@
 package tkpm.doan.student.data.models;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.view.menu.MenuWrapperICS;
 
+import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
-public class Score {
-    @NonNull
-    private Student student;
+public class Score  {
 
-    @NonNull
-    private Subject subject;
+    private String StudentId;
+    private String SubjectName;
+    private List<Float> Test15 = new ArrayList<>();
+    private List<Float> Test45 = new ArrayList<>();
 
-    private int semester;
-    private int year;
-
-    @NonNull
-    private List<Float> fifteenScores;
-
-    @NonNull
-    private List<Float> fortyFiveScores;
-
-    private float semesterScores;
+    private float TestFinal;
+    private float Final;
 
     @Inject
-    public Score() {
-
+    public Score(String studentId) {
+        StudentId = studentId;
     }
 
-    @NonNull
-    public Student getStudent() {
-        return student;
+    public String getStudentId() {
+        return StudentId;
     }
 
-    @NonNull
-    public Subject getSubject() {
-        return subject;
+    public String getSubjectName() {
+        return SubjectName;
     }
 
-    @NonNull
-    public List<Float> getFifteenScores() {
-        return fifteenScores;
+    public List<Float> getTest15() {
+        return Test15;
     }
 
-    @NonNull
-    public List<Float> getFortyFiveScores() {
-        return fortyFiveScores;
+    public List<Float> getTest45() {
+        return Test45;
     }
 
-    public float getSemesterScores() {
-        return semesterScores;
+    public float getTestFinal() {
+        return TestFinal;
     }
 
-    public int getSemester() {
-        return semester;
+    public float getFinal() {
+        return Final;
     }
-
-    public int getYear() {
-        return year;
-    }
-
-
 }
