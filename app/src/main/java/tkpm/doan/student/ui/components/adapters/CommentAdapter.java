@@ -11,6 +11,7 @@ import java.util.List;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Comment;
+import tkpm.doan.student.databinding.ItemCommentBinding;
 
 public class CommentAdapter extends ImmutableAdapter<Comment> {
 
@@ -22,6 +23,7 @@ public class CommentAdapter extends ImmutableAdapter<Comment> {
 
         @Override
         public void bind(Comment item) {
+            ItemCommentBinding binding = ItemCommentBinding.bind(itemView);
 
         }
     }

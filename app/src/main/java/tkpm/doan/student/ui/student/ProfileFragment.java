@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,7 +18,12 @@ import java.util.List;
 import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import tkpm.doan.student.data.components.retrofit.OnResult;
+import tkpm.doan.student.data.components.retrofit.RetrofitService;
 import tkpm.doan.student.data.models.Comment;
+import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.databinding.FragmentStudentProfileBinding;
 import tkpm.doan.student.ui.components.adapters.CommentAdapter;
 
@@ -46,6 +52,19 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setupRecyclerView(binding.includeLayout.recyclerView);
+
+        RetrofitService service = new RetrofitService("localhost:3000/", GsonConverterFactory.create());
+        service.getStudent("1712875", new OnResult<Student>() {
+            @Override
+            public void onSuccess(Student result) {
+                // TODO update UI
+            }
+
+            @Override
+            public void onFailure(Exception error) {
+
+            }
+        });
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {

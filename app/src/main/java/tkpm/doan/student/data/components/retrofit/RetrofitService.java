@@ -1,10 +1,17 @@
 package tkpm.doan.student.data.components.retrofit;
 
+import android.util.Log;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Converter;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import tkpm.doan.student.data.models.Student;
 
-/** manage all operations to RESTful server */
+/**
+ * manage all operations to RESTful server
+ */
 public class RetrofitService {
     private RestAPI api;
 
@@ -19,8 +26,18 @@ public class RetrofitService {
         api = retrofit.create(RestAPI.class);
     }
 
-    public void getCurrentScheduleOf(Student student, OnResult callback) {
+    public void getStudent(String id, OnResult<Student> callback) {
+        api.getStudent(id).enqueue(new Callback<Student>() {
+            @Override
+            public void onResponse(Call<Student> call, Response<Student> response) {
+                if (response.isSuccessful()) callback.onSuccess(response.body());
+            }
 
+            @Override
+            public void onFailure(Call<Student> call, Throwable t) {
+                callback.onFailure(new Exception(t));
+            }
+        });
     }
 
     private static void throwIfNull(Object object, String message) {
@@ -28,6 +45,7 @@ public class RetrofitService {
             throw new NullPointerException(message);
         }
     }
+
     private static void throwIfNull(Object object) {
         if (object == null) {
             throw new NullPointerException();
