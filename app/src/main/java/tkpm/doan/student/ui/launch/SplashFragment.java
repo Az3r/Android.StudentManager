@@ -25,8 +25,6 @@ public class SplashFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-
         new Handler().postDelayed(() -> {
             NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host);
             navController.navigate(R.id.action_splashFragment_to_loginFragment);
