@@ -33,7 +33,7 @@ public class NotificationAdapter extends ImmutableAdapter<Notification> {
 
             TextView notify_date= binding.notifyDate;
             TextView notify_title= binding.notifyTitle;
-            //notify_date.setText(item.getDate().toString());
+            notify_date.setText(item.getDate().toString());
             notify_title.setText(item.getTitle());
             // navigate to schedule detail
             itemView.setOnClickListener(v -> {

@@ -15,7 +15,6 @@ import tkpm.doan.student.data.components.retrofit.RestAPI;
 @InstallIn(ApplicationComponent.class)
 public class RetrofitModule {
     public static final String BASE_URL = "http://10.0.2.2:3000/api/";
-
     @Provides
     Converter.Factory provideFactory() {
         return GsonConverterFactory.create();

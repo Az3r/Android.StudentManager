@@ -2,6 +2,8 @@ package tkpm.doan.student.data.models;
 
 import androidx.annotation.NonNull;
 
+import java.util.Date;
+
 import javax.inject.Inject;
 
 public class Notification {
@@ -11,6 +13,7 @@ public class Notification {
     private String content;
     private String tags;
     private boolean important;
+    private Date date;
 
     @Inject
     public Notification(String id, String title, String content, String tags, boolean important) {
@@ -19,6 +22,13 @@ public class Notification {
         this.content = content;
         this.tags = tags;
         this.important = important;
+    }
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public boolean isImportant() {

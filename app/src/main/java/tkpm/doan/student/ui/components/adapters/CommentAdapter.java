@@ -33,18 +33,17 @@ public class CommentAdapter extends ImmutableAdapter<Comment> {
         @Override
         public void bind(Comment item) {
             ItemCommentBinding binding = ItemCommentBinding.bind(itemView);
-            //ImageView avatarTeacher = binding.avatarTeacher;
+            ImageView avatarTeacher = binding.avatarTeacher;
             TextView commentContent =binding.commentContent;
             TextView  commentTeacher=binding.commentTeacher;
             TextView commentDate =binding.commentDate;
 
             //avatarTeacher.setImageBitmap(item.getTeacher().getAvatar());
             commentContent.setText(item.getContent());
-            //commentTeacher.setText(item.getTeacher().getFirstName()+" "+
-             //       item.getTeacher().getMidleName()+" "+
-             //       item.getTeacher().getLastName());
-             //       item.getTeacher().getLastName());
-            //commentDate.setText(item.getTimeComment().toString());
+            commentTeacher.setText(item.getTeacher().getFirstName()+" "+
+                    item.getTeacher().getMidleName()+" "+
+                    item.getTeacher().getLastName());
+            commentDate.setText(item.getTimeComment().toString());
 
             itemView.setOnClickListener(v -> {
                 // chuyen qua mn hinh chi tiet comment

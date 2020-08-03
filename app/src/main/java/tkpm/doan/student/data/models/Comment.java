@@ -1,5 +1,7 @@
 package tkpm.doan.student.data.models;
 
+import java.util.Date;
+
 import javax.inject.Inject;
 
 public class Comment {
@@ -8,6 +10,9 @@ public class Comment {
     private Teacher teacher;
     private String content;
 
+
+
+    private Date timeComment;
     @Inject
     public Comment(String id, Student student, Teacher teacher, String content) {
         this.id = id;
@@ -30,5 +35,12 @@ public class Comment {
 
     public String getContent() {
         return content;
+    }
+    public Date getTimeComment() {
+        return timeComment;
+    }
+
+    public void setTimeComment(Date timeComment) {
+        this.timeComment = timeComment;
     }
 }
