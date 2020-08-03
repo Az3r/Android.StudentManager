@@ -1,5 +1,6 @@
 package tkpm.doan.student.ui.student;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.SavedStateViewModelFactory;
+import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,6 +30,7 @@ import tkpm.doan.student.ui.components.adapters.ScoreAdapter;
 public class ScoreFragment extends Fragment {
 
     private FragmentScoreListBinding binding;
+    private StudentViewModel viewModel;
 
     @Nullable
     @Override
@@ -42,21 +46,28 @@ public class ScoreFragment extends Fragment {
     }
 
     @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        viewModel = new SavedStateViewModelFactory(requireActivity().getApplication(), this).create(StudentViewModel.class);
+    }
+
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setupRecyclerView(binding.includeLayout.recyclerView);
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         DividerItemDecoration decoration = new DividerItemDecoration(recyclerView.getContext(), layoutManager.getOrientation());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(decoration);
 
-        StudentViewModel viewModel = new ViewModelProvider(requireActivity()).get(StudentViewModel.class);
-        viewModel.getScoreLiveData().observe(getViewLifecycleOwner(), scores -> {
+        viewModel.getScores().observe(getViewLifecycleOwner(), scores -> {
             ScoreAdapter adapter = new ScoreAdapter(requireActivity(), scores);
-            recyclerView.setAdapter(adapter);
+            recyclerView.swapAdapter(adapter, true);
         });
     }
 }

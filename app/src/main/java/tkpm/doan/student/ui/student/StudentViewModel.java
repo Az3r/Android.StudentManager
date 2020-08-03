@@ -24,9 +24,6 @@ public class StudentViewModel extends ViewModel {
     @NonNull
     private String studentId;
 
-    private LiveData<PersonalInfo> personalInfo;
-    private LiveData<List<Score>> scores;
-
     @ViewModelInject
     public StudentViewModel(@NonNull StudentRepository repository, SavedStateHandle savedStateHandle) {
         this.repository = repository;
@@ -34,17 +31,11 @@ public class StudentViewModel extends ViewModel {
     }
 
     public LiveData<PersonalInfo> getPersonalInfo() {
-        if (personalInfo == null) {
-            personalInfo = repository.getPersonalInfo(this.studentId);
-        }
-        return personalInfo;
+        return repository.getPersonalInfo(studentId);
     }
 
     public LiveData<List<Score>> getScores() {
         // TODO remove hard-coded params
-        if (scores == null) {
-            scores = repository.getScores(this.studentId, 2016, 1);
-        }
-        return scores;
+        return repository.getScores(this.studentId, 2016, 1);
     }
 }
