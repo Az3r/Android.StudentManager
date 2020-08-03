@@ -1,43 +1,50 @@
 package tkpm.doan.student.ui.student;
 
-import android.app.AlertDialog;
-import android.util.Log;
-
+import androidx.annotation.NonNull;
+import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
 
 import java.util.List;
+import java.util.Objects;
 
-import tkpm.doan.student.data.components.retrofit.OnResult;
+import tkpm.doan.student.data.models.PersonalInfo;
 import tkpm.doan.student.data.models.Score;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.data.repositories.StudentRepository;
+import tkpm.doan.student.ui.components.constants.Keys;
 
 public class StudentViewModel extends ViewModel {
 
-    private StudentRepository repository = new StudentRepository();
-    private MutableLiveData<Student> studentLiveData = new MutableLiveData<>();
-    private MutableLiveData<List<Score>> scoreLiveData = new MutableLiveData<>();
+    @NonNull
+    private StudentRepository repository;
 
-    public StudentViewModel() {
-        repository.getScore("1140712", 1, 2016, new OnResult<List<Score>>() {
-            @Override
-            public void onSuccess(List<Score> result) {
-                scoreLiveData.postValue(result);
-            }
+    @NonNull
+    private String studentId;
 
-            @Override
-            public void onFailure(Exception error) {
-            }
-        });
+    private LiveData<PersonalInfo> personalInfo;
+    private LiveData<List<Score>> scores;
+
+    @ViewModelInject
+    public StudentViewModel(@NonNull StudentRepository repository, SavedStateHandle savedStateHandle) {
+        this.repository = repository;
+        this.studentId = Objects.requireNonNull(savedStateHandle.get(Keys.STUDENT_ID));
     }
 
-    public LiveData<Student> getStudentLiveData() {
-        return studentLiveData;
+    public LiveData<PersonalInfo> getPersonalInfo() {
+        if (personalInfo == null) {
+            personalInfo = repository.getPersonalInfo(this.studentId);
+        }
+        return personalInfo;
     }
 
-    public LiveData<List<Score>> getScoreLiveData() {
-        return scoreLiveData;
+    public LiveData<List<Score>> getScores() {
+        // TODO remove hard-coded params
+        if (scores == null) {
+            scores = repository.getScores(this.studentId, 2016, 1);
+        }
+        return scores;
     }
 }

@@ -1,11 +1,15 @@
 package tkpm.doan.student.data.components.retrofit;
 
+import android.app.Person;
+import android.net.sip.SipSession;
 import android.util.Log;
 
-import com.google.android.material.tabs.TabLayout;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
-import java.io.IOException;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -15,6 +19,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.internal.EverythingIsNonNull;
+import tkpm.doan.student.data.models.PersonalInfo;
 import tkpm.doan.student.data.models.Score;
 import tkpm.doan.student.data.models.Student;
 
@@ -22,10 +27,9 @@ import tkpm.doan.student.data.models.Student;
  * manage all operations to RESTful server
  */
 public class RetrofitService {
-    private static final String TAG = RetrofitService.class.getName();
-
     private RestAPI api;
 
+    @Inject
     public RetrofitService() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://10.0.2.2:3000/api/")
@@ -45,62 +49,17 @@ public class RetrofitService {
         api = retrofit.create(RestAPI.class);
     }
 
-    public void getScore(String studentId, int semester, int year, OnResult<List<Score>> callback) {
-        api.getScore(studentId, semester, year).enqueue(new Callback<List<Score>>() {
-            @Override
-            public void onResponse(Call<List<Score>> call, Response<List<Score>> response) {
-                if (response.isSuccessful()) {
-                    callback.onSuccess(response.body());
-                } else {
-                    onUnsuccessful(response.errorBody());
-                }
-            }
-
-            @Override
-            @EverythingIsNonNull
-            public void onFailure(Call<List<Score>> call, Throwable t) {
-                callback.onFailure(new Exception(t));
-                onError(t);
-            }
-        });
+    public void getScores(String studentId, int semester, int year, @NonNull OnRetrofitResult<List<Score>> callback) {
+        api.getScore(studentId, semester, year).enqueue(new RetrofitListener<>(callback));
     }
 
-    public void getStudentProfile(String id, OnResult<Student> callback) {
-        api.getStudent(id).enqueue(new Callback<Student>() {
-            @Override
-            @EverythingIsNonNull
-            public void onResponse(Call<Student> call, Response<Student> response) {
-                if (response.isSuccessful()) callback.onSuccess(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<Student> call, Throwable t) {
-                callback.onFailure(new Exception(t));
-            }
-        });
+    public void getStudentProfile(String studentId, @NonNull OnRetrofitResult<PersonalInfo> callback) {
+        api.getStudent(studentId).enqueue(new RetrofitListener<>(callback));
     }
 
     private static void throwIfNull(Object object, String message) {
         if (object == null) {
             throw new NullPointerException(message);
-        }
-    }
-
-    private static void throwIfNull(Object object) {
-        if (object == null) {
-            throw new NullPointerException();
-        }
-    }
-
-    private static void onError(Throwable t) {
-        Log.e(TAG, t.toString());
-    }
-
-    private static void onUnsuccessful(ResponseBody errorBody) {
-        try {
-            Log.e(TAG, errorBody.string());
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }
