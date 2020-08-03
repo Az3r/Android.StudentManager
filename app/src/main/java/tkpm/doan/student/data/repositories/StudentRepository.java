@@ -2,6 +2,7 @@ package tkpm.doan.student.data.repositories;
 
 import android.app.Person;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -16,10 +17,12 @@ import tkpm.doan.student.data.models.Score;
 import tkpm.doan.student.data.models.Student;
 
 public class StudentRepository {
+
+    @NonNull
     private RetrofitService retrofit;
 
     @Inject
-    public StudentRepository(RetrofitService retrofit) {
+    public StudentRepository(@NonNull RetrofitService retrofit) {
         this.retrofit = retrofit;
     }
 

@@ -27,25 +27,11 @@ import tkpm.doan.student.data.models.Student;
  * manage all operations to RESTful server
  */
 public class RetrofitService {
+    @NonNull
     private RestAPI api;
 
     @Inject
-    public RetrofitService() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:3000/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        api = retrofit.create(RestAPI.class);
-    }
-
-    public RetrofitService(String baseUrl, Converter.Factory factory) {
-        throwIfNull(baseUrl, "baseUrl must not be null");
-        throwIfNull(factory, "factory must not be null");
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(baseUrl)
-                .addConverterFactory(factory)
-                .build();
+    public RetrofitService(@NonNull Retrofit retrofit) {
         api = retrofit.create(RestAPI.class);
     }
 
