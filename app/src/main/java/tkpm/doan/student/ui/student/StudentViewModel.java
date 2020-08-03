@@ -1,5 +1,7 @@
 package tkpm.doan.student.ui.student;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.hilt.Assisted;
 import androidx.hilt.lifecycle.ViewModelInject;
@@ -12,6 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 import tkpm.doan.student.data.models.PersonalInfo;
+import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.data.models.Score;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.data.repositories.StudentRepository;
@@ -22,8 +25,9 @@ public class StudentViewModel extends ViewModel {
     @NonNull
     private StudentRepository repository;
 
-    @NonNull
     private String studentId;
+
+    private MutableLiveData<Schedule> selectedSchedule = new MutableLiveData<>();
 
     @ViewModelInject
     public StudentViewModel(@NonNull StudentRepository repository, @Assisted SavedStateHandle savedStateHandle) {
@@ -39,7 +43,17 @@ public class StudentViewModel extends ViewModel {
         return repository.getScores(this.studentId, 1, 2016);
     }
 
+    public LiveData<Schedule> getSelectedSchedule() {
+        return selectedSchedule;
+    }
+
+    public void setSelectedSchedule(Schedule item) {
+        selectedSchedule.postValue(item);
+    }
+
     public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
+
+
 }

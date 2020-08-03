@@ -1,6 +1,8 @@
 package tkpm.doan.student.data.repositories;
 
 import android.app.Person;
+import android.nfc.Tag;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
@@ -18,6 +20,7 @@ import tkpm.doan.student.data.models.Student;
 
 public class StudentRepository {
 
+    private static final String TAG = StudentRepository.class.getName();
     @NonNull
     private RetrofitService retrofit;
 

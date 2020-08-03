@@ -1,6 +1,8 @@
 package tkpm.doan.student.ui.student;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -31,9 +34,11 @@ import tkpm.doan.student.ui.components.adapters.LessonAdapter;
 @AndroidEntryPoint
 public class ScheduleDetailFragment extends Fragment {
 
+    private static final String TAG = ScheduleDetailFragment.class.getName();
     @Inject
     public List<Lesson> lessons;
     private FragmentScheduleDetailBinding binding;
+    private StudentViewModel viewModel;
 
     @Nullable
     @Override
@@ -46,6 +51,12 @@ public class ScheduleDetailFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        viewModel = new ViewModelProvider(requireActivity()).get(StudentViewModel.class);
     }
 
     @Override
@@ -69,5 +80,6 @@ public class ScheduleDetailFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(decoration);
         recyclerView.setAdapter(adapter);
+
     }
 }

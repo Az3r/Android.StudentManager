@@ -43,9 +43,4 @@ public class RetrofitService {
         api.getStudent(studentId).enqueue(new RetrofitListener<>(callback));
     }
 
-    private static void throwIfNull(Object object, String message) {
-        if (object == null) {
-            throw new NullPointerException(message);
-        }
-    }
 }
