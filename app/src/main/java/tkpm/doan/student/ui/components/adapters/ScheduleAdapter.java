@@ -1,12 +1,14 @@
 package tkpm.doan.student.ui.components.adapters;
 
 import android.content.Context;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
@@ -20,6 +22,7 @@ import tkpm.doan.student.data.models.Subject;
 import tkpm.doan.student.databinding.ItemScheduleMasterBinding;
 import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.student.StudentFragmentDirections;
+import tkpm.doan.student.ui.student.StudentViewModel;
 
 public final class ScheduleAdapter extends ImmutableAdapter<Schedule> {
 
