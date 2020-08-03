@@ -30,8 +30,6 @@ public final class ScheduleAdapter extends ImmutableAdapter<Schedule> {
 
         @Override
         public void bind(Schedule item) {
-
-
             ItemScheduleMasterBinding binding = ItemScheduleMasterBinding.bind(itemView);
             TextView dateText = binding.scheduleDate;
             TextView subjectText = binding.scheduleSubjectList;
@@ -39,6 +37,8 @@ public final class ScheduleAdapter extends ImmutableAdapter<Schedule> {
             // bind data to view
             dateText.setText(item.dateToString());
             List<Lesson> lessons = item.getLessons();
+
+
             StringBuilder builder = new StringBuilder();
             for (int j = 0; j < lessons.size() - 1; j++) {
                 Subject subject = lessons.get(j).getSubject();
@@ -49,7 +49,6 @@ public final class ScheduleAdapter extends ImmutableAdapter<Schedule> {
             Subject lastItem = lessons.get(lessons.size() - 1).getSubject();
             builder.append(lastItem.getName());
             subjectText.setText(builder.toString());
-
 
             // navigate to schedule detail
             itemView.setOnClickListener(v -> {

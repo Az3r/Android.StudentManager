@@ -6,6 +6,7 @@
     android:padding="24dp">
 
     <ImageView
+        android:id="@+id/avatarTeacher"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:contentDescription="@string/desc_teacher_image" />
