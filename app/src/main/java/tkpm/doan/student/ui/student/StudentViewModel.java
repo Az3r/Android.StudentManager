@@ -28,7 +28,6 @@ public class StudentViewModel extends ViewModel {
     @ViewModelInject
     public StudentViewModel(@NonNull StudentRepository repository, @Assisted SavedStateHandle savedStateHandle) {
         this.repository = repository;
-        this.studentId = Objects.requireNonNull(savedStateHandle.get(Keys.STUDENT_ID));
     }
 
     public LiveData<PersonalInfo> getPersonalInfo() {
@@ -37,7 +36,7 @@ public class StudentViewModel extends ViewModel {
 
     public LiveData<List<Score>> getScores() {
         // TODO remove hard-coded params
-        return repository.getScores(this.studentId, 2016, 1);
+        return repository.getScores(this.studentId, 1, 2016);
     }
 
     public void setStudentId(String studentId) {
