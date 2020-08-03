@@ -4,6 +4,7 @@ import android.app.Person;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.GET;
@@ -15,7 +16,7 @@ import tkpm.doan.student.data.models.Student;
 
 public interface RestAPI {
 
-    @GET("/api/student/single/{id}")
+    @GET("student/single/{id}")
     Call<PersonalInfo> getStudent(@Path("id") String id);
 
     @GET("student/score/{id}")

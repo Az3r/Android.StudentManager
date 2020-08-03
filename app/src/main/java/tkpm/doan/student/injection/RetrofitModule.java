@@ -14,7 +14,7 @@ import tkpm.doan.student.data.components.retrofit.RestAPI;
 @Module
 @InstallIn(ApplicationComponent.class)
 public class RetrofitModule {
-    private static final String BASE_URL = "http://10.0.2.2:3000/api/";
+    public static final String BASE_URL = "http://10.0.2.2:3000/api/";
 
     @Provides
     Converter.Factory provideFactory() {

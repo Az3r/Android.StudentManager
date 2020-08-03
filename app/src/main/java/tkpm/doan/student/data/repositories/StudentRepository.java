@@ -1,6 +1,8 @@
 package tkpm.doan.student.data.repositories;
 
 import android.app.Person;
+import android.nfc.Tag;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
@@ -18,6 +20,7 @@ import tkpm.doan.student.data.models.Student;
 
 public class StudentRepository {
 
+    private static final String TAG = StudentRepository.class.getName();
     @NonNull
     private RetrofitService retrofit;
 
@@ -37,9 +40,9 @@ public class StudentRepository {
         return info;
     }
 
-    public LiveData<List<Score>> getScores(String studentId, int year, int semester) {
+    public LiveData<List<Score>> getScores(String studentId, int semester, int year) {
         final MutableLiveData<List<Score>> scores = new MutableLiveData<>();
-        retrofit.getScores(studentId, year, semester, new OnRetrofitResult<List<Score>>() {
+        retrofit.getScores(studentId, semester, year, new OnRetrofitResult<List<Score>>() {
             @Override
             public void onSuccess(List<Score> result) {
                 scores.postValue(result);
