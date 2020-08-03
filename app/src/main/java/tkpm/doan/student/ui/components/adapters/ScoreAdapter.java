@@ -25,20 +25,21 @@ public class ScoreAdapter extends ImmutableAdapter<Score> {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
         }
+
         @Override
         public void bind(Score item) {
-            ItemScoreBinding binding= ItemScoreBinding.bind(itemView);
-            TextView Subject= binding.Subject;
-            TextView scoreFactor1= binding.scoreFactor1;
-            TextView scoreFactor2= binding.scoreFactor2;
-            TextView scoreFactor3= binding.scoreFactor3;
-            TextView scoreAverage= binding.scoreAverage;
+            ItemScoreBinding binding = ItemScoreBinding.bind(itemView);
+            TextView Subject = binding.Subject;
+            TextView scoreFactor1 = binding.scoreFactor1;
+            TextView scoreFactor2 = binding.scoreFactor2;
+            TextView scoreFactor3 = binding.scoreFactor3;
+            TextView scoreAverage = binding.scoreAverage;
 
             Subject.setText(item.getSubjectName());
             scoreFactor1.setText(item.getTest15().toString());
             scoreFactor2.setText(item.getTest45().toString());
-            scoreFactor3.setText(""+item.getTestFinal());
-            scoreAverage.setText(""+item.getFinal());
+            scoreFactor3.setText("" + item.getTestFinal());
+            scoreAverage.setText("" + item.getFinal());
             itemView.setOnClickListener(v -> {
                 // chuyen qua mn hinh chi tiet diem
             });
