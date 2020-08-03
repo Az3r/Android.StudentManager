@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
@@ -14,6 +15,7 @@ import java.util.List;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Notification;
+import tkpm.doan.student.databinding.ItemNotificationMasterBinding;
 import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.student.StudentFragmentDirections;
 
@@ -27,7 +29,12 @@ public class NotificationAdapter extends ImmutableAdapter<Notification> {
 
         @Override
         public void bind(Notification item) {
+            ItemNotificationMasterBinding binding = ItemNotificationMasterBinding.bind(itemView);
 
+            TextView notify_date= binding.notifyDate;
+            TextView notify_title= binding.notifyTitle;
+            //notify_date.setText(item.getDate().toString());
+            notify_title.setText(item.getTitle());
             // navigate to schedule detail
             itemView.setOnClickListener(v -> {
                 NavController controller = Navigation.findNavController((MainActivity) getContext(), R.id.nav_host);
@@ -48,3 +55,4 @@ public class NotificationAdapter extends ImmutableAdapter<Notification> {
         return new ViewHolder(itemView);
     }
 }
+

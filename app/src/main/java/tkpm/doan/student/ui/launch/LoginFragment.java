@@ -80,9 +80,6 @@ public class LoginFragment extends Fragment {
             }, 500);
 
         }, 1000);
-
-
-
     }
 
 
