@@ -44,7 +44,7 @@
             app:popEnterAnim="@anim/shrink_enter"
             app:popExitAnim="@anim/shrink_exit" />
         <argument
-            android:name="student"
+            android:name="studentId"
             app:argType="string"
             app:nullable="false" />
         <action

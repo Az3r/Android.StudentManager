@@ -48,7 +48,7 @@ public class ScoreFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        viewModel = new SavedStateViewModelFactory(requireActivity().getApplication(), this).create(StudentViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(StudentViewModel.class);
     }
 
 

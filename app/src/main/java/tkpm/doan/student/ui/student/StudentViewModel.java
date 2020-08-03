@@ -1,6 +1,7 @@
 package tkpm.doan.student.ui.student;
 
 import androidx.annotation.NonNull;
+import androidx.hilt.Assisted;
 import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -25,7 +26,7 @@ public class StudentViewModel extends ViewModel {
     private String studentId;
 
     @ViewModelInject
-    public StudentViewModel(@NonNull StudentRepository repository, SavedStateHandle savedStateHandle) {
+    public StudentViewModel(@NonNull StudentRepository repository, @Assisted SavedStateHandle savedStateHandle) {
         this.repository = repository;
         this.studentId = Objects.requireNonNull(savedStateHandle.get(Keys.STUDENT_ID));
     }
@@ -37,5 +38,9 @@ public class StudentViewModel extends ViewModel {
     public LiveData<List<Score>> getScores() {
         // TODO remove hard-coded params
         return repository.getScores(this.studentId, 2016, 1);
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 }

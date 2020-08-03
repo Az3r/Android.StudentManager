@@ -1,6 +1,9 @@
 package tkpm.doan.student.ui.student;
 
+import android.content.Context;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,17 +20,21 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import java.util.Arrays;
 import java.util.List;
 
+import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.R;
 import tkpm.doan.student.databinding.FragmentStudentBinding;
+import tkpm.doan.student.ui.components.constants.Keys;
 import tkpm.doan.student.ui.components.viewpager.FragmentPage;
 import tkpm.doan.student.ui.components.viewpager.PageAdapter;
 import tkpm.doan.student.ui.components.viewpager.PageTransformer;
 
+@AndroidEntryPoint
 public class StudentFragment extends Fragment {
 
     private static final String TAG = "StudentFragment";
     private List<FragmentPage> pages;
     private FragmentStudentBinding binding;
+    private StudentViewModel viewModel;
 
 
     @Nullable
@@ -44,13 +51,17 @@ public class StudentFragment extends Fragment {
     }
 
     @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        viewModel = new ViewModelProvider(requireActivity()).get(StudentViewModel.class);
+
+        assert getArguments() != null;
+        viewModel.setStudentId(getArguments().getString(Keys.STUDENT_ID));
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
-
-
-
 
         ViewPager2 viewPager = binding.includeLayout.viewpager;
         TabLayout tabLayout = binding.includeLayout.tablayout;
