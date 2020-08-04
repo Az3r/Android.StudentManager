@@ -29,4 +29,6 @@
     <string name="notification_important">Important notification</string>
     <string name="desc_teacher_image">profile picture of teacher</string>
     <string name="text_class">Class</string>
+    <string name="text_setting">Setting</string>
+    <string name="text_search">Search</string>
 </resources>

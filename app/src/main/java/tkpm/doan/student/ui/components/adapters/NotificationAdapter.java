@@ -37,7 +37,7 @@ public class NotificationAdapter extends ImmutableAdapter<Notification> {
             notify_title.setText(item.getTitle());
 
             // TODO fix this line below
-            notify_date.setText(Provider.getDateFormater().format(item.getDate()));
+            // notify_date.setText(Provider.getDateFormater().format(item.getDate()));
 
             // navigate to schedule detail
             itemView.setOnClickListener(v -> {
