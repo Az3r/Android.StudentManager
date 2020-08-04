@@ -6,11 +6,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import java.util.List;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Grade;
+import tkpm.doan.student.ui.MainActivity;
+import tkpm.doan.student.ui.teacher.TeacherFragmentDirections;
+import tkpm.doan.student.ui.teacher.TeacherViewModel;
 
 public class GradeAdapter extends ImmutableAdapter<Grade> {
 
@@ -23,6 +30,15 @@ public class GradeAdapter extends ImmutableAdapter<Grade> {
         @Override
         public void bind(Grade item) {
 
+
+            itemView.setOnClickListener(view -> {
+                TeacherViewModel viewModel = new ViewModelProvider((MainActivity) getContext()).get(TeacherViewModel.class);
+                viewModel.setSelectedGrade("replace this with actual gradeId");
+
+                NavController navController = Navigation.findNavController((MainActivity) getContext(), R.id.nav_host);
+                NavDirections directions = TeacherFragmentDirections.actionTeacherFragmentToGradeDetailFragment();
+                navController.navigate(directions);
+            });
         }
     }
 
