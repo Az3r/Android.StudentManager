@@ -71,6 +71,6 @@ public class CollectionModule {
 
     @Provides
     static List<Grade> provideGrades(Grade grade) {
-        return Arrays.asList(grade, grade, grade, grade);
+        return Arrays.asList(grade, grade, grade, grade, grade, grade);
     }
 }

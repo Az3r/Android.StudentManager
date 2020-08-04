@@ -48,7 +48,7 @@ public class TeacherFragment extends Fragment {
         new TabLayoutMediator(tablayout, viewpager, (tab, position) -> {
             FragmentPage page = pages.get(position);
             tab.setIcon(page.getIcon());
-        });
+        }).attach();
     }
 
     @Override

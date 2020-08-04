@@ -2,6 +2,7 @@ package tkpm.doan.student.ui.teacher;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import tkpm.doan.student.ui.components.adapters.ScoreAdapter;
 import tkpm.doan.student.ui.components.utils.RecyclerViews;
 
 public class GradeFragment extends Fragment {
+    private static final String TAG = GradeFragment.class.getName();
     private FragmentGradeListBinding binding;
     private TeacherViewModel viewModel;
 
@@ -53,6 +55,7 @@ public class GradeFragment extends Fragment {
         RecyclerViews.setupListView(recyclerView);
 
         viewModel.getTeachingGrades().observe(getViewLifecycleOwner(), grades -> {
+            Log.i(TAG, String.valueOf(grades.size()));
             GradeAdapter adapter = new GradeAdapter(requireActivity(), grades);
             recyclerView.swapAdapter(adapter, true);
         });
