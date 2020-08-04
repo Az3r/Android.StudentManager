@@ -24,6 +24,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Objects;
 
 import tkpm.doan.student.R;
+import tkpm.doan.student.databinding.FragmentLoginBinding;
 import tkpm.doan.student.ui.student.StudentViewModel;
 
 public class LoginFragment extends Fragment {
@@ -33,22 +34,31 @@ public class LoginFragment extends Fragment {
     private Button loginButton;
     private ProgressBar progressBar;
 
+    private FragmentLoginBinding binding;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_login, container, false);
+        binding = FragmentLoginBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        accountInput = view.findViewById(R.id.login_account);
-        passwordInput = view.findViewById(R.id.login_password);
-        teacherCheckBox = view.findViewById(R.id.login_teacher);
-        progressBar = view.findViewById(R.id.progressbar);
-        loginButton = view.findViewById(R.id.button_login);
+        accountInput = binding.loginAccount;
+        passwordInput = binding.loginPassword;
+        teacherCheckBox = binding.loginTeacher;
+        progressBar = binding.progressbar;
+        loginButton = binding.buttonLogin;
         loginButton.setOnClickListener(e -> onLogin());
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
     private void onLogin() {
@@ -82,24 +92,25 @@ public class LoginFragment extends Fragment {
         }, 1000);
 
 
-
     }
-
 
 
     private boolean hasEmptyField() {
         return getString(accountInput).isEmpty() || getString(passwordInput).isEmpty();
     }
+
     private void enableAllInput(boolean enabled) {
         accountInput.setEnabled(enabled);
         passwordInput.setEnabled(enabled);
         teacherCheckBox.setEnabled(enabled);
         loginButton.setEnabled(enabled);
     }
+
     private static void setErrorIfEmpty(TextInputLayout inputLayout, String error) {
         if (getString(inputLayout).isEmpty())
             inputLayout.setError(error);
     }
+
     private static String getString(TextInputLayout inputLayout) {
         return Objects.requireNonNull(inputLayout.getEditText()).getText().toString();
     }
