@@ -13,14 +13,14 @@
 
         <TextView
             android:id="@+id/schedule_period"
+            style="@style/ItemTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:text="1" />
 
         <TextView
             android:id="@+id/schedule_duration"
+            style="@style/TextAppearance.MaterialComponents.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="10h45-11h30"
@@ -30,9 +30,9 @@
 
     <TextView
         android:id="@+id/schedule_subject"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:text="Math"
-        android:textSize="24sp" />
+        android:text="Giao duc Quoc Phong" />
 </LinearLayout>

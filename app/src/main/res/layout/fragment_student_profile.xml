@@ -26,62 +26,64 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:theme="@style/StudentPropertyPadding">
+                android:theme="@style/LayoutItemPadding">
 
                 <TextView
+                    style="@style/Label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/text_student_id"
-                    android:theme="@style/StudentProfileLabel" />
+                    android:text="@string/text_student_id" />
 
                 <TextView
                     android:id="@+id/student_id"
+                    style="@style/Content.StartIcon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_account"
-                    android:theme="@style/StudentProfileContent" />
+                    android:text="1712875" />
             </LinearLayout>
 
             <LinearLayout
+                android:theme="@style/LayoutItemPadding"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:theme="@style/StudentPropertyPadding">
+                android:orientation="vertical">
 
                 <TextView
+                    style="@style/Label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/text_full_name"
-                    android:theme="@style/StudentProfileLabel" />
+                    android:text="@string/text_full_name" />
 
                 <TextView
                     android:id="@+id/student_name"
+                    style="@style/Content.StartIcon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_social"
-                    android:theme="@style/StudentProfileContent" />
+                    android:text="Nguyen Manh Tuan" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:theme="@style/StudentPropertyPadding">
+                android:theme="@style/LayoutItemPadding">
 
                 <TextView
+                    style="@style/Label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/text_class"
-                    android:theme="@style/StudentProfileLabel" />
+                    android:text="@string/text_class" />
 
                 <TextView
                     android:id="@+id/student_class"
+                    style="@style/Content.StartIcon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_class"
                     android:text="12a1"
-                    android:textAllCaps="true"
-                    android:theme="@style/StudentProfileContent" />
+                    android:textAllCaps="true" />
             </LinearLayout>
 
             <include layout="@layout/seperator" />
@@ -90,63 +92,63 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:theme="@style/StudentPropertyPadding">
+                android:theme="@style/LayoutItemPadding">
 
                 <TextView
+                    style="@style/Label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/text_gender"
-                    android:theme="@style/StudentProfileLabel" />
+                    android:text="@string/text_gender" />
 
                 <TextView
                     android:id="@+id/student_gender"
+                    style="@style/Content.StartIcon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_gender"
-                    android:text="Male"
-                    android:theme="@style/StudentProfileContent" />
+                    android:text="Male" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:theme="@style/StudentPropertyPadding">
+                android:theme="@style/LayoutItemPadding">
 
                 <TextView
+                    style="@style/Label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/text_birthday"
-                    android:theme="@style/StudentProfileLabel" />
+                    android:text="@string/text_birthday" />
 
                 <TextView
                     android:id="@+id/student_birthday"
+                    style="@style/Content.StartIcon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_birthday"
-                    android:text="21/08/1999"
-                    android:theme="@style/StudentProfileContent" />
+                    android:text="21/08/1999" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:theme="@style/StudentPropertyPadding">
+                android:theme="@style/LayoutItemPadding">
 
                 <TextView
+                    style="@style/Label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/text_address"
-                    android:theme="@style/StudentProfileLabel" />
+                    android:text="@string/text_address" />
 
                 <TextView
                     android:id="@+id/student_address"
+                    style="@style/Content.StartIcon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_address"
-                    android:text="101/19 phuong 4 quan 5 thanh pho ho chinh minh"
-                    android:theme="@style/StudentProfileContent" />
+                    android:text="101/19 phuong 4 quan 5 thanh pho ho chinh minh" />
             </LinearLayout>
 
             <include layout="@layout/seperator" />
@@ -155,42 +157,42 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:theme="@style/StudentPropertyPadding">
+                android:theme="@style/LayoutItemPadding">
 
                 <TextView
+                    style="@style/Label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/text_phone_number"
-                    android:theme="@style/StudentProfileLabel" />
+                    android:text="@string/text_phone_number" />
 
                 <TextView
                     android:id="@+id/student_phone"
+                    style="@style/Content.StartIcon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_phone"
-                    android:text="1234567890"
-                    android:theme="@style/StudentProfileContent" />
+                    android:text="1234567890" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:theme="@style/StudentPropertyPadding">
+                android:theme="@style/LayoutItemPadding">
 
                 <TextView
+                    style="@style/Label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/text_email"
-                    android:theme="@style/StudentProfileLabel" />
+                    android:text="@string/text_email" />
 
                 <TextView
                     android:id="@+id/student_email"
+                    style="@style/Content.StartIcon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_email"
-                    android:text="example@gmail.com"
-                    android:theme="@style/StudentProfileContent" />
+                    android:text="example@gmail.com" />
             </LinearLayout>
 
             <include layout="@layout/seperator" />

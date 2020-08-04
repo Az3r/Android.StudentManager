@@ -17,6 +17,7 @@ import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Notification;
 import tkpm.doan.student.databinding.ItemNotificationMasterBinding;
 import tkpm.doan.student.ui.MainActivity;
+import tkpm.doan.student.ui.components.constants.Provider;
 import tkpm.doan.student.ui.student.StudentFragmentDirections;
 
 public class NotificationAdapter extends ImmutableAdapter<Notification> {
@@ -31,10 +32,13 @@ public class NotificationAdapter extends ImmutableAdapter<Notification> {
         public void bind(Notification item) {
             ItemNotificationMasterBinding binding = ItemNotificationMasterBinding.bind(itemView);
 
-            TextView notify_date= binding.notifyDate;
-            TextView notify_title= binding.notifyTitle;
-            notify_date.setText(item.getDate().toString());
+            TextView notify_date = binding.notifyDate;
+            TextView notify_title = binding.notifyTitle;
             notify_title.setText(item.getTitle());
+
+            // TODO fix this line below
+            // notify_date.setText(Provider.getDateFormater().format(item.getDate()));
+
             // navigate to schedule detail
             itemView.setOnClickListener(v -> {
                 NavController controller = Navigation.findNavController((MainActivity) getContext(), R.id.nav_host);

@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Subject"
-        android:theme="@style/ScoreSubject" />
+        style="@style/ItemTitle" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -23,7 +23,7 @@
             android:layout_width="84dp"
             android:layout_height="wrap_content"
             android:text="@string/text_15_minutes"
-            android:theme="@style/ScoreLabel" />
+            style="@style/ScoreLabel" />
 
         <TextView
             android:id="@+id/score_factor_1"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="10, 10, 10"
-            android:theme="@style/ScoreContent" />
+            style="@style/Content" />
     </LinearLayout>
 
     <LinearLayout
@@ -45,7 +45,7 @@
             android:layout_width="84dp"
             android:layout_height="wrap_content"
             android:text="@string/text_45_minutes"
-            android:theme="@style/ScoreLabel" />
+            style="@style/ScoreLabel" />
 
         <TextView
             android:id="@+id/score_factor_2"
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="10, 10, 10"
-            android:theme="@style/ScoreContent" />
+            style="@style/Content" />
     </LinearLayout>
 
     <LinearLayout
@@ -67,7 +67,7 @@
             android:layout_width="84dp"
             android:layout_height="wrap_content"
             android:text="@string/semester"
-            android:theme="@style/ScoreLabel" />
+            style="@style/ScoreLabel" />
 
         <TextView
             android:id="@+id/score_factor_3"
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="7.5, 8.5, 9.5"
-            android:theme="@style/ScoreContent" />
+            style="@style/Content" />
     </LinearLayout>
 
     <LinearLayout
@@ -88,7 +88,7 @@
             android:layout_width="84dp"
             android:layout_height="wrap_content"
             android:text="@string/text_average"
-            android:theme="@style/ScoreLabel.Average" />
+            style="@style/Content.Important" />
 
         <TextView
             android:id="@+id/score_average"
@@ -96,6 +96,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="7.5"
-            android:theme="@style/ScoreContent.Average" />
+            style="@style/Content.Important" />
     </LinearLayout>
 </LinearLayout>

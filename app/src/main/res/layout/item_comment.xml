@@ -27,8 +27,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="teacher's name"
-                android:textSize="18sp"
-                android:textColor="?attr/colorOnSurface" />
+                android:textColor="?attr/colorOnSurface"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/comment_date"
@@ -39,10 +39,11 @@
         </LinearLayout>
 
         <TextView
-            android:layout_marginTop="12dp"
             android:id="@+id/comment_content"
+            style="@style/Content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:text="this comment maybe really long or short,this comment maybe really long or short" />
     </LinearLayout>
 

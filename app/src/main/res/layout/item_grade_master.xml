@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:theme="@style/LayoutItemPadding">
+
+    <TextView
+        android:id="@+id/grade_class_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Class name"
+        style="@style/ItemTitle" />
+
+    <TextView
+        android:id="@+id/grade_home_teacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_home_teacher"
+        android:text="Nguyen Thi Hanh"
+        style="@style/Content.StartIcon" />
+
+    <TextView
+        android:id="@+id/grade_student_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_gender"
+        android:text="40"
+        style="@style/Content.StartIcon" />
+</LinearLayout>

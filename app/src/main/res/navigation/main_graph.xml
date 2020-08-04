@@ -30,6 +30,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_teacherFragment"
+            app:destination="@id/teacherFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_student"
@@ -65,4 +72,13 @@
         android:id="@+id/notificationDetailFragment"
         android:name="tkpm.doan.student.ui.student.NotificationDetailFragment"
         android:label="@string/text_notification" />
+    <fragment
+        tools:layout="@layout/fragment_teacher"
+        android:id="@+id/teacherFragment"
+        android:name="tkpm.doan.student.ui.teacher.TeacherFragment"
+        android:label="TeacherFragment" >
+        <argument
+            android:name="teacherId"
+            app:argType="string" />
+    </fragment>
 </navigation>
