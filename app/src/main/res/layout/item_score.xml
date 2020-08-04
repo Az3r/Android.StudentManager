@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Subject"
-        android:theme="@style/ScoreSubject" />
+        android:theme="@style/ItemTitle" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -88,7 +88,7 @@
             android:layout_width="84dp"
             android:layout_height="wrap_content"
             android:text="@string/text_average"
-            android:theme="@style/ScoreLabel.Important" />
+            android:theme="@style/Content.Important" />
 
         <TextView
             android:id="@+id/score_average"
