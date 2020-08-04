@@ -23,7 +23,8 @@ public class TeacherViewModel extends ViewModel {
     }
 
 
-    public LiveData<List<Grade>> getTeachingGrades(String teacherId, int year) {
-        return repositroy.getTeachingGrades(teacherId, year);
+    public LiveData<List<Grade>> getTeachingGrades() {
+        // TODO remove hard-coded params
+        return repositroy.getTeachingGrades("12345", 2020);
     }
 }

@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:text="Tuesday"
                 android:textAlignment="center"
-                android:theme="@style/ItemTitle" />
+                style="@style/ItemTitle" />
 
             <TextView
                 android:id="@+id/schedule_subject_list"

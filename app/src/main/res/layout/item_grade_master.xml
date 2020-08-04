@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Class name"
-        android:theme="@style/ItemTitle" />
+        style="@style/ItemTitle" />
 
     <TextView
         android:id="@+id/grade_home_teacher"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_home_teacher"
         android:text="Nguyen Thi Hanh"
-        android:theme="@style/Content.StartIcon" />
+        style="@style/Content.StartIcon" />
 
     <TextView
         android:id="@+id/grade_student_count"
@@ -27,5 +27,5 @@
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_gender"
         android:text="40"
-        android:theme="@style/Content.StartIcon" />
+        style="@style/Content.StartIcon" />
 </LinearLayout>

@@ -10,6 +10,7 @@ import dagger.Provides;
 import dagger.hilt.InstallIn;
 import dagger.hilt.android.components.ApplicationComponent;
 import tkpm.doan.student.data.models.Comment;
+import tkpm.doan.student.data.models.Grade;
 import tkpm.doan.student.data.models.Lesson;
 import tkpm.doan.student.data.models.Notification;
 import tkpm.doan.student.data.models.Schedule;
@@ -66,5 +67,10 @@ public class CollectionModule {
     @Provides
     static List<Score> provideScores(Score score) {
         return Arrays.asList(score, score, score, score);
+    }
+
+    @Provides
+    static List<Grade> provideGrades(Grade grade) {
+        return Arrays.asList(grade, grade, grade, grade);
     }
 }
