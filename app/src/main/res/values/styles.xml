@@ -1,28 +1,27 @@
 <resources>
 
-    <style name="TextTitle">
-        <item name="textAllCaps">true</item>
-        <item name="android:letterSpacing">0.1</item>
-        <item name="android:textSize">34sp</item>
+    <style name="Label" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">?attr/colorPrimary</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="Content" parent="TextAppearance.MaterialComponents.Subtitle1">
+
+    </style>
+
+    <style name="Content.StartIcon">
+        <item name="android:drawablePadding">12dp</item>
+    </style>
+
+
+    <style name="AppTitle" parent="TextAppearance.MaterialComponents.Headline3">
         <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="textAllCaps">true</item>
         <item name="android:textAlignment">center</item>
     </style>
 
-    <style name="StudentProfileLabel">
-        <item name="android:textColor">?attr/colorPrimary</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">12sp</item>
-    </style>
-
-    <style name="StudentProfileContent">
-        <item name="android:textColor">?attr/colorOnSurface</item>
-        <item name="android:drawablePadding">10dp</item>
-        <item name="android:textSize">20sp</item>
-    </style>
-
-    <style name="ScoreLabel">
-    </style>
+    <style name="ScoreLabel"></style>
 
     <style name="ScoreContent">
         <item name="android:textColor">?attr/colorOnSurface</item>
@@ -43,7 +42,10 @@
         <item name="android:textStyle">bold|italic</item>
     </style>
 
-    <style name="StudentPropertyPadding">
-        <item name="android:padding">8dp</item>
+    <style name="LayoutItemPadding">
+        <item name="paddingStart">12dp</item>
+        <item name="paddingEnd">12dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
     </style>
 </resources>

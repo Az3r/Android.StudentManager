@@ -31,4 +31,5 @@
     <string name="text_class">Class</string>
     <string name="text_setting">Setting</string>
     <string name="text_search">Search</string>
+    <string name="desc_grade_student">number of students of class</string>
 </resources>
