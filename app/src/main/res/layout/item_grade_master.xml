@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:theme="@style/LayoutItemPadding"
-    android:padding="24dp">
+    android:padding="24dp"
+    android:theme="@style/LayoutItemPadding">
 
     <TextView
         android:id="@+id/grade_class_name"
@@ -29,5 +29,3 @@
         android:text="40"
         android:theme="@style/Content.StartIcon" />
 </LinearLayout>
-
-    </LinearLayout>

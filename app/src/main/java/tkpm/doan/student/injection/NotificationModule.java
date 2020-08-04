@@ -12,15 +12,7 @@ import tkpm.doan.student.data.models.Notification;
 @Module
 @InstallIn(ApplicationComponent.class)
 public class NotificationModule {
-    @Provides
-    List<Notification> provideNotifications(Notification notification) {
-        return Arrays.asList(notification, notification, notification);
-    }
 
-    @Provides
-    boolean provideBooleans() {
-        return false;
-    }
 
 
 }
