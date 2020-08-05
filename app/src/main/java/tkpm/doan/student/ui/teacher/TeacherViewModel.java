@@ -9,7 +9,9 @@ import androidx.lifecycle.ViewModel;
 import java.util.List;
 
 import tkpm.doan.student.data.models.Grade;
+import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.data.repositories.TeacherRepository;
+import tkpm.doan.student.ui.components.constants.Keys;
 
 public class TeacherViewModel extends ViewModel {
 
@@ -22,9 +24,19 @@ public class TeacherViewModel extends ViewModel {
         this.state = savedStateHandle; 
     }
 
-
     public LiveData<List<Grade>> getTeachingGrades() {
         // TODO remove hard-coded params
         return repositroy.getTeachingGrades("12345", 2020);
+    }
+
+    public LiveData<List<Student>> getStudents(String gradeId) {
+        return repositroy.getStudents(gradeId, 2020);
+    }
+
+    public LiveData<String> getSelectedGrade() {
+        return state.getLiveData(Keys.BUNDLE_SELECTED_GRADE);
+    }
+    public void setSelectedGrade(String gradeId) {
+        state.set(Keys.BUNDLE_SELECTED_GRADE, gradeId);
     }
 }

@@ -24,7 +24,7 @@ import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.student.StudentFragmentDirections;
 import tkpm.doan.student.ui.student.StudentViewModel;
 
-public final class ScheduleAdapter extends ImmutableAdapter<Schedule> {
+public class ScheduleAdapter extends ImmutableAdapter<Schedule> {
 
     public class ViewHolder extends AbstractViewHolder<Schedule> {
         public ViewHolder(@NonNull View itemView) {

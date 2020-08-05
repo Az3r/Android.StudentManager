@@ -10,25 +10,24 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import tkpm.doan.student.databinding.FragmentGradeListBinding;
-import tkpm.doan.student.ui.components.adapters.GradeAdapter;
-import tkpm.doan.student.ui.components.adapters.ScoreAdapter;
+import tkpm.doan.student.databinding.FragmentGradeDetailBinding;
+import tkpm.doan.student.ui.components.adapters.StudentAdapter;
 import tkpm.doan.student.ui.components.utils.RecyclerViews;
 
-public class GradeFragment extends Fragment {
-    private static final String TAG = GradeFragment.class.getName();
-    private FragmentGradeListBinding binding;
+public class GradeDetailFragment extends Fragment {
+
+    private static final String TAG = GradeDetailFragment.class.getName();
+    private FragmentGradeDetailBinding binding;
     private TeacherViewModel viewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentGradeListBinding.inflate(inflater, container, false);
+        binding = FragmentGradeDetailBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -44,19 +43,21 @@ public class GradeFragment extends Fragment {
         setupRecyclerView(binding.includeLayout.recyclerView);
     }
 
+    private void setupRecyclerView(RecyclerView recyclerView) {
+        RecyclerViews.setupListView(binding.includeLayout.recyclerView);
+
+        viewModel.getSelectedGrade().observe(getViewLifecycleOwner(), selectedGrade -> {
+            Log.i(TAG, String.valueOf(selectedGrade));
+            viewModel.getStudents(selectedGrade).observe(getViewLifecycleOwner(), students -> {
+                StudentAdapter adapter = new StudentAdapter(requireActivity(), students);
+                recyclerView.swapAdapter(adapter, true);
+            });
+        });
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-    }
-
-    private void setupRecyclerView(RecyclerView recyclerView) {
-
-        RecyclerViews.setupListView(recyclerView);
-
-        viewModel.getTeachingGrades().observe(getViewLifecycleOwner(), grades -> {
-            GradeAdapter adapter = new GradeAdapter(requireActivity(), grades);
-            recyclerView.swapAdapter(adapter, true);
-        });
     }
 }
