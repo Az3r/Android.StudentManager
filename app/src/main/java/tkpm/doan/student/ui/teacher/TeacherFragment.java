@@ -60,8 +60,7 @@ public class TeacherFragment extends Fragment {
     private List<FragmentPage> createPages() {
         return Arrays.asList(
                 new FragmentPage(new GradeFragment(), getString(R.string.text_class), R.drawable.ic_class),
-                new FragmentPage(new ScheduleFragment(), getString(R.string.text_schedule), R.drawable.ic_schedule),
-                new FragmentPage(new SettingFragment(), getString(R.string.text_setting), R.drawable.ic_setting)
+                new FragmentPage(new ScheduleFragment(), getString(R.string.text_schedule), R.drawable.ic_schedule)
         );
     }
 }

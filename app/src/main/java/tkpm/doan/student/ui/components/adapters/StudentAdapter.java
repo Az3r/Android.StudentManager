@@ -6,12 +6,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
+import android.widget.CheckBox;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.view.ActionMode;
 
-import java.security.KeyStore;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import tkpm.doan.student.R;
@@ -19,12 +20,11 @@ import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.databinding.ItemStudentMasterBinding;
 import tkpm.doan.student.ui.MainActivity;
 
-public class StudentAdapter extends ImmutableAdapter<Student> {
+public class StudentAdapter extends ImmutableAdapter<Student> implements ActionMode.Callback {
 
     private class ViewHolder extends AbstractViewHolder<Student> {
 
-        private int selected = 0;
-        private ActionMode mode;
+        private CheckBox checkBox;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -32,44 +32,45 @@ public class StudentAdapter extends ImmutableAdapter<Student> {
 
         @Override
         public void bind(Student item) {
-            ItemStudentMasterBinding binding = ItemStudentMasterBinding.bind(itemView);
-            binding.studentSelected.setOnCheckedChangeListener((compoundButton, b) -> {
-                if (b) ++selected;
-                else --selected;
 
-                if (mode != null) mode.setTitle(String.format("%d selected", selected));
+            this.itemView.setTag(item);
+            ItemStudentMasterBinding binding = ItemStudentMasterBinding.bind(itemView);
+            checkBox = binding.studentSelected;
+
+            binding.studentSelected.setOnCheckedChangeListener((compoundButton, isChecked) -> {
+
+                if (isChecked && actionMode == null) {
+                    MainActivity activity = (MainActivity) getContext();
+                    actionMode = activity.startSupportActionMode(StudentAdapter.this);
+                }
+
+                if (actionMode != null) {
+
+                    if (isChecked) selectedStudents.add(this);
+                    else selectedStudents.remove(this);
+
+                    String title = getContext().getResources().getString(R.string.format_selected, selectedStudents.size());
+                    actionMode.setTitle(title);
+                }
             });
 
+            itemView.setOnClickListener(v -> {
+                if (actionMode != null) {
+                    boolean isChecked = binding.studentSelected.isChecked();
+                    binding.studentSelected.setChecked(!isChecked);
+                } else {
 
-            itemView.setOnLongClickListener(view -> {
-                MainActivity activity = (MainActivity) getContext();
-                mode = activity.startSupportActionMode(new ActionMode.Callback() {
-                    @Override
-                    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                        mode.getMenuInflater().inflate(R.menu.student_menu, menu);
-                        return true;
-                    }
-
-                    @Override
-                    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                        return false;
-                    }
-
-                    @Override
-                    public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-                        return false;
-                    }
-
-                    @Override
-                    public void onDestroyActionMode(ActionMode mode) {
-                        ViewHolder.this.mode = null;
-                    }
-                });
-
-                return true;
+                }
             });
         }
+
+        public void unselected() {
+            checkBox.setChecked(false);
+        }
     }
+
+    private ActionMode actionMode;
+    private ArrayList<ViewHolder> selectedStudents = new ArrayList<>();
 
     public StudentAdapter(@NonNull Context context, @NonNull List<Student> list) {
         super(context, list);
@@ -80,5 +81,30 @@ public class StudentAdapter extends ImmutableAdapter<Student> {
     public AbstractViewHolder<Student> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_student_master, parent, false);
         return new ViewHolder(itemView);
+    }
+
+    @Override
+    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+        return false;
+    }
+
+    @Override
+    public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+        return false;
+    }
+
+    @Override
+    public void onDestroyActionMode(ActionMode mode) {
+        actionMode = null;
+
+        // clear all selected students
+        for (ViewHolder selectedStudent : selectedStudents) {
+            selectedStudent.unselected();
+        }
     }
 }
