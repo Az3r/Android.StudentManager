@@ -113,6 +113,6 @@
     <fragment
         android:id="@+id/scoreEditorFragment"
         android:name="tkpm.doan.student.ui.teacher.ScoreEditorFragment"
-        android:label="ScoreEditorFragment"
+        android:label="Edit score"
         tools:layout="@layout/fragment_score_editor" />
 </navigation>
