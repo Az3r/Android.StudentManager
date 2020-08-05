@@ -92,14 +92,27 @@
         android:id="@+id/gradeDetailFragment"
         android:name="tkpm.doan.student.ui.teacher.GradeDetailFragment"
         android:label="GradeDetailFragment"
-        tools:layout="@layout/fragment_grade_detail" >
+        tools:layout="@layout/fragment_grade_detail">
         <action
             android:id="@+id/action_gradeDetailFragment_to_studentDetailFragment"
             app:destination="@id/studentDetailFragment" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_student_detail"
         android:id="@+id/studentDetailFragment"
         android:name="tkpm.doan.student.ui.teacher.StudentDetailFragment"
-        android:label="StudentDetailFragment" />
+        android:label="StudentDetailFragment"
+        tools:layout="@layout/fragment_student_detail" >
+        <action
+            android:id="@+id/action_studentDetailFragment_to_scoreEditorFragment"
+            app:destination="@id/scoreEditorFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/scoreEditorFragment"
+        android:name="tkpm.doan.student.ui.teacher.ScoreEditorFragment"
+        android:label="ScoreEditorFragment"
+        tools:layout="@layout/fragment_score_editor" />
 </navigation>

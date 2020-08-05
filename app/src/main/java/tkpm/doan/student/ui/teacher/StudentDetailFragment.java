@@ -4,12 +4,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.Arrays;
@@ -38,7 +44,19 @@ public class StudentDetailFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        setupCommentSection();
+        setupFAB(binding.fab);
+    }
 
+    private void setupFAB(FloatingActionButton fab) {
+        fab.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host);
+            NavDirections directions = StudentDetailFragmentDirections.actionStudentDetailFragmentToScoreEditorFragment();
+            navController.navigate(directions);
+        });
+    }
+
+    private void setupCommentSection() {
         binding.commentInput.setOnFocusChangeListener((v, isFocused) -> {
             if (isFocused) {
                 binding.actionButtons.setVisibility(View.VISIBLE);

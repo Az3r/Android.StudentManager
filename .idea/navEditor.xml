@@ -79,6 +79,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="scoreEditorFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1666" />
+                            <option name="y" value="765" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="splashFragment">
                     <value>
                       <LayoutPositions>
@@ -105,8 +117,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="1357" />
-                            <option name="y" value="744" />
+                            <option name="x" value="1365" />
+                            <option name="y" value="764" />
                           </Point>
                         </option>
                       </LayoutPositions>
