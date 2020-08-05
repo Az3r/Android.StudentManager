@@ -1,5 +1,7 @@
 package tkpm.doan.student.data.models;
 
+import java.util.Date;
+
 public class PersonalInfo {
     private String StudentId;
     private boolean IsGraduated;
@@ -10,7 +12,7 @@ public class PersonalInfo {
     private String Email;
     private String PhoneNumber;
     private boolean IsMale;
-    private String Birthday;
+    private Date Birthday;
     private String ClassId;
 
 
@@ -52,7 +54,7 @@ public class PersonalInfo {
         return IsMale;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return Birthday;
     }
 
@@ -98,7 +100,7 @@ public class PersonalInfo {
         this.IsMale = IsMale;
     }
 
-    public void setBirthday(String Birthday) {
+    public void setBirthday(Date Birthday) {
         this.Birthday = Birthday;
     }
 

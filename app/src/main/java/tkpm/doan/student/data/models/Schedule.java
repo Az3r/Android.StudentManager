@@ -15,12 +15,11 @@ import javax.inject.Inject;
 public class Schedule {
 
     private final DayOfWeek dateOfWeek;
-
     @NonNull
-    private final List<Lesson> lessons;
+    private final List<Session> lessons;
 
     @Inject
-    public Schedule(DayOfWeek dateOfWeek, @NonNull List<Lesson> lessons) {
+    public Schedule(DayOfWeek dateOfWeek, @NonNull List<Session> lessons) {
         this.dateOfWeek = dateOfWeek;
         this.lessons = lessons;
     }
@@ -30,7 +29,7 @@ public class Schedule {
     }
 
     @NonNull
-    public List<Lesson> getLessons() {
+    public List<Session> getLessons() {
         return lessons;
     }
 
@@ -47,6 +46,6 @@ public class Schedule {
      * convert date of week value to its string representation
      */
     public String dateToString() {
-        return "Monday";
+        return dateOfWeek.name();
     }
 }

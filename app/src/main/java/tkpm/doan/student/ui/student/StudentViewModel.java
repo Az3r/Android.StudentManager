@@ -1,7 +1,5 @@
 package tkpm.doan.student.ui.student;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.hilt.Assisted;
 import androidx.hilt.lifecycle.ViewModelInject;
@@ -11,13 +9,12 @@ import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
 
 import java.util.List;
-import java.util.Objects;
 
 import tkpm.doan.student.data.models.Notification;
 import tkpm.doan.student.data.models.PersonalInfo;
 import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.data.models.Score;
-import tkpm.doan.student.data.models.Student;
+import tkpm.doan.student.data.models.Session;
 import tkpm.doan.student.data.repositories.StudentRepository;
 import tkpm.doan.student.ui.components.constants.Keys;
 
@@ -37,16 +34,20 @@ public class StudentViewModel extends ViewModel {
     }
 
     public LiveData<PersonalInfo> getPersonalInfo() {
-        return repository.getPersonalInfo("1140713");
+        return repository.getPersonalInfo(Keys.token,Keys.STUDENT_ID);
     }
 
     public LiveData<List<Score>> getScores() {
         // TODO remove hard-coded params
-        return repository.getScores(this.studentId, 1, 2016);
+        return repository.getScores(Keys.token,Keys.STUDENT_ID, 1, 2020);
+    }
+    public LiveData<List<Session>> getSchedule() {
+        // TODO remove hard-coded params
+        return repository.getSchedule(Keys.token,Keys.STUDENT_ID, 1, 2020);
     }
     public LiveData<List<Notification>> getNotification() {
         // TODO remove hard-coded params
-        return repository.getNotification("1140713");
+        return repository.getNotification(Keys.token,Keys.STUDENT_ID);
     }
 
 

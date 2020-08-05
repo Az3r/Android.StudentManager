@@ -22,6 +22,7 @@ import retrofit2.internal.EverythingIsNonNull;
 import tkpm.doan.student.data.models.Notification;
 import tkpm.doan.student.data.models.PersonalInfo;
 import tkpm.doan.student.data.models.Score;
+import tkpm.doan.student.data.models.Session;
 import tkpm.doan.student.data.models.Student;
 
 /**
@@ -36,15 +37,18 @@ public class RetrofitService {
         api = retrofit.create(RestAPI.class);
     }
 
-    public void getScores(String studentId, int semester, int year, @NonNull OnRetrofitResult<List<Score>> callback) {
-        api.getScore(studentId, semester, year).enqueue(new RetrofitListener<>(callback));
+    public void getScores(String author,String studentId, int semester, int year, @NonNull OnRetrofitResult<List<Score>> callback) {
+        api.getScore(author,studentId, semester, year).enqueue(new RetrofitListener<>(callback));
     }
-    public void getNotification(String studentId, @NonNull OnRetrofitResult<List<Notification>> callback) {
-        api.getNotification(studentId).enqueue(new RetrofitListener<>(callback));
+    public void getSchedule(String author,String studentId, int semester, int year, @NonNull OnRetrofitResult<List<Session>> callback) {
+        api.getSchedule(author,studentId, semester, year).enqueue(new RetrofitListener<>(callback));
+    }
+    public void getNotification(String author,String studentId, @NonNull OnRetrofitResult<List<Notification>> callback) {
+        api.getNotification(author,studentId).enqueue(new RetrofitListener<>(callback));
     }
 
-    public void getStudentProfile(String studentId, @NonNull OnRetrofitResult<PersonalInfo> callback) {
-        api.getStudent(studentId).enqueue(new RetrofitListener<>(callback));
+    public void getStudentProfile(String author,String studentId, @NonNull OnRetrofitResult<PersonalInfo> callback) {
+        api.getStudent(author,studentId).enqueue(new RetrofitListener<>(callback));
     }
 
 }

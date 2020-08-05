@@ -33,4 +33,7 @@
     <string name="text_search">Search</string>
     <string name="desc_grade_student">number of students of class</string>
     <string name="format_selected">%1$d selected</string>
+    <string name="male">male</string>
+    <string name="female">female</string>
+
 </resources>

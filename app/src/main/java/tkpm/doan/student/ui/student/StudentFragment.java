@@ -64,6 +64,10 @@ public class StudentFragment extends Fragment {
         ViewPager2 viewPager = binding.includeLayout.viewpager;
         TabLayout tabLayout = binding.includeLayout.tablayout;
         setupTabLayout(tabLayout, viewPager);
+
+
+
+
     }
 
     private List<FragmentPage> createPages() {
