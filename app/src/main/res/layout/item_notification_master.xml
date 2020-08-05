@@ -22,7 +22,7 @@
 
         <TextView
             android:id="@+id/notify_date"
-            style="@style/Label"
+            style="@style/Label.Important"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="6/12/2020" />

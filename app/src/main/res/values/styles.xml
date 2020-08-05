@@ -1,8 +1,11 @@
 <resources>
 
     <style name="Label" parent="TextAppearance.MaterialComponents.Caption">
-        <item name="android:textColor">?attr/colorPrimary</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Label.Important">
+        <item name="android:textColor">?attr/colorPrimary</item>
     </style>
 
     <style name="Content" parent="TextAppearance.MaterialComponents.Subtitle1">
