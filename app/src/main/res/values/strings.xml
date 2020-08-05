@@ -20,7 +20,7 @@
     <string name="text_year">Year</string>
     <string name="semester">Semester</string>
     <string name="error_empty_field">Field must not be empty</string>
-    <string name="info_login_success">Login successfully</string>
+    <string name="msg_login_success">Login successfully</string>
     <string name="text_15_minutes">15 minutes</string>
     <string name="text_45_minutes">45 minutes</string>
     <string name="text_average">Average</string>
@@ -36,4 +36,5 @@
     <string name="desc_commentor_profile">Profile picture of commentor</string>
     <string name="text_cancel">Cancel</string>
     <string name="text_submit">Submit</string>
+    <string name="msg_student_review">Review this student</string>
 </resources>

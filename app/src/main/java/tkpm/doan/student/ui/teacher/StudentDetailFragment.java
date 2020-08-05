@@ -39,11 +39,18 @@ public class StudentDetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        setupTabLayout(binding.includeLayout.tablayout, binding.includeLayout.viewpager);
-    }
+        binding.commentInput.setOnFocusChangeListener((v, isFocused) -> {
+            if (isFocused) {
+                binding.actionButtons.setVisibility(View.VISIBLE);
+            } else {
+                binding.actionButtons.setVisibility(View.GONE);
+            }
+        });
 
-    private void setupTabLayout(TabLayout tablayout, ViewPager2 viewpager) {
-        TabLayouts.setupTabLayout(tablayout, viewpager, this, createPages()).attach();
+        binding.buttonCancel.setOnClickListener(v -> {
+            binding.commentInput.getText().clear();
+            binding.commentInput.clearFocus();
+        });
     }
 
     @Override
@@ -52,10 +59,4 @@ public class StudentDetailFragment extends Fragment {
         binding = null;
     }
 
-    private List<FragmentPage> createPages() {
-        return Arrays.asList(
-                new FragmentPage(new ProfileFragment(), getString(R.string.text_profile), R.drawable.ic_account),
-                new FragmentPage(new ScoreFragment(), getString(R.string.text_score), R.drawable.ic_score)
-        );
-    }
 }
