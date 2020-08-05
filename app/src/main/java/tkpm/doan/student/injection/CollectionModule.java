@@ -16,6 +16,7 @@ import tkpm.doan.student.data.models.Notification;
 import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.data.models.Score;
 import tkpm.doan.student.data.models.Student;
+import tkpm.doan.student.data.models.TeacherSchedule;
 
 @InstallIn(ApplicationComponent.class)
 @Module
@@ -78,5 +79,10 @@ public class CollectionModule {
     @Provides
     static List<Student> provideStudents(Student student) {
         return Arrays.asList(student, student, student, student, student, student, student, student, student, student);
+    }
+
+    @Provides
+    static List<TeacherSchedule> provideTeacherSchedule(TeacherSchedule teacherSchedule) {
+        return Arrays.asList(teacherSchedule, teacherSchedule, teacherSchedule, teacherSchedule, teacherSchedule, teacherSchedule, teacherSchedule);
     }
 }

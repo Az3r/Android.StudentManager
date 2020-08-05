@@ -10,6 +10,7 @@ import dagger.hilt.InstallIn;
 import dagger.hilt.android.components.ApplicationComponent;
 import tkpm.doan.student.data.models.Grade;
 import tkpm.doan.student.data.models.Student;
+import tkpm.doan.student.data.models.TeacherSchedule;
 
 @InstallIn(ApplicationComponent.class)
 @Module
@@ -23,5 +24,10 @@ public class LiveDataModule {
     @Provides
     MutableLiveData<List<Student>> provideStudentLiveData(List<Student> students) {
         return new MutableLiveData<>(students);
+    }
+
+    @Provides
+    MutableLiveData<List<TeacherSchedule>> provideTeacherScheduleLiveData(List<TeacherSchedule> teacherSchedules) {
+        return new MutableLiveData<>(teacherSchedules);
     }
 }

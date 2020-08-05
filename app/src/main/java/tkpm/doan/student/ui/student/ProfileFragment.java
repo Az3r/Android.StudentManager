@@ -24,6 +24,7 @@ import tkpm.doan.student.ui.components.adapters.CommentAdapter;
 @AndroidEntryPoint
 public class ProfileFragment extends Fragment {
 
+
     @Inject
     public List<Comment> comments;
 
