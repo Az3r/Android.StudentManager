@@ -49,6 +49,8 @@ public class CommentAdapter extends ImmutableAdapter<Comment> {
             itemView.setOnClickListener(v -> {
                 // chuyen qua mn hinh chi tiet comment
 
+
+
             });
         }
     }

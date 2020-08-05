@@ -21,6 +21,7 @@ import java.util.List;
 import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.R;
 import tkpm.doan.student.databinding.FragmentStudentBinding;
+import tkpm.doan.student.ui.components.adapters.ScoreAdapter;
 import tkpm.doan.student.ui.components.constants.Keys;
 import tkpm.doan.student.ui.components.viewpager.FragmentPage;
 import tkpm.doan.student.ui.components.viewpager.PageAdapter;
@@ -32,7 +33,6 @@ public class StudentFragment extends Fragment {
     private static final String TAG = "StudentFragment";
     private FragmentStudentBinding binding;
     private StudentViewModel viewModel;
-
 
     @Nullable
     @Override
@@ -51,7 +51,6 @@ public class StudentFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         viewModel = new ViewModelProvider(requireActivity()).get(StudentViewModel.class);
-
         assert getArguments() != null;
         viewModel.setStudentId(getArguments().getString(Keys.STUDENT_ID));
     }
@@ -59,7 +58,6 @@ public class StudentFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         ViewPager2 viewPager = binding.includeLayout.viewpager;
         TabLayout tabLayout = binding.includeLayout.tablayout;
         setupTabLayout(tabLayout, viewPager);

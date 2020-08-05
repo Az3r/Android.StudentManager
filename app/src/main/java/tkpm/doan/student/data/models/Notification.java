@@ -1,62 +1,56 @@
 package tkpm.doan.student.data.models;
 
-import androidx.annotation.NonNull;
-
 import java.util.Date;
 
-import javax.inject.Inject;
-
 public class Notification {
+    private int NotificationId;
+    private Date CreatedOn;
+    private String ClassId;
+    private String Title;
+    private String Content;
 
-    private String id;
-    private String title;
-    private String content;
-    private String tags;
-    private boolean important;
-    private Date date;
 
-    @Inject
-    public Notification(String id, String title, String content, String tags, boolean important) {
-        this.id = id;
-        this.title = title;
-        this.content = content;
-        this.tags = tags;
-        this.important = important;
-    }
-    public Date getDate() {
-        return date;
+    // Getter Methods
+
+    public float getNotificationId() {
+        return NotificationId;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public Date getCreatedOn() {
+        return CreatedOn;
     }
 
-    public boolean isImportant() {
-        return important;
-    }
-
-    public String getId() {
-        return id;
+    public String getClassId() {
+        return ClassId;
     }
 
     public String getTitle() {
-        return title;
+        return Title;
     }
 
     public String getContent() {
-        return content;
+        return Content;
     }
 
-    public String getTags() {
-        return tags;
+    // Setter Methods
+
+    public void setNotificationId(int NotificationId) {
+        this.NotificationId = NotificationId;
     }
 
-    @NonNull
-    @Override
-    public String toString() {
-        return "Notification{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                '}';
+    public void setCreatedOn(Date CreatedOn) {
+        this.CreatedOn = CreatedOn;
+    }
+
+    public void setClassId(String ClassId) {
+        this.ClassId = ClassId;
+    }
+
+    public void setTitle(String Title) {
+        this.Title = Title;
+    }
+
+    public void setContent(String Content) {
+        this.Content = Content;
     }
 }

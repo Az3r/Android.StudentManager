@@ -78,17 +78,15 @@ public class LoginFragment extends Fragment {
         boolean isTeacher = teacherCheckBox.isChecked();
 
         new Handler().postDelayed(() -> {
+
             Toast.makeText(getContext(), R.string.msg_login_success, Toast.LENGTH_SHORT).show();
 
             new Handler().postDelayed(() -> {
-                NavDirections directions = LoginFragmentDirections.actionLoginFragmentToTeacherFragment("1140712");
+                NavDirections directions = LoginFragmentDirections.actionLoginFragmentToStudentFragment("1140712");
                 NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host);
                 navController.navigate(directions);
             }, 500);
-
         }, 1000);
-
-
     }
 
 
