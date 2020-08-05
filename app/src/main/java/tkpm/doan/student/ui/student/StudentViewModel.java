@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModel;
 import java.util.List;
 import java.util.Objects;
 
+import tkpm.doan.student.data.models.Notification;
 import tkpm.doan.student.data.models.PersonalInfo;
 import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.data.models.Score;
@@ -28,6 +29,7 @@ public class StudentViewModel extends ViewModel {
     private String studentId;
 
     private MutableLiveData<Schedule> selectedSchedule = new MutableLiveData<>();
+    private MutableLiveData<Notification> selectedNotify = new MutableLiveData<>();
 
     @ViewModelInject
     public StudentViewModel(@NonNull StudentRepository repository, @Assisted SavedStateHandle savedStateHandle) {
@@ -35,13 +37,18 @@ public class StudentViewModel extends ViewModel {
     }
 
     public LiveData<PersonalInfo> getPersonalInfo() {
-        return repository.getPersonalInfo(studentId);
+        return repository.getPersonalInfo("1140713");
     }
 
     public LiveData<List<Score>> getScores() {
         // TODO remove hard-coded params
         return repository.getScores(this.studentId, 1, 2016);
     }
+    public LiveData<List<Notification>> getNotification() {
+        // TODO remove hard-coded params
+        return repository.getNotification("1140713");
+    }
+
 
     public LiveData<Schedule> getSelectedSchedule() {
         return selectedSchedule;
@@ -55,5 +62,10 @@ public class StudentViewModel extends ViewModel {
         this.studentId = studentId;
     }
 
-
+    public void setSelectedNotify(Notification item) {
+        selectedNotify.postValue(item);
+    }
+    public LiveData<Notification> getSelectedNotify() {
+        return selectedNotify;
+    }
 }

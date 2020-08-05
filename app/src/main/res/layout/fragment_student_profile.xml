@@ -225,7 +225,6 @@
                 <include
                     android:id="@+id/include_layout"
                     layout="@layout/layout_recycler_view" />
-
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

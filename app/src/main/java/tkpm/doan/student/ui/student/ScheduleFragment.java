@@ -54,5 +54,7 @@ public class ScheduleFragment extends Fragment {
         ScheduleAdapter adapter = new ScheduleAdapter(requireActivity(), schedules);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
         recyclerView.setAdapter(adapter);
+
+
     }
 }

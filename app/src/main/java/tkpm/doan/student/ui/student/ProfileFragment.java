@@ -1,7 +1,9 @@
 package tkpm.doan.student.ui.student;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,10 +30,17 @@ import tkpm.doan.student.ui.components.adapters.CommentAdapter;
 @AndroidEntryPoint
 public class ProfileFragment extends Fragment {
 
+    private static final String TAG = ProfileFragment.class.getName();
     @Inject
     public List<Comment> comments;
-
+    private StudentViewModel viewModel;
     private FragmentStudentProfileBinding binding;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        viewModel = new ViewModelProvider(requireActivity()).get(StudentViewModel.class);
+    }
 
     @Nullable
     @Override
@@ -61,6 +70,11 @@ public class ProfileFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(decoration);
         recyclerView.setAdapter(adapter);
+
+        viewModel.getPersonalInfo().observe(getViewLifecycleOwner(), scores -> {
+            Log.d(TAG, "Lay thong tin hoc sinh thanh cong");
+        });
+
 
     }
 }

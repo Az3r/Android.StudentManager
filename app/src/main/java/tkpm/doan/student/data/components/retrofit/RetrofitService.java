@@ -19,6 +19,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.internal.EverythingIsNonNull;
+import tkpm.doan.student.data.models.Notification;
 import tkpm.doan.student.data.models.PersonalInfo;
 import tkpm.doan.student.data.models.Score;
 import tkpm.doan.student.data.models.Student;
@@ -37,6 +38,9 @@ public class RetrofitService {
 
     public void getScores(String studentId, int semester, int year, @NonNull OnRetrofitResult<List<Score>> callback) {
         api.getScore(studentId, semester, year).enqueue(new RetrofitListener<>(callback));
+    }
+    public void getNotification(String studentId, @NonNull OnRetrofitResult<List<Notification>> callback) {
+        api.getNotification(studentId).enqueue(new RetrofitListener<>(callback));
     }
 
     public void getStudentProfile(String studentId, @NonNull OnRetrofitResult<PersonalInfo> callback) {
