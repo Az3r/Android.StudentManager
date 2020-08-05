@@ -17,6 +17,7 @@ import java.util.List;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.databinding.FragmentStudentBinding;
+import tkpm.doan.student.databinding.FragmentStudentDetailBinding;
 import tkpm.doan.student.ui.components.utils.TabLayouts;
 import tkpm.doan.student.ui.components.viewpager.FragmentPage;
 import tkpm.doan.student.ui.student.NotificationFragment;
@@ -25,12 +26,12 @@ import tkpm.doan.student.ui.student.ScheduleFragment;
 import tkpm.doan.student.ui.student.ScoreFragment;
 
 public class StudentDetailFragment extends Fragment {
-    private FragmentStudentBinding binding;
+    private FragmentStudentDetailBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentStudentBinding.inflate(inflater, container, false);
+        binding = FragmentStudentDetailBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -38,7 +39,7 @@ public class StudentDetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        setupTabLayout(binding.includeLayout.tablayout, binding.includeLayout.viewpager);
+//        setupTabLayout(binding.includeLayout.tablayout, binding.includeLayout.viewpager);
     }
 
     private void setupTabLayout(TabLayout tablayout, ViewPager2 viewpager) {

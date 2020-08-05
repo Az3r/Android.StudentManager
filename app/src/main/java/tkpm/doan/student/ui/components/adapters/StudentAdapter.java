@@ -10,6 +10,10 @@ import android.widget.CheckBox;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.view.ActionMode;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
+import androidx.navigation.NavHost;
+import androidx.navigation.Navigation;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,6 +23,8 @@ import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.databinding.ItemStudentMasterBinding;
 import tkpm.doan.student.ui.MainActivity;
+import tkpm.doan.student.ui.teacher.GradeDetailFragmentDirections;
+import tkpm.doan.student.ui.teacher.TeacherFragmentDirections;
 
 public class StudentAdapter extends ImmutableAdapter<Student> implements ActionMode.Callback {
 
@@ -59,7 +65,9 @@ public class StudentAdapter extends ImmutableAdapter<Student> implements ActionM
                     boolean isChecked = binding.studentSelected.isChecked();
                     binding.studentSelected.setChecked(!isChecked);
                 } else {
-
+                    NavController navController = Navigation.findNavController((MainActivity) getContext(), R.id.nav_host);
+                    NavDirections directions = GradeDetailFragmentDirections.actionGradeDetailFragmentToStudentDetailFragment();
+                    navController.navigate(directions);
                 }
             });
         }

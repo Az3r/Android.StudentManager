@@ -34,4 +34,6 @@
     <string name="desc_grade_student">number of students of class</string>
     <string name="format_selected">%1$d selected</string>
     <string name="desc_commentor_profile">Profile picture of commentor</string>
+    <string name="text_cancel">Cancel</string>
+    <string name="text_submit">Submit</string>
 </resources>
