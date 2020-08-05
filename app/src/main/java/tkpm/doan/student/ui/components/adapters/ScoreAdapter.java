@@ -7,17 +7,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.NavController;
-import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
 
 import java.util.List;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Score;
 import tkpm.doan.student.databinding.ItemScoreBinding;
-import tkpm.doan.student.ui.MainActivity;
-import tkpm.doan.student.ui.student.StudentFragmentDirections;
 
 public class ScoreAdapter extends ImmutableAdapter<Score> {
 

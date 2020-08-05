@@ -9,20 +9,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.SavedStateViewModelFactory;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Collections;
-import java.util.List;
-
-import javax.inject.Inject;
-
 import dagger.hilt.android.AndroidEntryPoint;
-import tkpm.doan.student.data.models.Score;
 import tkpm.doan.student.databinding.FragmentScoreListBinding;
 import tkpm.doan.student.ui.components.adapters.ScoreAdapter;
 

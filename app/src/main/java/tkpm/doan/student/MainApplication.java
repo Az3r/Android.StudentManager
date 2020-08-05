@@ -2,7 +2,6 @@ package tkpm.doan.student;
 
 import android.app.Application;
 
-import dagger.hilt.DefineComponent;
 import dagger.hilt.android.HiltAndroidApp;
 
 @HiltAndroidApp

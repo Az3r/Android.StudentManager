@@ -3,7 +3,6 @@ package tkpm.doan.student.data.models;
 import androidx.annotation.NonNull;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 public class Lesson {
     private int position;

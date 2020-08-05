@@ -12,11 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.view.ActionMode;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
-import androidx.navigation.NavHost;
 import androidx.navigation.Navigation;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import tkpm.doan.student.R;
@@ -24,7 +22,6 @@ import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.databinding.ItemStudentMasterBinding;
 import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.teacher.GradeDetailFragmentDirections;
-import tkpm.doan.student.ui.teacher.TeacherFragmentDirections;
 
 public class StudentAdapter extends ImmutableAdapter<Student> implements ActionMode.Callback {
 

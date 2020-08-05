@@ -2,7 +2,6 @@ package tkpm.doan.student.ui.teacher;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import tkpm.doan.student.databinding.FragmentGradeListBinding;
 import tkpm.doan.student.ui.components.adapters.GradeAdapter;
-import tkpm.doan.student.ui.components.adapters.ScoreAdapter;
 import tkpm.doan.student.ui.components.utils.RecyclerViews;
 
 public class GradeFragment extends Fragment {

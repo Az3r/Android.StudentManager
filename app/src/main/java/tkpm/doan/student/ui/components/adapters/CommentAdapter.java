@@ -9,9 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.NavController;
-import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -20,8 +17,6 @@ import java.util.Locale;
 import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Comment;
 import tkpm.doan.student.databinding.ItemCommentBinding;
-import tkpm.doan.student.ui.MainActivity;
-import tkpm.doan.student.ui.student.StudentFragmentDirections;
 
 public class CommentAdapter extends ImmutableAdapter<Comment> {
 

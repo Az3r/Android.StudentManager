@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,11 +19,6 @@ import tkpm.doan.student.R;
 import tkpm.doan.student.databinding.FragmentTeacherBinding;
 import tkpm.doan.student.ui.components.utils.TabLayouts;
 import tkpm.doan.student.ui.components.viewpager.FragmentPage;
-import tkpm.doan.student.ui.components.viewpager.PageAdapter;
-import tkpm.doan.student.ui.setting.SettingFragment;
-import tkpm.doan.student.ui.student.NotificationFragment;
-import tkpm.doan.student.ui.student.ProfileFragment;
-import tkpm.doan.student.ui.student.ScoreFragment;
 
 public class TeacherFragment extends Fragment {
 

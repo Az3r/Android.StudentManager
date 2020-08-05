@@ -17,7 +17,6 @@ import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Notification;
 import tkpm.doan.student.databinding.ItemNotificationMasterBinding;
 import tkpm.doan.student.ui.MainActivity;
-import tkpm.doan.student.ui.components.constants.Provider;
 import tkpm.doan.student.ui.student.StudentFragmentDirections;
 
 public class NotificationAdapter extends ImmutableAdapter<Notification> {

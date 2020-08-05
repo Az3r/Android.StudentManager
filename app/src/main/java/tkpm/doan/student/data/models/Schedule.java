@@ -3,8 +3,6 @@ package tkpm.doan.student.data.models;
 import androidx.annotation.NonNull;
 
 import java.time.DayOfWeek;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import javax.inject.Inject;

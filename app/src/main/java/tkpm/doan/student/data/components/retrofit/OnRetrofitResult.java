@@ -5,7 +5,6 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-
 import okhttp3.ResponseBody;
 
 public abstract class OnRetrofitResult<T> {

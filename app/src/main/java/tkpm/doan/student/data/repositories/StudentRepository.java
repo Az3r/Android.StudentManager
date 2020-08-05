@@ -1,9 +1,5 @@
 package tkpm.doan.student.data.repositories;
 
-import android.app.Person;
-import android.nfc.Tag;
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -16,7 +12,6 @@ import tkpm.doan.student.data.components.retrofit.OnRetrofitResult;
 import tkpm.doan.student.data.components.retrofit.RetrofitService;
 import tkpm.doan.student.data.models.PersonalInfo;
 import tkpm.doan.student.data.models.Score;
-import tkpm.doan.student.data.models.Student;
 
 public class StudentRepository {
 

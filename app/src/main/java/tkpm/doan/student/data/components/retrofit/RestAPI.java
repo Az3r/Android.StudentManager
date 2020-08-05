@@ -1,19 +1,13 @@
 package tkpm.doan.student.data.components.retrofit;
 
-import android.app.Person;
-
 import java.util.List;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.http.Field;
 import retrofit2.http.GET;
-import retrofit2.http.HEAD;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import tkpm.doan.student.data.models.PersonalInfo;
 import tkpm.doan.student.data.models.Score;
-import tkpm.doan.student.data.models.Student;
 
 public interface RestAPI {
 

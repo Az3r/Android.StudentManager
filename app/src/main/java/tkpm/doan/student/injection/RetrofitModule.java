@@ -1,7 +1,5 @@
 package tkpm.doan.student.injection;
 
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 import dagger.hilt.InstallIn;
@@ -9,7 +7,6 @@ import dagger.hilt.android.components.ApplicationComponent;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import tkpm.doan.student.data.components.retrofit.RestAPI;
 
 @Module
 @InstallIn(ApplicationComponent.class)

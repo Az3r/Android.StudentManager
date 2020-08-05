@@ -1,6 +1,5 @@
 package tkpm.doan.student.injection;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;

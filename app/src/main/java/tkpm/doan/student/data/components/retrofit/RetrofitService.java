@@ -1,27 +1,14 @@
 package tkpm.doan.student.data.components.retrofit;
 
-import android.app.Person;
-import android.net.sip.SipSession;
-import android.util.Log;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Converter;
-import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.internal.EverythingIsNonNull;
 import tkpm.doan.student.data.models.PersonalInfo;
 import tkpm.doan.student.data.models.Score;
-import tkpm.doan.student.data.models.Student;
 
 /**
  * manage all operations to RESTful server

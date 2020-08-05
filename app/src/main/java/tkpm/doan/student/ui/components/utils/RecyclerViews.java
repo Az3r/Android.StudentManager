@@ -1,7 +1,5 @@
 package tkpm.doan.student.ui.components.utils;
 
-import android.content.Context;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;

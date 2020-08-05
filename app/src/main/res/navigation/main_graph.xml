@@ -99,9 +99,9 @@
     </fragment>
     <fragment
         android:id="@+id/studentDetailFragment"
-        android:name="tkpm.doan.student.ui.teacher.StudentDetailFragment"
+        android:name="tkpm.doan.student.ui.teacher.EditStudentFragment"
         android:label="StudentDetailFragment"
-        tools:layout="@layout/fragment_student_detail" >
+        tools:layout="@layout/fragment_student_profile" >
         <action
             android:id="@+id/action_studentDetailFragment_to_scoreEditorFragment"
             app:destination="@id/scoreEditorFragment"
