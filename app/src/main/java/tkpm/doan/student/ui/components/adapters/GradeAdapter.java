@@ -26,15 +26,11 @@ public class GradeAdapter extends ImmutableAdapter<Grade> {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
         }
-
         @Override
         public void bind(Grade item) {
-
-
             itemView.setOnClickListener(view -> {
                 TeacherViewModel viewModel = new ViewModelProvider((MainActivity) getContext()).get(TeacherViewModel.class);
                 viewModel.setSelectedGrade("replace this with actual gradeId");
-
                 NavController navController = Navigation.findNavController((MainActivity) getContext(), R.id.nav_host);
                 NavDirections directions = TeacherFragmentDirections.actionTeacherFragmentToGradeDetailFragment();
                 navController.navigate(directions);

@@ -68,7 +68,6 @@ public class StudentAdapter extends ImmutableAdapter<Student> implements ActionM
                 }
             });
         }
-
         public void unselected() {
             checkBox.setChecked(false);
         }

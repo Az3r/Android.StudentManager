@@ -5,8 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="ui.student.StudentFragment">
-
-
     <include
         android:id="@+id/include_layout"
         layout="@layout/layout_tab" />

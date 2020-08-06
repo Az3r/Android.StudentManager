@@ -26,7 +26,7 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.R;
-import tkpm.doan.student.data.models.Lesson;
+import tkpm.doan.student.data.models.Session;
 import tkpm.doan.student.databinding.FragmentScheduleDetailBinding;
 import tkpm.doan.student.ui.components.adapters.LessonAdapter;
 
@@ -34,8 +34,6 @@ import tkpm.doan.student.ui.components.adapters.LessonAdapter;
 public class ScheduleDetailFragment extends Fragment {
 
     private static final String TAG = ScheduleDetailFragment.class.getName();
-    @Inject
-    public List<Lesson> lessons;
     private FragmentScheduleDetailBinding binding;
     private StudentViewModel viewModel;
 
@@ -73,12 +71,16 @@ public class ScheduleDetailFragment extends Fragment {
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
-        LessonAdapter adapter = new LessonAdapter(requireContext(), lessons);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         DividerItemDecoration decoration = new DividerItemDecoration(recyclerView.getContext(), layoutManager.getOrientation());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(decoration);
-        recyclerView.setAdapter(adapter);
+        viewModel.getSelectedSchedule().observe(getViewLifecycleOwner(),schedule -> {
+            LessonAdapter adapter = new LessonAdapter(requireContext(), schedule.getLessons());
+            recyclerView.setAdapter(adapter);
+        });
+
+
 
     }
 }

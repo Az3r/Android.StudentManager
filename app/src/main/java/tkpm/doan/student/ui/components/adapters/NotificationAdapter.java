@@ -18,11 +18,12 @@ import tkpm.doan.student.data.models.Notification;
 import tkpm.doan.student.databinding.ItemNotificationMasterBinding;
 import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.student.StudentFragmentDirections;
+import tkpm.doan.student.ui.student.StudentViewModel;
 
 public class NotificationAdapter extends ImmutableAdapter<Notification> {
+    private  StudentViewModel viewModel;
 
     private class ViewHolder extends AbstractViewHolder<Notification> {
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
         }
@@ -33,13 +34,13 @@ public class NotificationAdapter extends ImmutableAdapter<Notification> {
 
             TextView notify_date = binding.notifyDate;
             TextView notify_title = binding.notifyTitle;
+            // set text item notify
             notify_title.setText(item.getTitle());
-
-            // TODO fix this line below
-            // notify_date.setText(Provider.getDateFormater().format(item.getDate()));
+            notify_date.setText(Provider.getDateFormat().format(item.getCreatedOn()));
 
             // navigate to schedule detail
             itemView.setOnClickListener(v -> {
+                viewModel.setSelectedNotify(item);
                 NavController controller = Navigation.findNavController((MainActivity) getContext(), R.id.nav_host);
                 NavDirections directions = StudentFragmentDirections.actionStudentFragmentToNotificationDetailFragment();
                 controller.navigate(directions);
@@ -47,8 +48,9 @@ public class NotificationAdapter extends ImmutableAdapter<Notification> {
         }
     }
 
-    public NotificationAdapter(@NonNull Context context, @NonNull List<Notification> list) {
-        super(context, list);
+    public NotificationAdapter(@NonNull Context context, @NonNull List<Notification> list, StudentViewModel viewModel) {
+            super(context, list);
+            this.viewModel= viewModel;
     }
 
     @NonNull

@@ -28,12 +28,22 @@ public class Score  {
         return SubjectName;
     }
 
-    public List<Float> getTest15() {
-        return Test15;
+    public String getTest15() {
+        String value="";
+        for (Float item:
+                Test15) {
+            value+=item+"  ";
+        }
+        return value;
     }
 
-    public List<Float> getTest45() {
-        return Test45;
+    public String getTest45() {
+        String value="";
+        for (Float item:
+             Test45) {
+            value+=item+"  ";
+        }
+        return value;
     }
 
     public float getTestFinal() {

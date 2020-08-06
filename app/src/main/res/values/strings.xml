@@ -38,4 +38,6 @@
     <string name="text_submit">Submit</string>
     <string name="msg_student_review">Review this student</string>
     <string name="text_subject">Subject</string>
+    <string name="male">male</string>
+    <string name="female">female</string>
 </resources>

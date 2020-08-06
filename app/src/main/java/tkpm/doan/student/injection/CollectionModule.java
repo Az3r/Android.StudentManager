@@ -11,10 +11,10 @@ import dagger.hilt.InstallIn;
 import dagger.hilt.android.components.ApplicationComponent;
 import tkpm.doan.student.data.models.Comment;
 import tkpm.doan.student.data.models.Grade;
-import tkpm.doan.student.data.models.Lesson;
 import tkpm.doan.student.data.models.Notification;
 import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.data.models.Score;
+import tkpm.doan.student.data.models.Session;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.data.models.TeacherSchedule;
 
@@ -45,7 +45,7 @@ public class CollectionModule {
     }
 
     @Provides
-    static List<Lesson> provideLessons(Lesson lesson) {
+    static List<Session> provideLessons(Session lesson) {
         return Arrays.asList(lesson, lesson, lesson, lesson, lesson);
     }
 

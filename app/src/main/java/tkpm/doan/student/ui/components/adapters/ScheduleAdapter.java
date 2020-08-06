@@ -14,14 +14,16 @@ import androidx.navigation.Navigation;
 import java.util.List;
 
 import tkpm.doan.student.R;
-import tkpm.doan.student.data.models.Lesson;
 import tkpm.doan.student.data.models.Schedule;
+import tkpm.doan.student.data.models.Session;
 import tkpm.doan.student.data.models.Subject;
 import tkpm.doan.student.databinding.ItemScheduleMasterBinding;
 import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.student.StudentFragmentDirections;
 
 public class ScheduleAdapter extends ImmutableAdapter<Schedule> {
+
+    private StudentViewModel viewModel;
 
     public class ViewHolder extends AbstractViewHolder<Schedule> {
         public ViewHolder(@NonNull View itemView) {
@@ -36,22 +38,17 @@ public class ScheduleAdapter extends ImmutableAdapter<Schedule> {
 
             // bind data to view
             dateText.setText(item.dateToString());
-            List<Lesson> lessons = item.getLessons();
-
-
+            List<Session> lessons = item.getLessons();
             StringBuilder builder = new StringBuilder();
-            for (int j = 0; j < lessons.size() - 1; j++) {
-                Subject subject = lessons.get(j).getSubject();
-                builder.append(subject.getName())
-                        .append(", ");
+            for (int j = 0; j < lessons.size(); j++) {
+                builder.append(lessons.get(j).getSubjectName())
+                        .append("\n");
             }
-
-            Subject lastItem = lessons.get(lessons.size() - 1).getSubject();
-            builder.append(lastItem.getName());
             subjectText.setText(builder.toString());
 
             // navigate to schedule detail
             itemView.setOnClickListener(v -> {
+                viewModel.setSelectedSchedule(item);
                 NavController controller = Navigation.findNavController((MainActivity) getContext(), R.id.nav_host);
                 NavDirections directions = StudentFragmentDirections.actionStudentFragmentToScheduleDetailFragment();
                 controller.navigate(directions);
@@ -59,8 +56,9 @@ public class ScheduleAdapter extends ImmutableAdapter<Schedule> {
         }
     }
 
-    public ScheduleAdapter(@NonNull Context context, @NonNull List<Schedule> list) {
+    public ScheduleAdapter(@NonNull Context context, @NonNull List<Schedule> list, StudentViewModel viewModel) {
         super(context, list);
+        this.viewModel= viewModel;
     }
 
     @NonNull
