@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
@@ -22,19 +23,19 @@
 
             <TextView
                 android:id="@+id/schedule_date"
+                style="@style/ItemTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tuesday"
                 android:textAlignment="center"
-                style="@style/ItemTitle" />
+                tools:text="@tools:sample/date/day_of_week" />
 
             <TextView
                 android:id="@+id/schedule_subject_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="6dp"
-                android:text="subject\nsubject\nsubject\nsubject\nsubject"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                tools:text="Subject 1\nSubject 2\n Subject 3\n Subject 4\n Subject 5" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

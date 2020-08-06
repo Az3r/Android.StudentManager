@@ -1,4 +1,4 @@
-package tkpm.doan.student.ui.student;
+package tkpm.doan.student.ui.launch;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -21,11 +21,17 @@ import java.util.List;
 import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.R;
 import tkpm.doan.student.databinding.FragmentStudentBinding;
+import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.components.adapters.ScoreAdapter;
 import tkpm.doan.student.ui.components.constants.Keys;
 import tkpm.doan.student.ui.components.viewpager.FragmentPage;
 import tkpm.doan.student.ui.components.viewpager.PageAdapter;
 import tkpm.doan.student.ui.components.viewpager.PageTransformer;
+import tkpm.doan.student.ui.student.NotificationFragment;
+import tkpm.doan.student.ui.student.ProfileFragment;
+import tkpm.doan.student.ui.student.ScheduleFragment;
+import tkpm.doan.student.ui.student.ScoreFragment;
+import tkpm.doan.student.ui.student.StudentViewModel;
 
 @AndroidEntryPoint
 public class StudentFragment extends Fragment {
@@ -66,6 +72,7 @@ public class StudentFragment extends Fragment {
 
 
     }
+
 
     private List<FragmentPage> createPages() {
         return Arrays.asList(

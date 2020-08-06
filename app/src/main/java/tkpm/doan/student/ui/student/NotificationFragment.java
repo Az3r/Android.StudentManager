@@ -23,6 +23,7 @@ import tkpm.doan.student.data.models.Notification;
 import tkpm.doan.student.databinding.FragmentNotificationListBinding;
 import tkpm.doan.student.ui.components.adapters.NotificationAdapter;
 import tkpm.doan.student.ui.components.adapters.ScoreAdapter;
+import tkpm.doan.student.ui.components.utils.RecyclerViews;
 
 @AndroidEntryPoint
 public class NotificationFragment extends Fragment {
@@ -41,7 +42,7 @@ public class NotificationFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding =  FragmentNotificationListBinding.inflate(inflater,container,false);
+        binding = FragmentNotificationListBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -54,16 +55,11 @@ public class NotificationFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setupRecyclerView(binding.includeLayout.recyclerView);
+        setupRecyclerView(binding.recyclerView);
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        DividerItemDecoration decoration = new DividerItemDecoration(recyclerView.getContext(), layoutManager.getOrientation());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(decoration);
-        recyclerView.startLayoutAnimation();
-
+        RecyclerViews.setupListView(recyclerView);
         viewModel.getNotification().observe(getViewLifecycleOwner(), notifications -> {
             NotificationAdapter adapter = new NotificationAdapter(requireActivity(), notifications, viewModel);
             recyclerView.swapAdapter(adapter, true);

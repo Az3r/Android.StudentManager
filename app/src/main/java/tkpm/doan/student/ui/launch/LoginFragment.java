@@ -2,6 +2,8 @@ package tkpm.doan.student.ui.launch;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +14,20 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.databinding.FragmentLoginBinding;
+import tkpm.doan.student.ui.MainActivity;
 
 public class LoginFragment extends Fragment {
     private TextInputLayout accountInput;
@@ -78,16 +83,50 @@ public class LoginFragment extends Fragment {
         boolean isTeacher = teacherCheckBox.isChecked();
 
         new Handler().postDelayed(() -> {
+
             Toast.makeText(getContext(), R.string.msg_login_success, Toast.LENGTH_SHORT).show();
 
             new Handler().postDelayed(() -> {
-                NavDirections directions = LoginFragmentDirections.actionLoginFragmentToStudentFragment("1140712");
-                NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host);
-                navController.navigate(directions);
+                setupTeacherSession();
+                NavDirections directions = LoginFragmentDirections.navgiateTeacher();
+                ((MainActivity) requireActivity()).getNavController().navigate(directions);
             }, 500);
         }, 1000);
     }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        MainActivity activity = (MainActivity) requireActivity();
+        activity.getDrawerLayout().setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        activity.getSupportActionBar().hide();
+
+        // hide botton nav when user sign out
+        activity.getBottomNav().setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        MainActivity activity = (MainActivity) requireActivity();
+        activity.getDrawerLayout().setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        activity.getSupportActionBar().show();
+    }
+
+
+    private void setupStudentSession() {
+        // Bottom navigation
+        MainActivity activity = (MainActivity) requireActivity();
+        activity.setupBottomNav(R.menu.nav_student);
+    }
+
+    private void setupTeacherSession() {
+        // Bottom navigation
+        MainActivity activity = (MainActivity) requireActivity();
+        activity.setupBottomNav(R.menu.nav_teacher);
+    }
 
     private boolean hasEmptyField() {
         return getString(accountInput).isEmpty() || getString(passwordInput).isEmpty();

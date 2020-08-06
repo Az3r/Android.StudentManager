@@ -3,7 +3,6 @@ package tkpm.doan.student.ui.student;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,8 +27,10 @@ import tkpm.doan.student.R;
 import tkpm.doan.student.data.LoggedUser;
 import tkpm.doan.student.data.models.Comment;
 import tkpm.doan.student.databinding.FragmentStudentProfileBinding;
+import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.components.adapters.CommentAdapter;
 import tkpm.doan.student.ui.components.constants.Provider;
+import tkpm.doan.student.ui.components.utils.RecyclerViews;
 
 @AndroidEntryPoint
 public class ProfileFragment extends Fragment {
@@ -48,6 +49,7 @@ public class ProfileFragment extends Fragment {
     TextView studentAddress;
     TextView studentPhone;
     TextView studentEmail;
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -70,47 +72,53 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setupRecyclerView(binding.includeLayout.recyclerView);
-
-         studentId=binding.studentId;
-         studentName=binding.studentName;
-         studentClass=binding.studentClass;
-         studentGender=binding.studentGender;
-         studentBirthday=binding.studentBirthday;
-         studentAddress=binding.studentAddress;
-         studentPhone=binding.studentPhone;
-         studentEmail=binding.studentEmail;
+        studentId = binding.studentId;
+        studentName = binding.studentName;
+        studentClass = binding.studentClass;
+        studentGender = binding.studentGender;
+        studentBirthday = binding.studentBirthday;
+        studentAddress = binding.studentAddress;
+        studentPhone = binding.studentPhone;
+        studentEmail = binding.studentEmail;
+        setupRecyclerView(binding.recyclerView);
+        setupViewModel();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        MainActivity activity = (MainActivity) requireActivity();
+        activity.getBottomNav().setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        MainActivity activity = (MainActivity) requireActivity();
+        activity.getBottomNav().setVisibility(View.VISIBLE);
+    }
 
     @SuppressLint("SetTextI18n")
     private void setupRecyclerView(RecyclerView recyclerView) {
-        CommentAdapter adapter = new CommentAdapter(requireContext(), comments);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        DividerItemDecoration decoration = new DividerItemDecoration(recyclerView.getContext(), layoutManager.getOrientation());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(decoration);
-        recyclerView.setAdapter(adapter);
 
+        RecyclerViews.setupListView(recyclerView);
+
+        CommentAdapter adapter = new CommentAdapter(requireContext(), comments);
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void setupViewModel() {
         viewModel.getPersonalInfo().observe(getViewLifecycleOwner(), personalInfo -> {
             studentId.setText(personalInfo.getStudentId());
-            studentName.setText(personalInfo.getFirstName()+" "
-                    +personalInfo.getMiddleName()+" "
-                    +personalInfo.getLastName());
+
+            String fullname = getContext().getResources().getString(R.string.format_full_name, personalInfo.getLastName(), personalInfo.getMiddleName(), personalInfo.getFirstName());
+            studentName.setText(fullname);
             studentClass.setText(personalInfo.getClassId());
-            if(personalInfo.getIsMale())
-            {
-                studentGender.setText(getString(R.string.male));
-            }
-            else {
-                studentGender.setText(getString(R.string.female));
-            }
+            studentGender.setText(getString(personalInfo.getIsMale() ? R.string.male : R.string.female));
             studentBirthday.setText(Provider.getDateFormat().format(personalInfo.getBirthday()));
             studentAddress.setText(personalInfo.getAddress());
             studentPhone.setText(personalInfo.getPhoneNumber());
             studentEmail.setText(personalInfo.getEmail());
         });
-
-
     }
 }

@@ -4,7 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+<<<<<<< HEAD
     tools:context="ui.student.StudentFragment">
+=======
+    tools:context=".ui.launch.StudentFragment">
+
+
+>>>>>>> me
     <include
         android:id="@+id/include_layout"
         layout="@layout/layout_tab" />

@@ -19,11 +19,14 @@ import tkpm.doan.student.data.models.Session;
 import tkpm.doan.student.data.models.Subject;
 import tkpm.doan.student.databinding.ItemScheduleMasterBinding;
 import tkpm.doan.student.ui.MainActivity;
-import tkpm.doan.student.ui.student.StudentFragmentDirections;
+import tkpm.doan.student.ui.student.ScheduleFragmentDirections;
 
 public class ScheduleAdapter extends ImmutableAdapter<Schedule> {
 
-    private StudentViewModel viewModel;
+
+    public ScheduleAdapter(@NonNull Context context, @NonNull List<Schedule> list) {
+        super(context, list);
+    }
 
     public class ViewHolder extends AbstractViewHolder<Schedule> {
         public ViewHolder(@NonNull View itemView) {
@@ -48,18 +51,14 @@ public class ScheduleAdapter extends ImmutableAdapter<Schedule> {
 
             // navigate to schedule detail
             itemView.setOnClickListener(v -> {
-                viewModel.setSelectedSchedule(item);
-                NavController controller = Navigation.findNavController((MainActivity) getContext(), R.id.nav_host);
-                NavDirections directions = StudentFragmentDirections.actionStudentFragmentToScheduleDetailFragment();
-                controller.navigate(directions);
+
+                MainActivity activity = (MainActivity) getContext();
+                NavDirections directions = ScheduleFragmentDirections.navigateScheduleDetail();
+                activity.getNavController().navigate(directions);
             });
         }
     }
 
-    public ScheduleAdapter(@NonNull Context context, @NonNull List<Schedule> list, StudentViewModel viewModel) {
-        super(context, list);
-        this.viewModel= viewModel;
-    }
 
     @NonNull
     @Override

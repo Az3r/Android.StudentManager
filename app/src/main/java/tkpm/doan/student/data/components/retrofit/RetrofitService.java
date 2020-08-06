@@ -8,11 +8,15 @@ import javax.inject.Inject;
 
 import retrofit2.Retrofit;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import tkpm.doan.student.data.models.PersonalInfo;
 import tkpm.doan.student.data.models.Score;
 =======
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.internal.EverythingIsNonNull;
+=======
+
+>>>>>>> me
 import tkpm.doan.student.data.models.Notification;
 import tkpm.doan.student.data.models.PersonalInfo;
 import tkpm.doan.student.data.models.Score;

@@ -29,13 +29,12 @@ import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Lesson;
 import tkpm.doan.student.databinding.FragmentScheduleDetailBinding;
 import tkpm.doan.student.ui.components.adapters.LessonAdapter;
+import tkpm.doan.student.ui.components.utils.RecyclerViews;
 
 @AndroidEntryPoint
 public class ScheduleDetailFragment extends Fragment {
 
     private static final String TAG = ScheduleDetailFragment.class.getName();
-    @Inject
-    public List<Lesson> lessons;
     private FragmentScheduleDetailBinding binding;
     private TeacherViewModel viewModel;
 
@@ -61,23 +60,11 @@ public class ScheduleDetailFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setupRecyclerView(binding.includeLayout.recyclerView);
-        setupToolbar(binding.toolbar);
-    }
-
-    private void setupToolbar(MaterialToolbar toolbar) {
-        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host);
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration);
-        toolbar.setTitle("Monday");
+        setupRecyclerView(binding.recyclerView);
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
-        LessonAdapter adapter = new LessonAdapter(requireContext(), lessons);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        DividerItemDecoration decoration = new DividerItemDecoration(recyclerView.getContext(), layoutManager.getOrientation());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(decoration);
-        recyclerView.setAdapter(adapter);
+        RecyclerViews.setupListView(recyclerView);
+
     }
 }

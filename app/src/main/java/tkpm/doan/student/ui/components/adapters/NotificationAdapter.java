@@ -17,11 +17,12 @@ import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Notification;
 import tkpm.doan.student.databinding.ItemNotificationMasterBinding;
 import tkpm.doan.student.ui.MainActivity;
-import tkpm.doan.student.ui.student.StudentFragmentDirections;
+import tkpm.doan.student.ui.components.constants.Provider;
+import tkpm.doan.student.ui.student.NotificationFragmentDirections;
 import tkpm.doan.student.ui.student.StudentViewModel;
 
 public class NotificationAdapter extends ImmutableAdapter<Notification> {
-    private  StudentViewModel viewModel;
+    private StudentViewModel viewModel;
 
     private class ViewHolder extends AbstractViewHolder<Notification> {
         public ViewHolder(@NonNull View itemView) {
@@ -38,19 +39,19 @@ public class NotificationAdapter extends ImmutableAdapter<Notification> {
             notify_title.setText(item.getTitle());
             notify_date.setText(Provider.getDateFormat().format(item.getCreatedOn()));
 
-            // navigate to schedule detail
+            // navigate to notification detail
             itemView.setOnClickListener(v -> {
                 viewModel.setSelectedNotify(item);
-                NavController controller = Navigation.findNavController((MainActivity) getContext(), R.id.nav_host);
-                NavDirections directions = StudentFragmentDirections.actionStudentFragmentToNotificationDetailFragment();
-                controller.navigate(directions);
+                MainActivity activity = (MainActivity) getContext();
+                NavDirections directions = NotificationFragmentDirections.navgiateNotifyDetail();
+                activity.getNavController().navigate(directions);
             });
         }
     }
 
     public NotificationAdapter(@NonNull Context context, @NonNull List<Notification> list, StudentViewModel viewModel) {
-            super(context, list);
-            this.viewModel= viewModel;
+        super(context, list);
+        this.viewModel = viewModel;
     }
 
     @NonNull

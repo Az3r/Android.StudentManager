@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_account"
+        android:title="@string/text_your_profile"
+        app:showAsAction="always" />
+
+    <group android:id="@+id/group_app">
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_setting"
+            android:title="@string/text_setting"
+            app:showAsAction="ifRoom" />
+
+        <item
+            android:id="@+id/nav_app_info"
+            android:icon="@drawable/ic_info"
+            android:title="@string/text_about"
+            app:showAsAction="ifRoom" />
+    </group>
+
+    <item
+        android:id="@+id/nav_sign_out"
+        android:icon="@drawable/ic_logout"
+        android:title="@string/text_logout"
+        app:showAsAction="always" />
+</menu>

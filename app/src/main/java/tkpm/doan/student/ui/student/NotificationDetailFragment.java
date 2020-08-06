@@ -3,6 +3,9 @@ package tkpm.doan.student.ui.student;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -31,10 +34,11 @@ public class NotificationDetailFragment extends Fragment {
         super.onAttach(context);
         viewModel = new ViewModelProvider(requireActivity()).get(StudentViewModel.class);
     }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentNotificationDetailBinding.inflate(inflater,container,false);
+        binding = FragmentNotificationDetailBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -47,15 +51,24 @@ public class NotificationDetailFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.toolbar.setOnMenuItemClickListener(item -> {return  false;});
-        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host);
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupWithNavController(binding.toolbar, navController, appBarConfiguration);
-        title= binding.notifyTitle;
-        content=binding.notifyContent;
-        viewModel.getSelectedNotify().observe(getViewLifecycleOwner(), notifications -> {
-            title.setText(notifications.getTitle());
-            content.setText(notifications.getContent());
+        setHasOptionsMenu(true);
+
+        title = binding.notifyTitle;
+        content = binding.notifyContent;
+        viewModel.getSelectedNotify().observe(getViewLifecycleOwner(), notify -> {
+            title.setText(notify.getTitle());
+            content.setText(notify.getContent());
         });
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.action_notify, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }

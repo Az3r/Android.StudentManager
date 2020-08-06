@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="24dp">
@@ -9,6 +10,7 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_gravity="center"
+        android:backgroundTint="?attr/colorAccent"
         android:clickable="true"
         android:contentDescription="@string/desc_important_notification"
         android:focusable="true"
@@ -25,16 +27,16 @@
             style="@style/Label.Important"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="6/12/2020" />
+            tools:text="@tools:sample/date/ddmmyy" />
 
         <TextView
+            style="@style/TextAppearance.MaterialComponents.Headline6"
             android:id="@+id/notify_title"
-            style="@style/Content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="Thong bao ve ki thi trung hoc pho thong cap 3, thong cap 3, thong cap 3" />
+            tools:text="Thong bao ve ki thi trung hoc pho thong cap 3, thong cap 3, thong cap 3" />
 
 
     </LinearLayout>
