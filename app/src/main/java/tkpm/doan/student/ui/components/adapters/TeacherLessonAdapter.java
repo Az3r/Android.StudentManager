@@ -33,6 +33,6 @@ public class TeacherLessonAdapter extends ImmutableAdapter<Lesson> {
     @Override
     public AbstractViewHolder<Lesson> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_schedule_detail, parent, false);
-        return new LessonAdapter.ViewHolder(itemView);
+        return new ViewHolder(itemView);
     }
 }

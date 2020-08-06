@@ -14,11 +14,9 @@ import tkpm.doan.student.data.models.Notification;
 import tkpm.doan.student.data.models.PersonalInfo;
 import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.data.models.Score;
-<<<<<<< HEAD
-=======
 import tkpm.doan.student.data.models.Session;
->>>>>>> 5446796305a19ef18f1a44b9a300219ce52f80ab
 import tkpm.doan.student.data.repositories.StudentRepository;
+import tkpm.doan.student.ui.components.constants.Keys;
 
 public class StudentViewModel extends ViewModel {
 

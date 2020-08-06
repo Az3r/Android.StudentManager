@@ -13,11 +13,8 @@ import tkpm.doan.student.data.components.retrofit.RetrofitService;
 import tkpm.doan.student.data.models.Notification;
 import tkpm.doan.student.data.models.PersonalInfo;
 import tkpm.doan.student.data.models.Score;
-<<<<<<< HEAD
-=======
 import tkpm.doan.student.data.models.Session;
 import tkpm.doan.student.data.models.Student;
->>>>>>> 5446796305a19ef18f1a44b9a300219ce52f80ab
 
 public class StudentRepository {
 
@@ -30,9 +27,9 @@ public class StudentRepository {
         this.retrofit = retrofit;
     }
 
-    public LiveData<PersonalInfo> getPersonalInfo(String author,String studentId) {
+    public LiveData<PersonalInfo> getPersonalInfo(String author, String studentId) {
         final MutableLiveData<PersonalInfo> info = new MutableLiveData<>();
-        retrofit.getStudentProfile(author,studentId, new OnRetrofitResult<PersonalInfo>() {
+        retrofit.getStudentProfile(author, studentId, new OnRetrofitResult<PersonalInfo>() {
             @Override
             public void onSuccess(PersonalInfo result) {
                 info.postValue(result);
@@ -40,9 +37,10 @@ public class StudentRepository {
         });
         return info;
     }
-    public LiveData<List<Notification>> getNotification(String author,String studentId) {
+
+    public LiveData<List<Notification>> getNotification(String author, String studentId) {
         final MutableLiveData<List<Notification>> info = new MutableLiveData<>();
-        retrofit.getNotification(author,studentId, new OnRetrofitResult<List<Notification>>() {
+        retrofit.getNotification(author, studentId, new OnRetrofitResult<List<Notification>>() {
             @Override
             public void onSuccess(List<Notification> result) {
                 info.postValue(result);
@@ -51,9 +49,9 @@ public class StudentRepository {
         return info;
     }
 
-    public LiveData<List<Score>> getScores(String author,String studentId, int semester, int year) {
+    public LiveData<List<Score>> getScores(String author, String studentId, int semester, int year) {
         final MutableLiveData<List<Score>> scores = new MutableLiveData<>();
-        retrofit.getScores(author,studentId, semester, year, new OnRetrofitResult<List<Score>>() {
+        retrofit.getScores(author, studentId, semester, year, new OnRetrofitResult<List<Score>>() {
             @Override
             public void onSuccess(List<Score> result) {
                 scores.postValue(result);
@@ -61,9 +59,10 @@ public class StudentRepository {
         });
         return scores;
     }
-    public LiveData<List<Session>> getSchedule(String author,String studentId, int semester, int year) {
+
+    public LiveData<List<Session>> getSchedule(String author, String studentId, int semester, int year) {
         final MutableLiveData<List<Session>> scores = new MutableLiveData<>();
-        retrofit.getSchedule(author,studentId, semester, year, new OnRetrofitResult<List<Session>>() {
+        retrofit.getSchedule(author, studentId, semester, year, new OnRetrofitResult<List<Session>>() {
             @Override
             public void onSuccess(List<Session> result) {
                 scores.postValue(result);
