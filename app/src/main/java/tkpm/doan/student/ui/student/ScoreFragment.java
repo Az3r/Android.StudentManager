@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.databinding.FragmentScoreListBinding;
 import tkpm.doan.student.ui.components.adapters.ScoreAdapter;
+import tkpm.doan.student.ui.components.utils.RecyclerViews;
 
 @AndroidEntryPoint
 public class ScoreFragment extends Fragment {
@@ -47,15 +48,12 @@ public class ScoreFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setupRecyclerView(binding.includeLayout.recyclerView);
+        setupRecyclerView(binding.recyclerView);
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        DividerItemDecoration decoration = new DividerItemDecoration(recyclerView.getContext(), layoutManager.getOrientation());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(decoration);
+        RecyclerViews.setupListView(recyclerView);
 
         viewModel.getScores().observe(getViewLifecycleOwner(), scores -> {
             ScoreAdapter adapter = new ScoreAdapter(requireActivity(), scores);

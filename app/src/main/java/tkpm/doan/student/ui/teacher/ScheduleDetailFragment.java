@@ -29,6 +29,7 @@ import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Lesson;
 import tkpm.doan.student.databinding.FragmentScheduleDetailBinding;
 import tkpm.doan.student.ui.components.adapters.LessonAdapter;
+import tkpm.doan.student.ui.components.utils.RecyclerViews;
 
 @AndroidEntryPoint
 public class ScheduleDetailFragment extends Fragment {
@@ -61,15 +62,13 @@ public class ScheduleDetailFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setupRecyclerView(binding.includeLayout.recyclerView);
+        setupRecyclerView(binding.recyclerView);
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
+        RecyclerViews.setupListView(recyclerView);
+
         LessonAdapter adapter = new LessonAdapter(requireContext(), lessons);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        DividerItemDecoration decoration = new DividerItemDecoration(recyclerView.getContext(), layoutManager.getOrientation());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(decoration);
         recyclerView.setAdapter(adapter);
     }
 }

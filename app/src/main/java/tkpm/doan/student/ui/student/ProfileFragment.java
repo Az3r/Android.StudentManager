@@ -25,6 +25,7 @@ import tkpm.doan.student.data.models.Comment;
 import tkpm.doan.student.databinding.FragmentStudentProfileBinding;
 import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.components.adapters.CommentAdapter;
+import tkpm.doan.student.ui.components.utils.RecyclerViews;
 
 @AndroidEntryPoint
 public class ProfileFragment extends Fragment {
@@ -58,7 +59,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setupRecyclerView(binding.includeLayout.recyclerView);
+        setupRecyclerView(binding.recyclerView);
 
     }
 
@@ -77,13 +78,11 @@ public class ProfileFragment extends Fragment {
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
-        CommentAdapter adapter = new CommentAdapter(requireContext(), comments);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        DividerItemDecoration decoration = new DividerItemDecoration(recyclerView.getContext(), layoutManager.getOrientation());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(decoration);
-        recyclerView.setAdapter(adapter);
 
+        RecyclerViews.setupListView(recyclerView);
+
+        CommentAdapter adapter = new CommentAdapter(requireContext(), comments);
+        recyclerView.setAdapter(adapter);
         viewModel.getPersonalInfo().observe(getViewLifecycleOwner(), scores -> {
             Log.d(TAG, "Lay thong tin hoc sinh thanh cong");
         });
