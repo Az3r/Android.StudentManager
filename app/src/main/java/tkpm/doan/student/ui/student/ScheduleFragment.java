@@ -19,6 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.databinding.FragmentScheduleListBinding;
 import tkpm.doan.student.ui.components.adapters.ScheduleAdapter;
+import tkpm.doan.student.ui.components.utils.RecyclerViews;
 
 @AndroidEntryPoint
 public class ScheduleFragment extends Fragment {
@@ -47,12 +48,13 @@ public class ScheduleFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setupRecyclerView(binding.includeLayout.recyclerView);
+        setupRecyclerView(binding.recyclerView);
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
+        RecyclerViews.setupGridView(recyclerView, 1);
+
         ScheduleAdapter adapter = new ScheduleAdapter(requireActivity(), schedules);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
         recyclerView.setAdapter(adapter);
 
 

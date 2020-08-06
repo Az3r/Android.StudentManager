@@ -23,6 +23,7 @@ import javax.inject.Inject;
 import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.data.models.Comment;
 import tkpm.doan.student.databinding.FragmentStudentProfileBinding;
+import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.components.adapters.CommentAdapter;
 
 @AndroidEntryPoint
@@ -61,6 +62,19 @@ public class ProfileFragment extends Fragment {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        MainActivity activity = (MainActivity) requireActivity();
+        activity.getBottomNav().setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        MainActivity activity = (MainActivity) requireActivity();
+        activity.getBottomNav().setVisibility(View.VISIBLE);
+    }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
         CommentAdapter adapter = new CommentAdapter(requireContext(), comments);
@@ -73,7 +87,5 @@ public class ProfileFragment extends Fragment {
         viewModel.getPersonalInfo().observe(getViewLifecycleOwner(), scores -> {
             Log.d(TAG, "Lay thong tin hoc sinh thanh cong");
         });
-
-
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -10,7 +11,7 @@
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:contentDescription="@string/desc_teacher_image"
-        android:src="@drawable/ic_picture" />
+        tools:background="@tools:sample/backgrounds/scenic" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,16 +28,16 @@
                 android:id="@+id/comment_teacher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="teacher's name"
                 android:textColor="?attr/colorOnSurface"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="@tools:sample/full_names" />
 
             <TextView
                 android:id="@+id/comment_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:text="(comment date)" />
+                tools:text="@tools:sample/date/ddmmyy" />
         </LinearLayout>
 
         <TextView
@@ -45,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="this comment maybe really long or short,this comment maybe really long or short" />
+            tools:text="A sample of comment" />
     </LinearLayout>
 
 </LinearLayout>

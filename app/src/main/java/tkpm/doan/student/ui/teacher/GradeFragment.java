@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import tkpm.doan.student.databinding.FragmentGradeListBinding;
+import tkpm.doan.student.databinding.LayoutListBinding;
 import tkpm.doan.student.ui.components.adapters.GradeAdapter;
 import tkpm.doan.student.ui.components.utils.RecyclerViews;
 
@@ -37,7 +38,7 @@ public class GradeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setupRecyclerView(binding.includeLayout.recyclerView);
+        setupRecyclerView(binding.recyclerView);
     }
 
     @Override
