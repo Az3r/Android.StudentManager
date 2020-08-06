@@ -19,7 +19,7 @@ import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.data.models.Subject;
 import tkpm.doan.student.databinding.ItemScheduleMasterBinding;
 import tkpm.doan.student.ui.MainActivity;
-import tkpm.doan.student.ui.student.StudentFragmentDirections;
+import tkpm.doan.student.ui.launch.StudentFragmentDirections;
 
 public class ScheduleAdapter extends ImmutableAdapter<Schedule> {
 

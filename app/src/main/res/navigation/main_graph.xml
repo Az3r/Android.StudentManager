@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/studentFragment"
-        android:name="tkpm.doan.student.ui.student.StudentFragment"
+        android:name="tkpm.doan.student.ui.launch.StudentFragment"
         android:label="StudentFragment"
         tools:layout="@layout/fragment_student">
         <action

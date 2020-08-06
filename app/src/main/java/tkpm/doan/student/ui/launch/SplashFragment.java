@@ -13,6 +13,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import tkpm.doan.student.R;
+import tkpm.doan.student.ui.MainActivity;
 
 public class SplashFragment extends Fragment {
     @Nullable
@@ -29,5 +30,17 @@ public class SplashFragment extends Fragment {
             NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host);
             navController.navigate(R.id.action_splashFragment_to_loginFragment);
         }, 1000);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity) requireActivity()).getSupportActionBar().hide();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        ((MainActivity) requireActivity()).getSupportActionBar().show();
     }
 }
