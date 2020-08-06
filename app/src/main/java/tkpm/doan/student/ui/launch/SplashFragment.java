@@ -2,6 +2,7 @@ package tkpm.doan.student.ui.launch;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import tkpm.doan.student.R;
@@ -27,8 +29,9 @@ public class SplashFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         new Handler().postDelayed(() -> {
-            NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host);
-            navController.navigate(R.id.action_splashFragment_to_loginFragment);
+            NavDirections directions = SplashFragmentDirections.actionSplashFragmentToLoginFragment();
+            NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host);
+            navController.navigate(R.id.login);
         }, 1000);
     }
 
@@ -41,6 +44,6 @@ public class SplashFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        ((MainActivity) requireActivity()).getSupportActionBar().show();
+        // no need to show action bar again because LoginFragment doesn't use action bar
     }
 }

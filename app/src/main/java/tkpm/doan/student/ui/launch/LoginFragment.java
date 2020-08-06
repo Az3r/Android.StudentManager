@@ -2,6 +2,7 @@ package tkpm.doan.student.ui.launch;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,23 +83,27 @@ public class LoginFragment extends Fragment {
 
             Toast.makeText(getContext(), R.string.msg_login_success, Toast.LENGTH_SHORT).show();
 
-            new Handler().postDelayed(() -> {
-                NavDirections directions = LoginFragmentDirections.actionLoginFragmentToStudentFragment("1140712");
-                NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host);
-                navController.navigate(directions);
-            }, 500);
+            new Handler().postDelayed(this::setupStudentSession, 500);
         }, 1000);
+    }
+
+    private void setupStudentSession() {
+        MainActivity activity = (MainActivity) requireActivity();
+
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        Log.i("hello", "onResume");
         ((MainActivity) requireActivity()).getSupportActionBar().hide();
     }
 
     @Override
     public void onStop() {
         super.onStop();
+        Log.i("hello", "onStop");
         ((MainActivity) requireActivity()).getSupportActionBar().show();
     }
 

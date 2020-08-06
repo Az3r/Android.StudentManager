@@ -9,13 +9,15 @@
     tools:context=".ui.MainActivity"
     tools:openDrawer="start">
 
-    <include android:id="@+id/appbar_layout" layout="@layout/app_bar_main" />
+    <include
+        android:id="@+id/appbar_layout"
+        layout="@layout/app_bar_main" />
 
     <com.google.android.material.navigation.NavigationView
-
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/menu_sidebar" />
