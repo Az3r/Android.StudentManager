@@ -39,4 +39,6 @@
     <string name="msg_student_review">Review this student</string>
     <string name="text_subject">Subject</string>
     <string name="desc_logged_user_profile">Profile image of logged in user</string>
+    <string name="text_your_profile">Your profile</string>
+    <string name="text_about">About</string>
 </resources>
