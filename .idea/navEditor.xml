@@ -337,7 +337,7 @@
                                   </option>
                                   <option name="myPositions">
                                     <map>
-                                      <entry key="navigate_score_detail">
+                                      <entry key="navigate_schedule_detail">
                                         <value>
                                           <LayoutPositions />
                                         </value>
@@ -477,8 +477,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-485" />
-                            <option name="y" value="715" />
+                            <option name="x" value="-507" />
+                            <option name="y" value="730" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -489,8 +489,20 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-476" />
-                            <option name="y" value="366" />
+                            <option name="x" value="-492" />
+                            <option name="y" value="369" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="placeholder3">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-182" />
+                            <option name="y" value="364" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -507,7 +519,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_splash_to_login">
+                            <entry key="navigate_login">
                               <value>
                                 <LayoutPositions />
                               </value>

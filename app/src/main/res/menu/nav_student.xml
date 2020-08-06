@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/menu_student_schedule"
+        android:id="@+id/nav_student_schedule_list"
         android:icon="@drawable/ic_schedule"
         android:title="@string/text_schedule" />
 
     <item
-        android:id="@+id/menu_student_score"
+        android:id="@+id/nav_student_score_list"
         android:icon="@drawable/ic_score"
         android:title="@string/text_score" />
 </menu>

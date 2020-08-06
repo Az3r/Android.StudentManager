@@ -23,7 +23,9 @@
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/navgiate_student"
-            app:destination="@id/graph_student" />
+            app:destination="@id/graph_student"
+            app:popUpTo="@id/login"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/navgiate_teacher"
             app:destination="@id/graph_teacher" />
@@ -43,7 +45,7 @@
             android:label="@string/text_schedule"
             tools:layout="@layout/layout_list">
             <action
-                android:id="@+id/navigate_score_detail"
+                android:id="@+id/navigate_schedule_detail"
                 app:destination="@id/nav_student_schedule_detail" />
         </fragment>
         <fragment
@@ -91,4 +93,9 @@
     <fragment
         android:id="@+id/nav_app_info"
         android:label="@string/text_about" />
+    <fragment
+        android:name="tkpm.doan.student.ui.student.ProfileFragment"
+        android:id="@+id/nav_profile"
+        android:label="@string/text_profile"
+        tools:layout="@layout/fragment_student_profile" />
 </navigation>

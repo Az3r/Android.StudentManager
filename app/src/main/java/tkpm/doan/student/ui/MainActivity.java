@@ -2,6 +2,7 @@ package tkpm.doan.student.ui;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private NavController navController;
+    private AppBarConfiguration appBarConfiguration;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +47,16 @@ public class MainActivity extends AppCompatActivity {
         assert hostFragment != null;
         navController = hostFragment.getNavController();
 
+        binding.navView.setNavigationItemSelectedListener(item -> false);
+
+        appBarConfiguration = new AppBarConfiguration
+                .Builder(R.id.nav_student_score_list, R.id.nav_student_schedule_list, R.id.nav_profile)
+                .setOpenableLayout(binding.drawerLayout)
+                .build();
+
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(binding.navView, navController);
+        NavigationUI.setupWithNavController(binding.appbarLayout.bottomNav, navController);
     }
 
     private void setupToolbar(Toolbar toolbar, NavController navController, AppBarConfiguration appBarConfiguration) {
@@ -57,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        return navController.navigateUp() || super.onSupportNavigateUp();
+        return NavigationUI.navigateUp(navController,appBarConfiguration) || super.onSupportNavigateUp();
     }
 
     @NonNull
@@ -76,7 +89,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @NonNull
-    public NavController getNavController(){
+    public NavController getNavController() {
         return navController;
+    }
+
+    public void setupBottomNav(int menuId) {
+        BottomNavigationView bottomNav = binding.appbarLayout.bottomNav;
+        bottomNav.setVisibility(View.VISIBLE);
+        bottomNav.getMenu().clear();
+        bottomNav.inflateMenu(R.menu.nav_student);
     }
 }

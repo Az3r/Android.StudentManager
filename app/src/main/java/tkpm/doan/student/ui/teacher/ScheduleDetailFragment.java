@@ -62,14 +62,6 @@ public class ScheduleDetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setupRecyclerView(binding.includeLayout.recyclerView);
-        setupToolbar(binding.toolbar);
-    }
-
-    private void setupToolbar(MaterialToolbar toolbar) {
-        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host);
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration);
-        toolbar.setTitle("Monday");
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
