@@ -41,4 +41,6 @@
     <string name="desc_logged_user_profile">Profile image of logged in user</string>
     <string name="text_your_profile">Your profile</string>
     <string name="text_about">About</string>
+    <string name="text_scoreboard">Scoreboard</string>
+    <string name="text_logout">Logout</string>
 </resources>

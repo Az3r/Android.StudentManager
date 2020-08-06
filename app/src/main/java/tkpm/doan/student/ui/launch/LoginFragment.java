@@ -2,6 +2,7 @@ package tkpm.doan.student.ui.launch;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,11 +14,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
@@ -83,28 +85,29 @@ public class LoginFragment extends Fragment {
 
             Toast.makeText(getContext(), R.string.msg_login_success, Toast.LENGTH_SHORT).show();
 
-            new Handler().postDelayed(this::setupStudentSession, 500);
+            new Handler().postDelayed(() -> {
+                NavDirections directions = LoginFragmentDirections.navgiateStudent();
+                ((MainActivity) requireActivity()).getNavController().navigate(directions);
+            }, 500);
         }, 1000);
     }
 
-    private void setupStudentSession() {
-        MainActivity activity = (MainActivity) requireActivity();
-
-
-    }
 
     @Override
     public void onResume() {
         super.onResume();
-        Log.i("hello", "onResume");
-        ((MainActivity) requireActivity()).getSupportActionBar().hide();
+
+        MainActivity activity = (MainActivity) requireActivity();
+        activity.getDrawerLayout().setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        activity.getSupportActionBar().hide();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        Log.i("hello", "onStop");
-        ((MainActivity) requireActivity()).getSupportActionBar().show();
+        MainActivity activity = (MainActivity) requireActivity();
+        activity.getDrawerLayout().setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        activity.getSupportActionBar().show();
     }
 
     private boolean hasEmptyField() {
