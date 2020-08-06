@@ -9,4 +9,9 @@
         android:id="@+id/nav_student_score_list"
         android:icon="@drawable/ic_score"
         android:title="@string/text_score" />
+
+    <item
+        android:id="@+id/nav_student_notify_list"
+        android:icon="@drawable/ic_notification"
+        android:title="@string/text_notification" />
 </menu>

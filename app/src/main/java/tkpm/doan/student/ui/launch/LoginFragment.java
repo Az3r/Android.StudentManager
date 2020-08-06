@@ -87,8 +87,8 @@ public class LoginFragment extends Fragment {
             Toast.makeText(getContext(), R.string.msg_login_success, Toast.LENGTH_SHORT).show();
 
             new Handler().postDelayed(() -> {
-                setupStudentSession();
-                NavDirections directions = LoginFragmentDirections.navgiateStudent();
+                setupTeacherSession();
+                NavDirections directions = LoginFragmentDirections.navgiateTeacher();
                 ((MainActivity) requireActivity()).getNavController().navigate(directions);
             }, 500);
         }, 1000);
@@ -102,6 +102,9 @@ public class LoginFragment extends Fragment {
         MainActivity activity = (MainActivity) requireActivity();
         activity.getDrawerLayout().setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         activity.getSupportActionBar().hide();
+
+        // hide botton nav when user sign out
+        activity.getBottomNav().setVisibility(View.GONE);
     }
 
     @Override
@@ -117,6 +120,12 @@ public class LoginFragment extends Fragment {
         // Bottom navigation
         MainActivity activity = (MainActivity) requireActivity();
         activity.setupBottomNav(R.menu.nav_student);
+    }
+
+    private void setupTeacherSession() {
+        // Bottom navigation
+        MainActivity activity = (MainActivity) requireActivity();
+        activity.setupBottomNav(R.menu.nav_teacher);
     }
 
     private boolean hasEmptyField() {

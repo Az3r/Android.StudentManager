@@ -4,30 +4,28 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.R;
 import tkpm.doan.student.databinding.ActivityMainBinding;
+import tkpm.doan.student.ui.components.constants.Keys;
 
 @AndroidEntryPoint
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ActivityMainBinding binding;
     private NavController navController;
@@ -36,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -47,20 +44,19 @@ public class MainActivity extends AppCompatActivity {
         assert hostFragment != null;
         navController = hostFragment.getNavController();
 
-        binding.navView.setNavigationItemSelectedListener(item -> false);
 
         appBarConfiguration = new AppBarConfiguration
-                .Builder(R.id.nav_student_score_list, R.id.nav_student_schedule_list, R.id.nav_profile)
+                .Builder(R.id.nav_student_score_list, R.id.nav_student_schedule_list, R.id.nav_student_notify_list,
+                R.id.nav_teacher_grade_list, R.id.nav_teacher_schedule_list)
                 .setOpenableLayout(binding.drawerLayout)
                 .build();
 
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
-        NavigationUI.setupWithNavController(binding.appbarLayout.bottomNav, navController);
-    }
-
-    private void setupToolbar(Toolbar toolbar, NavController navController, AppBarConfiguration appBarConfiguration) {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(binding.appbarLayout.bottomNav, navController);
+
+//        binding.navView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -70,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        return NavigationUI.navigateUp(navController,appBarConfiguration) || super.onSupportNavigateUp();
+        return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp();
     }
 
     @NonNull
@@ -84,11 +80,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @NonNull
-    public NavigationView getNavView() {
-        return binding.navView;
-    }
-
-    @NonNull
     public NavController getNavController() {
         return navController;
     }
@@ -97,6 +88,30 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = binding.appbarLayout.bottomNav;
         bottomNav.setVisibility(View.VISIBLE);
         bottomNav.getMenu().clear();
-        bottomNav.inflateMenu(R.menu.nav_student);
+        bottomNav.inflateMenu(menuId);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_sign_out:
+                navController.navigate(R.id.login);
+                return true;
+        }
+        return NavigationUI.onNavDestinationSelected(item, navController);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putBoolean(Keys.BUNDLE_BOTTOM_NAV_VISIBLE, binding.appbarLayout.bottomNav.getVisibility() != View.GONE);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        boolean bottonNavVisible = savedInstanceState.getBoolean(Keys.BUNDLE_BOTTOM_NAV_VISIBLE);
+        binding.appbarLayout.bottomNav.setVisibility(bottonNavVisible ? View.VISIBLE : View.GONE);
     }
 }

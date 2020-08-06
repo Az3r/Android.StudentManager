@@ -43,4 +43,5 @@
     <string name="text_about">About</string>
     <string name="text_scoreboard">Scoreboard</string>
     <string name="text_logout">Logout</string>
+    <string name="text_confirm">Confirm</string>
 </resources>

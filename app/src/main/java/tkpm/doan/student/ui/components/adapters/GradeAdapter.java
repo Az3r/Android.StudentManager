@@ -16,7 +16,7 @@ import java.util.List;
 import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Grade;
 import tkpm.doan.student.ui.MainActivity;
-import tkpm.doan.student.ui.teacher.TeacherFragmentDirections;
+import tkpm.doan.student.ui.teacher.GradeFragmentDirections;
 import tkpm.doan.student.ui.teacher.TeacherViewModel;
 
 public class GradeAdapter extends ImmutableAdapter<Grade> {
@@ -29,11 +29,13 @@ public class GradeAdapter extends ImmutableAdapter<Grade> {
         @Override
         public void bind(Grade item) {
             itemView.setOnClickListener(view -> {
+                
                 TeacherViewModel viewModel = new ViewModelProvider((MainActivity) getContext()).get(TeacherViewModel.class);
                 viewModel.setSelectedGrade("replace this with actual gradeId");
-                NavController navController = Navigation.findNavController((MainActivity) getContext(), R.id.nav_host);
-                NavDirections directions = TeacherFragmentDirections.actionTeacherFragmentToGradeDetailFragment();
-                navController.navigate(directions);
+
+                MainActivity activity = (MainActivity) getContext();
+                NavDirections directions = GradeFragmentDirections.navgiateGradeDetail();
+                activity.getNavController().navigate(directions);
             });
         }
     }
