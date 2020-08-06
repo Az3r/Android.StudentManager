@@ -23,6 +23,7 @@ import java.util.Objects;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.databinding.FragmentLoginBinding;
+import tkpm.doan.student.ui.MainActivity;
 
 public class LoginFragment extends Fragment {
     private TextInputLayout accountInput;
@@ -89,6 +90,17 @@ public class LoginFragment extends Fragment {
         }, 1000);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity) requireActivity()).getSupportActionBar().hide();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        ((MainActivity) requireActivity()).getSupportActionBar().show();
+    }
 
     private boolean hasEmptyField() {
         return getString(accountInput).isEmpty() || getString(passwordInput).isEmpty();

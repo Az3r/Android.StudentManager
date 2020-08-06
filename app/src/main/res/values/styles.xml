@@ -40,7 +40,6 @@
 
     <style name="ScoreLabel">
         <item name="android:textAlignment">textEnd</item>
-        <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
 
     <style name="ActionMode" parent="Widget.AppCompat.ActionMode">

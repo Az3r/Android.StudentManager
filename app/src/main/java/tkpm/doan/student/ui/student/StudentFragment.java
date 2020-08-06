@@ -21,6 +21,7 @@ import java.util.List;
 import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.R;
 import tkpm.doan.student.databinding.FragmentStudentBinding;
+import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.components.adapters.ScoreAdapter;
 import tkpm.doan.student.ui.components.constants.Keys;
 import tkpm.doan.student.ui.components.viewpager.FragmentPage;
@@ -62,6 +63,7 @@ public class StudentFragment extends Fragment {
         TabLayout tabLayout = binding.includeLayout.tablayout;
         setupTabLayout(tabLayout, viewPager);
     }
+
 
     private List<FragmentPage> createPages() {
         return Arrays.asList(
