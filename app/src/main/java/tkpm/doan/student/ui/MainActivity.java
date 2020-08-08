@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ActivityMainBinding binding;
     private NavController navController;
     private AppBarConfiguration appBarConfiguration;
+    private BottomNavigationView bottomNav;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,9 +52,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .setOpenableLayout(binding.drawerLayout)
                 .build();
 
+        bottomNav = binding.appbarLayout.mainContent.bottomNav;
         NavigationUI.setupWithNavController(binding.navView, navController);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.appbarLayout.bottomNav, navController);
+        NavigationUI.setupWithNavController(bottomNav, navController);
 
 //        binding.navView.setNavigationItemSelectedListener(this);
 
@@ -71,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @NonNull
     public BottomNavigationView getBottomNav() {
-        return binding.appbarLayout.bottomNav;
+        return bottomNav;
     }
 
     @NonNull
@@ -85,7 +87,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void setupBottomNav(int menuId) {
-        BottomNavigationView bottomNav = binding.appbarLayout.bottomNav;
         bottomNav.setVisibility(View.VISIBLE);
         bottomNav.getMenu().clear();
         bottomNav.inflateMenu(menuId);
@@ -105,13 +106,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        outState.putBoolean(Keys.BUNDLE_BOTTOM_NAV_VISIBLE, binding.appbarLayout.bottomNav.getVisibility() != View.GONE);
+        outState.putBoolean(Keys.BUNDLE_BOTTOM_NAV_VISIBLE, bottomNav.getVisibility() != View.GONE);
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         boolean bottonNavVisible = savedInstanceState.getBoolean(Keys.BUNDLE_BOTTOM_NAV_VISIBLE);
-        binding.appbarLayout.bottomNav.setVisibility(bottonNavVisible ? View.VISIBLE : View.GONE);
+        bottomNav.setVisibility(bottonNavVisible ? View.VISIBLE : View.GONE);
     }
 }
