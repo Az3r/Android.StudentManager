@@ -126,7 +126,7 @@
         android:label="@string/text_about" />
     <fragment
         android:id="@+id/nav_profile"
-        android:name="tkpm.doan.student.ui.student.ProfileFragment"
+        android:name="tkpm.doan.student.ui.launch.ProfileFragment"
         android:label="@string/text_my_profile"
         tools:layout="@layout/fragment_profile" />
     <dialog

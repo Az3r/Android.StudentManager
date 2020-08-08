@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.student.ProfileFragment">
+    tools:context=".ui.launch.ProfileFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -201,6 +201,7 @@
             <include layout="@layout/seperator" />
 
             <LinearLayout
+                android:id="@+id/comment_section"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
