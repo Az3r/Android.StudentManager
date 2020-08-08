@@ -43,7 +43,7 @@
             android:id="@+id/nav_student_schedule_list"
             android:name="tkpm.doan.student.ui.student.ScheduleFragment"
             android:label="@string/text_schedule"
-            tools:layout="@layout/layout_list">
+            tools:layout="@layout/fragment_schedule_list">
             <action
                 android:id="@+id/navigate_schedule_detail"
                 app:destination="@id/nav_student_schedule_detail" />

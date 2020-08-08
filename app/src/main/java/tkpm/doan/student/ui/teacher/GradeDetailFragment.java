@@ -39,11 +39,11 @@ public class GradeDetailFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setupRecyclerView(binding.includeLayout.recyclerView);
+        setupRecyclerView(binding.recyclerView);
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
-        RecyclerViews.setupListView(binding.includeLayout.recyclerView);
+        RecyclerViews.setupListView(binding.recyclerView);
 
         viewModel.getSelectedGrade().observe(getViewLifecycleOwner(), selectedGrade -> {
             Log.i(TAG, String.valueOf(selectedGrade));

@@ -1,6 +1,7 @@
 package tkpm.doan.student.ui.components.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,21 +11,21 @@ import android.widget.CheckBox;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.view.ActionMode;
-import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.databinding.ItemStudentMasterBinding;
 import tkpm.doan.student.ui.MainActivity;
-import tkpm.doan.student.ui.student.NotificationFragmentDirections;
 import tkpm.doan.student.ui.teacher.GradeFragmentDirections;
 
 public class StudentAdapter extends ImmutableAdapter<Student> implements ActionMode.Callback {
+
+    private static final String TAG = StudentAdapter.class.getName();
 
     private class ViewHolder extends AbstractViewHolder<Student> {
 
@@ -36,46 +37,25 @@ public class StudentAdapter extends ImmutableAdapter<Student> implements ActionM
 
         @Override
         public void bind(Student item) {
-
             this.itemView.setTag(item);
             ItemStudentMasterBinding binding = ItemStudentMasterBinding.bind(itemView);
             checkBox = binding.studentSelected;
 
-            binding.studentSelected.setOnCheckedChangeListener((compoundButton, isChecked) -> {
-
-                if (isChecked && actionMode == null) {
-                    MainActivity activity = (MainActivity) getContext();
-                    actionMode = activity.startSupportActionMode(StudentAdapter.this);
-                }
-
-                if (actionMode != null) {
-
-                    if (isChecked) selectedStudents.add(this);
-                    else selectedStudents.remove(this);
-
-                    String title = getContext().getResources().getString(R.string.format_selected, selectedStudents.size());
-                    actionMode.setTitle(title);
-                }
-            });
-
             itemView.setOnClickListener(v -> {
                 if (actionMode != null) {
-                    boolean isChecked = binding.studentSelected.isChecked();
-                    binding.studentSelected.setChecked(!isChecked);
+                    boolean isChecked = checkBox.isChecked();
+                    checkBox.setChecked(!isChecked);
                 } else {
-//                    MainActivity activity = (MainActivity) getContext();
-//                    NavDirections directions = GradeFragmentDirections.navgiateGradeDetail();
-//                    activity.getNavController().navigate(directions);
+                    MainActivity activity = (MainActivity) getContext();
+                    NavDirections directions = GradeFragmentDirections.navgiateGradeDetail();
+                    activity.getNavController().navigate(directions);
                 }
             });
-        }
-        public void unselected() {
-            checkBox.setChecked(false);
         }
     }
 
     private ActionMode actionMode;
-    private ArrayList<ViewHolder> selectedStudents = new ArrayList<>();
+    private HashMap<Integer, Student> selectedStudent = new HashMap<>();
 
     public StudentAdapter(@NonNull Context context, @NonNull List<Student> list) {
         super(context, list);
@@ -89,7 +69,20 @@ public class StudentAdapter extends ImmutableAdapter<Student> implements ActionM
     }
 
     @Override
+    public void onBindViewHolder(@NonNull AbstractViewHolder<Student> holder, int position) {
+        super.onBindViewHolder(holder, position);
+
+        ViewHolder viewHolder = (ViewHolder) holder;
+
+        // we just want to update view, no need for calling listener
+        viewHolder.checkBox.setOnCheckedChangeListener(null);
+        viewHolder.checkBox.setChecked(selectedStudent.containsKey(position));
+        viewHolder.checkBox.setOnCheckedChangeListener((compoundButton, b) -> onCheckedChanged(b, position));
+    }
+
+    @Override
     public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+        mode.getMenuInflater().inflate(R.menu.action_grade, menu);
         return true;
     }
 
@@ -100,16 +93,39 @@ public class StudentAdapter extends ImmutableAdapter<Student> implements ActionM
 
     @Override
     public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+        // TODO implement this method
+        Log.i(TAG, String.format("Process %d selected student", selectedStudent.size()));
         return false;
     }
 
     @Override
     public void onDestroyActionMode(ActionMode mode) {
+
         actionMode = null;
 
-        // clear all selected students
-        for (ViewHolder selectedStudent : selectedStudents) {
-            selectedStudent.unselected();
+        // invalidate all selected students
+        ArrayList<Integer> selectedPos = new ArrayList<>(selectedStudent.keySet());
+        selectedStudent.clear();
+        for (Integer pos : selectedPos)
+            notifyItemChanged(pos);
+
+    }
+
+    private void onCheckedChanged(boolean isChecked, int position) {
+
+        if (isChecked && actionMode == null) {
+            MainActivity activity = (MainActivity) getContext();
+            actionMode = activity.startSupportActionMode(StudentAdapter.this);
+        }
+
+        if (isChecked)
+            selectedStudent.put(position, getItem(position));
+        else
+            selectedStudent.remove(position);
+
+        if (actionMode != null) {
+            String title = getContext().getResources().getString(R.string.format_selected, selectedStudent.size());
+            actionMode.setTitle(title);
         }
     }
 }
