@@ -1,23 +1,30 @@
 package tkpm.doan.student.ui.teacher;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
 
-import tkpm.doan.student.databinding.FragmentStudentProfileBinding;
+import tkpm.doan.student.R;
+import tkpm.doan.student.databinding.FragmentProfileBinding;
+import tkpm.doan.student.ui.MainActivity;
 
-public class EditStudentFragment extends Fragment {
-    private FragmentStudentProfileBinding binding;
+public class StudentProfileFragment extends Fragment {
+    private FragmentProfileBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentStudentProfileBinding.inflate(inflater, container, false);
+        binding = FragmentProfileBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -25,6 +32,12 @@ public class EditStudentFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setupCommentSection();
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        setHasOptionsMenu(true);
     }
 
     private void setupCommentSection() {
@@ -49,4 +62,20 @@ public class EditStudentFragment extends Fragment {
         binding = null;
     }
 
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.action_grade, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.nav_score_editor) {
+            MainActivity activity = (MainActivity) requireActivity();
+            NavDirections directions = StudentProfileFragmentDirections.navgiateScoreEditor();
+            activity.getNavController().navigate(directions);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

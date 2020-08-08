@@ -26,7 +26,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.R;
 import tkpm.doan.student.data.LoggedUser;
 import tkpm.doan.student.data.models.Comment;
-import tkpm.doan.student.databinding.FragmentStudentProfileBinding;
+import tkpm.doan.student.databinding.FragmentProfileBinding;
 import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.components.adapters.CommentAdapter;
 import tkpm.doan.student.ui.components.constants.Provider;
@@ -40,7 +40,7 @@ public class ProfileFragment extends Fragment {
     @Inject
     public List<Comment> comments;
     private StudentViewModel viewModel;
-    private FragmentStudentProfileBinding binding;
+    private FragmentProfileBinding binding;
     TextView studentId;
     TextView studentName;
     TextView studentClass;
@@ -59,7 +59,7 @@ public class ProfileFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentStudentProfileBinding.inflate(inflater, container, false);
+        binding = FragmentProfileBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 

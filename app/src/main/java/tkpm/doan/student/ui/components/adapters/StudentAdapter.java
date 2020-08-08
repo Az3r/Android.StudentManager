@@ -21,7 +21,9 @@ import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.databinding.ItemStudentMasterBinding;
 import tkpm.doan.student.ui.MainActivity;
+import tkpm.doan.student.ui.teacher.GradeDetailFragmentDirections;
 import tkpm.doan.student.ui.teacher.GradeFragmentDirections;
+import tkpm.doan.student.ui.teacher.StudentProfileFragmentDirections;
 
 public class StudentAdapter extends ImmutableAdapter<Student> implements ActionMode.Callback {
 
@@ -47,7 +49,7 @@ public class StudentAdapter extends ImmutableAdapter<Student> implements ActionM
                     checkBox.setChecked(!isChecked);
                 } else {
                     MainActivity activity = (MainActivity) getContext();
-                    NavDirections directions = GradeFragmentDirections.navgiateGradeDetail();
+                    NavDirections directions = GradeDetailFragmentDirections.navgiateStudentProfile();
                     activity.getNavController().navigate(directions);
                 }
             });
@@ -93,8 +95,16 @@ public class StudentAdapter extends ImmutableAdapter<Student> implements ActionM
 
     @Override
     public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-        // TODO implement this method
         Log.i(TAG, String.format("Process %d selected student", selectedStudent.size()));
+
+        if (item.getItemId() == R.id.nav_score_editor) {
+            MainActivity activity = (MainActivity) getContext();
+            NavDirections directions = GradeDetailFragmentDirections.navgiateScoreEditor();
+            activity.getNavController().navigate(directions);
+            mode.finish();
+            return true;
+        }
+
         return false;
     }
 

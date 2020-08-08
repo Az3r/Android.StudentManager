@@ -5,7 +5,6 @@
     <string name="text_password">Password</string>
     <string name="text_login">login</string>
     <string name="text_login_as_teacher">Login as teacher</string>
-    <string name="text_profile">Profile</string>
     <string name="text_notification">Notification</string>
     <string name="text_schedule">Schedule</string>
     <string name="desc_student_profile_image">student\'s profile image</string>
@@ -41,11 +40,12 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="desc_logged_user_profile">Profile image of logged in user</string>
-    <string name="text_your_profile">Your profile</string>
+    <string name="text_my_profile">My profile</string>
     <string name="text_about">About</string>
     <string name="text_scoreboard">Scoreboard</string>
     <string name="text_logout">Logout</string>
     <string name="text_confirm">Confirm</string>
     <string name="format_full_name">%1$s %2$s %3$s</string>
     <string name="text_edit_student">Edit student</string>
+    <string name="text_edit_score">Edit score</string>
 </resources>

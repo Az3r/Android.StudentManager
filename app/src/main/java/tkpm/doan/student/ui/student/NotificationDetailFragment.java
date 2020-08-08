@@ -33,6 +33,7 @@ public class NotificationDetailFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         viewModel = new ViewModelProvider(requireActivity()).get(StudentViewModel.class);
+        setHasOptionsMenu(true);
     }
 
     @Nullable
@@ -51,7 +52,6 @@ public class NotificationDetailFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setHasOptionsMenu(true);
 
         title = binding.notifyTitle;
         content = binding.notifyContent;
