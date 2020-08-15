@@ -10,6 +10,6 @@
     <item
         android:id="@+id/nav_manager_notification"
         android:icon="@drawable/ic_notification"
-        android:title="@string/text_schedule"
+        android:title="@string/text_notification"
         app:showAsAction="ifRoom" />
 </menu>
