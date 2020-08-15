@@ -135,13 +135,32 @@
     <dialog
         android:id="@+id/nav_sign_out"
         android:name="tkpm.doan.student.ui.dialogs.SignOutDialog"
-        android:label="SignOutDialog" />
-    <navigation android:id="@+id/graph_manager"
+        android:label="@string/text_sign_out" />
+    <navigation
+        android:id="@+id/graph_manager"
         app:startDestination="@id/nav_search_student">
         <fragment
             android:id="@+id/nav_search_student"
             android:name="tkpm.doan.student.ui.manager.SearchStudentFragment"
-            android:label="Manage students"
-            tools:layout="@layout/fragment_search_student" />
+            android:label="@string/text_manage_students"
+            tools:layout="@layout/fragment_search_student">
+            <action
+                android:id="@+id/navigate_add_student"
+                app:destination="@id/nav_create_student" />
+            <action
+                android:id="@+id/navigate_create_notify"
+                app:destination="@id/nav_create_notification" />
+        </fragment>
+        <fragment
+            android:id="@+id/nav_create_notification"
+            android:name="tkpm.doan.student.ui.manager.CreateNotifyFragment"
+            android:label="@string/text_create_notification"
+            tools:layout="@layout/fragment_create_notify" />
+        <fragment
+            android:id="@+id/nav_create_student"
+            android:name="tkpm.doan.student.ui.manager.AddStudentFragment"
+            android:label="@string/text_add_student"
+            tools:layout="@layout/fragment_add_student" />
     </navigation>
+
 </navigation>

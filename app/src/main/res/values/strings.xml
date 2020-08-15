@@ -53,4 +53,9 @@
     <string name="text_12">12</string>
     <string name="text_10">10</string>
     <string name="text_11">11</string>
+    <string name="text_new_student">New student</string>
+    <string name="text_create_notification">Create notification</string>
+    <string name="text_manage_students">Manage students</string>
+    <string name="text_sign_out">Sign out</string>
+    <string name="text_add_student">Add student</string>
 </resources>
