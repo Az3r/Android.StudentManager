@@ -27,7 +27,8 @@ public class LoggedUserResource {
     private MutableLiveData<List<Comment>> comments = new MutableLiveData<>();
 
     @Inject
-    public LoggedUserResource() {
+    public LoggedUserResource(@NonNull RetrofitService retrofit) {
+        this.retrofit = retrofit;
     }
     public LiveData<String> getUserId() {
         return userId;
