@@ -7,6 +7,7 @@ public class PersonalInfo {
     private String RoleName;
     private String TeacherId;
     private String SubjectName;
+    private String SubjectId;
     private boolean IsGraduated;
     private String Address;
     private String LastName;
@@ -17,9 +18,15 @@ public class PersonalInfo {
     private boolean IsMale;
     private Date Birthday;
     private String ClassId;
-
-
     // Getter Methods
+
+    public String getSubjectId() {
+        return SubjectId;
+    }
+
+    public void setSubjectId(String subjectId) {
+        SubjectId = subjectId;
+    }
 
     public String getTeacherId() {
         return TeacherId;

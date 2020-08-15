@@ -10,8 +10,10 @@ import androidx.lifecycle.ViewModel;
 import java.security.Key;
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import tkpm.doan.student.data.models.Grade;
 import tkpm.doan.student.data.models.Schedule;
+import tkpm.doan.student.data.models.ScoreRequest;
 import tkpm.doan.student.data.models.Session;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.data.models.TeacherSchedule;
@@ -44,6 +46,10 @@ public class TeacherViewModel extends ViewModel {
         // TODO remove hard-coded params
         return repository.getSchedule(Keys.token,Keys.TEACHER_ID, 1, 2020);
     }
+    public LiveData<ResponseBody> postScore(List<ScoreRequest> scoreRequest) {
+        // TODO remove hard-coded params
+        return repository.PostScore(Keys.token,scoreRequest);
+    }
 
     public LiveData<String> getSelectedGrade() {
         return state.getLiveData(Keys.SELECTED_GRADE);
@@ -60,7 +66,6 @@ public class TeacherViewModel extends ViewModel {
     public void setTeacherId(String teacherId) {
         state.set(Keys.TEACHER_ID, teacherId);
     }
-
     public LiveData<List<Student>> getSelectedStudents() {
         return selectedStudents;
     }

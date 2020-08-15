@@ -20,12 +20,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tkpm.doan.student.R;
+import tkpm.doan.student.data.models.ScoreRequest;
 import tkpm.doan.student.databinding.FragmentScoreEditorBinding;
 import tkpm.doan.student.databinding.ItemScoreEditorBinding;
 import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.components.adapters.EditScoreAdapter;
 import tkpm.doan.student.ui.components.adapters.GradeAdapter;
 import tkpm.doan.student.ui.components.constants.AppData;
+import tkpm.doan.student.ui.components.constants.Keys;
 import tkpm.doan.student.ui.components.utils.RecyclerViews;
 
 public class ScoreEditorFragment extends Fragment {
@@ -72,6 +74,7 @@ public class ScoreEditorFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.menu_submit) {
+            List<ScoreRequest> scoreRequests= new ArrayList<>();
             for(int i=0;i< AppData.getInstance().studentList.size();i++)
             {
                 List<View> viewHolders =adapter.getView();
@@ -92,7 +95,19 @@ public class ScoreEditorFragment extends Fragment {
                 AppData.getInstance().studentList.get(i).setTest45(score45);
                 if(binding.score151.getText().toString()!=null||!binding.scoreSemester.getText().toString().isEmpty())
                     AppData.getInstance().studentList.get(i).setFinal(Float.valueOf(binding.scoreSemester.getText().toString()));
+                ScoreRequest value = new ScoreRequest();
+                value.setStudentId(AppData.getInstance().studentList.get(i).getStudentId());
+                value.setTest15(AppData.getInstance().studentList.get(i).getTest15());
+                value.setTest45(AppData.getInstance().studentList.get(i).getTest45());
+                value.setTestFinal(AppData.getInstance().studentList.get(i).getTestFinal());
+                value.setAcademicYear(2020);
+                value.setSemester(1);
+                value.setSubjectId(Float.valueOf(Keys.SubjectId));
+                scoreRequests.add(value);
             }
+            viewModel.postScore(scoreRequests).observe(getViewLifecycleOwner(), isHomeTeacher -> {
+
+            });
             return true;
         }
         return super.onOptionsItemSelected(item);

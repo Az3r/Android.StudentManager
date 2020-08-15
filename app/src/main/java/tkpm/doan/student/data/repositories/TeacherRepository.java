@@ -8,9 +8,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import okhttp3.ResponseBody;
 import tkpm.doan.student.data.components.retrofit.OnRetrofitResult;
 import tkpm.doan.student.data.components.retrofit.RetrofitService;
 import tkpm.doan.student.data.models.Grade;
+import tkpm.doan.student.data.models.ScoreRequest;
 import tkpm.doan.student.data.models.Session;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.data.models.TeacherSchedule;
@@ -53,6 +55,16 @@ public class TeacherRepository {
         retrofit.getScheduleTeacher(author, teacherId, semester, year, new OnRetrofitResult<List<Session>>() {
             @Override
             public void onSuccess(List<Session> result) {
+                schedules.postValue(result);
+            }
+        });
+        return schedules;
+    }
+    public LiveData<ResponseBody> PostScore(String author, List<ScoreRequest> scoreRequest) {
+        final MutableLiveData<ResponseBody> schedules = new MutableLiveData<>();
+        retrofit.PostScore(author, scoreRequest, new OnRetrofitResult<ResponseBody>() {
+            @Override
+            public void onSuccess(ResponseBody result) {
                 schedules.postValue(result);
             }
         });

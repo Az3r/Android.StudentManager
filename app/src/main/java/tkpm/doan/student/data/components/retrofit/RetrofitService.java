@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 import tkpm.doan.student.data.models.Grade;
 import tkpm.doan.student.data.models.PersonalInfo;
@@ -15,6 +16,7 @@ import retrofit2.internal.EverythingIsNonNull;
 import tkpm.doan.student.data.models.Notification;
 import tkpm.doan.student.data.models.PersonalInfo;
 import tkpm.doan.student.data.models.Score;
+import tkpm.doan.student.data.models.ScoreRequest;
 import tkpm.doan.student.data.models.Session;
 import tkpm.doan.student.data.models.Student;
 
@@ -40,11 +42,9 @@ public class RetrofitService {
     public void getScheduleTeacher(String author, String studentId, int semester, int year, @NonNull OnRetrofitResult<List<Session>> callback) {
         api.getScheduleTeacher(author, studentId, semester, year).enqueue(new RetrofitListener<>(callback));
     }
-
     public void getNotification(String author, String studentId, @NonNull OnRetrofitResult<List<Notification>> callback) {
         api.getNotification(author, studentId).enqueue(new RetrofitListener<>(callback));
     }
-
     public void getStudentProfile(String author, String studentId, @NonNull OnRetrofitResult<PersonalInfo> callback) {
         api.getStudent(author, studentId).enqueue(new RetrofitListener<>(callback));
     }
@@ -56,6 +56,9 @@ public class RetrofitService {
     }
     public void getStudentClass(String author, String teacherID,String ClassId,int sem, int year, @NonNull OnRetrofitResult<List<Student>> callback) {
         api.getStudentClass(author, teacherID,ClassId,sem,year).enqueue(new RetrofitListener<>(callback));
+    }
+    public void PostScore(String author, List<ScoreRequest> scoreRequest, @NonNull OnRetrofitResult<ResponseBody> callback) {
+        api.PostCore(author, scoreRequest).enqueue(new RetrofitListener<>(callback));
     }
 
 }
