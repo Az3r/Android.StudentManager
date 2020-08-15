@@ -48,4 +48,16 @@
     <string name="format_full_name">%1$s %2$s %3$s</string>
     <string name="text_edit_student">Edit student</string>
     <string name="text_edit_score">Edit score</string>
+    <string name="text_search_student">Search student</string>
+    <string name="text_all">Select all</string>
+    <string name="text_12">12</string>
+    <string name="text_10">10</string>
+    <string name="text_11">11</string>
+    <string name="text_new_student">New student</string>
+    <string name="text_create_notification">Create notification</string>
+    <string name="text_manage_students">Manage students</string>
+    <string name="text_sign_out">Sign out</string>
+    <string name="text_add_student">Add student</string>
+    <string name="desc_empty_image">empty image</string>
+    <string name="text_add_image">Add image</string>
 </resources>

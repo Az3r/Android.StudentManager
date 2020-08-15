@@ -82,7 +82,7 @@ public class LoginFragment extends Fragment {
             Toast.makeText(getContext(), R.string.msg_login_success, Toast.LENGTH_SHORT).show();
             new Handler().postDelayed(() -> {
                 setupTeacherSession();
-                NavDirections directions = LoginFragmentDirections.navgiateTeacher();
+                NavDirections directions = LoginFragmentDirections.navgiateManager();
                 ((MainActivity) requireActivity()).getNavController().navigate(directions);
             }, 500);
         }, 1000);

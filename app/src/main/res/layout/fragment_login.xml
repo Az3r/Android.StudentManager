@@ -1,87 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingHorizontal="36dp"
-    android:paddingTop="120dp"
     tools:context="ui.launch.LoginFragment">
 
-    <TextView
-        android:id="@+id/login_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
-        android:text="@string/app_name"
-        style="@style/AppTitle" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/login_account"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
-        android:hint="@string/text_student_id"
-        app:errorEnabled="true"
-        app:startIconDrawable="@drawable/ic_account">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input_account"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/login_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
-        android:hint="@string/text_password"
-        app:endIconMode="password_toggle"
-        app:errorEnabled="true"
-        app:startIconDrawable="@drawable/ic_password">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword" />
-    </com.google.android.material.textfield.TextInputLayout>
-
     <LinearLayout
+        android:paddingHorizontal="36dp"
+        android:paddingTop="120dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <CheckBox
-            android:id="@+id/login_teacher"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/login_title"
+            style="@style/AppTitle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/text_login_as_teacher" />
+            android:layout_marginBottom="36dp"
+            android:text="@string/app_name" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/login_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:hint="@string/text_student_id"
+            app:errorEnabled="true"
+            app:startIconDrawable="@drawable/ic_account">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/login_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:hint="@string/text_password"
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true"
+            app:startIconDrawable="@drawable/ic_password">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <ProgressBar
-                android:id="@+id/progressbar"
+            <CheckBox
+                android:id="@+id/login_teacher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="12dp"
-                android:indeterminate="true"
-                android:visibility="invisible" />
+                android:text="@string/text_login_as_teacher" />
 
-            <Button
-                android:id="@+id/button_login"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/text_login" />
+                android:layout_gravity="end"
+                android:orientation="horizontal">
 
+                <ProgressBar
+                    android:id="@+id/progressbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:indeterminate="true"
+                    android:visibility="invisible" />
+
+                <Button
+                    android:id="@+id/button_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_login" />
+
+            </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

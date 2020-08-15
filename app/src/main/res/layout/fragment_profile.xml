@@ -174,7 +174,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_phone"
-                    android:text="1234567890" />
+                    tools:text="1234567890" />
             </LinearLayout>
 
             <LinearLayout
@@ -195,7 +195,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_email"
-                    android:text="example@gmail.com" />
+                    tools:text="example@gmail.com" />
             </LinearLayout>
 
             <include layout="@layout/seperator" />
