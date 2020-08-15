@@ -13,6 +13,7 @@ import tkpm.doan.student.data.models.PersonalInfo;
 
 public class LoggedUserResource {
 
+
     private MutableLiveData<String> userId = new MutableLiveData<>();
 
     private MutableLiveData<UserTypes> userType = new MutableLiveData<>();
@@ -23,9 +24,7 @@ public class LoggedUserResource {
 
     @Inject
     public LoggedUserResource() {
-
     }
-
     public LiveData<String> getUserId() {
         return userId;
     }

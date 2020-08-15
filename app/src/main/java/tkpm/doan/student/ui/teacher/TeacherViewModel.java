@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModel;
 import java.util.List;
 
 import tkpm.doan.student.data.models.Grade;
+import tkpm.doan.student.data.models.Schedule;
+import tkpm.doan.student.data.models.Session;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.data.models.TeacherSchedule;
 import tkpm.doan.student.data.repositories.TeacherRepository;
@@ -18,29 +20,28 @@ import tkpm.doan.student.ui.components.constants.Keys;
 public class TeacherViewModel extends ViewModel {
 
     private final SavedStateHandle state;
-    private final TeacherRepository repositroy;
-
+    private final TeacherRepository repository;
+    private MutableLiveData<TeacherSchedule> selectedSchedule = new MutableLiveData<>();
     private MutableLiveData<List<Student>> selectedStudents = new MutableLiveData<>();
 
     @ViewModelInject
     public TeacherViewModel(TeacherRepository repository, @Assisted SavedStateHandle savedStateHandle) {
-        this.repositroy = repository;
+        this.repository = repository;
         this.state = savedStateHandle;
     }
 
     public LiveData<List<Grade>> getTeachingGrades() {
         // TODO remove hard-coded params
-        return repositroy.getTeachingGrades("12345", 2020);
+        return repository.getTeachingGrades(Keys.TEACHER_ID, 2020);
     }
 
     public LiveData<List<Student>> getStudents(String gradeId) {
         // TODO remove hard-coded params
-        return repositroy.getStudents(gradeId, 2020);
+        return repository.getStudents(gradeId, 2020);
     }
-
-    public LiveData<List<TeacherSchedule>> getSchedule() {
+    public LiveData<List<Session>> getSchedule() {
         // TODO remove hard-coded params
-        return repositroy.getSchedule("1234567", 1, 2020);
+        return repository.getSchedule(Keys.token,Keys.TEACHER_ID, 1, 2020);
     }
 
     public LiveData<String> getSelectedGrade() {
@@ -66,4 +67,14 @@ public class TeacherViewModel extends ViewModel {
     public void setSelectedStudents(List<Student> students) {
         selectedStudents.postValue(students);
     }
+    public LiveData<TeacherSchedule> getSelectedSchedule() {
+        return selectedSchedule;
+    }
+
+    public void setSelectedSchedule(TeacherSchedule item) {
+        selectedSchedule.postValue(item);
+    }
+
+
+
 }

@@ -28,15 +28,13 @@ import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.data.models.Session;
 import tkpm.doan.student.databinding.FragmentScheduleListBinding;
 import tkpm.doan.student.ui.components.adapters.ScheduleAdapter;
-import tkpm.doan.student.ui.components.utils.RecyclerViews;
+import tkpm.doan.student.ui.components.adapters.ScoreAdapter;
 
 @AndroidEntryPoint
 public class ScheduleFragment extends Fragment {
 
     private static final String TAG = "ScheduleFragment";
-
     private FragmentScheduleListBinding binding;
-
     private List<Schedule> schedules;
     private StudentViewModel viewModel;
 
@@ -59,16 +57,53 @@ public class ScheduleFragment extends Fragment {
         binding = null;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setupRecyclerView(binding.recyclerView);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        RecyclerViews.setupGridView(recyclerView, 1);
-
-        ScheduleAdapter adapter = new ScheduleAdapter(requireActivity(), schedules);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
+        viewModel.getSchedule().observe(getViewLifecycleOwner(), schedule -> {
+            schedules= new ArrayList<>();
+            Collections.sort(schedule);
+            initSchedule(schedule);
+            ScheduleAdapter adapter = new ScheduleAdapter(requireActivity(), schedules, viewModel);
+            recyclerView.swapAdapter(adapter, true);
+        });
+    }
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void initSchedule(List<Session> list)
+    {
+        if(list!=null)
+        {
+            if(list.size()>0)
+            {
+                int day=(int)list.get(0).getDayOfWeek();
+                List<Session> value= new ArrayList<>();
+                int i=1;
+                for (Session item : list) {
+                    if((int)item.getDayOfWeek()==day)
+                    {
+                        item.setPeriod(i);
+                        value.add(item);
+                        i++;
+                    }
+                    else
+                    {
+                        schedules.add(new Schedule(DayOfWeek.of(day-1),value));
+                        value= new ArrayList<>();
+                        i=1;
+                        item.setPeriod(i);
+                        value.add(item);
+                        day=(int) item.getDayOfWeek();
+                    }
+                }
+                schedules.add(new Schedule(DayOfWeek.of(day-1),value));
+            }
+        }
     }
 }

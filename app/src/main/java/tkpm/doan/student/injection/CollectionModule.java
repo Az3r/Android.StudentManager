@@ -43,12 +43,10 @@ public class CollectionModule {
     static List<Comment> provideComments(Comment comment) {
         return Arrays.asList(comment, comment, comment, comment, comment);
     }
-
     @Provides
     static List<Session> provideLessons(Session lesson) {
         return Arrays.asList(lesson, lesson, lesson, lesson, lesson);
     }
-
     @Provides
     static List<Notification> provideNotifications(Notification notification) {
         return Arrays.asList(notification, notification, notification);

@@ -6,4 +6,5 @@
     <color name="colorAccent">#FF5722</color>
     <color name="colorOnPrimary">#ffffff</color>
     <color name="colorOnSecondary">#ffffff</color>
+    <color name="colorOnPrimaryText">#000000</color>
 </resources>

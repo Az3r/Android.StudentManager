@@ -1,12 +1,14 @@
 package tkpm.doan.student.ui.components.adapters;
 
 import android.content.Context;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
@@ -20,13 +22,11 @@ import tkpm.doan.student.data.models.Subject;
 import tkpm.doan.student.databinding.ItemScheduleMasterBinding;
 import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.student.ScheduleFragmentDirections;
+import tkpm.doan.student.ui.student.StudentViewModel;
 
 public class ScheduleAdapter extends ImmutableAdapter<Schedule> {
 
-
-    public ScheduleAdapter(@NonNull Context context, @NonNull List<Schedule> list) {
-        super(context, list);
-    }
+    private StudentViewModel viewModel;
 
     public class ViewHolder extends AbstractViewHolder<Schedule> {
         public ViewHolder(@NonNull View itemView) {
@@ -51,7 +51,7 @@ public class ScheduleAdapter extends ImmutableAdapter<Schedule> {
 
             // navigate to schedule detail
             itemView.setOnClickListener(v -> {
-
+                viewModel.setSelectedSchedule(item);
                 MainActivity activity = (MainActivity) getContext();
                 NavDirections directions = ScheduleFragmentDirections.navigateScheduleDetail();
                 activity.getNavController().navigate(directions);
@@ -59,6 +59,10 @@ public class ScheduleAdapter extends ImmutableAdapter<Schedule> {
         }
     }
 
+    public ScheduleAdapter(@NonNull Context context, @NonNull List<Schedule> list, StudentViewModel viewModel) {
+        super(context, list);
+        this.viewModel= viewModel;
+    }
 
     @NonNull
     @Override

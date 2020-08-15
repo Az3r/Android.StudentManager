@@ -73,19 +73,13 @@ public class LoginFragment extends Fragment {
             setErrorIfEmpty(passwordInput, getString(R.string.error_empty_field));
             return;
         }
-
         enableAllInput(false);
         progressBar.setVisibility(View.VISIBLE);
-
-
         String account = getString(accountInput);
         String password = getString(passwordInput);
         boolean isTeacher = teacherCheckBox.isChecked();
-
         new Handler().postDelayed(() -> {
-
             Toast.makeText(getContext(), R.string.msg_login_success, Toast.LENGTH_SHORT).show();
-
             new Handler().postDelayed(() -> {
                 setupTeacherSession();
                 NavDirections directions = LoginFragmentDirections.navgiateTeacher();

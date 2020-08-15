@@ -25,4 +25,8 @@ public interface RestAPI {
     Call<List<Score>> getScore(@Header("Authorization") String Authorization,@Path("id") String id, @Query("sem") int semester, @Query("year") int year);
     @GET("student/schedule/{id}")
     Call<List<Session>> getSchedule(@Header("Authorization") String Authorization, @Path("id") String id, @Query("sem") int semester, @Query("year") int year);
+    @GET("teacher/schedule/{id}")
+    Call<List<Session>> getScheduleTeacher(@Header("Authorization") String Authorization, @Path("id") String id, @Query("sem") int semester, @Query("year") int year);
+
+
 }

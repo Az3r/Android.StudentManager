@@ -26,8 +26,8 @@ public class LiveDataModule {
         return new MutableLiveData<>(students);
     }
 
-    @Provides
-    MutableLiveData<List<TeacherSchedule>> provideTeacherScheduleLiveData(List<TeacherSchedule> teacherSchedules) {
-        return new MutableLiveData<>(teacherSchedules);
-    }
+//    @Provides
+//    MutableLiveData<List<TeacherSchedule>> provideTeacherScheduleLiveData(List<TeacherSchedule> teacherSchedules) {
+//        return new MutableLiveData<>(teacherSchedules);
+//    }
 }

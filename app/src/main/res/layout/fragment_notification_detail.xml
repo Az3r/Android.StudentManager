@@ -18,14 +18,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="The title of this notification" />
-
         <TextView
+            android:id="@+id/notify_date"
             style="@style/TextAppearance.MaterialComponents.Subtitle1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             tools:text="@tools:sample/date/ddmmyy" />
-
         <TextView
             android:id="@+id/notify_content"
             android:layout_width="match_parent"

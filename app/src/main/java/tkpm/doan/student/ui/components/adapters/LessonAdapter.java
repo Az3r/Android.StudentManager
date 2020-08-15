@@ -1,5 +1,6 @@
 package tkpm.doan.student.ui.components.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Session;
 import tkpm.doan.student.databinding.ItemScheduleDetailBinding;
 import tkpm.doan.student.databinding.ItemScheduleMasterBinding;
+import tkpm.doan.student.ui.components.constants.Keys;
 
 public class LessonAdapter extends ImmutableAdapter<Session> {
 
@@ -25,13 +27,19 @@ public class LessonAdapter extends ImmutableAdapter<Session> {
             super(itemView);
         }
 
+        @SuppressLint("SetTextI18n")
         @Override
         public void bind(Session item) {
             ItemScheduleDetailBinding binding = ItemScheduleDetailBinding.bind(itemView);
             scheduleSubject = binding.scheduleSubject;
             scheduleDuration = binding.scheduleDuration;
             schedulePeriod = binding.schedulePeriod;
-            scheduleSubject.setText(item.getSubjectName());
+            if(Keys.IS_TEACHER)
+                scheduleSubject.setText("\tMôn học: "+item.getSubjectName()+"\n\n"+
+                        "\tLớp dạy: "+item.getClassId()+"\n\n"+
+                        "\tPhòng dạy: "+item.getRoomName());
+            else
+                scheduleSubject.setText(item.getSubjectName());
             scheduleDuration.setText(item.getBeginTime()+" - "+ item.getEndTime());
             schedulePeriod.setText(""+item.getPeriod());
         }

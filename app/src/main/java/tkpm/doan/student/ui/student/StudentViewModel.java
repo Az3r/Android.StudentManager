@@ -22,9 +22,7 @@ public class StudentViewModel extends ViewModel {
 
     @NonNull
     private StudentRepository repository;
-
     private String studentId;
-
     private MutableLiveData<Schedule> selectedSchedule = new MutableLiveData<>();
     private MutableLiveData<Notification> selectedNotify = new MutableLiveData<>();
 

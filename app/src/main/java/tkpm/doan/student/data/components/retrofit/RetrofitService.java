@@ -36,6 +36,9 @@ public class RetrofitService {
     public void getSchedule(String author, String studentId, int semester, int year, @NonNull OnRetrofitResult<List<Session>> callback) {
         api.getSchedule(author, studentId, semester, year).enqueue(new RetrofitListener<>(callback));
     }
+    public void getScheduleTeacher(String author, String studentId, int semester, int year, @NonNull OnRetrofitResult<List<Session>> callback) {
+        api.getScheduleTeacher(author, studentId, semester, year).enqueue(new RetrofitListener<>(callback));
+    }
 
     public void getNotification(String author, String studentId, @NonNull OnRetrofitResult<List<Notification>> callback) {
         api.getNotification(author, studentId).enqueue(new RetrofitListener<>(callback));

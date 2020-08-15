@@ -8,8 +8,10 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import tkpm.doan.student.data.components.retrofit.OnRetrofitResult;
 import tkpm.doan.student.data.components.retrofit.RetrofitService;
 import tkpm.doan.student.data.models.Grade;
+import tkpm.doan.student.data.models.Session;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.data.models.TeacherSchedule;
 
@@ -17,16 +19,9 @@ public class TeacherRepository {
 
     @NonNull
     private final RetrofitService retrofit;
-
-    @Inject
     public MutableLiveData<List<Grade>> grades;
-
-    @Inject
     public MutableLiveData<List<Student>> students;
-
-    @Inject
     public MutableLiveData<List<TeacherSchedule>> schedule;
-
     @Inject
     public TeacherRepository(@NonNull RetrofitService retrofit) {
         this.retrofit = retrofit;
@@ -41,9 +36,14 @@ public class TeacherRepository {
         // TODO implement this method
         return students;
     }
-
-    public LiveData<List<TeacherSchedule>> getSchedule(@NonNull String teacherId, int i, int i1) {
-        // TODO implement this method
-        return schedule;
+    public LiveData<List<Session>> getSchedule(String author,@NonNull String teacherId, int semester, int year) {
+        final MutableLiveData<List<Session>> schedules = new MutableLiveData<>();
+        retrofit.getScheduleTeacher(author, teacherId, semester, year, new OnRetrofitResult<List<Session>>() {
+            @Override
+            public void onSuccess(List<Session> result) {
+                schedules.postValue(result);
+            }
+        });
+        return schedules;
     }
 }

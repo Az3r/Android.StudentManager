@@ -7,9 +7,26 @@ public class Session implements Comparable<Session> {
     private String ClassId;
     private String RoomName;
     private float DayOfWeek;
+    private float Semester;
+    private float AcademicYear;
     private int period;
 
     // Getter Methods
+    public float getSemester() {
+        return Semester;
+    }
+
+    public void setSemester(float semester) {
+        Semester = semester;
+    }
+
+    public float getAcademicYear() {
+        return AcademicYear;
+    }
+
+    public void setAcademicYear(float academicYear) {
+        AcademicYear = academicYear;
+    }
     public int getPeriod() {
         return period;
     }

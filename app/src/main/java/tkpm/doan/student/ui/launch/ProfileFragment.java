@@ -26,7 +26,6 @@ public class ProfileFragment extends Fragment {
 
     private static final String TAG = ProfileFragment.class.getName();
     private LoggedUserViewModel viewModel;
-
     private FragmentProfileBinding binding;
     TextView studentId;
     TextView studentName;
@@ -55,7 +54,6 @@ public class ProfileFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -86,17 +84,13 @@ public class ProfileFragment extends Fragment {
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
-
         RecyclerViews.setupListView(recyclerView);
-
         viewModel.getComments().observe(getViewLifecycleOwner(), comments -> {
             CommentAdapter adapter = new CommentAdapter(requireContext(), comments);
             recyclerView.swapAdapter(adapter, true);
         });
     }
-
     private void setupViewModel() {
-
         viewModel.getUserType().observe(getViewLifecycleOwner(), userTypes -> {
             switch (userTypes) {
                 case TEACHER:
@@ -106,10 +100,8 @@ public class ProfileFragment extends Fragment {
                     binding.commentSection.setVisibility(View.VISIBLE);
             }
         });
-
         viewModel.getPersonalInfo().observe(getViewLifecycleOwner(), personalInfo -> {
             studentId.setText(personalInfo.getStudentId());
-
             String fullname = requireContext()
                     .getResources()
                     .getString(R.string.format_full_name, personalInfo.getLastName(), personalInfo.getMiddleName(), personalInfo.getFirstName());

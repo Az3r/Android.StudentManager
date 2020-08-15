@@ -28,6 +28,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Lesson;
 import tkpm.doan.student.databinding.FragmentScheduleDetailBinding;
+import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.components.adapters.LessonAdapter;
 import tkpm.doan.student.ui.components.utils.RecyclerViews;
 
@@ -65,6 +66,11 @@ public class ScheduleDetailFragment extends Fragment {
 
     private void setupRecyclerView(RecyclerView recyclerView) {
         RecyclerViews.setupListView(recyclerView);
-
+        viewModel.getSelectedSchedule().observe(getViewLifecycleOwner(), schedule -> {
+            MainActivity activity = (MainActivity) requireActivity();
+            activity.getSupportActionBar().setTitle(schedule.dateToString());
+            LessonAdapter adapter = new LessonAdapter(requireContext(), schedule.getLessons());
+            recyclerView.setAdapter(adapter);
+        });
     }
 }

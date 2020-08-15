@@ -61,17 +61,14 @@ public class ScheduleDetailFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         MainActivity activity = (MainActivity) requireActivity();
-        activity.getSupportActionBar().setTitle("Monday");
-
         setupRecyclerView(binding.recyclerView);
     }
-
     private void setupRecyclerView(RecyclerView recyclerView) {
-
         RecyclerViews.setupListView(recyclerView);
         viewModel.getSelectedSchedule().observe(getViewLifecycleOwner(), schedule -> {
+            MainActivity activity = (MainActivity) requireActivity();
+            activity.getSupportActionBar().setTitle(schedule.dateToString());
             LessonAdapter adapter = new LessonAdapter(requireContext(), schedule.getLessons());
             recyclerView.setAdapter(adapter);
         });

@@ -21,11 +21,13 @@ import androidx.navigation.ui.NavigationUI;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.databinding.FragmentNotificationDetailBinding;
+import tkpm.doan.student.ui.components.constants.Provider;
 
 public class NotificationDetailFragment extends Fragment {
     private FragmentNotificationDetailBinding binding;
     private TextView title;
     private TextView content;
+    private TextView notify_date;
     private StudentViewModel viewModel;
 
 
@@ -55,9 +57,11 @@ public class NotificationDetailFragment extends Fragment {
 
         title = binding.notifyTitle;
         content = binding.notifyContent;
+        notify_date= binding.notifyDate;
         viewModel.getSelectedNotify().observe(getViewLifecycleOwner(), notify -> {
             title.setText(notify.getTitle());
             content.setText(notify.getContent());
+            notify_date.setText(Provider.getDateFormat().format(notify.getCreatedOn()));
         });
     }
 
