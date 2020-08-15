@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginVertical="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:text="@string/text_id"
+            android:textAlignment="textEnd" />
+
+        <TextView
+            android:id="@+id/student_id"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            tools:text="1712875" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginVertical="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:text="@string/text_full_name"
+            android:textAlignment="textEnd" />
+
+        <TextView
+            android:id="@+id/student_name"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            tools:text="Nguyen Manh Tuan" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginVertical="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:text="@string/text_average"
+            android:textAlignment="textEnd" />
+
+        <TextView
+            android:id="@+id/student_score_average"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            tools:text="7.6" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginVertical="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:text="@string/text_conduct"
+            android:textAlignment="textEnd" />
+
+        <TextView
+            android:id="@+id/student_conduct"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            tools:text="hanh kiem" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginVertical="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:text="@string/text_rank"
+            android:textAlignment="textEnd" />
+
+        <TextView
+            android:id="@+id/student_type"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            tools:text="hoc sinh gioi" />
+    </LinearLayout>
+
+
+</LinearLayout>

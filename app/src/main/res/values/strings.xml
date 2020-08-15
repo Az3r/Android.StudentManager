@@ -63,4 +63,8 @@
     <string name="text_title">Title</string>
     <string name="text_tag">Tag</string>
     <string name="text_content">Content</string>
+    <string name="text_report">Report</string>
+    <string name="text_id">ID</string>
+    <string name="text_conduct">Conduct</string>
+    <string name="text_rank">Rank</string>
 </resources>

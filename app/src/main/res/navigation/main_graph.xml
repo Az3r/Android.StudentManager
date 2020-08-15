@@ -104,6 +104,7 @@
                 app:destination="@id/nav_teacher_schedule_detail" />
         </fragment>
         <fragment
+            tools:layout="@layout/fragment_schedule_detail"
             android:id="@+id/nav_teacher_schedule_detail"
             android:name="tkpm.doan.student.ui.teacher.ScheduleDetailFragment" />
         <fragment
@@ -119,6 +120,11 @@
             android:name="tkpm.doan.student.ui.teacher.ScoreEditorFragment"
             android:label="@string/text_edit_score"
             tools:layout="@layout/fragment_score_editor" />
+        <fragment
+            android:id="@+id/nav_teacher_report"
+            android:name="tkpm.doan.student.ui.teacher.ReportFragment"
+            android:label="@string/text_report"
+            tools:layout="@layout/fragment_report" />
     </navigation>
 
     <fragment
@@ -159,10 +165,10 @@
             android:label="@string/text_add_student"
             tools:layout="@layout/fragment_add_student" />
         <fragment
-            tools:layout="@layout/fragment_notification_list"
             android:id="@+id/nav_manager_notification"
             android:name="tkpm.doan.student.ui.manager.NotifyListFragment"
-            android:label="@string/text_notification" >
+            android:label="@string/text_notification"
+            tools:layout="@layout/fragment_notification_list">
             <action
                 android:id="@+id/navigate_create_notify"
                 app:destination="@id/nav_create_notification" />

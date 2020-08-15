@@ -43,15 +43,9 @@
                                 </LayoutPositions>
                               </value>
                             </entry>
-                            <entry key="nav_notification_list">
+                            <entry key="nav_manager_notification">
                               <value>
                                 <LayoutPositions>
-                                  <option name="myPosition">
-                                    <Point>
-                                      <option name="x" value="11" />
-                                      <option name="y" value="245" />
-                                    </Point>
-                                  </option>
                                   <option name="myPositions">
                                     <map>
                                       <entry key="navigate_create_notify">
@@ -64,15 +58,9 @@
                                 </LayoutPositions>
                               </value>
                             </entry>
-                            <entry key="nav_search_student">
+                            <entry key="nav_manager_student">
                               <value>
                                 <LayoutPositions>
-                                  <option name="myPosition">
-                                    <Point>
-                                      <option name="x" value="11" />
-                                      <option name="y" value="-51" />
-                                    </Point>
-                                  </option>
                                   <option name="myPositions">
                                     <map>
                                       <entry key="navigate_add_student">
@@ -200,8 +188,8 @@
                                 <LayoutPositions>
                                   <option name="myPosition">
                                     <Point>
-                                      <option name="x" value="12" />
-                                      <option name="y" value="12" />
+                                      <option name="x" value="23" />
+                                      <option name="y" value="14" />
                                     </Point>
                                   </option>
                                 </LayoutPositions>
@@ -259,8 +247,8 @@
                                 <LayoutPositions>
                                   <option name="myPosition">
                                     <Point>
-                                      <option name="x" value="12" />
-                                      <option name="y" value="12" />
+                                      <option name="x" value="269" />
+                                      <option name="y" value="-334" />
                                     </Point>
                                   </option>
                                   <option name="myPositions">
@@ -271,6 +259,18 @@
                                         </value>
                                       </entry>
                                     </map>
+                                  </option>
+                                </LayoutPositions>
+                              </value>
+                            </entry>
+                            <entry key="nav_teacher_report">
+                              <value>
+                                <LayoutPositions>
+                                  <option name="myPosition">
+                                    <Point>
+                                      <option name="x" value="24" />
+                                      <option name="y" value="-340" />
+                                    </Point>
                                   </option>
                                 </LayoutPositions>
                               </value>

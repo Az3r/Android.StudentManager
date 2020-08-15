@@ -30,11 +30,12 @@ public class ManagerStudentAdapter  extends ImmutableAdapter<Student> {
             binding.studentSelected.setVisibility(View.GONE);
 
             itemView.setOnClickListener(v -> {
+
+                // TODO set selected student in ManagerViewModel
+
                 MainActivity activity = (MainActivity) getContext();
                 NavDirections directions = SearchStudentFragmentDirections.navigateAddStudent();
                 activity.getNavController().navigate(directions);
-
-                // TODO set selected student in ManagerViewModel
             });
 
             // TODO update view
