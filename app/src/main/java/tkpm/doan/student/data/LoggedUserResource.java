@@ -1,5 +1,6 @@
 package tkpm.doan.student.data;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -8,10 +9,14 @@ import java.util.List;
 import javax.inject.Inject;
 
 import tkpm.doan.student.data.components.enums.UserTypes;
+import tkpm.doan.student.data.components.retrofit.RetrofitService;
 import tkpm.doan.student.data.models.Comment;
 import tkpm.doan.student.data.models.PersonalInfo;
 
 public class LoggedUserResource {
+
+    @NonNull
+    private RetrofitService retrofit;
 
     private MutableLiveData<String> userId = new MutableLiveData<>();
 
@@ -22,8 +27,8 @@ public class LoggedUserResource {
     private MutableLiveData<List<Comment>> comments = new MutableLiveData<>();
 
     @Inject
-    public LoggedUserResource() {
-
+    public LoggedUserResource(@NonNull RetrofitService retrofit) {
+        this.retrofit = retrofit;
     }
 
     public LiveData<String> getUserId() {

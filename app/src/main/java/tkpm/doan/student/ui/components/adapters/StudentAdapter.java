@@ -45,8 +45,7 @@ public class StudentAdapter extends ImmutableAdapter<Student> implements ActionM
 
             itemView.setOnClickListener(v -> {
                 if (actionMode != null) {
-                    boolean isChecked = checkBox.isChecked();
-                    checkBox.setChecked(!isChecked);
+                    checkBox.setChecked(!checkBox.isChecked());
                 } else {
                     MainActivity activity = (MainActivity) getContext();
                     NavDirections directions = GradeDetailFragmentDirections.navgiateStudentProfile();
@@ -56,6 +55,7 @@ public class StudentAdapter extends ImmutableAdapter<Student> implements ActionM
         }
     }
 
+    private boolean selectable;
     private ActionMode actionMode;
     private HashMap<Integer, Student> selectedStudent = new HashMap<>();
 

@@ -58,4 +58,6 @@
     <string name="text_manage_students">Manage students</string>
     <string name="text_sign_out">Sign out</string>
     <string name="text_add_student">Add student</string>
+    <string name="desc_empty_image">empty image</string>
+    <string name="text_add_image">Add image</string>
 </resources>
