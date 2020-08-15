@@ -138,9 +138,9 @@
         android:label="@string/text_sign_out" />
     <navigation
         android:id="@+id/graph_manager"
-        app:startDestination="@id/nav_search_student">
+        app:startDestination="@id/nav_manager_student">
         <fragment
-            android:id="@+id/nav_search_student"
+            android:id="@+id/nav_manager_student"
             android:name="tkpm.doan.student.ui.manager.SearchStudentFragment"
             android:label="@string/text_manage_students"
             tools:layout="@layout/fragment_search_student">
@@ -160,7 +160,7 @@
             tools:layout="@layout/fragment_add_student" />
         <fragment
             tools:layout="@layout/fragment_notification_list"
-            android:id="@+id/nav_notification_list"
+            android:id="@+id/nav_manager_notification"
             android:name="tkpm.doan.student.ui.manager.NotifyListFragment"
             android:label="@string/text_notification" >
             <action

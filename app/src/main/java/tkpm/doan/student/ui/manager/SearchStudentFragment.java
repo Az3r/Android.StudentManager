@@ -46,24 +46,15 @@ public class SearchStudentFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        setHasOptionsMenu(true);
-
-
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        MainActivity activity = (MainActivity) requireActivity();
-        activity.getBottomNav().setVisibility(View.GONE);
-    }
-
-    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        binding.fab.setOnClickListener(v -> {
+            MainActivity activity = (MainActivity) requireActivity();
+
+            NavDirections directions = SearchStudentFragmentDirections.navigateAddStudent();
+            activity.getNavController().navigate(directions);
+        });
 
         binding.blockAll.setOnCheckedChangeListener((compoundButton, isChecked) -> {
             binding.block10.setChecked(isChecked);
@@ -97,21 +88,7 @@ public class SearchStudentFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.action_manager, menu);
-        menu.getItem(R.id.nav_create_notification).setVisible(false);
+        menu.findItem(R.id.nav_create_notification).setVisible(false);
         super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        MainActivity activity = (MainActivity) requireActivity();
-        NavController navController = activity.getNavController();
-
-        if (item.getItemId() == R.id.nav_create_student) {
-            NavDirections directions = SearchStudentFragmentDirections.navigateAddStudent();
-            navController.navigate(directions);
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

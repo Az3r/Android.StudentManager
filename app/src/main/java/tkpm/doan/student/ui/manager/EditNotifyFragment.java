@@ -12,9 +12,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.ui.NavigationUI;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.databinding.FragmentCreateNotifyBinding;
+import tkpm.doan.student.ui.MainActivity;
 
 public class EditNotifyFragment extends Fragment {
     private FragmentCreateNotifyBinding binding;
@@ -27,12 +29,6 @@ public class EditNotifyFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        setHasOptionsMenu(true);
-    }
-
-    @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
@@ -41,25 +37,19 @@ public class EditNotifyFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-    }
 
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.action_edit, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
+        binding.buttonRestore.setOnClickListener(v -> {
+            // TODO restore properties to its default value
+        });
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_restore:
-                // TODO restore properties to its default value
-                return true;
-            case R.id.menu_submit:
-                // TODO submit notification to database
-                return true;
+        binding.buttonSubmit.setOnClickListener(v -> {
+            // TODO check no field is empty
+            // TODO check field format
+            // TODO save to database
 
-        }
-        return super.onOptionsItemSelected(item);
+
+            MainActivity mainActivity = (MainActivity) requireActivity();
+            mainActivity.getNavController().navigateUp();
+        });
     }
 }

@@ -1,68 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingVertical="24dp"
-    android:paddingHorizontal="12dp"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.manager.EditNotifyFragment"
+    android:layout_height="match_parent">
 
-    <TextView
-        style="@style/Label.Important"
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/text_title" />
+        android:orientation="vertical"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="24dp"
+>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        app:errorEnabled="true">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/notify_title"
+        <TextView
+            style="@style/Label.Important"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:text="@string/text_title" />
 
-
-    <TextView
-        style="@style/Label.Important"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/text_tag" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        app:errorEnabled="true">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/notify_tag"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginVertical="8dp"
+            app:errorEnabled="true">
 
-    <TextView
-        style="@style/Label.Important"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/text_content" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/notify_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        app:errorEnabled="true">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/notify_content"
+        <TextView
+            style="@style/Label.Important"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="300dp"
-            android:singleLine="true" />
-    </com.google.android.material.textfield.TextInputLayout>
-</LinearLayout>
+            android:text="@string/text_tag" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/notify_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            style="@style/Label.Important"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_content" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:gravity="top"
+                android:id="@+id/notify_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="300dp"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_restore"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_restore" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_submit" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
