@@ -33,7 +33,7 @@
     <string name="desc_grade_student">number of students of class</string>
     <string name="format_selected">%1$d selected</string>
     <string name="desc_commentor_profile">Profile picture of commentor</string>
-    <string name="text_cancel">Cancel</string>
+    <string name="text_restore">Restore</string>
     <string name="text_submit">Submit</string>
     <string name="msg_student_review">Review this student</string>
     <string name="text_subject">Subject</string>
@@ -60,4 +60,7 @@
     <string name="text_add_student">Add student</string>
     <string name="desc_empty_image">empty image</string>
     <string name="text_add_image">Add image</string>
+    <string name="text_title">Title</string>
+    <string name="text_tag">Tag</string>
+    <string name="text_content">Content</string>
 </resources>

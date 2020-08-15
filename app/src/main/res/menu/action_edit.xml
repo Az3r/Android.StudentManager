@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:visible="false"
-        android:id="@+id/menu_score_cancel"
-        android:title="@string/text_cancel"
+        android:id="@+id/menu_restore"
+        android:title="@string/text_restore"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/menu_score_submit"
+        android:id="@+id/menu_submit"
         android:title="@string/text_submit"
         app:showAsAction="always" />
+
 </menu>
