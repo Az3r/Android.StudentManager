@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="24dp">
 
@@ -28,14 +29,14 @@
                 style="@style/TextAppearance.MaterialComponents.Subtitle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nguyen Le Phuong Trang"
+                tools:text="Nguyen Le Phuong Trang"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/student_class"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="12a1"
+                tools:text="12a1"
                 android:textAllCaps="true" />
         </LinearLayout>
     </LinearLayout>

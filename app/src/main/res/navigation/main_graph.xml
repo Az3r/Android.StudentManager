@@ -29,6 +29,9 @@
         <action
             android:id="@+id/navgiate_teacher"
             app:destination="@id/graph_teacher" />
+        <action
+            android:id="@+id/navgiate_manager"
+            app:destination="@id/graph_manager" />
     </fragment>
 
     <navigation
@@ -133,4 +136,12 @@
         android:id="@+id/nav_sign_out"
         android:name="tkpm.doan.student.ui.dialogs.SignOutDialog"
         android:label="SignOutDialog" />
+    <navigation android:id="@+id/graph_manager"
+        app:startDestination="@id/nav_search_student">
+        <fragment
+            android:id="@+id/nav_search_student"
+            android:name="tkpm.doan.student.ui.manager.SearchStudentFragment"
+            android:label="Manage students"
+            tools:layout="@layout/fragment_search_student" />
+    </navigation>
 </navigation>

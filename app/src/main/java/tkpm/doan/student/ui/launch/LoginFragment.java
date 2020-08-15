@@ -88,7 +88,7 @@ public class LoginFragment extends Fragment {
 
             new Handler().postDelayed(() -> {
                 setupTeacherSession();
-                NavDirections directions = LoginFragmentDirections.navgiateTeacher();
+                NavDirections directions = LoginFragmentDirections.navgiateManager();
                 ((MainActivity) requireActivity()).getNavController().navigate(directions);
             }, 500);
         }, 1000);
