@@ -147,9 +147,6 @@
             <action
                 android:id="@+id/navigate_add_student"
                 app:destination="@id/nav_create_student" />
-            <action
-                android:id="@+id/navigate_create_notify"
-                app:destination="@id/nav_create_notification" />
         </fragment>
         <fragment
             android:id="@+id/nav_create_notification"
@@ -161,6 +158,15 @@
             android:name="tkpm.doan.student.ui.manager.AddStudentFragment"
             android:label="@string/text_add_student"
             tools:layout="@layout/fragment_add_student" />
+        <fragment
+            tools:layout="@layout/fragment_notification_list"
+            android:id="@+id/nav_notification_list"
+            android:name="tkpm.doan.student.ui.manager.NotifyListFragment"
+            android:label="@string/text_notification" >
+            <action
+                android:id="@+id/navigate_create_notify"
+                app:destination="@id/nav_create_notification" />
+        </fragment>
     </navigation>
 
 </navigation>

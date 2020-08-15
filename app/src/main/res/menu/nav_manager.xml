@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nav_create_student"
+        android:icon="@drawable/ic_class"
+        android:title="@string/text_class"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/nav_create_notification"
+        android:icon="@drawable/ic_notification"
+        android:title="@string/text_schedule"
+        app:showAsAction="ifRoom" />
+</menu>

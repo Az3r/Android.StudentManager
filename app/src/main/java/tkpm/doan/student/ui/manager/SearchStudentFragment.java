@@ -97,6 +97,7 @@ public class SearchStudentFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.action_manager, menu);
+        menu.getItem(R.id.nav_create_notification).setVisible(false);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -104,17 +105,13 @@ public class SearchStudentFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         MainActivity activity = (MainActivity) requireActivity();
         NavController navController = activity.getNavController();
-        NavDirections directions = null;
 
-        switch (item.getItemId()) {
-            case R.id.nav_create_student:
-                directions = SearchStudentFragmentDirections.navigateAddStudent();
-                break;
-            case R.id.nav_create_notification:
-                directions = SearchStudentFragmentDirections.navigateCreateNotify();
+        if (item.getItemId() == R.id.nav_create_student) {
+            NavDirections directions = SearchStudentFragmentDirections.navigateAddStudent();
+            navController.navigate(directions);
+            return true;
         }
 
-        if (directions != null) navController.navigate(directions);
         return super.onOptionsItemSelected(item);
     }
 }

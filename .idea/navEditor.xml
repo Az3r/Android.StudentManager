@@ -43,23 +43,39 @@
                                 </LayoutPositions>
                               </value>
                             </entry>
+                            <entry key="nav_notification_list">
+                              <value>
+                                <LayoutPositions>
+                                  <option name="myPosition">
+                                    <Point>
+                                      <option name="x" value="11" />
+                                      <option name="y" value="245" />
+                                    </Point>
+                                  </option>
+                                  <option name="myPositions">
+                                    <map>
+                                      <entry key="navigate_create_notify">
+                                        <value>
+                                          <LayoutPositions />
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
+                                </LayoutPositions>
+                              </value>
+                            </entry>
                             <entry key="nav_search_student">
                               <value>
                                 <LayoutPositions>
                                   <option name="myPosition">
                                     <Point>
-                                      <option name="x" value="12" />
-                                      <option name="y" value="12" />
+                                      <option name="x" value="11" />
+                                      <option name="y" value="-51" />
                                     </Point>
                                   </option>
                                   <option name="myPositions">
                                     <map>
                                       <entry key="navigate_add_student">
-                                        <value>
-                                          <LayoutPositions />
-                                        </value>
-                                      </entry>
-                                      <entry key="navigate_create_notify">
                                         <value>
                                           <LayoutPositions />
                                         </value>

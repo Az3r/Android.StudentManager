@@ -2,8 +2,6 @@ package tkpm.doan.student.ui.launch;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.Layout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
-import androidx.navigation.ui.NavigationUI;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
@@ -80,11 +75,7 @@ public class LoginFragment extends Fragment {
         boolean isTeacher = teacherCheckBox.isChecked();
         new Handler().postDelayed(() -> {
             Toast.makeText(getContext(), R.string.msg_login_success, Toast.LENGTH_SHORT).show();
-            new Handler().postDelayed(() -> {
-                setupStudentSession();
-                NavDirections directions = LoginFragmentDirections.navgiateStudent();
-                ((MainActivity) requireActivity()).getNavController().navigate(directions);
-            }, 500);
+            new Handler().postDelayed(this::navigateManagerSession, 500);
         }, 1000);
     }
 
@@ -111,15 +102,24 @@ public class LoginFragment extends Fragment {
 
 
     private void setupStudentSession() {
-        // Bottom navigation
         MainActivity activity = (MainActivity) requireActivity();
         activity.setupBottomNav(R.menu.nav_student);
+        NavDirections directions = LoginFragmentDirections.navgiateStudent();
+        ((MainActivity) requireActivity()).getNavController().navigate(directions);
     }
 
     private void setupTeacherSession() {
-        // Bottom navigation
         MainActivity activity = (MainActivity) requireActivity();
         activity.setupBottomNav(R.menu.nav_teacher);
+        NavDirections directions = LoginFragmentDirections.navgiateTeacher();
+        ((MainActivity) requireActivity()).getNavController().navigate(directions);
+    }
+
+    private void navigateManagerSession() {
+        MainActivity activity = (MainActivity) requireActivity();
+        activity.setupBottomNav(R.menu.nav_manager);
+        NavDirections directions = LoginFragmentDirections.navgiateManager();
+        ((MainActivity) requireActivity()).getNavController().navigate(directions);
     }
 
     private boolean hasEmptyField() {
