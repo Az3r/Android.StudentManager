@@ -39,4 +39,8 @@ public class LoggedUserViewModel extends ViewModel {
     public LiveData<List<Comment>> getComments() {
         return userResource.getComments();
     }
+
+    public LiveData<Boolean> isHomeTeacher() {
+        return userResource.isHomeTeacher();
+    }
 }

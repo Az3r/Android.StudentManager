@@ -1,8 +1,10 @@
 package tkpm.doan.student.ui.launch;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -14,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -32,6 +35,7 @@ public class LoginFragment extends Fragment {
     private ProgressBar progressBar;
 
     private FragmentLoginBinding binding;
+    private LoggedUserViewModel viewModel;
 
     @Nullable
     @Override
@@ -50,6 +54,12 @@ public class LoginFragment extends Fragment {
         progressBar = binding.progressbar;
         loginButton = binding.buttonLogin;
         loginButton.setOnClickListener(e -> onLogin());
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        viewModel = new ViewModelProvider(requireActivity()).get(LoggedUserViewModel.class);
     }
 
     @Override
@@ -110,7 +120,16 @@ public class LoginFragment extends Fragment {
 
     private void setupTeacherSession() {
         MainActivity activity = (MainActivity) requireActivity();
-        activity.setupBottomNav(R.menu.nav_teacher);
+
+        activity.getBottomNav().setVisibility(View.VISIBLE);
+        activity.getBottomNav().getMenu().clear();
+        activity.getBottomNav().inflateMenu(R.menu.nav_teacher);
+
+        viewModel.isHomeTeacher().observe(getViewLifecycleOwner(), isHomeTeacher -> {
+            Menu menu = activity.getBottomNav().getMenu();
+            menu.findItem(R.id.nav_teacher_report).setVisible(isHomeTeacher);
+        });
+
         NavDirections directions = LoginFragmentDirections.navgiateTeacher();
         ((MainActivity) requireActivity()).getNavController().navigate(directions);
     }

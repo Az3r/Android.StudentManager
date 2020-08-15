@@ -12,11 +12,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 
 import tkpm.doan.student.R;
+import tkpm.doan.student.data.LoggedUserResource;
 import tkpm.doan.student.databinding.FragmentProfileBinding;
 import tkpm.doan.student.ui.MainActivity;
+import tkpm.doan.student.ui.launch.LoggedUserViewModel;
 
 public class StudentProfileFragment extends Fragment {
     private FragmentProfileBinding binding;
@@ -41,7 +44,12 @@ public class StudentProfileFragment extends Fragment {
     }
 
     private void setupCommentSection() {
-        binding.teacherComment.setVisibility(View.VISIBLE);
+
+        LoggedUserViewModel viewModel = new ViewModelProvider(requireActivity()).get(LoggedUserViewModel.class);
+        viewModel.isHomeTeacher().observe(getViewLifecycleOwner(), isHomeTeacher -> {
+            binding.teacherComment.setVisibility(isHomeTeacher ? View.VISIBLE : View.GONE);
+        });
+
         binding.commentInput.setOnFocusChangeListener((v, isFocused) -> {
             if (isFocused) {
                 binding.actionButtons.setVisibility(View.VISIBLE);

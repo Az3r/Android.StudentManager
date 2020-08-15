@@ -26,10 +26,13 @@ public class LoggedUserResource {
 
     private MutableLiveData<List<Comment>> comments = new MutableLiveData<>();
 
+    private MutableLiveData<Boolean> homeTeacher = new MutableLiveData<>(true);
+
     @Inject
     public LoggedUserResource(@NonNull RetrofitService retrofit) {
         this.retrofit = retrofit;
     }
+
     public LiveData<String> getUserId() {
         return userId;
     }
@@ -44,5 +47,9 @@ public class LoggedUserResource {
 
     public LiveData<List<Comment>> getComments() {
         return comments;
+    }
+
+    public LiveData<Boolean> isHomeTeacher() {
+        return homeTeacher;
     }
 }
