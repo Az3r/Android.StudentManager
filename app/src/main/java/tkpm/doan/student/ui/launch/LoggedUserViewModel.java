@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
 
+import java.security.Key;
 import java.util.List;
 
 import javax.annotation.Nonnull;
@@ -14,6 +15,7 @@ import tkpm.doan.student.data.LoggedUserResource;
 import tkpm.doan.student.data.components.enums.UserTypes;
 import tkpm.doan.student.data.models.Comment;
 import tkpm.doan.student.data.models.PersonalInfo;
+import tkpm.doan.student.ui.components.constants.Keys;
 
 public class LoggedUserViewModel extends ViewModel {
 
@@ -27,13 +29,15 @@ public class LoggedUserViewModel extends ViewModel {
         this.userResource = resource;
         this.savedStateHandle = savedStateHandle;
     }
-
     public LiveData<UserTypes> getUserType() {
         return userResource.getUserType();
     }
 
-    public LiveData<PersonalInfo> getPersonalInfo() {
-        return userResource.getPersonalInfo();
+    public LiveData<PersonalInfo> getStudentInfo() {
+        return userResource.getStudentInfo(Keys.token, Keys.STUDENT_ID);
+    }
+    public LiveData<PersonalInfo> getTeacherInfo() {
+        return userResource.getTeacherInfo(Keys.token, Keys.TEACHER_ID);
     }
 
     public LiveData<List<Comment>> getComments() {

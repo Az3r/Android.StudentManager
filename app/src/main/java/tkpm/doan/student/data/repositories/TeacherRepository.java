@@ -27,14 +27,26 @@ public class TeacherRepository {
         this.retrofit = retrofit;
     }
 
-    public LiveData<List<Grade>> getTeachingGrades(@NonNull String teacherId, int year) {
-        // TODO implement this method
-        return grades;
+    public LiveData<List<Grade>> getTeachingGrades(String author,@NonNull String teacherId, int semester,int year) {
+        final MutableLiveData<List<Grade>> schedules = new MutableLiveData<>();
+        retrofit.getGradeTeacher(author, teacherId, semester, year, new OnRetrofitResult<List<Grade>>() {
+            @Override
+            public void onSuccess(List<Grade> result) {
+                schedules.postValue(result);
+            }
+        });
+        return schedules;
     }
 
-    public LiveData<List<Student>> getStudents(@NonNull String gradeId, int i) {
-        // TODO implement this method
-        return students;
+    public LiveData<List<Student>> getStudents(String author,String teacherId,String classID,int semester, int year) {
+        final MutableLiveData<List<Student>> schedules = new MutableLiveData<>();
+        retrofit.getStudentClass(author, teacherId,classID, semester, year, new OnRetrofitResult<List<Student>>() {
+            @Override
+            public void onSuccess(List<Student> result) {
+                schedules.postValue(result);
+            }
+        });
+        return schedules;
     }
     public LiveData<List<Session>> getSchedule(String author,@NonNull String teacherId, int semester, int year) {
         final MutableLiveData<List<Session>> schedules = new MutableLiveData<>();

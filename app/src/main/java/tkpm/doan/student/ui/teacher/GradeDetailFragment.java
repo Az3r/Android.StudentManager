@@ -29,22 +29,18 @@ public class GradeDetailFragment extends Fragment {
         binding = FragmentGradeDetailBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
-
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         viewModel = new ViewModelProvider(requireActivity()).get(TeacherViewModel.class);
     }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setupRecyclerView(binding.recyclerView);
     }
-
     private void setupRecyclerView(RecyclerView recyclerView) {
         RecyclerViews.setupListView(binding.recyclerView);
-
         viewModel.getSelectedGrade().observe(getViewLifecycleOwner(), selectedGrade -> {
             Log.i(TAG, String.valueOf(selectedGrade));
             viewModel.getStudents(selectedGrade).observe(getViewLifecycleOwner(), students -> {

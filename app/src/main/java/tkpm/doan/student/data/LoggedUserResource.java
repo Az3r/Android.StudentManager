@@ -9,8 +9,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import tkpm.doan.student.data.components.enums.UserTypes;
+import tkpm.doan.student.data.components.retrofit.OnRetrofitResult;
 import tkpm.doan.student.data.components.retrofit.RetrofitService;
 import tkpm.doan.student.data.models.Comment;
+import tkpm.doan.student.data.models.Grade;
 import tkpm.doan.student.data.models.PersonalInfo;
 
 public class LoggedUserResource {
@@ -41,8 +43,25 @@ public class LoggedUserResource {
         return userType;
     }
 
-    public LiveData<PersonalInfo> getPersonalInfo() {
-        return personalInfo;
+    public LiveData<PersonalInfo> getStudentInfo(String author, String studentID) {
+        final MutableLiveData<PersonalInfo> schedules = new MutableLiveData<>();
+        retrofit.getStudentProfile(author, studentID, new OnRetrofitResult<PersonalInfo>() {
+            @Override
+            public void onSuccess(PersonalInfo result) {
+                schedules.postValue(result);
+            }
+        });
+        return schedules;
+    }
+    public LiveData<PersonalInfo> getTeacherInfo(String author, String studentID) {
+        final MutableLiveData<PersonalInfo> schedules = new MutableLiveData<>();
+        retrofit.getTeacherProfile(author, studentID, new OnRetrofitResult<PersonalInfo>() {
+            @Override
+            public void onSuccess(PersonalInfo result) {
+                schedules.postValue(result);
+            }
+        });
+        return schedules;
     }
 
     public LiveData<List<Comment>> getComments() {

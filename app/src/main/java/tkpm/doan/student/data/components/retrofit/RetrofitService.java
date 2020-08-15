@@ -7,6 +7,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import retrofit2.Retrofit;
+import tkpm.doan.student.data.models.Grade;
 import tkpm.doan.student.data.models.PersonalInfo;
 import tkpm.doan.student.data.models.Score;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -46,6 +47,15 @@ public class RetrofitService {
 
     public void getStudentProfile(String author, String studentId, @NonNull OnRetrofitResult<PersonalInfo> callback) {
         api.getStudent(author, studentId).enqueue(new RetrofitListener<>(callback));
+    }
+    public void getTeacherProfile(String author, String studentId, @NonNull OnRetrofitResult<PersonalInfo> callback) {
+        api.getTeacher(author, studentId).enqueue(new RetrofitListener<>(callback));
+    }
+    public void getGradeTeacher(String author, String teacherID,int sem, int year, @NonNull OnRetrofitResult<List<Grade>> callback) {
+        api.getGradeTeacher(author, teacherID,sem,year).enqueue(new RetrofitListener<>(callback));
+    }
+    public void getStudentClass(String author, String teacherID,String ClassId,int sem, int year, @NonNull OnRetrofitResult<List<Student>> callback) {
+        api.getStudentClass(author, teacherID,ClassId,sem,year).enqueue(new RetrofitListener<>(callback));
     }
 
 }

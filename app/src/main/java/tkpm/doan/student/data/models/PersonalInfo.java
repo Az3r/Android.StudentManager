@@ -4,6 +4,9 @@ import java.util.Date;
 
 public class PersonalInfo {
     private String StudentId;
+    private String RoleName;
+    private String TeacherId;
+    private String SubjectName;
     private boolean IsGraduated;
     private String Address;
     private String LastName;
@@ -17,6 +20,46 @@ public class PersonalInfo {
 
 
     // Getter Methods
+
+    public String getTeacherId() {
+        return TeacherId;
+    }
+
+    public void setTeacherId(String teacherId) {
+        TeacherId = teacherId;
+    }
+
+    public String getSubjectName() {
+        return SubjectName;
+    }
+
+    public void setSubjectName(String subjectName) {
+        SubjectName = subjectName;
+    }
+
+    public boolean isGraduated() {
+        return IsGraduated;
+    }
+
+    public void setGraduated(boolean graduated) {
+        IsGraduated = graduated;
+    }
+
+    public boolean isMale() {
+        return IsMale;
+    }
+
+    public void setMale(boolean male) {
+        IsMale = male;
+    }
+
+    public String getRoleName() {
+        return RoleName;
+    }
+
+    public void setRoleName(String roleName) {
+        RoleName = roleName;
+    }
 
     public String getStudentId() {
         return StudentId;

@@ -85,7 +85,7 @@ public class LoginFragment extends Fragment {
         boolean isTeacher = teacherCheckBox.isChecked();
         new Handler().postDelayed(() -> {
             Toast.makeText(getContext(), R.string.msg_login_success, Toast.LENGTH_SHORT).show();
-            new Handler().postDelayed(this::navigateManagerSession, 500);
+            new Handler().postDelayed(this::setupTeacherSession, 500);
         }, 1000);
     }
 
@@ -120,11 +120,9 @@ public class LoginFragment extends Fragment {
 
     private void setupTeacherSession() {
         MainActivity activity = (MainActivity) requireActivity();
-
         activity.getBottomNav().setVisibility(View.VISIBLE);
         activity.getBottomNav().getMenu().clear();
         activity.getBottomNav().inflateMenu(R.menu.nav_teacher);
-
         viewModel.isHomeTeacher().observe(getViewLifecycleOwner(), isHomeTeacher -> {
             Menu menu = activity.getBottomNav().getMenu();
             menu.findItem(R.id.nav_teacher_report).setVisible(isHomeTeacher);

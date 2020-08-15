@@ -8,9 +8,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.view.ActionMode;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 
 import java.util.ArrayList;
@@ -21,18 +24,22 @@ import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.databinding.ItemStudentMasterBinding;
 import tkpm.doan.student.ui.MainActivity;
+import tkpm.doan.student.ui.components.constants.AppData;
 import tkpm.doan.student.ui.teacher.GradeDetailFragmentDirections;
 import tkpm.doan.student.ui.teacher.GradeFragmentDirections;
 import tkpm.doan.student.ui.teacher.StudentProfileFragmentDirections;
+import tkpm.doan.student.ui.teacher.TeacherViewModel;
 
 public class StudentAdapter extends ImmutableAdapter<Student> implements ActionMode.Callback {
 
     private static final String TAG = StudentAdapter.class.getName();
+    private TextView Name;
+    private TextView Class;
+    private List<Student> list= new ArrayList<>();
+    private TeacherViewModel viewModel;
 
     private class ViewHolder extends AbstractViewHolder<Student> {
-
         private CheckBox checkBox;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
         }
@@ -41,12 +48,19 @@ public class StudentAdapter extends ImmutableAdapter<Student> implements ActionM
         public void bind(Student item) {
             this.itemView.setTag(item);
             ItemStudentMasterBinding binding = ItemStudentMasterBinding.bind(itemView);
+            viewModel= new ViewModelProvider((MainActivity) getContext()).get(TeacherViewModel.class);
             checkBox = binding.studentSelected;
-
+            Name= binding.studentName;
+            Class= binding.studentClass;
+            Name.setText(item.getLastName()+" "+item.getMiddleName()+" "+item.getFirstName());
+            Class.setText(item.getClassId());
             itemView.setOnClickListener(v -> {
                 if (actionMode != null) {
                     checkBox.setChecked(!checkBox.isChecked());
                 } else {
+                    list.add(item);
+                    AppData.getInstance().studentList= list;
+                    viewModel.setSelectedStudents(list);
                     MainActivity activity = (MainActivity) getContext();
                     NavDirections directions = GradeDetailFragmentDirections.navgiateStudentProfile();
                     activity.getNavController().navigate(directions);
@@ -129,7 +143,12 @@ public class StudentAdapter extends ImmutableAdapter<Student> implements ActionM
         }
 
         if (isChecked)
+        {
             selectedStudent.put(position, getItem(position));
+            list= new ArrayList<>(selectedStudent.values());
+            AppData.getInstance().studentList= list;
+            viewModel.setSelectedStudents(list);
+        }
         else
             selectedStudent.remove(position);
 
