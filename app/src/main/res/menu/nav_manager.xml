@@ -12,4 +12,10 @@
         android:icon="@drawable/ic_notification"
         android:title="@string/text_notification"
         app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/nav_create_schedule"
+        android:icon="@drawable/ic_schedule"
+        android:title="@string/text_schedule"
+        app:showAsAction="ifRoom" />
 </menu>

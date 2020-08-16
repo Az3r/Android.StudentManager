@@ -73,4 +73,7 @@
     <string name="add_feedback_success">Add feedback successful</string>
     <string name="add_feedback_fail">Add feedback unsuccessful \nPlease check again</string>
     <string name="need_content_feedback">You must type the feedback</string>
+    <string name="text_date">Date</string>
+    <string name="text_manage_schedule">Manage schedule</string>
+    <string name="text_teacher">Teacher</string>
 </resources>
