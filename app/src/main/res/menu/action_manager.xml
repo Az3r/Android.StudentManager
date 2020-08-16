@@ -2,7 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/nav_create_teacher"
-        android:title="@string/text_new_teacher"
-        app:showAsAction="never" />
+        android:id="@+id/nav_create_class"
+        android:title="@string/text_new_class"
+        android:icon="@drawable/ic_add_class"
+        app:showAsAction="always" />
 </menu>
