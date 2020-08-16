@@ -8,9 +8,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import okhttp3.ResponseBody;
 import tkpm.doan.student.data.components.retrofit.OnRetrofitResult;
 import tkpm.doan.student.data.components.retrofit.RetrofitService;
+import tkpm.doan.student.data.models.FeedBack;
 import tkpm.doan.student.data.models.Grade;
+import tkpm.doan.student.data.models.ScoreRequest;
 import tkpm.doan.student.data.models.Session;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.data.models.TeacherSchedule;
@@ -27,14 +30,26 @@ public class TeacherRepository {
         this.retrofit = retrofit;
     }
 
-    public LiveData<List<Grade>> getTeachingGrades(@NonNull String teacherId, int year) {
-        // TODO implement this method
-        return grades;
+    public LiveData<List<Grade>> getTeachingGrades(String author,@NonNull String teacherId, int semester,int year) {
+        final MutableLiveData<List<Grade>> schedules = new MutableLiveData<>();
+        retrofit.getGradeTeacher(author, teacherId, semester, year, new OnRetrofitResult<List<Grade>>() {
+            @Override
+            public void onSuccess(List<Grade> result) {
+                schedules.postValue(result);
+            }
+        });
+        return schedules;
     }
 
-    public LiveData<List<Student>> getStudents(@NonNull String gradeId, int i) {
-        // TODO implement this method
-        return students;
+    public LiveData<List<Student>> getStudents(String author,String teacherId,String classID,int semester, int year) {
+        final MutableLiveData<List<Student>> schedules = new MutableLiveData<>();
+        retrofit.getStudentClass(author, teacherId,classID, semester, year, new OnRetrofitResult<List<Student>>() {
+            @Override
+            public void onSuccess(List<Student> result) {
+                schedules.postValue(result);
+            }
+        });
+        return schedules;
     }
     public LiveData<List<Session>> getSchedule(String author,@NonNull String teacherId, int semester, int year) {
         final MutableLiveData<List<Session>> schedules = new MutableLiveData<>();
@@ -46,4 +61,35 @@ public class TeacherRepository {
         });
         return schedules;
     }
+    public LiveData<ResponseBody> PostScore(String author, List<ScoreRequest> scoreRequest) {
+        final MutableLiveData<ResponseBody> schedules = new MutableLiveData<>();
+        retrofit.PostScore(author, scoreRequest, new OnRetrofitResult<ResponseBody>() {
+            @Override
+            public void onSuccess(ResponseBody result) {
+                schedules.postValue(result);
+            }
+        });
+        return schedules;
+    }
+    public LiveData<ResponseBody> UpdateScore(String author, List<ScoreRequest> scoreRequest) {
+        final MutableLiveData<ResponseBody> schedules = new MutableLiveData<>();
+        retrofit.UpdateScore(author, scoreRequest, new OnRetrofitResult<ResponseBody>() {
+            @Override
+            public void onSuccess(ResponseBody result) {
+                schedules.postValue(result);
+            }
+        });
+        return schedules;
+    }
+    public LiveData<ResponseBody> PostFeedback(String author, FeedBack feedBack) {
+        final MutableLiveData<ResponseBody> schedules = new MutableLiveData<>();
+        retrofit.PostFeedback(author, feedBack, new OnRetrofitResult<ResponseBody>() {
+            @Override
+            public void onSuccess(ResponseBody result) {
+                schedules.postValue(result);
+            }
+        });
+        return schedules;
+    }
+
 }

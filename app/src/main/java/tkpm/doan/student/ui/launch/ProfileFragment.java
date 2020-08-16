@@ -13,11 +13,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.security.Key;
+
 import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.R;
 import tkpm.doan.student.databinding.FragmentProfileBinding;
 import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.components.adapters.CommentAdapter;
+import tkpm.doan.student.ui.components.constants.Keys;
 import tkpm.doan.student.ui.components.constants.Provider;
 import tkpm.doan.student.ui.components.utils.RecyclerViews;
 
@@ -100,18 +103,45 @@ public class ProfileFragment extends Fragment {
                     binding.commentSection.setVisibility(View.VISIBLE);
             }
         });
-        viewModel.getPersonalInfo().observe(getViewLifecycleOwner(), personalInfo -> {
-            studentId.setText(personalInfo.getStudentId());
-            String fullname = requireContext()
-                    .getResources()
-                    .getString(R.string.format_full_name, personalInfo.getLastName(), personalInfo.getMiddleName(), personalInfo.getFirstName());
-            studentName.setText(fullname);
-            studentClass.setText(personalInfo.getClassId());
-            studentGender.setText(getString(personalInfo.getIsMale() ? R.string.male : R.string.female));
-            studentBirthday.setText(Provider.getDateFormat().format(personalInfo.getBirthday()));
-            studentAddress.setText(personalInfo.getAddress());
-            studentPhone.setText(personalInfo.getPhoneNumber());
-            studentEmail.setText(personalInfo.getEmail());
-        });
+        if(Keys.IS_TEACHER)
+        {
+            binding.commentSection.setVisibility(View.GONE);
+            binding.studentRateCount.setVisibility(View.GONE);
+            viewModel.getTeacherInfo().observe(getViewLifecycleOwner(), personalInfo -> {
+                studentId.setText(personalInfo.getTeacherId());
+                String fullname = requireContext()
+                        .getResources()
+                        .getString(R.string.format_full_name, personalInfo.getLastName(), personalInfo.getMiddleName(), personalInfo.getFirstName());
+                studentName.setText(fullname);
+                studentClass.setText(personalInfo.getSubjectName());
+                studentGender.setText(getString(personalInfo.getIsMale() ? R.string.male : R.string.female));
+                studentBirthday.setText(Provider.getDateFormat().format(personalInfo.getBirthday()));
+                studentAddress.setText(personalInfo.getAddress());
+                studentPhone.setText(personalInfo.getPhoneNumber());
+                studentEmail.setText(personalInfo.getEmail());
+            });
+        }
+        else {
+            binding.commentSection.setVisibility(View.VISIBLE);
+            binding.studentRateCount.setVisibility(View.VISIBLE);
+            viewModel.getStudentInfo().observe(getViewLifecycleOwner(), personalInfo -> {
+                studentId.setText(personalInfo.getStudentId());
+                String fullname = requireContext()
+                        .getResources()
+                        .getString(R.string.format_full_name, personalInfo.getLastName(), personalInfo.getMiddleName(), personalInfo.getFirstName());
+                studentName.setText(fullname);
+                studentClass.setText(personalInfo.getClassId());
+                studentGender.setText(getString(personalInfo.getIsMale() ? R.string.male : R.string.female));
+                studentBirthday.setText(Provider.getDateFormat().format(personalInfo.getBirthday()));
+                studentAddress.setText(personalInfo.getAddress());
+                studentPhone.setText(personalInfo.getPhoneNumber());
+                studentEmail.setText(personalInfo.getEmail());
+            });
+
+
+        }
+
+
+
     }
 }

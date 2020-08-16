@@ -68,4 +68,8 @@
     <string name="text_conduct">Conduct</string>
     <string name="text_rank">Rank</string>
     <string name="text_add_teacher">Add teacher</string>
-</resources>
+    <string name="add_score_success">Add score successful</string>
+    <string name="add_score_fail">Add score unsuccessful \nPlease check again</string>
+    <string name="add_feedback_success">Add feedback successful</string>
+    <string name="add_feedback_fail">Add feedback unsuccessful \nPlease check again</string>
+    <string name="need_content_feedback">You must type the feedback</string>

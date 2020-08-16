@@ -7,10 +7,15 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
 
+import java.security.Key;
 import java.util.List;
 
+import okhttp3.ResponseBody;
+import retrofit2.Response;
+import tkpm.doan.student.data.models.FeedBack;
 import tkpm.doan.student.data.models.Grade;
 import tkpm.doan.student.data.models.Schedule;
+import tkpm.doan.student.data.models.ScoreRequest;
 import tkpm.doan.student.data.models.Session;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.data.models.TeacherSchedule;
@@ -32,16 +37,28 @@ public class TeacherViewModel extends ViewModel {
 
     public LiveData<List<Grade>> getTeachingGrades() {
         // TODO remove hard-coded params
-        return repository.getTeachingGrades(Keys.TEACHER_ID, 2020);
+        return repository.getTeachingGrades(Keys.token,Keys.TEACHER_ID, 1,2020);
     }
 
     public LiveData<List<Student>> getStudents(String gradeId) {
         // TODO remove hard-coded params
-        return repository.getStudents(gradeId, 2020);
+        return repository.getStudents(Keys.token, Keys.TEACHER_ID,gradeId, 1,2020);
     }
     public LiveData<List<Session>> getSchedule() {
         // TODO remove hard-coded params
         return repository.getSchedule(Keys.token,Keys.TEACHER_ID, 1, 2020);
+    }
+    public LiveData<ResponseBody> postScore(List<ScoreRequest> scoreRequest) {
+        // TODO remove hard-coded params
+        return repository.PostScore(Keys.token,scoreRequest);
+    }
+    public LiveData<ResponseBody> UpdateScore(List<ScoreRequest> scoreRequest) {
+        // TODO remove hard-coded params
+        return repository.UpdateScore(Keys.token,scoreRequest);
+    }
+    public LiveData<ResponseBody> PostFeedback(FeedBack feedBack) {
+        // TODO remove hard-coded params
+        return repository.PostFeedback(Keys.token,feedBack);
     }
 
     public LiveData<String> getSelectedGrade() {
@@ -59,7 +76,6 @@ public class TeacherViewModel extends ViewModel {
     public void setTeacherId(String teacherId) {
         state.set(Keys.TEACHER_ID, teacherId);
     }
-
     public LiveData<List<Student>> getSelectedStudents() {
         return selectedStudents;
     }

@@ -1,12 +1,16 @@
 package tkpm.doan.student.ui.launch;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ProgressBar;
@@ -47,7 +51,6 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         accountInput = binding.loginAccount;
         passwordInput = binding.loginPassword;
         teacherCheckBox = binding.loginTeacher;
@@ -55,7 +58,12 @@ public class LoginFragment extends Fragment {
         loginButton = binding.buttonLogin;
         loginButton.setOnClickListener(e -> onLogin());
     }
-
+    public static void hideKeyboard(Activity activity) {
+        if (activity != null && activity.getWindow() != null && activity.getWindow().getDecorView() != null) {
+            InputMethodManager imm = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(activity.getWindow().getDecorView().getWindowToken(), 0);
+        }
+    }
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -85,7 +93,7 @@ public class LoginFragment extends Fragment {
         boolean isTeacher = teacherCheckBox.isChecked();
         new Handler().postDelayed(() -> {
             Toast.makeText(getContext(), R.string.msg_login_success, Toast.LENGTH_SHORT).show();
-            new Handler().postDelayed(this::navigateManagerSession, 500);
+            new Handler().postDelayed(this::setupTeacherSession, 500);
         }, 1000);
     }
 
@@ -120,11 +128,9 @@ public class LoginFragment extends Fragment {
 
     private void setupTeacherSession() {
         MainActivity activity = (MainActivity) requireActivity();
-
         activity.getBottomNav().setVisibility(View.VISIBLE);
         activity.getBottomNav().getMenu().clear();
         activity.getBottomNav().inflateMenu(R.menu.nav_teacher);
-
         viewModel.isHomeTeacher().observe(getViewLifecycleOwner(), isHomeTeacher -> {
             Menu menu = activity.getBottomNav().getMenu();
             menu.findItem(R.id.nav_teacher_report).setVisible(isHomeTeacher);

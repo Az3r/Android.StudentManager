@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
@@ -15,12 +16,15 @@ import java.util.List;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Grade;
+import tkpm.doan.student.databinding.ItemGradeMasterBinding;
 import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.teacher.GradeFragmentDirections;
 import tkpm.doan.student.ui.teacher.TeacherViewModel;
 
 public class GradeAdapter extends ImmutableAdapter<Grade> {
-
+    private  TextView Class;
+    private  TextView Teacher;
+    private  TextView NumberStudent;
     private class ViewHolder extends AbstractViewHolder<Grade> {
 
         public ViewHolder(@NonNull View itemView) {
@@ -28,11 +32,17 @@ public class GradeAdapter extends ImmutableAdapter<Grade> {
         }
         @Override
         public void bind(Grade item) {
-            itemView.setOnClickListener(view -> {
-                
-                TeacherViewModel viewModel = new ViewModelProvider((MainActivity) getContext()).get(TeacherViewModel.class);
-                viewModel.setSelectedGrade("replace this with actual gradeId");
+            ItemGradeMasterBinding binding = ItemGradeMasterBinding.bind(itemView);
+            Class= binding.gradeClassName;
+            Teacher= binding.gradeHomeTeacher;
+            NumberStudent= binding.gradeStudentCount;
+            Class.setText(item.getClassId());
+            Teacher.setText(item.getHomeroomTeacherName());
+            NumberStudent.setText(""+ item.getSumStudent());
 
+            itemView.setOnClickListener(view -> {
+                TeacherViewModel viewModel = new ViewModelProvider((MainActivity) getContext()).get(TeacherViewModel.class);
+                viewModel.setSelectedGrade(item.getClassId());
                 MainActivity activity = (MainActivity) getContext();
                 NavDirections directions = GradeFragmentDirections.navgiateGradeDetail();
                 activity.getNavController().navigate(directions);

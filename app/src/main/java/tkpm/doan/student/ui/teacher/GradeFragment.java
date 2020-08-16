@@ -48,9 +48,9 @@ public class GradeFragment extends Fragment {
     }
     private void setupRecyclerView(RecyclerView recyclerView) {
         RecyclerViews.setupListView(recyclerView);
-//        viewModel.getTeachingGrades().observe(getViewLifecycleOwner(), grades -> {
-//            GradeAdapter adapter = new GradeAdapter(requireActivity(), grades);
-//            recyclerView.swapAdapter(adapter, true);
-//        });
+        viewModel.getTeachingGrades().observe(getViewLifecycleOwner(), grades -> {
+            GradeAdapter adapter = new GradeAdapter(requireActivity(), grades);
+            recyclerView.swapAdapter(adapter, true);
+        });
     }
 }
