@@ -60,8 +60,8 @@
                                 <LayoutPositions>
                                   <option name="myPosition">
                                     <Point>
-                                      <option name="x" value="365" />
-                                      <option name="y" value="-369" />
+                                      <option name="x" value="371" />
+                                      <option name="y" value="663" />
                                     </Point>
                                   </option>
                                 </LayoutPositions>
@@ -104,12 +104,19 @@
                                           <LayoutPositions />
                                         </value>
                                       </entry>
-                                      <entry key="navigate_create_teacher">
-                                        <value>
-                                          <LayoutPositions />
-                                        </value>
-                                      </entry>
                                     </map>
+                                  </option>
+                                </LayoutPositions>
+                              </value>
+                            </entry>
+                            <entry key="nav_manager_teacher">
+                              <value>
+                                <LayoutPositions>
+                                  <option name="myPosition">
+                                    <Point>
+                                      <option name="x" value="-4" />
+                                      <option name="y" value="657" />
+                                    </Point>
                                   </option>
                                 </LayoutPositions>
                               </value>

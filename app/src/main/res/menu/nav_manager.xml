@@ -8,6 +8,12 @@
         app:showAsAction="always" />
 
     <item
+        android:id="@+id/nav_manager_teacher"
+        android:icon="@drawable/ic_home_teacher"
+        android:title="@string/text_teacher"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/nav_manager_notification"
         android:icon="@drawable/ic_notification"
         android:title="@string/text_notification"
@@ -18,4 +24,6 @@
         android:icon="@drawable/ic_schedule"
         android:title="@string/text_schedule"
         app:showAsAction="ifRoom" />
+
+
 </menu>
