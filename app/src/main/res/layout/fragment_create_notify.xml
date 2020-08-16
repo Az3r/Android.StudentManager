@@ -19,7 +19,6 @@
             android:layout_marginVertical="8dp"
             android:hint="@string/text_class"
             app:errorEnabled="true">
-
             <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                 android:id="@+id/notify_class"
                 android:layout_width="match_parent"

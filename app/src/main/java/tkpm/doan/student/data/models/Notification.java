@@ -12,7 +12,8 @@ public class Notification {
 
     // Getter Methods
 
-    public float getNotificationId() {
+
+    public int getNotificationId() {
         return NotificationId;
     }
 

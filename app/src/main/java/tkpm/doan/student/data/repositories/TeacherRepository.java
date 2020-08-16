@@ -37,6 +37,11 @@ public class TeacherRepository {
             public void onSuccess(List<Grade> result) {
                 schedules.postValue(result);
             }
+
+            @Override
+            public void onFailure(List<Grade> result) {
+
+            }
         });
         return schedules;
     }
@@ -48,6 +53,11 @@ public class TeacherRepository {
             public void onSuccess(List<Student> result) {
                 schedules.postValue(result);
             }
+
+            @Override
+            public void onFailure(List<Student> result) {
+
+            }
         });
         return schedules;
     }
@@ -57,6 +67,11 @@ public class TeacherRepository {
             @Override
             public void onSuccess(List<Session> result) {
                 schedules.postValue(result);
+            }
+
+            @Override
+            public void onFailure(List<Session> result) {
+
             }
         });
         return schedules;
@@ -68,6 +83,11 @@ public class TeacherRepository {
             public void onSuccess(ResponseBody result) {
                 schedules.postValue(result);
             }
+
+            @Override
+            public void onFailure(ResponseBody result) {
+                schedules.postValue(null);
+            }
         });
         return schedules;
     }
@@ -78,6 +98,11 @@ public class TeacherRepository {
             public void onSuccess(ResponseBody result) {
                 schedules.postValue(result);
             }
+
+            @Override
+            public void onFailure(ResponseBody result) {
+                schedules.postValue(null);
+            }
         });
         return schedules;
     }
@@ -86,6 +111,11 @@ public class TeacherRepository {
         retrofit.PostFeedback(author, feedBack, new OnRetrofitResult<ResponseBody>() {
             @Override
             public void onSuccess(ResponseBody result) {
+                schedules.postValue(result);
+            }
+
+            @Override
+            public void onFailure(ResponseBody result) {
                 schedules.postValue(result);
             }
         });

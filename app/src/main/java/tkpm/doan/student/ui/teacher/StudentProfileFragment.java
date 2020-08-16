@@ -2,6 +2,7 @@ package tkpm.doan.student.ui.teacher;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +18,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 
+import java.io.IOException;
+import java.security.Key;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import tkpm.doan.student.R;
@@ -24,6 +27,7 @@ import tkpm.doan.student.data.models.FeedBack;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.databinding.FragmentProfileBinding;
 import tkpm.doan.student.ui.MainActivity;
+import tkpm.doan.student.ui.components.constants.Keys;
 import tkpm.doan.student.ui.components.constants.Provider;
 import tkpm.doan.student.ui.launch.LoggedUserViewModel;
 
@@ -68,9 +72,7 @@ public class StudentProfileFragment extends Fragment {
         super.onAttach(context);
         setHasOptionsMenu(true);
     }
-
     private void setupCommentSection() {
-
         LoggedUserViewModel viewModel = new ViewModelProvider(requireActivity()).get(LoggedUserViewModel.class);
         teacherViewModel = new ViewModelProvider(requireActivity()).get(TeacherViewModel.class);
         teacherViewModel.getSelectedStudents().observe(getViewLifecycleOwner(), list->{
@@ -106,25 +108,24 @@ public class StudentProfileFragment extends Fragment {
             {
                 AtomicBoolean IsFailure= new AtomicBoolean(true);
                 FeedBack feedBack= new FeedBack();
-                feedBack.setContent(binding.commentInput.getText().toString());
-                feedBack.setSem(1);
-                feedBack.setYear(2020);
-                feedBack.setStudentID(personalInfo.getStudentId());
+                feedBack.setFeedback(binding.commentInput.getText().toString());
+                feedBack.setSemester(Keys.sem);
+                feedBack.setAcademicYear(Keys.year);
+                feedBack.setStudentId(personalInfo.getStudentId());
                 teacherViewModel.PostFeedback(feedBack).observe(getViewLifecycleOwner(), responseBody -> {
-                    IsFailure.set(true);
-                });
-                if(IsFailure.get())
-                {
-                    Toast.makeText(getContext(), R.string.add_feedback_success, Toast.LENGTH_SHORT).show();
-                    binding.commentInput.getText().clear();
-                    binding.commentInput.clearFocus();
-                }
-                else
-                {
-                    Toast.makeText(getContext(), R.string.add_feedback_fail, Toast.LENGTH_SHORT).show();
-                }
-            }
+                    if(responseBody!=null)
+                    {
+                        new Handler().postDelayed(() -> {
+                            Toast.makeText(getContext(), R.string.add_feedback_success, Toast.LENGTH_SHORT).show();
+                            MainActivity mainActivity = (MainActivity) requireActivity();
+                            mainActivity.getNavController().navigateUp();
+                        }, 2000);
+                    }
+                    else
+                        Toast.makeText(getContext(), R.string.add_feedback_fail, Toast.LENGTH_SHORT).show();
 
+                });
+            }
         });
         binding.buttonCancel.setOnClickListener(v -> {
             binding.commentInput.getText().clear();

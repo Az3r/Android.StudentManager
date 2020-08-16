@@ -93,7 +93,7 @@ public class LoginFragment extends Fragment {
         boolean isTeacher = teacherCheckBox.isChecked();
         new Handler().postDelayed(() -> {
             Toast.makeText(getContext(), R.string.msg_login_success, Toast.LENGTH_SHORT).show();
-            new Handler().postDelayed(this::setupTeacherSession, 500);
+            new Handler().postDelayed(this::navigateManagerSession, 500);
         }, 1000);
     }
 

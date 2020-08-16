@@ -37,11 +37,11 @@ public class StudentViewModel extends ViewModel {
 
     public LiveData<List<Score>> getScores() {
         // TODO remove hard-coded params
-        return repository.getScores(Keys.token,Keys.STUDENT_ID, 1, 2020);
+        return repository.getScores(Keys.token,Keys.STUDENT_ID, Keys.sem, Keys.year);
     }
     public LiveData<List<Session>> getSchedule() {
         // TODO remove hard-coded params
-        return repository.getSchedule(Keys.token,Keys.STUDENT_ID, 1, 2020);
+        return repository.getSchedule(Keys.token,Keys.STUDENT_ID, Keys.sem, Keys.year);
     }
     public LiveData<List<Notification>> getNotification() {
         // TODO remove hard-coded params

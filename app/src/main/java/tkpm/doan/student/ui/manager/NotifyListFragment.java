@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,11 +20,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import tkpm.doan.student.R;
 import tkpm.doan.student.databinding.FragmentNotificationListBinding;
 import tkpm.doan.student.ui.MainActivity;
+import tkpm.doan.student.ui.components.adapters.ManagerNotifyAdapter;
+import tkpm.doan.student.ui.components.adapters.NotificationAdapter;
+import tkpm.doan.student.ui.components.adapters.NotifyAdapterManager;
+import tkpm.doan.student.ui.components.utils.RecyclerViews;
 
 public class NotifyListFragment extends Fragment {
 
     private FragmentNotificationListBinding binding;
-
+    private ManagerViewModel viewModel;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,16 +45,22 @@ public class NotifyListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        viewModel =  new ViewModelProvider(requireActivity()).get(ManagerViewModel.class);
         binding.fab.setOnClickListener(v -> {
             NavDirections directions = NotifyListFragmentDirections.navigateCreateNotify();
             MainActivity activity = (MainActivity) requireActivity();
             activity.getNavController().navigate(directions);
         });
-
         setupRecyclerView(binding.recyclerView);
     }
-
     private void setupRecyclerView(RecyclerView recyclerView) {
+        RecyclerViews.setupListView(recyclerView);
+        viewModel.getAllNotify().observe(getViewLifecycleOwner(), notifications -> {
+            NotifyAdapterManager adapter = new NotifyAdapterManager(requireActivity(), notifications);
+            recyclerView.swapAdapter(adapter, true);
+        });
+
+
+
     }
 }
