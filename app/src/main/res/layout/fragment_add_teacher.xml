@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.manager.AddStudentFragment">
+    tools:context=".ui.manager.AddTeacherFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -31,10 +31,10 @@
                 android:src="@drawable/ic_add_photo" />
 
             <ImageView
-                android:id="@+id/student_image"
+                android:id="@+id/teacher_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:contentDescription="@string/desc_student_profile_image"
+                android:contentDescription="@string/desc_teacher_image"
                 android:scaleType="fitXY" />
         </FrameLayout>
 
@@ -48,17 +48,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_image">
 
+
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
-                android:hint="@string/text_class"
+                android:hint="@string/text_subject"
                 app:errorEnabled="true"
-                app:startIconDrawable="@drawable/ic_class">
+                app:startIconDrawable="@drawable/ic_home_teacher">
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                    android:id="@+id/student_class"
+                    android:id="@+id/teacher_class"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true" />
@@ -73,11 +74,12 @@
                 app:startIconDrawable="@drawable/ic_social">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/student_full_name"
+                    android:id="@+id/teacher_full_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
+
 
             <com.google.android.material.textfield.TextInputLayout
 
@@ -89,7 +91,7 @@
                 app:startIconDrawable="@drawable/ic_gender">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/student_gender"
+                    android:id="@+id/teacher_gender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true" />
@@ -104,7 +106,7 @@
                 app:startIconDrawable="@drawable/ic_birthday">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/student_birthday"
+                    android:id="@+id/teacher_birthday"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true" />
@@ -119,7 +121,7 @@
                 app:startIconDrawable="@drawable/ic_address">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/student_address"
+                    android:id="@+id/teacher_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true" />
@@ -134,7 +136,7 @@
                 app:startIconDrawable="@drawable/ic_phone">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/student_phone"
+                    android:id="@+id/teacher_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true" />
@@ -149,7 +151,7 @@
                 app:startIconDrawable="@drawable/ic_email">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/student_email"
+                    android:id="@+id/teacher_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true" />

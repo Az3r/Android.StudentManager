@@ -46,6 +46,12 @@ public class SearchStudentFragment extends Fragment {
     }
 
     @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -88,7 +94,19 @@ public class SearchStudentFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.action_manager, menu);
-        menu.findItem(R.id.nav_create_notification).setVisible(false);
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.nav_create_teacher) {
+
+            NavDirections directions = SearchStudentFragmentDirections.navigateCreateTeacher();
+            MainActivity activity = (MainActivity) requireActivity();
+            activity.getNavController().navigate(directions);
+
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
