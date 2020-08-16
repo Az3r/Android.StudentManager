@@ -8,10 +8,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import java.util.Arrays;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.databinding.FragmentAddStudentBinding;
@@ -49,10 +52,17 @@ public class AddStudentFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireActivity(), R.layout.textview, R.id.textview, Arrays.asList(
+                "10a1", "10a2", "10a3", "10a4", "11a1", "11a2", "11a3", "12a1", "12a2"
+        ));
+
+        binding.studentClass.setAdapter(adapter);
+
         binding.buttonAddImage.setOnClickListener(v -> {
             // TODO select an image from gallery
         });
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -67,7 +77,6 @@ public class AddStudentFragment extends Fragment {
                 return true;
 
             case R.id.menu_restore:
-                binding.studentId.getText().clear();
                 binding.studentFullName.getText().clear();
                 binding.studentGender.getText().clear();
                 binding.studentClass.getText().clear();
