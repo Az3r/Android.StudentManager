@@ -8,24 +8,23 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavDirections;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.ScoreRequest;
 import tkpm.doan.student.databinding.FragmentScoreEditorBinding;
 import tkpm.doan.student.databinding.ItemScoreEditorBinding;
-import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.components.adapters.EditScoreAdapter;
-import tkpm.doan.student.ui.components.adapters.GradeAdapter;
 import tkpm.doan.student.ui.components.constants.AppData;
 import tkpm.doan.student.ui.components.constants.Keys;
 import tkpm.doan.student.ui.components.utils.RecyclerViews;
@@ -73,10 +72,20 @@ public class ScoreEditorFragment extends Fragment {
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        AtomicReference<Boolean> IsFailure= new AtomicReference<>(true);
         if (item.getItemId() == R.id.menu_submit) {
-            List<ScoreRequest> scoreRequests= new ArrayList<>();
+
             for(int i=0;i< AppData.getInstance().studentList.size();i++)
             {
+                boolean IsAdd= false;
+                if(AppData.getInstance().studentList.get(0).getTest15()==null)
+                    IsAdd=true;
+                else
+                {
+                    if(AppData.getInstance().studentList.get(0).getTest15().size()==0)
+                        IsAdd=true;
+                }
+                List<ScoreRequest> scoreRequests= new ArrayList<>();
                 List<View> viewHolders =adapter.getView();
                 ItemScoreEditorBinding binding = ItemScoreEditorBinding.bind(viewHolders.get(i));
                 List<Float> score15= new ArrayList<>();
@@ -104,10 +113,27 @@ public class ScoreEditorFragment extends Fragment {
                 value.setSemester(1);
                 value.setSubjectId(Float.valueOf(Keys.SubjectId));
                 scoreRequests.add(value);
+                if(IsAdd)
+                {
+                    viewModel.postScore(scoreRequests).observe(getViewLifecycleOwner(), response -> {
+                            IsFailure.set(false);
+                    });
+                }
+                else
+                {
+                    viewModel.UpdateScore(scoreRequests).observe(getViewLifecycleOwner(), response -> {
+                            IsFailure.set(false);
+                    });
+                }
             }
-            viewModel.postScore(scoreRequests).observe(getViewLifecycleOwner(), isHomeTeacher -> {
-
-            });
+            if(IsFailure.get())
+            {
+                Toast.makeText(getContext(), R.string.add_score_success, Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                Toast.makeText(getContext(), R.string.add_score_fail, Toast.LENGTH_SHORT).show();
+            }
             return true;
         }
         return super.onOptionsItemSelected(item);

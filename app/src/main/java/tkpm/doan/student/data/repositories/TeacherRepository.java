@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import okhttp3.ResponseBody;
 import tkpm.doan.student.data.components.retrofit.OnRetrofitResult;
 import tkpm.doan.student.data.components.retrofit.RetrofitService;
+import tkpm.doan.student.data.models.FeedBack;
 import tkpm.doan.student.data.models.Grade;
 import tkpm.doan.student.data.models.ScoreRequest;
 import tkpm.doan.student.data.models.Session;
@@ -70,4 +71,25 @@ public class TeacherRepository {
         });
         return schedules;
     }
+    public LiveData<ResponseBody> UpdateScore(String author, List<ScoreRequest> scoreRequest) {
+        final MutableLiveData<ResponseBody> schedules = new MutableLiveData<>();
+        retrofit.UpdateScore(author, scoreRequest, new OnRetrofitResult<ResponseBody>() {
+            @Override
+            public void onSuccess(ResponseBody result) {
+                schedules.postValue(result);
+            }
+        });
+        return schedules;
+    }
+    public LiveData<ResponseBody> PostFeedback(String author, FeedBack feedBack) {
+        final MutableLiveData<ResponseBody> schedules = new MutableLiveData<>();
+        retrofit.PostFeedback(author, feedBack, new OnRetrofitResult<ResponseBody>() {
+            @Override
+            public void onSuccess(ResponseBody result) {
+                schedules.postValue(result);
+            }
+        });
+        return schedules;
+    }
+
 }

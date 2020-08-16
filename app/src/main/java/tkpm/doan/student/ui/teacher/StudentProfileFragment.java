@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,9 +17,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import tkpm.doan.student.R;
-import tkpm.doan.student.data.LoggedUserResource;
-import tkpm.doan.student.data.models.PersonalInfo;
+import tkpm.doan.student.data.models.FeedBack;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.databinding.FragmentProfileBinding;
 import tkpm.doan.student.ui.MainActivity;
@@ -36,7 +38,7 @@ public class StudentProfileFragment extends Fragment {
     TextView studentAddress;
     TextView studentPhone;
     TextView studentEmail;
-
+    Student personalInfo;
 
 
     @Nullable
@@ -72,7 +74,7 @@ public class StudentProfileFragment extends Fragment {
         LoggedUserViewModel viewModel = new ViewModelProvider(requireActivity()).get(LoggedUserViewModel.class);
         teacherViewModel = new ViewModelProvider(requireActivity()).get(TeacherViewModel.class);
         teacherViewModel.getSelectedStudents().observe(getViewLifecycleOwner(), list->{
-            Student personalInfo= list.get(0);
+            personalInfo= list.get(0);
             studentId.setText(personalInfo.getStudentId());
             String fullname = requireContext()
                     .getResources()
@@ -95,7 +97,35 @@ public class StudentProfileFragment extends Fragment {
                 binding.actionButtons.setVisibility(View.GONE);
             }
         });
+        binding.buttonSubmit.setOnClickListener(v -> {
+            if(binding.commentInput.getText().toString().isEmpty())
+            {
+                Toast.makeText(getContext(),R.string.need_content_feedback, Toast.LENGTH_LONG);
+            }
+            else
+            {
+                AtomicBoolean IsFailure= new AtomicBoolean(true);
+                FeedBack feedBack= new FeedBack();
+                feedBack.setContent(binding.commentInput.getText().toString());
+                feedBack.setSem(1);
+                feedBack.setYear(2020);
+                feedBack.setStudentID(personalInfo.getStudentId());
+                teacherViewModel.PostFeedback(feedBack).observe(getViewLifecycleOwner(), responseBody -> {
+                    IsFailure.set(true);
+                });
+                if(IsFailure.get())
+                {
+                    Toast.makeText(getContext(), R.string.add_feedback_success, Toast.LENGTH_SHORT).show();
+                    binding.commentInput.getText().clear();
+                    binding.commentInput.clearFocus();
+                }
+                else
+                {
+                    Toast.makeText(getContext(), R.string.add_feedback_fail, Toast.LENGTH_SHORT).show();
+                }
+            }
 
+        });
         binding.buttonCancel.setOnClickListener(v -> {
             binding.commentInput.getText().clear();
             binding.commentInput.clearFocus();

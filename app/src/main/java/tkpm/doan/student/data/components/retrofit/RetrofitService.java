@@ -7,7 +7,9 @@ import java.util.List;
 import javax.inject.Inject;
 
 import okhttp3.ResponseBody;
+import retrofit2.Response;
 import retrofit2.Retrofit;
+import tkpm.doan.student.data.models.FeedBack;
 import tkpm.doan.student.data.models.Grade;
 import tkpm.doan.student.data.models.PersonalInfo;
 import tkpm.doan.student.data.models.Score;
@@ -59,6 +61,12 @@ public class RetrofitService {
     }
     public void PostScore(String author, List<ScoreRequest> scoreRequest, @NonNull OnRetrofitResult<ResponseBody> callback) {
         api.PostCore(author, scoreRequest).enqueue(new RetrofitListener<>(callback));
+    }
+    public void UpdateScore(String author, List<ScoreRequest> scoreRequest, @NonNull OnRetrofitResult<ResponseBody> callback) {
+        api.UpdatetCore(author, scoreRequest).enqueue(new RetrofitListener<>(callback));
+    }
+    public void PostFeedback(String author, FeedBack feedBack, @NonNull OnRetrofitResult<ResponseBody> callback) {
+        api.PostFeedback(author, feedBack).enqueue(new RetrofitListener<>(callback));
     }
 
 }

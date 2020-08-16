@@ -11,6 +11,8 @@ import java.security.Key;
 import java.util.List;
 
 import okhttp3.ResponseBody;
+import retrofit2.Response;
+import tkpm.doan.student.data.models.FeedBack;
 import tkpm.doan.student.data.models.Grade;
 import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.data.models.ScoreRequest;
@@ -49,6 +51,14 @@ public class TeacherViewModel extends ViewModel {
     public LiveData<ResponseBody> postScore(List<ScoreRequest> scoreRequest) {
         // TODO remove hard-coded params
         return repository.PostScore(Keys.token,scoreRequest);
+    }
+    public LiveData<ResponseBody> UpdateScore(List<ScoreRequest> scoreRequest) {
+        // TODO remove hard-coded params
+        return repository.UpdateScore(Keys.token,scoreRequest);
+    }
+    public LiveData<ResponseBody> PostFeedback(FeedBack feedBack) {
+        // TODO remove hard-coded params
+        return repository.PostFeedback(Keys.token,feedBack);
     }
 
     public LiveData<String> getSelectedGrade() {
