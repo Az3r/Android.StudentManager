@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 @InstallIn(ApplicationComponent.class)
 public class RetrofitModule {
-    public static final String BASE_URL = "http://10.0.2.2:3000/api/";
+    public static final String BASE_URL = "http://10.0.3.2:3000/api/";
     @Provides
     Converter.Factory provideFactory() {
         return GsonConverterFactory.create();

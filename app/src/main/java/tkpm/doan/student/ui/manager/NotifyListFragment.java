@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,6 +30,7 @@ public class NotifyListFragment extends Fragment {
 
     private FragmentNotificationListBinding binding;
     private ManagerViewModel viewModel;
+    NotifyAdapterManager adapter;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,16 +49,29 @@ public class NotifyListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewModel =  new ViewModelProvider(requireActivity()).get(ManagerViewModel.class);
         binding.fab.setOnClickListener(v -> {
+            viewModel.setSelectedNotify(null);
             NavDirections directions = NotifyListFragmentDirections.navigateCreateNotify();
             MainActivity activity = (MainActivity) requireActivity();
             activity.getNavController().navigate(directions);
+        });
+        binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adapter.filter(s);
+                // TODO search and display result
+                return true;
+            }
         });
         setupRecyclerView(binding.recyclerView);
     }
     private void setupRecyclerView(RecyclerView recyclerView) {
         RecyclerViews.setupListView(recyclerView);
         viewModel.getAllNotify().observe(getViewLifecycleOwner(), notifications -> {
-            NotifyAdapterManager adapter = new NotifyAdapterManager(requireActivity(), notifications);
+            adapter  = new NotifyAdapterManager(requireActivity(), notifications);
             recyclerView.swapAdapter(adapter, true);
         });
 

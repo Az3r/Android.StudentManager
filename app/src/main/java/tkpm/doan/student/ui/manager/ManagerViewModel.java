@@ -18,6 +18,7 @@ import tkpm.doan.student.data.models.RequestStudent;
 import tkpm.doan.student.data.models.RequestTeacher;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.data.models.Subject;
+import tkpm.doan.student.data.models.Teacher;
 import tkpm.doan.student.data.models.TeacherSchedule;
 import tkpm.doan.student.data.repositories.ManageRepository;
 import tkpm.doan.student.data.repositories.TeacherRepository;
@@ -28,7 +29,8 @@ public class ManagerViewModel extends ViewModel {
     private SavedStateHandle savedStateHandle;
     private final ManageRepository repository;
     private MutableLiveData<TeacherSchedule> selectedSchedule = new MutableLiveData<>();
-    private MutableLiveData<RequestStudent> selectedStudents = new MutableLiveData<>();
+    private MutableLiveData<Student> selectedStudents = new MutableLiveData<>();
+    private MutableLiveData<Teacher> selectedTeacher = new MutableLiveData<>();
     private MutableLiveData<Notification> selectedNotify = new MutableLiveData<>();
 
     @ViewModelInject
@@ -56,6 +58,10 @@ public class ManagerViewModel extends ViewModel {
         // TODO remove hard-coded params
         return repository.PostTeacher(Keys.token,requestNotify);
     }
+    public LiveData<ResponseBody> UpdateTeacher(RequestTeacher requestNotify) {
+        // TODO remove hard-coded params
+        return repository.UpdateTeacher(Keys.token,requestNotify);
+    }
     public LiveData<List<ClassName>> GetAllClass(int year) {
         // TODO remove hard-coded params
         return repository.GetAllClass(Keys.token,year);
@@ -64,7 +70,7 @@ public class ManagerViewModel extends ViewModel {
         // TODO remove hard-coded params
         return repository.GetAllSubject(Keys.token);
     }
-    public LiveData<List<RequestStudent>> getAllStudent(int year) {
+    public LiveData<List<Student>> getAllStudent(int year) {
         // TODO remove hard-coded params
         return repository.getAllStudent(Keys.token,year);
     }
@@ -72,17 +78,30 @@ public class ManagerViewModel extends ViewModel {
         // TODO remove hard-coded params
         return repository.getAllNotify(Keys.token);
     }
+    public LiveData<List<Teacher>> GetAllTeacher() {
+        // TODO remove hard-coded params
+        return repository.GetAllTeacher(Keys.token);
+    }
 
     public void setSelectedNotify(Notification item) {
         selectedNotify.postValue(item);
     }
+
     public LiveData<Notification> getSelectedNotify() {
         return selectedNotify;
     }
-    public void setSelectedStudent(RequestStudent item) {
+
+    public void setSelectedStudent(Student item) {
         selectedStudents.postValue(item);
     }
-    public LiveData<RequestStudent> getSelectedStudent() {
+    public LiveData<Student> getSelectedStudent() {
         return selectedStudents;
+    }
+
+    public void setSelectedTeacher(Teacher item) {
+        selectedTeacher.postValue(item);
+    }
+    public LiveData<Teacher> getSelectedTeacher() {
+        return selectedTeacher;
     }
 }

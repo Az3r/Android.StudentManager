@@ -42,7 +42,7 @@ import tkpm.doan.student.ui.components.utils.RecyclerViews;
 public class SearchStudentFragment extends Fragment {
     private FragmentSearchStudentBinding binding;
     private ManagerViewModel viewModel;
-    private List<RequestStudent> studentList;
+    private List<Student> studentList;
     StudentApdaterManager adapter;
     @Nullable
     @Override
@@ -137,12 +137,10 @@ public class SearchStudentFragment extends Fragment {
         inflater.inflate(R.menu.action_manager, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.nav_create_teacher) {
-
-            NavDirections directions = SearchStudentFragmentDirections.navigateCreateTeacher();
+            NavDirections directions = SearchStudentFragmentDirections.navigateAddStudent();
             MainActivity activity = (MainActivity) requireActivity();
             activity.getNavController().navigate(directions);
 

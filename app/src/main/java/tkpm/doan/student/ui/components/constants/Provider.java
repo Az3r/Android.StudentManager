@@ -7,8 +7,6 @@ import java.util.Locale;
 
 public class Provider {
     private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-
-
     public static String Format(String format, Date date)
     {
         return new SimpleDateFormat(format,Locale.getDefault()).format(date);

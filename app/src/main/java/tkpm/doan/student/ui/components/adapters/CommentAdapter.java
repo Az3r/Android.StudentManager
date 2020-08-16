@@ -38,7 +38,7 @@ public class CommentAdapter extends ImmutableAdapter<Comment> {
             //avatarTeacher.setImageBitmap(item.getTeacher().getAvatar());
             commentContent.setText(item.getContent());
             commentTeacher.setText(item.getTeacher().getFirstName() + " " +
-                    item.getTeacher().getMidleName() + " " +
+                    item.getTeacher().getMiddleName() + " " +
                     item.getTeacher().getLastName());
 
             SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy", Locale.getDefault());

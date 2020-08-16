@@ -31,10 +31,12 @@ import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.RequestStudent;
 import tkpm.doan.student.data.models.RequestTeacher;
 import tkpm.doan.student.data.models.Subject;
+import tkpm.doan.student.data.models.Teacher;
 import tkpm.doan.student.databinding.FragmentAddStudentBinding;
 import tkpm.doan.student.databinding.FragmentAddTeacherBinding;
 import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.components.constants.Keys;
+import tkpm.doan.student.ui.components.constants.Provider;
 
 public class AddTeacherFragment extends Fragment {
     private FragmentAddTeacherBinding binding;
@@ -49,6 +51,7 @@ public class AddTeacherFragment extends Fragment {
     private AppCompatAutoCompleteTextView Subject;
     private AppCompatAutoCompleteTextView Gender;
     private List<tkpm.doan.student.data.models.Subject> subjectList;
+    private Teacher SelectedTeacher;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -87,6 +90,24 @@ public class AddTeacherFragment extends Fragment {
         Address= binding.teacherAddress;
         Email= binding.teacherEmail;
         BirthDay= binding.teacherBirthday;
+        viewModel.getSelectedTeacher().observe(getViewLifecycleOwner(),teacher -> {
+            if(teacher!=null)
+            {
+                SelectedTeacher= teacher;
+                FirstName.setText(teacher.getFirstName());
+                Subject.setText(teacher.getSubjectName());
+                LastName.setText(teacher.getLastName());
+                MiddleName.setText(teacher.getMiddleName());
+                Phone.setText(teacher.getPhoneNumber());
+                Email.setText(teacher.getEmail());
+                Address.setText(teacher.getAddress());
+                if(teacher.getIsMale()==true)
+                    Gender.setText(R.string.male);
+                else
+                    Gender.setText(R.string.female);
+                BirthDay.setText(Provider.getDateFormat().format(teacher.getBirthday()));
+            }
+        });
         viewModel.GetAllSubject(Keys.year).observe(getViewLifecycleOwner(), list->{
             subjectList= list;
             List<String> data = new ArrayList<>();
@@ -150,24 +171,38 @@ public class AddTeacherFragment extends Fragment {
                             student.setIsMale(1);
                         else
                             student.setIsMale(0);
-                        student.setBirthday(date);
-                        viewModel.PostTeacher(student).observe(getViewLifecycleOwner(),responseBody -> {
-                            if(responseBody!=null)
+                            student.setBirthday(date);
+                            if(SelectedTeacher==null)
                             {
-                                Toast.makeText(getContext(), R.string.add_student_success, Toast.LENGTH_SHORT).show();
-                                MainActivity mainActivity = (MainActivity) requireActivity();
-                                mainActivity.getNavController().navigateUp();
+                                viewModel.PostTeacher(student).observe(getViewLifecycleOwner(),responseBody -> {
+                                    if(responseBody!=null)
+                                    {
+                                        Toast.makeText(getContext(), R.string.add_student_success, Toast.LENGTH_SHORT).show();
+                                        MainActivity mainActivity = (MainActivity) requireActivity();
+                                        mainActivity.getNavController().navigateUp();
+                                    }
+                                    else
+                                        Toast.makeText(getContext(), R.string.add_student_fail, Toast.LENGTH_SHORT).show();
+                                });
+                            }else
+                            {
+                                student.setTeacherId(SelectedTeacher.getTeacherId());
+                                viewModel.UpdateTeacher(student).observe(getViewLifecycleOwner(),responseBody -> {
+                                    if(responseBody!=null)
+                                    {
+                                        Toast.makeText(getContext(), R.string.add_student_success, Toast.LENGTH_SHORT).show();
+                                        MainActivity mainActivity = (MainActivity) requireActivity();
+                                        mainActivity.getNavController().navigateUp();
+                                    }
+                                    else
+                                        Toast.makeText(getContext(), R.string.add_student_fail, Toast.LENGTH_SHORT).show();
+                                });
                             }
-                            else
-                                Toast.makeText(getContext(), R.string.add_student_fail, Toast.LENGTH_SHORT).show();
-
-                        });
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
                 }
                 return true;
-
             case R.id.menu_restore:
                 binding.teacherFirstName.getText().clear();
                 binding.teacherMiddleName.getText().clear();

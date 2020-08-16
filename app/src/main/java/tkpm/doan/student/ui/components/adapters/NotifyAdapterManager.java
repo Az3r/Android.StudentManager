@@ -10,10 +10,13 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Notification;
+import tkpm.doan.student.data.models.Teacher;
 import tkpm.doan.student.databinding.ItemNotificationMasterBinding;
 import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.components.constants.Provider;
@@ -25,7 +28,8 @@ import tkpm.doan.student.ui.teacher.TeacherViewModel;
 
 public class NotifyAdapterManager extends ImmutableAdapter<Notification> {
     private ManagerViewModel viewModel;
-
+    private List<Notification> List;
+    private List<Notification> ListFilter;
     private class ViewHolder extends AbstractViewHolder<Notification> {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -50,10 +54,25 @@ public class NotifyAdapterManager extends ImmutableAdapter<Notification> {
             });
         }
     }
-
-
+    public void filter(String charText) {
+        charText = charText.toLowerCase(Locale.getDefault());
+        ListFilter.clear();
+        if (charText.length() == 0) {
+            ListFilter.addAll(this.List);
+        } else {
+            for (Notification wp : this.List) {
+                if (wp.getTitle().toLowerCase(Locale.getDefault()).contains(charText) ||
+                        wp.getCreatedOn().toString().toLowerCase(Locale.getDefault()).contains(charText)) {
+                    ListFilter.add(wp);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
     public NotifyAdapterManager(@NonNull Context context, @NonNull List<Notification> list) {
         super(context, list);
+        List= list;
+        ListFilter= new ArrayList<>(List);
     }
 
     @NonNull

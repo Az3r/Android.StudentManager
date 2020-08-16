@@ -1,51 +1,119 @@
 package tkpm.doan.student.data.models;
 
-import javax.inject.Inject;
+import java.util.Date;
 
 public class Teacher {
+    private String TeacherId;
+    private String RoleName;
+    private float SubjectId;
+    private String SubjectName;
+    private String Address;
+    private String LastName;
+    private String MiddleName;
+    private String FirstName;
+    private String Email;
+    private String PhoneNumber;
+    private boolean IsMale;
+    private Date Birthday;
 
 
-    public Byte[] getAvatar() {
-        return avatar;
+    // Getter Methods
+
+    public String getTeacherId() {
+        return TeacherId;
     }
 
-    public void setAvatar(Byte[] avatar) {
-        this.avatar = avatar;
+    public String getRoleName() {
+        return RoleName;
     }
 
-    public String getFirstName() {
-        return FirstName;
+    public float getSubjectId() {
+        return SubjectId;
     }
 
-    public void setFirstName(String firstName) {
-        FirstName = firstName;
+    public String getSubjectName() {
+        return SubjectName;
     }
 
-    public String getMidleName() {
-        return MidleName;
-    }
-
-    public void setMidleName(String midleName) {
-        MidleName = midleName;
+    public String getAddress() {
+        return Address;
     }
 
     public String getLastName() {
         return LastName;
     }
 
-    public void setLastName(String lastName) {
-        LastName = lastName;
+    public String getMiddleName() {
+        return MiddleName;
     }
 
-    private Byte[] avatar;
-    private String FirstName;
-    private  String MidleName;
-    private String LastName;
+    public String getFirstName() {
+        return FirstName;
+    }
 
-    @Inject
-    public Teacher() {
+    public String getEmail() {
+        return Email;
+    }
 
+    public String getPhoneNumber() {
+        return PhoneNumber;
+    }
 
+    public boolean getIsMale() {
+        return IsMale;
+    }
 
+    public Date getBirthday() {
+        return Birthday;
+    }
+
+    // Setter Methods
+
+    public void setTeacherId(String TeacherId) {
+        this.TeacherId = TeacherId;
+    }
+
+    public void setRoleName(String RoleName) {
+        this.RoleName = RoleName;
+    }
+
+    public void setSubjectId(float SubjectId) {
+        this.SubjectId = SubjectId;
+    }
+
+    public void setSubjectName(String SubjectName) {
+        this.SubjectName = SubjectName;
+    }
+
+    public void setAddress(String Address) {
+        this.Address = Address;
+    }
+
+    public void setLastName(String LastName) {
+        this.LastName = LastName;
+    }
+
+    public void setMiddleName(String MiddleName) {
+        this.MiddleName = MiddleName;
+    }
+
+    public void setFirstName(String FirstName) {
+        this.FirstName = FirstName;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+
+    public void setPhoneNumber(String PhoneNumber) {
+        this.PhoneNumber = PhoneNumber;
+    }
+
+    public void setIsMale(boolean IsMale) {
+        this.IsMale = IsMale;
+    }
+
+    public void setBirthday(Date Birthday) {
+        this.Birthday = Birthday;
     }
 }

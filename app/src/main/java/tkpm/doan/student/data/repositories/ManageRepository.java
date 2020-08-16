@@ -20,6 +20,7 @@ import tkpm.doan.student.data.models.RequestStudent;
 import tkpm.doan.student.data.models.RequestTeacher;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.data.models.Subject;
+import tkpm.doan.student.data.models.Teacher;
 
 public class ManageRepository {
 
@@ -101,6 +102,20 @@ public class ManageRepository {
         });
         return schedules;
     }
+    public LiveData<ResponseBody> UpdateTeacher(String author, RequestTeacher requestNotify) {
+        final MutableLiveData<ResponseBody> schedules = new MutableLiveData<>();
+        retrofit.UpdateTeacher(author, requestNotify, new OnRetrofitResult<ResponseBody>() {
+            @Override
+            public void onSuccess(ResponseBody result) {
+                schedules.postValue(result);
+            }
+            @Override
+            public void onFailure(ResponseBody result) {
+                schedules.postValue(null);
+            }
+        });
+        return schedules;
+    }
     public LiveData<List<ClassName>> GetAllClass(String author, int  year) {
         final MutableLiveData<List<ClassName>> schedules = new MutableLiveData<>();
         retrofit.getAllClass(author, year, new OnRetrofitResult<List<ClassName>>() {
@@ -115,15 +130,15 @@ public class ManageRepository {
         });
         return schedules;
     }
-    public LiveData<List<RequestStudent>> getAllStudent(String author, int  year) {
-        final MutableLiveData<List<RequestStudent>> schedules = new MutableLiveData<>();
-        retrofit.getAllStudent(author, year, new OnRetrofitResult<List<RequestStudent>>() {
+    public LiveData<List<Student>> getAllStudent(String author, int  year) {
+        final MutableLiveData<List<Student>> schedules = new MutableLiveData<>();
+        retrofit.getAllStudent(author, year, new OnRetrofitResult<List<Student>>() {
             @Override
-            public void onSuccess(List<RequestStudent> result) {
+            public void onSuccess(List<Student> result) {
                 schedules.postValue(result);
             }
             @Override
-            public void onFailure(List<RequestStudent> result) {
+            public void onFailure(List<Student> result) {
                 schedules.postValue(null);
             }
         });
@@ -138,6 +153,20 @@ public class ManageRepository {
             }
             @Override
             public void onFailure(List<Notification> result) {
+                schedules.postValue(null);
+            }
+        });
+        return schedules;
+    }
+    public LiveData<List<Teacher>> GetAllTeacher(String author) {
+        final MutableLiveData<List<Teacher>> schedules = new MutableLiveData<>();
+        retrofit.GetAllTeacher(author, new OnRetrofitResult<List<Teacher>>() {
+            @Override
+            public void onSuccess(List<Teacher> result) {
+                schedules.postValue(result);
+            }
+            @Override
+            public void onFailure(List<Teacher> result) {
                 schedules.postValue(null);
             }
         });

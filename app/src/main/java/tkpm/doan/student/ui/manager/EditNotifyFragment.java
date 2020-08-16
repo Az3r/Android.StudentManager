@@ -63,10 +63,13 @@ public class EditNotifyFragment extends Fragment {
         Content= binding.notifyContent;
         Title= binding.notifyTitle;
         viewModel.getSelectedNotify().observe(getViewLifecycleOwner(), notification -> {
-            this.notifySelected= notification;
-            Class.setText(notification.getClassId());
-            Title.setText(notification.getTitle());
-            Content.setText(notification.getContent());
+            if(notification!=null)
+            {
+                this.notifySelected= notification;
+                Class.setText(notification.getClassId());
+                Title.setText(notification.getTitle());
+                Content.setText(notification.getContent());
+            }
         });
         viewModel.GetAllClass(Keys.year).observe(getViewLifecycleOwner(),list->{
             List<String> data = new ArrayList<>();

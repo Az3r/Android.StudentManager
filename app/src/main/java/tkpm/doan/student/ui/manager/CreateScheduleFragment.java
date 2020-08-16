@@ -12,23 +12,35 @@ import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.databinding.FragmentCreateScheduleBinding;
 import tkpm.doan.student.ui.components.adapters.EditScheduleAdapter;
+import tkpm.doan.student.ui.components.constants.Keys;
+import tkpm.doan.student.ui.components.constants.Provider;
 import tkpm.doan.student.ui.components.utils.RecyclerViews;
 
 public class CreateScheduleFragment extends Fragment {
 
     private FragmentCreateScheduleBinding binding;
-
+    private ManagerViewModel viewModel;
+    private TextInputEditText sem;
+    private TextInputEditText year;
+    private AppCompatAutoCompleteTextView Class;
+    private AppCompatAutoCompleteTextView DateOf;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,15 +63,31 @@ public class CreateScheduleFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        viewModel =  new ViewModelProvider(requireActivity()).get(ManagerViewModel.class);
+        sem= binding.inputSemester;
+        year= binding.inputYear;
+        Class= binding.inputClass;
+        DateOf= binding.inputDate;
+        sem.setText(""+Keys.sem);
+        year.setText(""+Keys.year);
+        sem.setEnabled(false);
+        year.setEnabled(false);
 
-        String[] grades = getResources().getStringArray(R.array.array_class);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireActivity(), R.layout.textview, R.id.textview, grades);
-        binding.inputClass.setAdapter(adapter);
 
+        viewModel.GetAllClass(Keys.year).observe(getViewLifecycleOwner(), list->{
+            List<String> data = new ArrayList<>();
+            for (int i=0;i<list.size();i++)
+            {
+                if(!list.get(i).getClassId().contains("FULL"))
+                    data.add(list.get(i).getClassName());
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(requireActivity(), R.layout.textview, R.id.textview, data);
+            Class.setAdapter(adapter);
+        });
+        ArrayAdapter<String> adapter;
         String[] dates = getResources().getStringArray(R.array.array_date);
         adapter = new ArrayAdapter<>(requireActivity(), R.layout.textview, R.id.textview, dates);
         binding.inputDate.setAdapter(adapter);
-
         setupRecyclerView(binding.recyclerView);
     }
 

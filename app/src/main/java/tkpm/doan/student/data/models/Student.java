@@ -12,10 +12,19 @@ public class Student {
     private String FirstName;
     private Date Birthday;
     private String Address;
+    private String Email;
     private boolean IsMale;
     private String PhoneNumber;
     List< Float > Test15 = new ArrayList < Float > ();
     List < Float > Test45 = new ArrayList < Float > ();
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
 
     public boolean isMale() {
         return IsMale;

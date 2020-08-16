@@ -31,6 +31,7 @@ import java.util.Locale;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.RequestStudent;
+import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.databinding.FragmentAddStudentBinding;
 import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.components.constants.Keys;
@@ -48,7 +49,7 @@ public class AddStudentFragment extends Fragment {
     private TextInputEditText Email;
     private AppCompatAutoCompleteTextView Class;
     private AppCompatAutoCompleteTextView Gender;
-    private RequestStudent studentSelected= null;
+    private Student studentSelected= null;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -96,7 +97,7 @@ public class AddStudentFragment extends Fragment {
             Phone.setText(student.getPhoneNumber());
             Email.setText(student.getEmail());
             Address.setText(student.getAddress());
-            if(student.isMale()==1)
+            if(student.isMale())
                 Gender.setText(R.string.male);
             else
                 Gender.setText(R.string.female);

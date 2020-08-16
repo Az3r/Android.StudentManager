@@ -26,6 +26,7 @@ import tkpm.doan.student.data.models.ScoreRequest;
 import tkpm.doan.student.data.models.Session;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.data.models.Subject;
+import tkpm.doan.student.data.models.Teacher;
 
 /**
  * manage all operations to RESTful server
@@ -67,7 +68,7 @@ public class RetrofitService {
     public void getAllClass(String author, int year, @NonNull OnRetrofitResult<List<ClassName>> callback) {
         api.getAllClass(author,year).enqueue(new RetrofitListener<>(callback));
     }
-    public void getAllStudent(String author, int year, @NonNull OnRetrofitResult<List<RequestStudent>> callback) {
+    public void getAllStudent(String author, int year, @NonNull OnRetrofitResult<List<Student>> callback) {
         api.getAllStudent(author,year).enqueue(new RetrofitListener<>(callback));
     }
     public void getAllSubject(String author, @NonNull OnRetrofitResult<List<Subject>> callback) {
@@ -75,6 +76,9 @@ public class RetrofitService {
     }
     public void getAllNotify(String author, @NonNull OnRetrofitResult<List<Notification>> callback) {
         api.getAllNotify(author).enqueue(new RetrofitListener<>(callback));
+    }
+    public void GetAllTeacher(String author, @NonNull OnRetrofitResult<List<Teacher>> callback) {
+        api.getAllTeacher(author).enqueue(new RetrofitListener<>(callback));
     }
     public void PostScore(String author, List<ScoreRequest> scoreRequest, @NonNull OnRetrofitResult<ResponseBody> callback) {
         api.PostCore(author, scoreRequest).enqueue(new RetrofitListener<>(callback));
@@ -100,5 +104,7 @@ public class RetrofitService {
     public void PostTeacher(String author, RequestTeacher teacher, @NonNull OnRetrofitResult<ResponseBody> callback) {
         api.PostTeacher(author, teacher).enqueue(new RetrofitListener<>(callback));
     }
-
+    public void UpdateTeacher(String author, RequestTeacher teacher, @NonNull OnRetrofitResult<ResponseBody> callback) {
+        api.UpdateTeacher(author, teacher).enqueue(new RetrofitListener<>(callback));
+    }
 }

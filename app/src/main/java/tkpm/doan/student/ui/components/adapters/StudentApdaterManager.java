@@ -32,17 +32,17 @@ import tkpm.doan.student.ui.manager.SearchStudentFragmentDirections;
 import tkpm.doan.student.ui.teacher.GradeDetailFragmentDirections;
 import tkpm.doan.student.ui.teacher.TeacherViewModel;
 
-public class StudentApdaterManager extends ImmutableAdapter<RequestStudent> {
+public class StudentApdaterManager extends ImmutableAdapter<Student> {
 
     private static final String TAG = StudentAdapter.class.getName();
     private TextView Name;
     private TextView Class;
-    private List<RequestStudent> list;
-    private List<RequestStudent> listfilter;
-    private List<RequestStudent> listsoure;
+    private List<Student> list;
+    private List<Student> listfilter;
+    private List<Student> listsoure;
     private ManagerViewModel viewModel;
 
-    private class ViewHolder extends AbstractViewHolder<RequestStudent> {
+    private class ViewHolder extends AbstractViewHolder<Student> {
         private CheckBox checkBox;
 
         public ViewHolder(@NonNull View itemView) {
@@ -50,7 +50,7 @@ public class StudentApdaterManager extends ImmutableAdapter<RequestStudent> {
         }
 
         @Override
-        public void bind(RequestStudent item) {
+        public void bind(Student item) {
             this.itemView.setTag(item);
             ItemStudentMasterBinding binding = ItemStudentMasterBinding.bind(itemView);
             viewModel = new ViewModelProvider((MainActivity) getContext()).get(ManagerViewModel.class);
@@ -65,7 +65,7 @@ public class StudentApdaterManager extends ImmutableAdapter<RequestStudent> {
                     checkBox.setChecked(!checkBox.isChecked());
                 } else {
                     viewModel.setSelectedStudent(item);
-                    NavDirections directions = SearchStudentFragmentDirections.navigateCreateTeacher();
+                    NavDirections directions = SearchStudentFragmentDirections.navigateAddStudent();
                     MainActivity activity = (MainActivity) getContext();
                     activity.getNavController().navigate(directions);
                 }
@@ -77,7 +77,7 @@ public class StudentApdaterManager extends ImmutableAdapter<RequestStudent> {
     private ActionMode actionMode;
     private HashMap<Integer, Student> selectedStudent = new HashMap<>();
 
-    public StudentApdaterManager(@NonNull Context context, @NonNull List<RequestStudent> list) {
+    public StudentApdaterManager(@NonNull Context context, @NonNull List<Student> list) {
         super(context, list);
         this.listfilter = list;
         this.list = new ArrayList<>();
@@ -88,7 +88,7 @@ public class StudentApdaterManager extends ImmutableAdapter<RequestStudent> {
 
     public void filter(String charText, int type) {
         if (type == 1) {
-            for (RequestStudent wp : this.listsoure) {
+            for (Student wp : this.listsoure) {
                 if (wp.getClassId().toLowerCase(Locale.getDefault()).substring(0, 2).contains(charText)) {
                     listfilter.add(wp);
                     list.add(wp);
@@ -96,7 +96,7 @@ public class StudentApdaterManager extends ImmutableAdapter<RequestStudent> {
             }
         } else if (type == 2) {
             listfilter.clear();
-            for (RequestStudent wp : list) {
+            for (Student wp : list) {
                 if (!wp.getClassId().toLowerCase(Locale.getDefault()).substring(0, 2).contains(charText))
                     listfilter.add(wp);
             }
@@ -110,7 +110,7 @@ public class StudentApdaterManager extends ImmutableAdapter<RequestStudent> {
             if (charText.length() == 0) {
                 listfilter.addAll(this.list);
             } else {
-                for (RequestStudent wp : this.list) {
+                for (Student wp : this.list) {
                     String name = wp.getLastName() + " " + wp.getMiddleName() + " " + wp.getFirstName();
                     if (name.toLowerCase(Locale.getDefault()).contains(charText) ||
                             wp.getClassId().toLowerCase(Locale.getDefault()).contains(charText)) {
@@ -124,13 +124,13 @@ public class StudentApdaterManager extends ImmutableAdapter<RequestStudent> {
 
     @NonNull
     @Override
-    public AbstractViewHolder<RequestStudent> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AbstractViewHolder<Student> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_student_master, parent, false);
         return new ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AbstractViewHolder<RequestStudent> holder, int position) {
+    public void onBindViewHolder(@NonNull AbstractViewHolder<Student> holder, int position) {
         super.onBindViewHolder(holder, position);
         ViewHolder viewHolder = (ViewHolder) holder;
     }

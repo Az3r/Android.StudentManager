@@ -84,6 +84,8 @@
     <string name="text_date">Date</string>
     <string name="text_manage_schedule">Manage schedule</string>
     <string name="text_teacher">Teacher</string>
+    <string name="gi_b_t_u">Giờ bắt đầu</string>
+    <string name="you_must_enter_semester_year_class_date_to_add_schedule">* You must enter semester, year, class, Date to add schedule</string>
     <string-array name="array_date">
         <item>Monday</item>
         <item>Tuesday</item>

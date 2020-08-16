@@ -29,6 +29,7 @@ import tkpm.doan.student.data.models.ScoreRequest;
 import tkpm.doan.student.data.models.Session;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.data.models.Subject;
+import tkpm.doan.student.data.models.Teacher;
 
 public interface RestAPI {
     @GET("student/single/{id}")
@@ -61,8 +62,11 @@ public interface RestAPI {
     @GET("manager/allnoti")
     Call<List<Notification>> getAllNotify(@Header("Authorization") String Authorizationer);
 
+    @GET("manager/allteacher")
+    Call<List<Teacher>> getAllTeacher(@Header("Authorization") String Authorizationer);
+
     @GET("manager/allstudent")
-    Call<List<RequestStudent>> getAllStudent(@Header("Authorization") String Authorizationer, @Query("year") int year);
+    Call<List<Student>> getAllStudent(@Header("Authorization") String Authorizationer, @Query("year") int year);
 
     @GET("teacher/listscore/{id}")
     Call<List<Student>> getStudentClass(@Header("Authorization") String Authorization, @Path("id") String id,@Query("class") String classId, @Query("sem") int semester, @Query("year") int year);
@@ -79,7 +83,6 @@ public interface RestAPI {
     @POST("manager/addnoti")
     Call<ResponseBody> PostNotify(@Header("Authorization") String Authorization, @Body RequestNotify notify);
 
-    @Headers("Content-Type: application/x-www-form-urlencoded")
     @POST("manager/updatenoti")
     Call<ResponseBody> UpdateNotify(@Header("Authorization") String Authorization, @Body RequestNotify notify);
 
@@ -91,5 +94,8 @@ public interface RestAPI {
 
     @POST("manager/addteacher")
     Call<ResponseBody> PostTeacher(@Header("Authorization") String Authorization, @Body RequestTeacher student);
+
+    @POST("manager/updateteacher")
+    Call<ResponseBody> UpdateTeacher(@Header("Authorization") String Authorization, @Body RequestTeacher student);
 
 }

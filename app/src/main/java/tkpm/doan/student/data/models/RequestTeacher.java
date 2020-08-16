@@ -3,6 +3,7 @@ package tkpm.doan.student.data.models;
 import java.util.Date;
 
 public class RequestTeacher {
+    private String TeacherId;
     private String Address;
     private String LastName;
     private String MiddleName;
@@ -15,6 +16,14 @@ public class RequestTeacher {
 
 
     // Getter Methods
+
+    public String getTeacherId() {
+        return TeacherId;
+    }
+
+    public void setTeacherId(String teacherId) {
+        TeacherId = teacherId;
+    }
 
     public String getAddress() {
         return Address;
