@@ -10,17 +10,26 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingHorizontal="12dp"
-        android:paddingVertical="24dp"
->
+        android:paddingVertical="24dp">
 
-        <TextView
-            style="@style/Label.Important"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/text_title" />
+            android:layout_marginVertical="8dp"
+            android:hint="@string/text_class"
+            app:errorEnabled="true">
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/notify_class"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
+            android:hint="@string/text_title"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
             app:errorEnabled="true">
@@ -32,17 +41,11 @@
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
-        <TextView
-            style="@style/Label.Important"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/text_tag" />
-
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
+            android:hint="@string/text_tag"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
