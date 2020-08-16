@@ -53,11 +53,8 @@ public class AddTeacherFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireActivity(), R.layout.textview, R.id.textview, Arrays.asList(
-                "Math", "Literature", "English",
-                "Physics", "Chemistry", "Biology",
-                "Hitroy", "Geography", "Moral"
-        ));
+        String[] subjects = getResources().getStringArray(R.array.array_subject);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireActivity(), R.layout.textview, R.id.textview, subjects);
 
         binding.teacherClass.setAdapter(adapter);
 

@@ -4,11 +4,13 @@
 
     <item
         android:id="@+id/menu_restore"
+        android:icon="@drawable/ic_restore"
         android:title="@string/text_restore"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/menu_submit"
+        android:icon="@drawable/ic_submit"
         android:title="@string/text_submit"
         app:showAsAction="always" />
 

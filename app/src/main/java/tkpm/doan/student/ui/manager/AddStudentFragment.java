@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import java.util.Arrays;
+import java.util.List;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.databinding.FragmentAddStudentBinding;
@@ -52,9 +53,8 @@ public class AddStudentFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireActivity(), R.layout.textview, R.id.textview, Arrays.asList(
-                "10a1", "10a2", "10a3", "10a4", "11a1", "11a2", "11a3", "12a1", "12a2"
-        ));
+        String[] grades = getResources().getStringArray(R.array.array_class);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireActivity(), R.layout.textview, R.id.textview, grades);
 
         binding.studentClass.setAdapter(adapter);
 

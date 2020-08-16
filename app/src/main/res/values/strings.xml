@@ -76,4 +76,37 @@
     <string name="text_date">Date</string>
     <string name="text_manage_schedule">Manage schedule</string>
     <string name="text_teacher">Teacher</string>
+
+    <string-array name="array_date">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+    </string-array>
+
+    <string-array name="array_class">
+        <item>10A1</item>
+        <item>10A2</item>
+        <item>10A3</item>
+        <item>10A4</item>
+        <item>11A1</item>
+        <item>11A2</item>
+        <item>11A3</item>
+        <item>12A1</item>
+        <item>12A2</item>
+    </string-array>
+
+    <string-array name="array_subject">
+        <item>Math</item>
+        <item>Literature</item>
+        <item>English</item>
+        <item>Physics</item>
+        <item>Chemistry</item>
+        <item>Biology</item>
+        <item>Hitroy</item>
+        <item>Geography</item>
+        <item>Moral</item>
+    </string-array>
 </resources>
