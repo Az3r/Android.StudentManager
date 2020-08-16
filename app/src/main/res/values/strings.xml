@@ -88,6 +88,7 @@
     <string name="you_must_enter_semester_year_class_date_to_add_schedule">* You must enter semester, year, class, Date to add schedule</string>
     <string name="text_new_class">New class</string>
     <string name="text_add_class">Add class</string>
+    <string name="text_student">Student</string>
 
     <string-array name="array_date">
         <item>Monday</item>

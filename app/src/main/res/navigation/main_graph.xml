@@ -104,9 +104,9 @@
                 app:destination="@id/nav_teacher_schedule_detail" />
         </fragment>
         <fragment
-            tools:layout="@layout/fragment_schedule_detail"
             android:id="@+id/nav_teacher_schedule_detail"
-            android:name="tkpm.doan.student.ui.teacher.ScheduleDetailFragment" />
+            android:name="tkpm.doan.student.ui.teacher.ScheduleDetailFragment"
+            tools:layout="@layout/fragment_schedule_detail" />
         <fragment
             android:id="@+id/nav_student_profile"
             android:name="tkpm.doan.student.ui.teacher.StudentProfileFragment"
@@ -187,19 +187,25 @@
             android:id="@+id/nav_manager_teacher"
             android:name="tkpm.doan.student.ui.manager.SearchTeacherFragment"
             android:label="@string/text_teacher"
-            tools:layout="@layout/fragment_search_teacher" >
+            tools:layout="@layout/fragment_search_teacher">
             <action
                 android:id="@+id/navigate_teacher"
                 app:destination="@id/nav_create_teacher" />
-            <action
-                android:id="@+id/navgiate_add_class"
-                app:destination="@id/nav_create_class" />
         </fragment>
         <fragment
             android:id="@+id/nav_create_class"
             android:name="tkpm.doan.student.ui.manager.AddGradeFragment"
             android:label="@string/text_add_class"
             tools:layout="@layout/fragment_add_class" />
+        <fragment
+            android:id="@+id/nav_manager_class"
+            android:name="tkpm.doan.student.ui.manager.GradeListFragment"
+            android:label="@string/text_class"
+            tools:layout="@layout/fragment_grade_list">
+            <action
+                android:id="@+id/navgiate_add_class"
+                app:destination="@id/nav_create_class" />
+        </fragment>
     </navigation>
 
 </navigation>

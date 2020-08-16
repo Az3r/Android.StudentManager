@@ -50,7 +50,6 @@ public class SearchTeacherFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        setHasOptionsMenu(true);
     }
 
     @Override
@@ -84,21 +83,5 @@ public class SearchTeacherFragment extends Fragment {
             adapter= new TeacherAdapter(requireActivity(), teacherList);
             recyclerView.swapAdapter(adapter, true);
         });
-    }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.action_manager, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.nav_create_class) {
-            NavDirections directions = SearchTeacherFragmentDirections.navgiateAddClass();
-            Navigation.findNavController(binding.getRoot()).navigate(directions);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }
