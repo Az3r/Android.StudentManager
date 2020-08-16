@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         appBarConfiguration = new AppBarConfiguration
                 .Builder(R.id.nav_student_score_list, R.id.nav_student_schedule_list, R.id.nav_student_notify_list,
                 R.id.nav_teacher_grade_list, R.id.nav_teacher_schedule_list, R.id.nav_teacher_report,
-                R.id.nav_manager_notification, R.id.nav_manager_student)
+                R.id.nav_manager_notification, R.id.nav_manager_student, R.id.nav_create_schedule, R.id.nav_manager_teacher)
                 .setOpenableLayout(binding.drawerLayout)
                 .build();
 
