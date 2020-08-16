@@ -6,29 +6,22 @@ import javax.inject.Inject;
 
 public class Subject {
 
-    private String id;
-    private String name;
+    private int SubjectId;
+    private String SubjectName;
 
-    @Inject
-    public Subject(@NonNull String id, @NonNull String name) {
-        this.id = id;
-        this.name = name;
+    public int getSubjectId() {
+        return SubjectId;
     }
 
-    public String getId() {
-        return id;
+    public void setSubjectId(int subjectId) {
+        SubjectId = subjectId;
     }
 
-    public String getName() {
-        return name;
+    public String getSubjectName() {
+        return SubjectName;
     }
 
-    @NonNull
-    @Override
-    public String toString() {
-        return "Subject{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+    public void setSubjectName(String subjectName) {
+        SubjectName = subjectName;
     }
 }

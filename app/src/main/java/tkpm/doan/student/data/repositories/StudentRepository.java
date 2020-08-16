@@ -34,6 +34,11 @@ public class StudentRepository {
             public void onSuccess(PersonalInfo result) {
                 info.postValue(result);
             }
+
+            @Override
+            public void onFailure(PersonalInfo result) {
+
+            }
         });
         return info;
     }
@@ -45,6 +50,12 @@ public class StudentRepository {
             public void onSuccess(List<Notification> result) {
                 info.postValue(result);
             }
+
+            @Override
+            public void onFailure(List<Notification> result) {
+
+            }
+
         });
         return info;
     }
@@ -56,6 +67,11 @@ public class StudentRepository {
             public void onSuccess(List<Score> result) {
                 scores.postValue(result);
             }
+
+            @Override
+            public void onFailure(List<Score> result) {
+
+            }
         });
         return scores;
     }
@@ -66,6 +82,11 @@ public class StudentRepository {
             @Override
             public void onSuccess(List<Session> result) {
                 scores.postValue(result);
+            }
+
+            @Override
+            public void onFailure(List<Session> result) {
+
             }
         });
         return scores;

@@ -50,6 +50,11 @@ public class LoggedUserResource {
             public void onSuccess(PersonalInfo result) {
                 schedules.postValue(result);
             }
+
+            @Override
+            public void onFailure(PersonalInfo result) {
+
+            }
         });
         return schedules;
     }
@@ -59,6 +64,11 @@ public class LoggedUserResource {
             @Override
             public void onSuccess(PersonalInfo result) {
                 schedules.postValue(result);
+            }
+
+            @Override
+            public void onFailure(PersonalInfo result) {
+
             }
         });
         return schedules;

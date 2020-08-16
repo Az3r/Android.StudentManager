@@ -14,6 +14,7 @@ public abstract class OnRetrofitResult<T> {
      * occurs when successfully receive data from server (http code 2xx)
      */
     public abstract void onSuccess(T result);
+    public abstract void onFailure(T result);
 
     /**
      * occurs when server response with failure http codes (4xx, 5xx)

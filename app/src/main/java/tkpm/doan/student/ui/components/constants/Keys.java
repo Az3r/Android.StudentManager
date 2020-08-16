@@ -3,6 +3,8 @@ package tkpm.doan.student.ui.components.constants;
 public class Keys {
     public static final String STUDENT_ID = "1140713";
     public static final String SubjectId = "1";
+    public static final int sem =1;
+    public static final int year=2020;
     public static final boolean IS_TEACHER = true;
     public static final String SELECTED_GRADE = "selectedGrade";
     public static final String TEACHER_ID = "0000001";

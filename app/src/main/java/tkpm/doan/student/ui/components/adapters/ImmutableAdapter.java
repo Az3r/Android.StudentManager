@@ -6,7 +6,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Filter;
 
 /**
  * Abstract adapter whose collection is immutable
@@ -14,10 +16,10 @@ import java.util.List;
 public abstract class ImmutableAdapter<T> extends RecyclerView.Adapter<AbstractViewHolder<T>> {
 
     @NonNull
-    private final List<T> list;
+    private List<T> list;
 
     @NonNull
-    private final Context context;
+    private Context context;
 
     public ImmutableAdapter(@NonNull Context context, @NonNull List<T> list) {
         this.context = context;
@@ -51,4 +53,5 @@ public abstract class ImmutableAdapter<T> extends RecyclerView.Adapter<AbstractV
     public int getItemCount() {
         return list.size();
     }
+
 }

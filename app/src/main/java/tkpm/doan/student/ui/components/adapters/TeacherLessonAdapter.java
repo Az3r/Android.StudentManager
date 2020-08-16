@@ -28,7 +28,6 @@ public class TeacherLessonAdapter extends ImmutableAdapter<Lesson> {
     public TeacherLessonAdapter(@NonNull Context context, @NonNull List<Lesson> list) {
         super(context, list);
     }
-
     @NonNull
     @Override
     public AbstractViewHolder<Lesson> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

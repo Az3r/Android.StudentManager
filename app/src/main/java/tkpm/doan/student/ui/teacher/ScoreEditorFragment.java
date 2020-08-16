@@ -2,6 +2,7 @@ package tkpm.doan.student.ui.teacher;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
@@ -24,6 +26,7 @@ import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.ScoreRequest;
 import tkpm.doan.student.databinding.FragmentScoreEditorBinding;
 import tkpm.doan.student.databinding.ItemScoreEditorBinding;
+import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.components.adapters.EditScoreAdapter;
 import tkpm.doan.student.ui.components.constants.AppData;
 import tkpm.doan.student.ui.components.constants.Keys;
@@ -72,7 +75,6 @@ public class ScoreEditorFragment extends Fragment {
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        AtomicReference<Boolean> IsFailure= new AtomicReference<>(true);
         if (item.getItemId() == R.id.menu_submit) {
 
             for(int i=0;i< AppData.getInstance().studentList.size();i++)
@@ -109,30 +111,48 @@ public class ScoreEditorFragment extends Fragment {
                 value.setTest15(AppData.getInstance().studentList.get(i).getTest15());
                 value.setTest45(AppData.getInstance().studentList.get(i).getTest45());
                 value.setTestFinal(AppData.getInstance().studentList.get(i).getTestFinal());
-                value.setAcademicYear(2020);
-                value.setSemester(1);
-                value.setSubjectId(Float.valueOf(Keys.SubjectId));
+                value.setAcademicYear(Keys.year);
+                value.setSemester(Keys.sem);
+                value.setSubjectId(Float.parseFloat(Keys.SubjectId));
                 scoreRequests.add(value);
                 if(IsAdd)
                 {
-                    viewModel.postScore(scoreRequests).observe(getViewLifecycleOwner(), response -> {
-                            IsFailure.set(false);
+                    viewModel.postScore(scoreRequests).observe(getViewLifecycleOwner(), responseBody -> {
+                        if(responseBody!=null)
+                        {
+                            new Handler().postDelayed(() -> {
+                                Toast.makeText(getContext(), R.string.add_score_success, Toast.LENGTH_SHORT).show();
+                                MainActivity mainActivity = (MainActivity) requireActivity();
+                                mainActivity.getNavController().navigateUp();
+                            }, 2000);
+                        }
+                        else
+                            Toast.makeText(getContext(), R.string.add_score_fail, Toast.LENGTH_SHORT).show();
+
                     });
                 }
                 else
                 {
-                    viewModel.UpdateScore(scoreRequests).observe(getViewLifecycleOwner(), response -> {
-                            IsFailure.set(false);
+                    viewModel.UpdateScore(scoreRequests).observe(getViewLifecycleOwner(), responseBody -> {
+                        try {
+                            if(responseBody.string().contains("OK"))
+                            {
+                                new Handler().postDelayed(() -> {
+                                    Toast.makeText(getContext(), R.string.add_score_success, Toast.LENGTH_SHORT).show();
+                                    MainActivity mainActivity = (MainActivity) requireActivity();
+                                    mainActivity.getNavController().navigateUp();
+                                }, 2000);
+                            }
+                            else
+                                Toast.makeText(getContext(), R.string.add_score_fail, Toast.LENGTH_SHORT).show();
+
+                        } catch (IOException e) {
+                            Toast.makeText(getContext(), R.string.add_score_fail, Toast.LENGTH_SHORT).show();
+
+                            e.printStackTrace();
+                        }
                     });
                 }
-            }
-            if(IsFailure.get())
-            {
-                Toast.makeText(getContext(), R.string.add_score_success, Toast.LENGTH_SHORT).show();
-            }
-            else
-            {
-                Toast.makeText(getContext(), R.string.add_score_fail, Toast.LENGTH_SHORT).show();
             }
             return true;
         }

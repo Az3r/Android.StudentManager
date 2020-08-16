@@ -1,40 +1,45 @@
 package tkpm.doan.student.data.models;
 
 public class FeedBack {
-    String StudentID;
-    String Content;
-    int sem;
-    int year;
+    private String StudentId;
+    private String Feedback;
+    private float Semester;
+    private float AcademicYear;
 
-    public String getStudentID() {
-        return StudentID;
+
+    // Getter Methods
+
+    public String getStudentId() {
+        return StudentId;
     }
 
-    public void setStudentID(String studentID) {
-        StudentID = studentID;
+    public String getFeedback() {
+        return Feedback;
     }
 
-    public String getContent() {
-        return Content;
+    public float getSemester() {
+        return Semester;
     }
 
-    public void setContent(String content) {
-        Content = content;
+    public float getAcademicYear() {
+        return AcademicYear;
     }
 
-    public int getSem() {
-        return sem;
+    // Setter Methods
+
+    public void setStudentId(String StudentId) {
+        this.StudentId = StudentId;
     }
 
-    public void setSem(int sem) {
-        this.sem = sem;
+    public void setFeedback(String Feedback) {
+        this.Feedback = Feedback;
     }
 
-    public int getYear() {
-        return year;
+    public void setSemester(float Semester) {
+        this.Semester = Semester;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setAcademicYear(float AcademicYear) {
+        this.AcademicYear = AcademicYear;
     }
 }
