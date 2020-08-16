@@ -73,3 +73,4 @@
     <string name="add_feedback_success">Add feedback successful</string>
     <string name="add_feedback_fail">Add feedback unsuccessful \nPlease check again</string>
     <string name="need_content_feedback">You must type the feedback</string>
+</resources>
