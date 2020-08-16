@@ -81,11 +81,9 @@
     <string name="middle_name">Middle name</string>
     <string name="last_name">Last name</string>
     <string name="first_name">First name</string>
-</resources>
     <string name="text_date">Date</string>
     <string name="text_manage_schedule">Manage schedule</string>
     <string name="text_teacher">Teacher</string>
-
     <string-array name="array_date">
         <item>Monday</item>
         <item>Tuesday</item>
@@ -94,7 +92,6 @@
         <item>Friday</item>
         <item>Saturday</item>
     </string-array>
-
     <string-array name="array_class">
         <item>10A1</item>
         <item>10A2</item>
@@ -106,7 +103,6 @@
         <item>12A1</item>
         <item>12A2</item>
     </string-array>
-
     <string-array name="array_subject">
         <item>Math</item>
         <item>Literature</item>
