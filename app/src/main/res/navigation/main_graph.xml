@@ -191,7 +191,15 @@
             <action
                 android:id="@+id/navigate_teacher"
                 app:destination="@id/nav_create_teacher" />
+            <action
+                android:id="@+id/navgiate_add_class"
+                app:destination="@id/nav_create_class" />
         </fragment>
+        <fragment
+            android:id="@+id/nav_create_class"
+            android:name="tkpm.doan.student.ui.manager.AddGradeFragment"
+            android:label="@string/text_add_class"
+            tools:layout="@layout/fragment_add_class" />
     </navigation>
 
 </navigation>
