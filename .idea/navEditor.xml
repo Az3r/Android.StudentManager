@@ -19,6 +19,18 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="gradeListFragment">
+                              <value>
+                                <LayoutPositions>
+                                  <option name="myPosition">
+                                    <Point>
+                                      <option name="x" value="3" />
+                                      <option name="y" value="981" />
+                                    </Point>
+                                  </option>
+                                </LayoutPositions>
+                              </value>
+                            </entry>
                             <entry key="nav_create_class">
                               <value>
                                 <LayoutPositions>
@@ -132,6 +144,11 @@
                                   </option>
                                   <option name="myPositions">
                                     <map>
+                                      <entry key="navgiate_add_class">
+                                        <value>
+                                          <LayoutPositions />
+                                        </value>
+                                      </entry>
                                       <entry key="navigate_teacher">
                                         <value>
                                           <LayoutPositions />

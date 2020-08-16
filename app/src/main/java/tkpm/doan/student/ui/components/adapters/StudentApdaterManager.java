@@ -65,7 +65,7 @@ public class StudentApdaterManager extends ImmutableAdapter<RequestStudent> {
                     checkBox.setChecked(!checkBox.isChecked());
                 } else {
                     viewModel.setSelectedStudent(item);
-                    NavDirections directions = SearchStudentFragmentDirections.navigateCreateTeacher();
+                    NavDirections directions = SearchStudentFragmentDirections.navigateAddStudent();
                     MainActivity activity = (MainActivity) getContext();
                     activity.getNavController().navigate(directions);
                 }

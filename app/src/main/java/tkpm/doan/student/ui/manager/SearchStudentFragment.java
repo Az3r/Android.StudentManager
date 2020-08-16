@@ -131,23 +131,4 @@ public class SearchStudentFragment extends Fragment {
             recyclerView.swapAdapter(adapter, true);
         });
     }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.action_manager, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.nav_create_teacher) {
-
-            NavDirections directions = SearchStudentFragmentDirections.navigateCreateTeacher();
-            MainActivity activity = (MainActivity) requireActivity();
-            activity.getNavController().navigate(directions);
-
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

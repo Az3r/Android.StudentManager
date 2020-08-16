@@ -86,6 +86,7 @@
     <string name="text_teacher">Teacher</string>
     <string name="text_new_class">New class</string>
     <string name="text_add_class">Add class</string>
+    <string name="text_student">Student</string>
 
     <string-array name="array_date">
         <item>Monday</item>

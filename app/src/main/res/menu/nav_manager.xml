@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/nav_manager_student"
+        android:icon="@drawable/ic_gender"
+        android:title="@string/text_student"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/nav_manager_class"
         android:icon="@drawable/ic_class"
         android:title="@string/text_class"
         app:showAsAction="always" />
