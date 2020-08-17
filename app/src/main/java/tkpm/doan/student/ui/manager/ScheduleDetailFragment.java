@@ -59,7 +59,7 @@ public class ScheduleDetailFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.action_edit, menu);
+        inflater.inflate(R.menu.action_grade, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
