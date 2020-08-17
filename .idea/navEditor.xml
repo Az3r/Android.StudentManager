@@ -100,6 +100,18 @@
                                 </LayoutPositions>
                               </value>
                             </entry>
+                            <entry key="nav_manager_class_detail">
+                              <value>
+                                <LayoutPositions>
+                                  <option name="myPosition">
+                                    <Point>
+                                      <option name="x" value="1061" />
+                                      <option name="y" value="1025" />
+                                    </Point>
+                                  </option>
+                                </LayoutPositions>
+                              </value>
+                            </entry>
                             <entry key="nav_manager_notification">
                               <value>
                                 <LayoutPositions>
@@ -117,6 +129,18 @@
                                         </value>
                                       </entry>
                                     </map>
+                                  </option>
+                                </LayoutPositions>
+                              </value>
+                            </entry>
+                            <entry key="nav_manager_schedule">
+                              <value>
+                                <LayoutPositions>
+                                  <option name="myPosition">
+                                    <Point>
+                                      <option name="x" value="1363" />
+                                      <option name="y" value="1029" />
+                                    </Point>
                                   </option>
                                 </LayoutPositions>
                               </value>
@@ -159,6 +183,18 @@
                                         </value>
                                       </entry>
                                     </map>
+                                  </option>
+                                </LayoutPositions>
+                              </value>
+                            </entry>
+                            <entry key="scheduleDetailFragment">
+                              <value>
+                                <LayoutPositions>
+                                  <option name="myPosition">
+                                    <Point>
+                                      <option name="x" value="1622" />
+                                      <option name="y" value="1031" />
+                                    </Point>
                                   </option>
                                 </LayoutPositions>
                               </value>

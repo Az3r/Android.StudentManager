@@ -128,10 +128,10 @@
     </navigation>
 
     <fragment
-        tools:layout="@layout/fragment_setting"
-        android:name="tkpm.doan.student.ui.setting.SettingFragment"
         android:id="@+id/nav_setting"
-        android:label="@string/text_setting" />
+        android:name="tkpm.doan.student.ui.setting.SettingFragment"
+        android:label="@string/text_setting"
+        tools:layout="@layout/fragment_setting" />
     <fragment
         android:id="@+id/nav_app_info"
         android:label="@string/text_about" />
@@ -207,6 +207,36 @@
             <action
                 android:id="@+id/navgiate_add_class"
                 app:destination="@id/nav_create_class" />
+            <action
+                android:id="@+id/navgiate_class_detail"
+                app:destination="@id/nav_manager_class_detail" />
+        </fragment>
+        <fragment
+            android:id="@+id/nav_manager_class_detail"
+            android:name="tkpm.doan.student.ui.manager.GradeDetailFragment"
+            android:label="@string/text_class"
+            tools:layout="@layout/fragment_grade_detail" >
+            <action
+                android:id="@+id/navigate_schedule"
+                app:destination="@id/nav_manager_schedule" />
+        </fragment>
+        <fragment
+            android:id="@+id/nav_manager_schedule"
+            android:name="tkpm.doan.student.ui.manager.ScheduleFragment"
+            android:label="@string/text_schedule"
+            tools:layout="@layout/fragment_schedule_list" >
+            <action
+                android:id="@+id/navigate_schedule_detail"
+                app:destination="@id/nav_manager_schedule_detail" />
+        </fragment>
+        <fragment
+            android:id="@+id/nav_manager_schedule_detail"
+            android:name="tkpm.doan.student.ui.manager.ScheduleDetailFragment"
+            android:label="ScheduleDetailFragment"
+            tools:layout="@layout/fragment_schedule_detail" >
+            <action
+                android:id="@+id/navgiate_edit_schedule"
+                app:destination="@id/nav_create_schedule" />
         </fragment>
     </navigation>
 

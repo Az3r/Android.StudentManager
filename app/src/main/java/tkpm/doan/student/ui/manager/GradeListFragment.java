@@ -32,6 +32,7 @@ public class GradeListFragment extends Fragment {
     private FragmentGradeListBinding binding;
     ManagerViewModel viewModel;
     GradeManagerAdapter adapter;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -66,6 +67,7 @@ public class GradeListFragment extends Fragment {
             public boolean onQueryTextSubmit(String s) {
                 return false;
             }
+
             @Override
             public boolean onQueryTextChange(String s) {
 //                adapter.filter(s);
@@ -75,10 +77,11 @@ public class GradeListFragment extends Fragment {
         });
         setupRecyclerView(binding.recyclerView);
     }
+
     private void setupRecyclerView(RecyclerView recyclerView) {
         RecyclerViews.setupListView(recyclerView);
         viewModel.GetAllClass(Keys.year).observe(getViewLifecycleOwner(), teacherList -> {
-            adapter= new GradeManagerAdapter(requireActivity(), teacherList);
+            adapter = new GradeManagerAdapter(requireActivity(), teacherList);
             recyclerView.swapAdapter(adapter, true);
         });
     }
