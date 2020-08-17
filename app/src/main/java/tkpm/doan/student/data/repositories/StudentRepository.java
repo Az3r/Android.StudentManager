@@ -1,6 +1,7 @@
 package tkpm.doan.student.data.repositories;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -8,6 +9,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import okhttp3.ResponseBody;
 import tkpm.doan.student.data.components.retrofit.OnRetrofitResult;
 import tkpm.doan.student.data.components.retrofit.RetrofitService;
 import tkpm.doan.student.data.models.Notification;
@@ -36,7 +38,7 @@ public class StudentRepository {
             }
 
             @Override
-            public void onFailure(PersonalInfo result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
 
             }
         });
@@ -52,7 +54,7 @@ public class StudentRepository {
             }
 
             @Override
-            public void onFailure(List<Notification> result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
 
             }
 
@@ -69,7 +71,7 @@ public class StudentRepository {
             }
 
             @Override
-            public void onFailure(List<Score> result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
 
             }
         });
@@ -85,7 +87,7 @@ public class StudentRepository {
             }
 
             @Override
-            public void onFailure(List<Session> result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
 
             }
         });

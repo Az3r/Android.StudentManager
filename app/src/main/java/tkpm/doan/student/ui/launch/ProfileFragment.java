@@ -20,6 +20,7 @@ import tkpm.doan.student.R;
 import tkpm.doan.student.databinding.FragmentProfileBinding;
 import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.components.adapters.CommentAdapter;
+import tkpm.doan.student.ui.components.constants.AppData;
 import tkpm.doan.student.ui.components.constants.Keys;
 import tkpm.doan.student.ui.components.constants.Provider;
 import tkpm.doan.student.ui.components.utils.RecyclerViews;
@@ -103,7 +104,7 @@ public class ProfileFragment extends Fragment {
                     binding.commentSection.setVisibility(View.VISIBLE);
             }
         });
-        if(Keys.IS_TEACHER)
+        if(AppData.getInstance().IS_TEACHER)
         {
             binding.commentSection.setVisibility(View.GONE);
             binding.studentRateCount.setVisibility(View.GONE);

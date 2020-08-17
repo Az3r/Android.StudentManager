@@ -4,6 +4,9 @@ public class ClassName
 {
     private String ClassId;
     private String ClassName;
+    private String RoomId;
+    private String RoomName;
+    private String PersonalInfoId = null;
     private String LastName = null;
     private String MiddleName = null;
     private String FirstName = null;
@@ -19,6 +22,18 @@ public class ClassName
 
     public String getClassName() {
         return ClassName;
+    }
+
+    public String getRoomId() {
+        return RoomId;
+    }
+
+    public String getRoomName() {
+        return RoomName;
+    }
+
+    public String getPersonalInfoId() {
+        return PersonalInfoId;
     }
 
     public String getLastName() {
@@ -49,6 +64,18 @@ public class ClassName
 
     public void setClassName(String ClassName) {
         this.ClassName = ClassName;
+    }
+
+    public void setRoomId(String RoomId) {
+        this.RoomId = RoomId;
+    }
+
+    public void setRoomName(String RoomName) {
+        this.RoomName = RoomName;
+    }
+
+    public void setPersonalInfoId(String PersonalInfoId) {
+        this.PersonalInfoId = PersonalInfoId;
     }
 
     public void setLastName(String LastName) {

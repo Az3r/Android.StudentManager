@@ -18,13 +18,18 @@ import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import tkpm.doan.student.R;
+import tkpm.doan.student.data.models.ClassName;
 import tkpm.doan.student.databinding.FragmentGradeListBinding;
 import tkpm.doan.student.databinding.FragmentSearchTeacherBinding;
 import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.components.adapters.GradeAdapter;
 import tkpm.doan.student.ui.components.adapters.GradeManagerAdapter;
 import tkpm.doan.student.ui.components.adapters.TeacherAdapter;
+import tkpm.doan.student.ui.components.constants.AppData;
 import tkpm.doan.student.ui.components.constants.Keys;
 import tkpm.doan.student.ui.components.utils.RecyclerViews;
 
@@ -80,8 +85,16 @@ public class GradeListFragment extends Fragment {
 
     private void setupRecyclerView(RecyclerView recyclerView) {
         RecyclerViews.setupListView(recyclerView);
-        viewModel.GetAllClass(Keys.year).observe(getViewLifecycleOwner(), teacherList -> {
-            adapter = new GradeManagerAdapter(requireActivity(), teacherList);
+        viewModel.GetAllClass(AppData.getInstance().year).observe(getViewLifecycleOwner(), teacherList -> {
+            List<ClassName> data= new ArrayList<>();
+            for(int i=0;i<teacherList.size();i++)
+            {
+                if(!teacherList.get(i).getClassId().equals("FULL"))
+                {
+                    data.add(teacherList.get(i));
+                }
+            }
+            adapter= new GradeManagerAdapter(requireActivity(), data);
             recyclerView.swapAdapter(adapter, true);
         });
     }

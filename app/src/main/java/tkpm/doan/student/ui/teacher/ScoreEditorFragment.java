@@ -111,9 +111,9 @@ public class ScoreEditorFragment extends Fragment {
                 value.setTest15(AppData.getInstance().studentList.get(i).getTest15());
                 value.setTest45(AppData.getInstance().studentList.get(i).getTest45());
                 value.setTestFinal(AppData.getInstance().studentList.get(i).getTestFinal());
-                value.setAcademicYear(Keys.year);
-                value.setSemester(Keys.sem);
-                value.setSubjectId(Float.parseFloat(Keys.SubjectId));
+                value.setAcademicYear(AppData.getInstance().year);
+                value.setSemester(AppData.getInstance().sem);
+                value.setSubjectId(Float.parseFloat(AppData.getInstance().SubjectId));
                 scoreRequests.add(value);
                 if(IsAdd)
                 {

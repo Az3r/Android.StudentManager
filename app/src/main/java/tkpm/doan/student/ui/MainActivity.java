@@ -24,6 +24,7 @@ import java.time.DayOfWeek;
 import dagger.hilt.android.AndroidEntryPoint;
 import tkpm.doan.student.R;
 import tkpm.doan.student.databinding.ActivityMainBinding;
+import tkpm.doan.student.ui.components.constants.AppData;
 import tkpm.doan.student.ui.components.constants.Keys;
 
 @AndroidEntryPoint
@@ -106,13 +107,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putBoolean(Keys.BUNDLE_BOTTOM_NAV_VISIBLE, bottomNav.getVisibility() != View.GONE);
+        outState.putBoolean(AppData.getInstance().BUNDLE_BOTTOM_NAV_VISIBLE, bottomNav.getVisibility() != View.GONE);
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        boolean bottonNavVisible = savedInstanceState.getBoolean(Keys.BUNDLE_BOTTOM_NAV_VISIBLE);
+        boolean bottonNavVisible = savedInstanceState.getBoolean(AppData.getInstance().BUNDLE_BOTTOM_NAV_VISIBLE);
         bottomNav.setVisibility(bottonNavVisible ? View.VISIBLE : View.GONE);
     }
 }

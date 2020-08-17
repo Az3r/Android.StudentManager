@@ -1,6 +1,7 @@
 package tkpm.doan.student.data.repositories;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -15,9 +16,13 @@ import tkpm.doan.student.data.models.ClassName;
 import tkpm.doan.student.data.models.FeedBack;
 import tkpm.doan.student.data.models.Notification;
 import tkpm.doan.student.data.models.PersonalInfo;
+import tkpm.doan.student.data.models.RequestClass;
 import tkpm.doan.student.data.models.RequestNotify;
+import tkpm.doan.student.data.models.RequestSession;
 import tkpm.doan.student.data.models.RequestStudent;
 import tkpm.doan.student.data.models.RequestTeacher;
+import tkpm.doan.student.data.models.ResponSession;
+import tkpm.doan.student.data.models.Room;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.data.models.Subject;
 import tkpm.doan.student.data.models.Teacher;
@@ -40,7 +45,64 @@ public class ManageRepository {
                 schedules.postValue(result);
             }
             @Override
-            public void onFailure(ResponseBody result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
+                schedules.postValue(null);
+            }
+        });
+        return schedules;
+    }
+    public LiveData<List<PersonalInfo>> GetAllStudentClass(String author, String classID, int sem, int year) {
+        final MutableLiveData<List<PersonalInfo>> schedules = new MutableLiveData<>();
+        retrofit.getAllStudentClass(author, classID,sem,year, new OnRetrofitResult<List<PersonalInfo>>() {
+            @Override
+            public void onSuccess(List<PersonalInfo> result) {
+                schedules.postValue(result);
+            }
+            @Override
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
+                schedules.postValue(null);
+            }
+        });
+        return schedules;
+    }
+
+    public LiveData<List<ResponSession>> GetScheduleClass(String author, String classID, int sem, int year) {
+        final MutableLiveData<List<ResponSession>> schedules = new MutableLiveData<>();
+        retrofit.getScheduleClass(author, classID,sem,year, new OnRetrofitResult<List<ResponSession>>() {
+            @Override
+            public void onSuccess(List<ResponSession> result) {
+                schedules.postValue(result);
+            }
+            @Override
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
+                schedules.postValue(null);
+            }
+        });
+        return schedules;
+    }
+    public LiveData<List<ResponSession>> getAllSchedule(String author, int sem, int year) {
+        final MutableLiveData<List<ResponSession>> schedules = new MutableLiveData<>();
+        retrofit.getAllSchedule(author,sem,year, new OnRetrofitResult<List<ResponSession>>() {
+            @Override
+            public void onSuccess(List<ResponSession> result) {
+                schedules.postValue(result);
+            }
+            @Override
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
+                schedules.postValue(null);
+            }
+        });
+        return schedules;
+    }
+    public LiveData<List<Room>> GetSRoom(String author) {
+        final MutableLiveData<List<Room>> schedules = new MutableLiveData<>();
+        retrofit.GetRoom(author, new OnRetrofitResult<List<Room>>() {
+            @Override
+            public void onSuccess(List<Room> result) {
+                schedules.postValue(result);
+            }
+            @Override
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
                 schedules.postValue(null);
             }
         });
@@ -54,7 +116,7 @@ public class ManageRepository {
                 schedules.postValue(result);
             }
             @Override
-            public void onFailure(ResponseBody result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
                 schedules.postValue(null);
             }
         });
@@ -68,7 +130,49 @@ public class ManageRepository {
                 schedules.postValue(result);
             }
             @Override
-            public void onFailure(ResponseBody result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
+                schedules.postValue(null);
+            }
+        });
+        return schedules;
+    }
+    public LiveData<ResponseBody> PostSchedule(String author, RequestSession requestNotify) {
+        final MutableLiveData<ResponseBody> schedules = new MutableLiveData<>();
+        retrofit.PostSchedule(author, requestNotify, new OnRetrofitResult<ResponseBody>() {
+            @Override
+            public void onSuccess(ResponseBody result) {
+                schedules.postValue(result);
+            }
+            @Override
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
+                schedules.postValue(null);
+            }
+        });
+        return schedules;
+    }
+    public LiveData<ResponseBody> UpdateSchedule(String author, RequestSession requestNotify) {
+        final MutableLiveData<ResponseBody> schedules = new MutableLiveData<>();
+        retrofit.UpdateSchedule(author, requestNotify, new OnRetrofitResult<ResponseBody>() {
+            @Override
+            public void onSuccess(ResponseBody result) {
+                schedules.postValue(result);
+            }
+            @Override
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
+                schedules.postValue(null);
+            }
+        });
+        return schedules;
+    }
+    public LiveData<ResponseBody> PostClass(String author, RequestClass requestNotify) {
+        final MutableLiveData<ResponseBody> schedules = new MutableLiveData<>();
+        retrofit.PostClass(author, requestNotify, new OnRetrofitResult<ResponseBody>() {
+            @Override
+            public void onSuccess(ResponseBody result) {
+                schedules.postValue(result);
+            }
+            @Override
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
                 schedules.postValue(null);
             }
         });
@@ -82,7 +186,7 @@ public class ManageRepository {
                 schedules.postValue(result);
             }
             @Override
-            public void onFailure(ResponseBody result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
                 schedules.postValue(null);
             }
         });
@@ -96,7 +200,7 @@ public class ManageRepository {
                 schedules.postValue(result);
             }
             @Override
-            public void onFailure(ResponseBody result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
                 schedules.postValue(null);
             }
         });
@@ -110,7 +214,7 @@ public class ManageRepository {
                 schedules.postValue(result);
             }
             @Override
-            public void onFailure(ResponseBody result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
                 schedules.postValue(null);
             }
         });
@@ -124,7 +228,7 @@ public class ManageRepository {
                 schedules.postValue(result);
             }
             @Override
-            public void onFailure(List<ClassName> result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
                 schedules.postValue(null);
             }
         });
@@ -138,7 +242,7 @@ public class ManageRepository {
                 schedules.postValue(result);
             }
             @Override
-            public void onFailure(List<Student> result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
                 schedules.postValue(null);
             }
         });
@@ -152,7 +256,7 @@ public class ManageRepository {
                 schedules.postValue(result);
             }
             @Override
-            public void onFailure(List<Notification> result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
                 schedules.postValue(null);
             }
         });
@@ -166,7 +270,7 @@ public class ManageRepository {
                 schedules.postValue(result);
             }
             @Override
-            public void onFailure(List<Teacher> result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
                 schedules.postValue(null);
             }
         });
@@ -180,7 +284,7 @@ public class ManageRepository {
                 schedules.postValue(result);
             }
             @Override
-            public void onFailure(List<Subject> result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
                 schedules.postValue(null);
             }
         });
@@ -194,7 +298,7 @@ public class ManageRepository {
                 schedules.postValue(result);
             }
             @Override
-            public void onFailure(List<Subject> result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
                 schedules.postValue(null);
             }
         });

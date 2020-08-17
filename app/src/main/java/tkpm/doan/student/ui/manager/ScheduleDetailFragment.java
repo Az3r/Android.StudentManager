@@ -20,11 +20,10 @@ import tkpm.doan.student.R;
 import tkpm.doan.student.databinding.FragmentScheduleDetailBinding;
 import tkpm.doan.student.ui.MainActivity;
 import tkpm.doan.student.ui.components.utils.RecyclerViews;
-import tkpm.doan.student.ui.teacher.ScheduleDetailFragmentDirections;
 
 public class ScheduleDetailFragment extends Fragment {
     private FragmentScheduleDetailBinding binding;
-
+    private  ManagerViewModel viewModel;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

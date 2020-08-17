@@ -36,6 +36,7 @@ import tkpm.doan.student.ui.components.adapters.ManagerStudentAdapter;
 import tkpm.doan.student.ui.components.adapters.NotifyAdapterManager;
 import tkpm.doan.student.ui.components.adapters.StudentAdapter;
 import tkpm.doan.student.ui.components.adapters.StudentApdaterManager;
+import tkpm.doan.student.ui.components.constants.AppData;
 import tkpm.doan.student.ui.components.constants.Keys;
 import tkpm.doan.student.ui.components.utils.RecyclerViews;
 
@@ -126,7 +127,7 @@ public class SearchStudentFragment extends Fragment {
     }
     private void setupRecyclerView(RecyclerView recyclerView) {
         RecyclerViews.setupListView(recyclerView);
-        viewModel.getAllStudent(Keys.year).observe(getViewLifecycleOwner(), notifications -> {
+        viewModel.getAllStudent(AppData.getInstance().year).observe(getViewLifecycleOwner(), notifications -> {
             studentList = notifications;
             adapter= new StudentApdaterManager(requireActivity(), studentList);
             recyclerView.swapAdapter(adapter, true);

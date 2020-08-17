@@ -3,6 +3,7 @@ package tkpm.doan.student.data.models;
 import java.util.Date;
 
 public class PersonalInfo {
+    private String PersonalInfoId;
     private String StudentId;
     private String RoleName;
     private String TeacherId;
@@ -21,6 +22,14 @@ public class PersonalInfo {
     private int PersonTypeID;
     private int PersonTypeId;
     // Getter Methods
+
+    public String getPersonalInfoId() {
+        return PersonalInfoId;
+    }
+
+    public void setPersonalInfoId(String personalInfoId) {
+        PersonalInfoId = personalInfoId;
+    }
 
     public int getPersonTypeId() {
         return PersonTypeId;

@@ -30,6 +30,7 @@ import tkpm.doan.student.data.models.Notification;
 import tkpm.doan.student.data.models.RequestNotify;
 import tkpm.doan.student.databinding.FragmentCreateNotifyBinding;
 import tkpm.doan.student.ui.MainActivity;
+import tkpm.doan.student.ui.components.constants.AppData;
 import tkpm.doan.student.ui.components.constants.Keys;
 import tkpm.doan.student.ui.student.StudentViewModel;
 
@@ -71,7 +72,7 @@ public class EditNotifyFragment extends Fragment {
                 Content.setText(notification.getContent());
             }
         });
-        viewModel.GetAllClass(Keys.year).observe(getViewLifecycleOwner(),list->{
+        viewModel.GetAllClass(AppData.getInstance().year).observe(getViewLifecycleOwner(), list->{
             List<String> data = new ArrayList<>();
             for (int i=0;i<list.size();i++)
                 data.add(list.get(i).getClassName());

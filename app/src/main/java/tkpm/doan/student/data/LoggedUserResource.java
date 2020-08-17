@@ -1,6 +1,7 @@
 package tkpm.doan.student.data;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -16,6 +17,7 @@ import tkpm.doan.student.data.models.Comment;
 import tkpm.doan.student.data.models.Grade;
 import tkpm.doan.student.data.models.PersonalInfo;
 import tkpm.doan.student.data.models.RequestLogIn;
+import tkpm.doan.student.data.models.RequestPassword;
 import tkpm.doan.student.data.models.RequestTeacher;
 import tkpm.doan.student.data.models.ResponLogIn;
 
@@ -49,7 +51,21 @@ public class LoggedUserResource {
                 schedules.postValue(result);
             }
             @Override
-            public void onFailure(ResponLogIn result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
+                schedules.postValue(null);
+            }
+        });
+        return schedules;
+    }
+    public LiveData<ResponLogIn> UpdatePassword(String token,RequestPassword requestLogIn) {
+        final MutableLiveData<ResponLogIn> schedules = new MutableLiveData<>();
+        retrofit.UpdatePassword(token,requestLogIn, new OnRetrofitResult<ResponLogIn>() {
+            @Override
+            public void onSuccess(ResponLogIn result) {
+                schedules.postValue(result);
+            }
+            @Override
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
                 schedules.postValue(null);
             }
         });
@@ -67,7 +83,7 @@ public class LoggedUserResource {
             }
 
             @Override
-            public void onFailure(PersonalInfo result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
 
             }
         });
@@ -82,7 +98,7 @@ public class LoggedUserResource {
             }
 
             @Override
-            public void onFailure(PersonalInfo result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
 
             }
         });

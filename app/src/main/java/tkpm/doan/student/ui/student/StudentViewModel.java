@@ -16,6 +16,7 @@ import tkpm.doan.student.data.models.Schedule;
 import tkpm.doan.student.data.models.Score;
 import tkpm.doan.student.data.models.Session;
 import tkpm.doan.student.data.repositories.StudentRepository;
+import tkpm.doan.student.ui.components.constants.AppData;
 import tkpm.doan.student.ui.components.constants.Keys;
 
 public class StudentViewModel extends ViewModel {
@@ -32,20 +33,20 @@ public class StudentViewModel extends ViewModel {
     }
 
     public LiveData<PersonalInfo> getPersonalInfo() {
-        return repository.getPersonalInfo(Keys.token,Keys.STUDENT_ID);
+        return repository.getPersonalInfo(AppData.getInstance().token,AppData.getInstance().STUDENT_ID);
     }
 
     public LiveData<List<Score>> getScores() {
         // TODO remove hard-coded params
-        return repository.getScores(Keys.token,Keys.STUDENT_ID, Keys.sem, Keys.year);
+        return repository.getScores(AppData.getInstance().token,AppData.getInstance().STUDENT_ID, AppData.getInstance().sem, AppData.getInstance().year);
     }
     public LiveData<List<Session>> getSchedule() {
         // TODO remove hard-coded params
-        return repository.getSchedule(Keys.token,Keys.STUDENT_ID, Keys.sem, Keys.year);
+        return repository.getSchedule(AppData.getInstance().token,AppData.getInstance().STUDENT_ID, AppData.getInstance().sem, AppData.getInstance().year);
     }
     public LiveData<List<Notification>> getNotification() {
         // TODO remove hard-coded params
-        return repository.getNotification(Keys.token,Keys.STUDENT_ID);
+        return repository.getNotification(AppData.getInstance().token,AppData.getInstance().STUDENT_ID);
     }
 
 

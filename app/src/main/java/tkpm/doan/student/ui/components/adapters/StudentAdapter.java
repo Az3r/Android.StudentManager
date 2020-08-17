@@ -43,7 +43,6 @@ public class StudentAdapter extends ImmutableAdapter<Student> implements ActionM
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
         }
-
         @Override
         public void bind(Student item) {
             this.itemView.setTag(item);

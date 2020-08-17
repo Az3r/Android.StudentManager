@@ -27,6 +27,7 @@ import tkpm.doan.student.data.models.FeedBack;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.databinding.FragmentProfileBinding;
 import tkpm.doan.student.ui.MainActivity;
+import tkpm.doan.student.ui.components.constants.AppData;
 import tkpm.doan.student.ui.components.constants.Keys;
 import tkpm.doan.student.ui.components.constants.Provider;
 import tkpm.doan.student.ui.launch.LoggedUserViewModel;
@@ -109,8 +110,8 @@ public class StudentProfileFragment extends Fragment {
                 AtomicBoolean IsFailure= new AtomicBoolean(true);
                 FeedBack feedBack= new FeedBack();
                 feedBack.setFeedback(binding.commentInput.getText().toString());
-                feedBack.setSemester(Keys.sem);
-                feedBack.setAcademicYear(Keys.year);
+                feedBack.setSemester(AppData.getInstance().sem);
+                feedBack.setAcademicYear(AppData.getInstance().year);
                 feedBack.setStudentId(personalInfo.getStudentId());
                 teacherViewModel.PostFeedback(feedBack).observe(getViewLifecycleOwner(), responseBody -> {
                     if(responseBody!=null)

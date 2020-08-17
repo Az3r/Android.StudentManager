@@ -15,6 +15,7 @@ import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.Session;
 import tkpm.doan.student.databinding.ItemScheduleDetailBinding;
 import tkpm.doan.student.databinding.ItemScheduleMasterBinding;
+import tkpm.doan.student.ui.components.constants.AppData;
 import tkpm.doan.student.ui.components.constants.Keys;
 
 public class LessonAdapter extends ImmutableAdapter<Session> {
@@ -34,7 +35,7 @@ public class LessonAdapter extends ImmutableAdapter<Session> {
             scheduleSubject = binding.scheduleSubject;
             scheduleDuration = binding.scheduleDuration;
             schedulePeriod = binding.schedulePeriod;
-            if(Keys.IS_TEACHER)
+            if(AppData.getInstance().IS_TEACHER)
                 scheduleSubject.setText("\tMôn học: "+item.getSubjectName()+"\n\n"+
                         "\tLớp dạy: "+item.getClassId()+"\n\n"+
                         "\tPhòng dạy: "+item.getRoomName());

@@ -34,6 +34,7 @@ import tkpm.doan.student.data.models.RequestStudent;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.databinding.FragmentAddStudentBinding;
 import tkpm.doan.student.ui.MainActivity;
+import tkpm.doan.student.ui.components.constants.AppData;
 import tkpm.doan.student.ui.components.constants.Keys;
 import tkpm.doan.student.ui.components.constants.Provider;
 
@@ -88,7 +89,6 @@ public class AddStudentFragment extends Fragment {
         Address= binding.studentAddress;
         Email= binding.studentEmail;
         BirthDay= binding.studentBirthday;
-
         viewModel.getSelectedStudent().observe(getViewLifecycleOwner(),student -> {
             if(student!=null)
             {
@@ -107,7 +107,7 @@ public class AddStudentFragment extends Fragment {
                 BirthDay.setText(Provider.getDateFormat().format(student.getBirthday()));
             }
         });
-        viewModel.GetAllClass(Keys.year).observe(getViewLifecycleOwner(), list->{
+        viewModel.GetAllClass(AppData.getInstance().year).observe(getViewLifecycleOwner(), list->{
             List<String> data = new ArrayList<>();
             for (int i=0;i<list.size();i++)
             {

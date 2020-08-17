@@ -8,6 +8,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.HEAD;
@@ -21,11 +22,16 @@ import tkpm.doan.student.data.models.FeedBack;
 import tkpm.doan.student.data.models.Grade;
 import tkpm.doan.student.data.models.Notification;
 import tkpm.doan.student.data.models.PersonalInfo;
+import tkpm.doan.student.data.models.RequestClass;
 import tkpm.doan.student.data.models.RequestLogIn;
 import tkpm.doan.student.data.models.RequestNotify;
+import tkpm.doan.student.data.models.RequestPassword;
+import tkpm.doan.student.data.models.RequestSession;
 import tkpm.doan.student.data.models.RequestStudent;
 import tkpm.doan.student.data.models.RequestTeacher;
 import tkpm.doan.student.data.models.ResponLogIn;
+import tkpm.doan.student.data.models.ResponSession;
+import tkpm.doan.student.data.models.Room;
 import tkpm.doan.student.data.models.Score;
 import tkpm.doan.student.data.models.ScoreRequest;
 import tkpm.doan.student.data.models.Session;
@@ -77,8 +83,20 @@ public interface RestAPI {
     @GET("manager/allstudent")
     Call<List<Student>> getAllStudent(@Header("Authorization") String Authorizationer, @Query("year") int year);
 
+    @GET("manager/liststudent/{id}")
+    Call<List<PersonalInfo>> getAllStudentClass(@Header("Authorization") String Authorizationer, @Path("id") String id, @Query("sem") int semester, @Query("year") int year);
+
+    @GET("manager/listschedule/{id}")
+    Call<List<ResponSession>> getScheduleClass(@Header("Authorization") String Authorizationer, @Path("id") String id, @Query("sem") int semester, @Query("year") int year);
+
+    @GET("manager/allschedule")
+    Call<List<ResponSession>> getAllSchedule(@Header("Authorization") String Authorizationer, @Query("sem") int semester, @Query("year") int year);
+
     @GET("teacher/listscore/{id}")
     Call<List<Student>> getStudentClass(@Header("Authorization") String Authorization, @Path("id") String id,@Query("class") String classId, @Query("sem") int semester, @Query("year") int year);
+
+    @GET("manager/allroom")
+    Call<List<Room>> getRoom(@Header("Authorization") String Authorization);
 
     @POST("teacher/updatemultiscore")
     Call<ResponseBody> UpdatetCore(@Header("Authorization") String Authorization, @Body List<ScoreRequest> scoreRequest);
@@ -89,8 +107,18 @@ public interface RestAPI {
     @POST("teacher/addfeedback")
     Call<ResponseBody> PostFeedback(@Header("Authorization") String Authorization, @Body FeedBack feedBack);
 
+    @POST("manager/addclass")
+    Call<ResponseBody> PostClass(@Header("Authorization") String Authorization, @Body RequestClass requestClass);
+
     @POST("manager/addnoti")
     Call<ResponseBody> PostNotify(@Header("Authorization") String Authorization, @Body RequestNotify notify);
+
+    @POST("manager/addschedule")
+    Call<ResponseBody> PostSchedule(@Header("Authorization") String Authorization, @Body RequestSession notify);
+
+    @POST("manager/updateschedule")
+    Call<ResponseBody> UpdateSchedule(@Header("Authorization") String Authorization, @Body RequestSession notify);
+
 
     @POST("manager/updatenoti")
     Call<ResponseBody> UpdateNotify(@Header("Authorization") String Authorization, @Body RequestNotify notify);
@@ -106,5 +134,8 @@ public interface RestAPI {
 
     @POST("manager/updateteacher")
     Call<ResponseBody> UpdateTeacher(@Header("Authorization") String Authorization, @Body RequestTeacher student);
+
+    @POST("user/changepassword")
+    Call<ResponLogIn> UpdatePassword(@Header("Authorization") String Authorization, @Body RequestPassword requestPassword);
 
 }

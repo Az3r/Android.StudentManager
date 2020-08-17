@@ -35,6 +35,7 @@ import tkpm.doan.student.data.models.Teacher;
 import tkpm.doan.student.databinding.FragmentAddStudentBinding;
 import tkpm.doan.student.databinding.FragmentAddTeacherBinding;
 import tkpm.doan.student.ui.MainActivity;
+import tkpm.doan.student.ui.components.constants.AppData;
 import tkpm.doan.student.ui.components.constants.Keys;
 import tkpm.doan.student.ui.components.constants.Provider;
 
@@ -108,7 +109,7 @@ public class AddTeacherFragment extends Fragment {
                 BirthDay.setText(Provider.getDateFormat().format(teacher.getBirthday()));
             }
         });
-        viewModel.GetAllSubject(Keys.year).observe(getViewLifecycleOwner(), list->{
+        viewModel.GetAllSubject(AppData.getInstance().year).observe(getViewLifecycleOwner(), list->{
             subjectList= list;
             List<String> data = new ArrayList<>();
             for (int i=0;i<list.size();i++)

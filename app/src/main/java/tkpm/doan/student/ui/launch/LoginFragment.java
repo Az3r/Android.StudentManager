@@ -31,6 +31,8 @@ import tkpm.doan.student.R;
 import tkpm.doan.student.data.models.RequestLogIn;
 import tkpm.doan.student.databinding.FragmentLoginBinding;
 import tkpm.doan.student.ui.MainActivity;
+import tkpm.doan.student.ui.components.constants.AppData;
+import tkpm.doan.student.ui.components.constants.Keys;
 
 public class LoginFragment extends Fragment {
     private TextInputLayout accountInput;
@@ -53,7 +55,6 @@ public class LoginFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         accountInput = binding.loginAccount;
         passwordInput = binding.loginPassword;
-        teacherCheckBox = binding.loginTeacher;
         progressBar = binding.progressbar;
         loginButton = binding.buttonLogin;
         loginButton.setOnClickListener(e -> onLogin());
@@ -86,20 +87,23 @@ public class LoginFragment extends Fragment {
             setErrorIfEmpty(passwordInput, getString(R.string.error_empty_field));
             return;
         }else {
-            enableAllInput(false);
             progressBar.setVisibility(View.VISIBLE);
+            enableAllInput(false);
             String account = getString(accountInput);
             String password = getString(passwordInput);
             RequestLogIn requestLogIn= new RequestLogIn();
             requestLogIn.setPersonalInfoId(account);
             requestLogIn.setPassword(password);
-
             viewModel.PostLogIn(requestLogIn).observe(getViewLifecycleOwner(), responLogIn -> {
                 if(responLogIn!=null)
                 {
                     try {
                         if(responLogIn.getPersonalInfo().getPersonTypeId()==3)
                         {
+                            AppData.getInstance().userName= account;
+                            AppData.getInstance().IS_TEACHER =true;
+                            AppData.getInstance().token="Bear "+responLogIn.getToken();
+                            AppData.getInstance().TEACHER_ID=responLogIn.getPersonalInfo().getPersonalInfoId();
                             new Handler().postDelayed(() -> {
                                 Toast.makeText(getContext(), R.string.msg_login_success, Toast.LENGTH_SHORT).show();
                                 new Handler().postDelayed(this::navigateManagerSession, 500);
@@ -107,6 +111,10 @@ public class LoginFragment extends Fragment {
                         }
                         else if(responLogIn.getPersonalInfo().getPersonTypeID()==1)
                         {
+                            AppData.getInstance().userName= account;
+                            AppData.getInstance().IS_TEACHER =false;
+                            AppData.getInstance().token="Bear "+responLogIn.getToken();
+                            AppData.getInstance().STUDENT_ID=responLogIn.getPersonalInfo().getPersonalInfoId();
                             new Handler().postDelayed(() -> {
                                 Toast.makeText(getContext(), R.string.msg_login_success, Toast.LENGTH_SHORT).show();
                                 new Handler().postDelayed(this::setupStudentSession, 500);
@@ -114,6 +122,10 @@ public class LoginFragment extends Fragment {
                         }
                         else
                         {
+                            AppData.getInstance().userName= account;
+                            AppData.getInstance().IS_TEACHER =true;
+                            AppData.getInstance().token="Bear "+responLogIn.getToken();
+                            AppData.getInstance().TEACHER_ID=responLogIn.getPersonalInfo().getPersonalInfoId();
                             new Handler().postDelayed(() -> {
                                 Toast.makeText(getContext(), R.string.msg_login_success, Toast.LENGTH_SHORT).show();
                                 new Handler().postDelayed(this::setupTeacherSession, 500);
@@ -127,6 +139,7 @@ public class LoginFragment extends Fragment {
                 else
                 {
                     progressBar.setVisibility(View.GONE);
+                    enableAllInput(true);
                     Toast.makeText(getContext(), R.string.msg_login_unsuccessful, Toast.LENGTH_SHORT).show();
                 }
             });
@@ -149,7 +162,7 @@ public class LoginFragment extends Fragment {
         super.onStop();
         MainActivity activity = (MainActivity) requireActivity();
         activity.getDrawerLayout().setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-        activity.getSupportActionBar().show();
+         activity.getSupportActionBar().show();
     }
 
 
@@ -168,11 +181,9 @@ public class LoginFragment extends Fragment {
             Menu menu = activity.getBottomNav().getMenu();
             menu.findItem(R.id.nav_teacher_report).setVisible(isHomeTeacher);
         });
-
         NavDirections directions = LoginFragmentDirections.navgiateTeacher();
         ((MainActivity) requireActivity()).getNavController().navigate(directions);
     }
-
     private void navigateManagerSession() {
         MainActivity activity = (MainActivity) requireActivity();
         activity.setupBottomNav(R.menu.nav_manager);
@@ -187,7 +198,6 @@ public class LoginFragment extends Fragment {
     private void enableAllInput(boolean enabled) {
         accountInput.setEnabled(enabled);
         passwordInput.setEnabled(enabled);
-        teacherCheckBox.setEnabled(enabled);
         loginButton.setEnabled(enabled);
     }
 

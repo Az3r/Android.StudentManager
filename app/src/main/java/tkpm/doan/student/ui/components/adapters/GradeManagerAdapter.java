@@ -17,6 +17,9 @@ import tkpm.doan.student.data.models.ClassName;
 import tkpm.doan.student.data.models.Grade;
 import tkpm.doan.student.databinding.ItemGradeMasterBinding;
 import tkpm.doan.student.ui.MainActivity;
+import tkpm.doan.student.ui.manager.GradeListFragment;
+import tkpm.doan.student.ui.manager.GradeListFragmentDirections;
+import tkpm.doan.student.ui.manager.ManagerViewModel;
 import tkpm.doan.student.ui.teacher.GradeFragmentDirections;
 import tkpm.doan.student.ui.teacher.TeacherViewModel;
 
@@ -38,10 +41,10 @@ public class GradeManagerAdapter extends ImmutableAdapter<ClassName> {
             Teacher.setText(item.getLastName()+" "+item.getMiddleName()+" "+item.getFirstName());
             NumberStudent.setText(""+ item.getSumStudent());
             itemView.setOnClickListener(view -> {
-                TeacherViewModel viewModel = new ViewModelProvider((MainActivity) getContext()).get(TeacherViewModel.class);
-                viewModel.setSelectedGrade(item.getClassId());
+                ManagerViewModel viewModel = new ViewModelProvider((MainActivity) getContext()).get(ManagerViewModel.class);
+                viewModel.setSelectedGrade(item);
                 MainActivity activity = (MainActivity) getContext();
-                NavDirections directions = GradeFragmentDirections.navgiateGradeDetail();
+                NavDirections directions = GradeListFragmentDirections.navgiateClassDetail();
                 activity.getNavController().navigate(directions);
             });
         }

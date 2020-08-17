@@ -25,6 +25,6 @@ public class RetrofitListener<T> implements Callback<T> {
     @Override
     @EverythingIsNonNull
     public void onFailure(Call<T> call, Throwable t) {
-        callback.onError(t);
+        callback.onFailure(0,null);
     }
 }

@@ -1,6 +1,7 @@
 package tkpm.doan.student.data.repositories;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -29,7 +30,6 @@ public class TeacherRepository {
     public TeacherRepository(@NonNull RetrofitService retrofit) {
         this.retrofit = retrofit;
     }
-
     public LiveData<List<Grade>> getTeachingGrades(String author,@NonNull String teacherId, int semester,int year) {
         final MutableLiveData<List<Grade>> schedules = new MutableLiveData<>();
         retrofit.getGradeTeacher(author, teacherId, semester, year, new OnRetrofitResult<List<Grade>>() {
@@ -39,7 +39,7 @@ public class TeacherRepository {
             }
 
             @Override
-            public void onFailure(List<Grade> result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
 
             }
         });
@@ -55,7 +55,7 @@ public class TeacherRepository {
             }
 
             @Override
-            public void onFailure(List<Student> result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
 
             }
         });
@@ -70,7 +70,7 @@ public class TeacherRepository {
             }
 
             @Override
-            public void onFailure(List<Session> result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
 
             }
         });
@@ -85,7 +85,7 @@ public class TeacherRepository {
             }
 
             @Override
-            public void onFailure(ResponseBody result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
                 schedules.postValue(null);
             }
         });
@@ -100,7 +100,7 @@ public class TeacherRepository {
             }
 
             @Override
-            public void onFailure(ResponseBody result) {
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
                 schedules.postValue(null);
             }
         });
@@ -115,8 +115,8 @@ public class TeacherRepository {
             }
 
             @Override
-            public void onFailure(ResponseBody result) {
-                schedules.postValue(result);
+            public void onFailure(int code, @Nullable ResponseBody errorBody) {
+                schedules.postValue(null);
             }
         });
         return schedules;

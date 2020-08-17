@@ -20,6 +20,7 @@ import tkpm.doan.student.data.models.Session;
 import tkpm.doan.student.data.models.Student;
 import tkpm.doan.student.data.models.TeacherSchedule;
 import tkpm.doan.student.data.repositories.TeacherRepository;
+import tkpm.doan.student.ui.components.constants.AppData;
 import tkpm.doan.student.ui.components.constants.Keys;
 
 public class TeacherViewModel extends ViewModel {
@@ -37,44 +38,44 @@ public class TeacherViewModel extends ViewModel {
 
     public LiveData<List<Grade>> getTeachingGrades() {
         // TODO remove hard-coded params
-        return repository.getTeachingGrades(Keys.token,Keys.TEACHER_ID,  Keys.sem,Keys.year);
+        return repository.getTeachingGrades(AppData.getInstance().token,AppData.getInstance().TEACHER_ID,  AppData.getInstance().sem,AppData.getInstance().year);
     }
 
     public LiveData<List<Student>> getStudents(String gradeId) {
         // TODO remove hard-coded params
-        return repository.getStudents(Keys.token, Keys.TEACHER_ID,gradeId, Keys.sem,Keys.year);
+        return repository.getStudents(AppData.getInstance().token, AppData.getInstance().TEACHER_ID,gradeId, AppData.getInstance().sem,AppData.getInstance().year);
     }
     public LiveData<List<Session>> getSchedule() {
         // TODO remove hard-coded params
-        return repository.getSchedule(Keys.token,Keys.TEACHER_ID, Keys.sem, Keys.year);
+        return repository.getSchedule(AppData.getInstance().token,AppData.getInstance().TEACHER_ID, AppData.getInstance().sem, AppData.getInstance().year);
     }
     public LiveData<ResponseBody> postScore(List<ScoreRequest> scoreRequest) {
         // TODO remove hard-coded params
-        return repository.PostScore(Keys.token,scoreRequest);
+        return repository.PostScore(AppData.getInstance().token,scoreRequest);
     }
     public LiveData<ResponseBody> UpdateScore(List<ScoreRequest> scoreRequest) {
         // TODO remove hard-coded params
-        return repository.UpdateScore(Keys.token,scoreRequest);
+        return repository.UpdateScore(AppData.getInstance().token,scoreRequest);
     }
     public LiveData<ResponseBody> PostFeedback(FeedBack feedBack) {
         // TODO remove hard-coded params
-        return repository.PostFeedback(Keys.token,feedBack);
+        return repository.PostFeedback(AppData.getInstance().token,feedBack);
     }
 
     public LiveData<String> getSelectedGrade() {
-        return state.getLiveData(Keys.SELECTED_GRADE);
+        return state.getLiveData(AppData.getInstance().SELECTED_GRADE);
     }
 
     public LiveData<String> getTeacherId() {
-        return state.getLiveData(Keys.TEACHER_ID);
+        return state.getLiveData(AppData.getInstance().TEACHER_ID);
     }
 
     public void setSelectedGrade(String gradeId) {
-        state.set(Keys.SELECTED_GRADE, gradeId);
+        state.set(AppData.getInstance().SELECTED_GRADE, gradeId);
     }
 
     public void setTeacherId(String teacherId) {
-        state.set(Keys.TEACHER_ID, teacherId);
+        state.set(AppData.getInstance().TEACHER_ID, teacherId);
     }
     public LiveData<List<Student>> getSelectedStudents() {
         return selectedStudents;
