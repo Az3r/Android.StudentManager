@@ -70,6 +70,10 @@ public class ManagerViewModel extends ViewModel {
         // TODO remove hard-coded params
         return repository.GetAllSubject(Keys.token);
     }
+    public LiveData<List<Subject>> GetAllSubjectByTeacher() {
+        // TODO remove hard-coded params
+        return repository.GetAllSubjectByTeacher(Keys.token);
+    }
     public LiveData<List<Student>> getAllStudent(int year) {
         // TODO remove hard-coded params
         return repository.getAllStudent(Keys.token,year);

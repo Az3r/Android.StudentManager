@@ -1,4 +1,7 @@
 package tkpm.doan.student.data.models;
+
+import java.util.List;
+
 public class Session implements Comparable<Session> {
     private float SessionId;
     private String BeginTime;
@@ -10,8 +13,17 @@ public class Session implements Comparable<Session> {
     private float Semester;
     private float AcademicYear;
     private int period;
-
+    private List<Subject> list;
     // Getter Methods
+
+    public List<Subject> getList() {
+        return list;
+    }
+
+    public void setList(List<Subject> list) {
+        this.list = list;
+    }
+
     public float getSemester() {
         return Semester;
     }

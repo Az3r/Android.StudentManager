@@ -88,20 +88,24 @@ public class AddStudentFragment extends Fragment {
         Address= binding.studentAddress;
         Email= binding.studentEmail;
         BirthDay= binding.studentBirthday;
+
         viewModel.getSelectedStudent().observe(getViewLifecycleOwner(),student -> {
-            this.studentSelected= student;
-            Class.setText(student.getClassId());
-            FirstName.setText(student.getFirstName());
-            LastName.setText(student.getLastName());
-            MiddleName.setText(student.getMiddleName());
-            Phone.setText(student.getPhoneNumber());
-            Email.setText(student.getEmail());
-            Address.setText(student.getAddress());
-            if(student.isMale())
-                Gender.setText(R.string.male);
-            else
-                Gender.setText(R.string.female);
-            BirthDay.setText(Provider.getDateFormat().format(student.getBirthday()));
+            if(student!=null)
+            {
+                this.studentSelected= student;
+                Class.setText(student.getClassId());
+                FirstName.setText(student.getFirstName());
+                LastName.setText(student.getLastName());
+                MiddleName.setText(student.getMiddleName());
+                Phone.setText(student.getPhoneNumber());
+                Email.setText(student.getEmail());
+                Address.setText(student.getAddress());
+                if(student.isMale())
+                    Gender.setText(R.string.male);
+                else
+                    Gender.setText(R.string.female);
+                BirthDay.setText(Provider.getDateFormat().format(student.getBirthday()));
+            }
         });
         viewModel.GetAllClass(Keys.year).observe(getViewLifecycleOwner(), list->{
             List<String> data = new ArrayList<>();

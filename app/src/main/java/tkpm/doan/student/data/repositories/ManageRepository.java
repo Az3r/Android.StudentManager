@@ -186,4 +186,18 @@ public class ManageRepository {
         });
         return schedules;
     }
+    public LiveData<List<Subject>> GetAllSubjectByTeacher(String author) {
+        final MutableLiveData<List<Subject>> schedules = new MutableLiveData<>();
+        retrofit.GetAllSubjectByTeacher(author, new OnRetrofitResult<List<Subject>>() {
+            @Override
+            public void onSuccess(List<Subject> result) {
+                schedules.postValue(result);
+            }
+            @Override
+            public void onFailure(List<Subject> result) {
+                schedules.postValue(null);
+            }
+        });
+        return schedules;
+    }
 }

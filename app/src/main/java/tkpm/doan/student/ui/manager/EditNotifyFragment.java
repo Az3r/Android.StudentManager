@@ -137,7 +137,6 @@ public class EditNotifyFragment extends Fragment {
                             Toast.makeText(getContext(), R.string.add_notify_fail, Toast.LENGTH_SHORT).show();
                     });
                 }
-
             }
         });
     }

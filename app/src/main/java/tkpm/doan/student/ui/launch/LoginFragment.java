@@ -28,6 +28,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Objects;
 
 import tkpm.doan.student.R;
+import tkpm.doan.student.data.models.RequestLogIn;
 import tkpm.doan.student.databinding.FragmentLoginBinding;
 import tkpm.doan.student.ui.MainActivity;
 
@@ -37,7 +38,6 @@ public class LoginFragment extends Fragment {
     private CheckBox teacherCheckBox;
     private Button loginButton;
     private ProgressBar progressBar;
-
     private FragmentLoginBinding binding;
     private LoggedUserViewModel viewModel;
 
@@ -85,27 +85,61 @@ public class LoginFragment extends Fragment {
             setErrorIfEmpty(accountInput, getString(R.string.error_empty_field));
             setErrorIfEmpty(passwordInput, getString(R.string.error_empty_field));
             return;
+        }else {
+            enableAllInput(false);
+            progressBar.setVisibility(View.VISIBLE);
+            String account = getString(accountInput);
+            String password = getString(passwordInput);
+            RequestLogIn requestLogIn= new RequestLogIn();
+            requestLogIn.setPersonalInfoId(account);
+            requestLogIn.setPassword(password);
+
+            viewModel.PostLogIn(requestLogIn).observe(getViewLifecycleOwner(), responLogIn -> {
+                if(responLogIn!=null)
+                {
+                    try {
+                        if(responLogIn.getPersonalInfo().getPersonTypeId()==3)
+                        {
+                            new Handler().postDelayed(() -> {
+                                Toast.makeText(getContext(), R.string.msg_login_success, Toast.LENGTH_SHORT).show();
+                                new Handler().postDelayed(this::navigateManagerSession, 500);
+                            }, 1000);
+                        }
+                        else if(responLogIn.getPersonalInfo().getPersonTypeID()==1)
+                        {
+                            new Handler().postDelayed(() -> {
+                                Toast.makeText(getContext(), R.string.msg_login_success, Toast.LENGTH_SHORT).show();
+                                new Handler().postDelayed(this::setupStudentSession, 500);
+                            }, 1000);
+                        }
+                        else
+                        {
+                            new Handler().postDelayed(() -> {
+                                Toast.makeText(getContext(), R.string.msg_login_success, Toast.LENGTH_SHORT).show();
+                                new Handler().postDelayed(this::setupTeacherSession, 500);
+                            }, 1000);
+                        }
+                    } catch (Exception ex)
+                    {
+
+                    }
+                   }
+                else
+                {
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(getContext(), R.string.msg_login_unsuccessful, Toast.LENGTH_SHORT).show();
+                }
+            });
         }
-        enableAllInput(false);
-        progressBar.setVisibility(View.VISIBLE);
-        String account = getString(accountInput);
-        String password = getString(passwordInput);
-        boolean isTeacher = teacherCheckBox.isChecked();
-        new Handler().postDelayed(() -> {
-            Toast.makeText(getContext(), R.string.msg_login_success, Toast.LENGTH_SHORT).show();
-            new Handler().postDelayed(this::navigateManagerSession, 500);
-        }, 1000);
     }
 
 
     @Override
     public void onResume() {
         super.onResume();
-
         MainActivity activity = (MainActivity) requireActivity();
         activity.getDrawerLayout().setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         activity.getSupportActionBar().hide();
-
         // hide botton nav when user sign out
         activity.getBottomNav().setVisibility(View.GONE);
     }
@@ -125,7 +159,6 @@ public class LoginFragment extends Fragment {
         NavDirections directions = LoginFragmentDirections.navgiateStudent();
         ((MainActivity) requireActivity()).getNavController().navigate(directions);
     }
-
     private void setupTeacherSession() {
         MainActivity activity = (MainActivity) requireActivity();
         activity.getBottomNav().setVisibility(View.VISIBLE);

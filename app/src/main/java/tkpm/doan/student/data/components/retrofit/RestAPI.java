@@ -21,9 +21,11 @@ import tkpm.doan.student.data.models.FeedBack;
 import tkpm.doan.student.data.models.Grade;
 import tkpm.doan.student.data.models.Notification;
 import tkpm.doan.student.data.models.PersonalInfo;
+import tkpm.doan.student.data.models.RequestLogIn;
 import tkpm.doan.student.data.models.RequestNotify;
 import tkpm.doan.student.data.models.RequestStudent;
 import tkpm.doan.student.data.models.RequestTeacher;
+import tkpm.doan.student.data.models.ResponLogIn;
 import tkpm.doan.student.data.models.Score;
 import tkpm.doan.student.data.models.ScoreRequest;
 import tkpm.doan.student.data.models.Session;
@@ -32,6 +34,10 @@ import tkpm.doan.student.data.models.Subject;
 import tkpm.doan.student.data.models.Teacher;
 
 public interface RestAPI {
+
+    @POST("user/login")
+    Call<ResponLogIn> LogIn(@Body RequestLogIn requestLogIn);
+
     @GET("student/single/{id}")
     Call<PersonalInfo> getStudent(@Header("Authorization") String Authorization, @Path("id") String id);
 
@@ -58,6 +64,9 @@ public interface RestAPI {
 
     @GET("manager/allsubject")
     Call<List<Subject>> getAllSubject(@Header("Authorization") String Authorizationer);
+
+    @GET("manager/listsubject")
+    Call<List<Subject>> getAllSubjectByTeacher(@Header("Authorization") String Authorizationer);
 
     @GET("manager/allnoti")
     Call<List<Notification>> getAllNotify(@Header("Authorization") String Authorizationer);

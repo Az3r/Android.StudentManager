@@ -39,15 +39,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         Toolbar toolbar = binding.appbarLayout.toolbar;
         setSupportActionBar(toolbar);
 
         NavHostFragment hostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host);
         assert hostFragment != null;
         navController = hostFragment.getNavController();
-
-
         appBarConfiguration = new AppBarConfiguration
                 .Builder(R.id.nav_student_score_list, R.id.nav_student_schedule_list, R.id.nav_student_notify_list,
                 R.id.nav_teacher_grade_list, R.id.nav_teacher_schedule_list, R.id.nav_teacher_report,
@@ -99,6 +96,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_sign_out:
                 navController.navigate(R.id.login);
                 return true;
+            case R.id.nav_setting:
+                navController.navigate(R.id.nav_setting);
+                return true;
         }
         return NavigationUI.onNavDestinationSelected(item, navController);
     }
@@ -106,7 +106,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-
         outState.putBoolean(Keys.BUNDLE_BOTTOM_NAV_VISIBLE, bottomNav.getVisibility() != View.GONE);
     }
 

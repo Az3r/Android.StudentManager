@@ -19,7 +19,8 @@
     <string name="text_year">Year</string>
     <string name="semester">Semester</string>
     <string name="error_empty_field">Field must not be empty</string>
-    <string name="msg_login_success">Login successfully</string>
+    <string name="msg_login_success">Login successful</string>
+    <string name="msg_login_unsuccessful">Login Unsuccessful</string>
     <string name="text_15_minutes">15 minutes</string>
     <string name="text_45_minutes">45 minutes</string>
     <string name="text_average">Average</string>
@@ -95,7 +96,13 @@
     <string name="text_update">Update</string>
     <string name="msg_incorrect_password">This password is incorrect</string>
     <string name="msg_incorrect_confirm_password">Does not match with new password</string>
-
+    <string name="ok">OK</string>
+    <string name="_2">2.</string>
+    <string name="_3">3.</string>
+    <string name="_4">4.</string>
+    <string name="_5">5.</string>
+    <string name="_1">1.</string>
+    <string name="session">Session</string>
     <string-array name="array_date">
         <item>Monday</item>
         <item>Tuesday</item>
@@ -126,4 +133,22 @@
         <item>Geography</item>
         <item>Moral</item>
     </string-array>
+    <string-array name="array_subject_time">
+        <item>07:00 - 07:45</item>
+        <item>07:50 - 08:35</item>
+        <item>09:00 - 09:45</item>
+        <item>09:50 - 10:35</item>
+        <item>10:40 - 11:25</item>
+        <item>12:45 - 13:30</item>
+        <item>13:35 - 14:20</item>
+        <item>14:45 - 15:30</item>
+        <item>15:35 - 16:20</item>
+        <item>16:25 - 17:10</item>
+    </string-array>
+    <string-array name="array_subject_session">
+        <item>Morning</item>
+        <item>Afternoon</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

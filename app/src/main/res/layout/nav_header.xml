@@ -5,7 +5,6 @@
     android:layout_height="192dp"
     android:background="?attr/colorPrimaryDark"
     android:padding="12dp">
-
     <TextView
         android:id="@+id/logged_user_name"
         style="@style/TextAppearance.MaterialComponents.Headline5"

@@ -8,12 +8,16 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import okhttp3.ResponseBody;
 import tkpm.doan.student.data.components.enums.UserTypes;
 import tkpm.doan.student.data.components.retrofit.OnRetrofitResult;
 import tkpm.doan.student.data.components.retrofit.RetrofitService;
 import tkpm.doan.student.data.models.Comment;
 import tkpm.doan.student.data.models.Grade;
 import tkpm.doan.student.data.models.PersonalInfo;
+import tkpm.doan.student.data.models.RequestLogIn;
+import tkpm.doan.student.data.models.RequestTeacher;
+import tkpm.doan.student.data.models.ResponLogIn;
 
 public class LoggedUserResource {
 
@@ -34,15 +38,26 @@ public class LoggedUserResource {
     public LoggedUserResource(@NonNull RetrofitService retrofit) {
         this.retrofit = retrofit;
     }
-
     public LiveData<String> getUserId() {
         return userId;
     }
-
+    public LiveData<ResponLogIn> PostLogIn(RequestLogIn requestLogIn) {
+        final MutableLiveData<ResponLogIn> schedules = new MutableLiveData<>();
+        retrofit.PostLogIn(requestLogIn, new OnRetrofitResult<ResponLogIn>() {
+            @Override
+            public void onSuccess(ResponLogIn result) {
+                schedules.postValue(result);
+            }
+            @Override
+            public void onFailure(ResponLogIn result) {
+                schedules.postValue(null);
+            }
+        });
+        return schedules;
+    }
     public LiveData<UserTypes> getUserType() {
         return userType;
     }
-
     public LiveData<PersonalInfo> getStudentInfo(String author, String studentID) {
         final MutableLiveData<PersonalInfo> schedules = new MutableLiveData<>();
         retrofit.getStudentProfile(author, studentID, new OnRetrofitResult<PersonalInfo>() {
@@ -73,11 +88,9 @@ public class LoggedUserResource {
         });
         return schedules;
     }
-
     public LiveData<List<Comment>> getComments() {
         return comments;
     }
-
     public LiveData<Boolean> isHomeTeacher() {
         return homeTeacher;
     }

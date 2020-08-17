@@ -19,25 +19,13 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="gradeListFragment">
-                              <value>
-                                <LayoutPositions>
-                                  <option name="myPosition">
-                                    <Point>
-                                      <option name="x" value="3" />
-                                      <option name="y" value="981" />
-                                    </Point>
-                                  </option>
-                                </LayoutPositions>
-                              </value>
-                            </entry>
                             <entry key="nav_create_class">
                               <value>
                                 <LayoutPositions>
                                   <option name="myPosition">
                                     <Point>
-                                      <option name="x" value="373" />
-                                      <option name="y" value="988" />
+                                      <option name="x" value="368" />
+                                      <option name="y" value="1021" />
                                     </Point>
                                   </option>
                                 </LayoutPositions>
@@ -87,6 +75,27 @@
                                       <option name="x" value="371" />
                                       <option name="y" value="663" />
                                     </Point>
+                                  </option>
+                                </LayoutPositions>
+                              </value>
+                            </entry>
+                            <entry key="nav_manager_class">
+                              <value>
+                                <LayoutPositions>
+                                  <option name="myPosition">
+                                    <Point>
+                                      <option name="x" value="714" />
+                                      <option name="y" value="1019" />
+                                    </Point>
+                                  </option>
+                                  <option name="myPositions">
+                                    <map>
+                                      <entry key="navgiate_add_class">
+                                        <value>
+                                          <LayoutPositions />
+                                        </value>
+                                      </entry>
+                                    </map>
                                   </option>
                                 </LayoutPositions>
                               </value>
@@ -144,11 +153,6 @@
                                   </option>
                                   <option name="myPositions">
                                     <map>
-                                      <entry key="navgiate_add_class">
-                                        <value>
-                                          <LayoutPositions />
-                                        </value>
-                                      </entry>
                                       <entry key="navigate_teacher">
                                         <value>
                                           <LayoutPositions />

@@ -18,7 +18,25 @@ public class PersonalInfo {
     private boolean IsMale;
     private Date Birthday;
     private String ClassId;
+    private int PersonTypeID;
+    private int PersonTypeId;
     // Getter Methods
+
+    public int getPersonTypeId() {
+        return PersonTypeId;
+    }
+
+    public void setPersonTypeId(int personTypeId) {
+        PersonTypeId = personTypeId;
+    }
+
+    public int getPersonTypeID() {
+        return PersonTypeID;
+    }
+
+    public void setPersonTypeID(int personTypeID) {
+        PersonTypeID = personTypeID;
+    }
 
     public String getSubjectId() {
         return SubjectId;

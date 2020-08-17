@@ -13,9 +13,11 @@ import tkpm.doan.student.data.models.ClassName;
 import tkpm.doan.student.data.models.FeedBack;
 import tkpm.doan.student.data.models.Grade;
 import tkpm.doan.student.data.models.PersonalInfo;
+import tkpm.doan.student.data.models.RequestLogIn;
 import tkpm.doan.student.data.models.RequestNotify;
 import tkpm.doan.student.data.models.RequestStudent;
 import tkpm.doan.student.data.models.RequestTeacher;
+import tkpm.doan.student.data.models.ResponLogIn;
 import tkpm.doan.student.data.models.Score;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.internal.EverythingIsNonNull;
@@ -39,7 +41,9 @@ public class RetrofitService {
     public RetrofitService(@NonNull Retrofit retrofit) {
         api = retrofit.create(RestAPI.class);
     }
-
+    public void PostLogIn(RequestLogIn requestLogIn, @NonNull OnRetrofitResult<ResponLogIn> callback) {
+        api.LogIn(requestLogIn).enqueue(new RetrofitListener<>(callback));
+    }
     public void getScores(String author, String studentId, int semester, int year, @NonNull OnRetrofitResult<List<Score>> callback) {
         api.getScore(author, studentId, semester, year).enqueue(new RetrofitListener<>(callback));
     }
@@ -73,6 +77,9 @@ public class RetrofitService {
     }
     public void getAllSubject(String author, @NonNull OnRetrofitResult<List<Subject>> callback) {
         api.getAllSubject(author).enqueue(new RetrofitListener<>(callback));
+    }
+    public void GetAllSubjectByTeacher(String author, @NonNull OnRetrofitResult<List<Subject>> callback) {
+        api.getAllSubjectByTeacher(author).enqueue(new RetrofitListener<>(callback));
     }
     public void getAllNotify(String author, @NonNull OnRetrofitResult<List<Notification>> callback) {
         api.getAllNotify(author).enqueue(new RetrofitListener<>(callback));

@@ -8,21 +8,30 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import tkpm.doan.student.R;
 import tkpm.doan.student.databinding.FragmentGradeListBinding;
+import tkpm.doan.student.databinding.FragmentSearchTeacherBinding;
+import tkpm.doan.student.ui.MainActivity;
+import tkpm.doan.student.ui.components.adapters.GradeAdapter;
+import tkpm.doan.student.ui.components.adapters.GradeManagerAdapter;
+import tkpm.doan.student.ui.components.adapters.TeacherAdapter;
+import tkpm.doan.student.ui.components.constants.Keys;
 import tkpm.doan.student.ui.components.utils.RecyclerViews;
 
 public class GradeListFragment extends Fragment {
     private FragmentGradeListBinding binding;
-
+    ManagerViewModel viewModel;
+    GradeManagerAdapter adapter;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -39,34 +48,38 @@ public class GradeListFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        setHasOptionsMenu(true);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        viewModel = new ViewModelProvider(requireActivity()).get(ManagerViewModel.class);
+        binding.fab.setOnClickListener(v -> {
+            // TODO in viewmodel set selected teacher to empty or null
+            viewModel.setSelectedTeacher(null);
+            MainActivity activity = (MainActivity) requireActivity();
+            NavDirections directions = GradeListFragmentDirections.navgiateAddClass();
+            activity.getNavController().navigate(directions);
+        });
+        binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String s) {
+//                adapter.filter(s);
+                // TODO search and display result
+                return true;
+            }
+        });
         setupRecyclerView(binding.recyclerView);
     }
-
     private void setupRecyclerView(RecyclerView recyclerView) {
         RecyclerViews.setupListView(recyclerView);
-
-        // TODO setup adapter
-    }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.action_manager, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.nav_create_class) {
-            NavDirections directions = GradeListFragmentDirections.navgiateAddClass();
-            Navigation.findNavController(binding.getRoot()).navigate(directions);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        viewModel.GetAllClass(Keys.year).observe(getViewLifecycleOwner(), teacherList -> {
+            adapter= new GradeManagerAdapter(requireActivity(), teacherList);
+            recyclerView.swapAdapter(adapter, true);
+        });
     }
 }

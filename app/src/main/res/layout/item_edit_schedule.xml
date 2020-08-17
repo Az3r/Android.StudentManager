@@ -32,13 +32,13 @@
     </LinearLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_marginTop="6dp"
-        android:id="@+id/textInputLayout4"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:startIconDrawable="@drawable/ic_subject"
         android:hint="@string/text_subject">
         <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/Subject"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -49,10 +49,11 @@
         app:startIconDrawable="@drawable/ic_home_teacher"
         android:layout_height="wrap_content"
         android:hint="@string/text_teacher"
+        android:id="@+id/inputTeacher"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
-
         <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/teacher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>

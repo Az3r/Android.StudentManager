@@ -15,6 +15,8 @@ import tkpm.doan.student.data.LoggedUserResource;
 import tkpm.doan.student.data.components.enums.UserTypes;
 import tkpm.doan.student.data.models.Comment;
 import tkpm.doan.student.data.models.PersonalInfo;
+import tkpm.doan.student.data.models.RequestLogIn;
+import tkpm.doan.student.data.models.ResponLogIn;
 import tkpm.doan.student.ui.components.constants.Keys;
 
 public class LoggedUserViewModel extends ViewModel {
@@ -39,7 +41,10 @@ public class LoggedUserViewModel extends ViewModel {
     public LiveData<PersonalInfo> getTeacherInfo() {
         return userResource.getTeacherInfo(Keys.token, Keys.TEACHER_ID);
     }
-
+    public LiveData<ResponLogIn> PostLogIn(RequestLogIn requestLogIn)
+    {
+        return userResource.PostLogIn(requestLogIn);
+    }
     public LiveData<List<Comment>> getComments() {
         return userResource.getComments();
     }
