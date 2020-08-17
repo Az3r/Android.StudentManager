@@ -89,6 +89,12 @@
     <string name="text_new_class">New class</string>
     <string name="text_add_class">Add class</string>
     <string name="text_student">Student</string>
+    <string name="text_old_password">Old password</string>
+    <string name="text_new_password">New password</string>
+    <string name="text_confirm_password">Confirm password</string>
+    <string name="text_update">Update</string>
+    <string name="msg_incorrect_password">This password is incorrect</string>
+    <string name="msg_incorrect_confirm_password">Does not match with new password</string>
 
     <string-array name="array_date">
         <item>Monday</item>
