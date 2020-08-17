@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    tools:context=".ui.setting.SettingFragment"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="12dp"
+    android:paddingVertical="24dp">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_old_pass"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/text_old_password"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/old_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_new_pass"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:hint="@string/text_new_password"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toEndOf="@+id/layout_old_pass"
+        app:layout_constraintStart_toStartOf="@+id/layout_old_pass"
+        app:layout_constraintTop_toBottomOf="@+id/layout_old_pass">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/new_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_confirm_pass"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:hint="@string/text_confirm_password"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toEndOf="@+id/layout_new_pass"
+        app:layout_constraintStart_toStartOf="@+id/layout_new_pass"
+        app:layout_constraintTop_toBottomOf="@+id/layout_new_pass">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/confirm_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/button_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/text_update"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_confirm_pass" />
+</androidx.constraintlayout.widget.ConstraintLayout>
